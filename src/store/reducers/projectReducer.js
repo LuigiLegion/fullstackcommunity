@@ -24,9 +24,8 @@ export const createProjectActionCreator = newProject => ({
 
 // Thunk Creators
 export const createProjectThunkCreator = projectData => {
-  return async dispatch => {
+  return async (dispatch, { getFirebase, getFirestore }) => {
     try {
-      // async call to the db
       // const { data } = await axios.post('/', projectData);
       dispatch(createProjectActionCreator(projectData));
     } catch (error) {
