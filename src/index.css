@@ -7,8 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   color: white;
-  text-shadow: 3px 3px black;
-  /* background-image: url('/images/background picture.jpg'); */
   background-image: url('https://cdn-images-1.medium.com/max/1000/1*i0rG0owbE0lDeD0dsIaw4Q.jpeg');
   background-size: cover;
 }

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import Navbar from './components/layout/Navbar';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <h1>Fullstack Community</h1>
+          <Navbar>Fullstack Community</Navbar>
         </div>
       </BrowserRouter>
     );
