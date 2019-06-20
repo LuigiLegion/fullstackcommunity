@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createProjectThunkCreator } from '../../store/reducers/projectReducer';
 
 export class CreateProject extends Component {
   constructor() {
@@ -20,6 +22,7 @@ export class CreateProject extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state);
+    this.props.createProject(this.state);
   }
 
   render() {
@@ -48,4 +51,13 @@ export class CreateProject extends Component {
   }
 }
 
-export default CreateProject;
+const mapDispatchToProps = dispatch => ({
+  createProject(project) {
+    dispatch(createProjectThunkCreator(project));
+  },
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateProject);
