@@ -4,10 +4,11 @@ const initialState = {
     { id: '1', title: 'Help me find a study buddy', content: 'Pretty please!' },
     {
       id: '2',
-      title: 'Help me find someone to complain about my significant other to',
+      title:
+        'Help me find someone to complain to about my significant other being busy all the time',
       content: 'Would you?',
     },
-    { id: '3', title: 'Help me find a job', content: 'Anytime now...' },
+    { id: '3', title: 'Help me find my dream job', content: 'Anytime now...' },
   ],
 };
 
