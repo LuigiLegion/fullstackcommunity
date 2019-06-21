@@ -4,10 +4,11 @@ const initialState = {
     { id: '1', title: 'Help me find a study buddy', content: 'Pretty please!' },
     {
       id: '2',
-      title: 'Help me find someone to complain about my significant other to',
+      title:
+        'Help me find someone to complain to about my significant other being busy all the time',
       content: 'Would you?',
     },
-    { id: '3', title: 'Help me find a job', content: 'Anytime now...' },
+    { id: '3', title: 'Help me find my dream job', content: 'Anytime now...' },
   ],
 };
 
@@ -29,7 +30,6 @@ export const createProjectErrorActionCreator = error => ({
 // Thunk Creators
 export const createProjectThunkCreator = newProject => {
   return async (dispatch, getState, { getFirestore }) => {
-    // make async call to database
     try {
       const firestore = getFirestore();
       await firestore.collection('projects').add({
@@ -72,11 +72,11 @@ export const createProjectThunkCreator = newProject => {
 // Reducer
 const projectReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_PROJECT_SUCCESS:
-      console.log('Created new project successfully: ', action.newProject);
-      return state;
     case CREATE_PROJECT_ERROR:
       console.log('Create new project error: ', action.error);
+      return state;
+    case CREATE_PROJECT_SUCCESS:
+      console.log('Created new project successfully: ', action.newProject);
       return state;
     default:
       return state;
