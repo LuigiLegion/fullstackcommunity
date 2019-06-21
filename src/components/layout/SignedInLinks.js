@@ -12,7 +12,7 @@ const SignedInLinks = () => {
       </li>
       <li>
         <NavLink to="/" className="btn btn-floating red lighten-1">
-          Tal Luigi
+          Cody DaPug
         </NavLink>
       </li>
     </ul>

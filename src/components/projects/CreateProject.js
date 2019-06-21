@@ -1,34 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { createProjectThunkCreator } from '../../store/reducers/projectReducer';
 
-export class CreateProject extends Component {
-  constructor() {
-    super();
-    this.state = {
-      title: '',
-      content: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+class CreateProject extends Component {
+  state = {
+    title: '',
+    content: '',
+  };
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value,
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
-    this.props.createProject(this.state);
-  }
+    const newProject = this.state;
+    this.props.createProjectThunk(newProject);
+    this.props.history.push('/');
+  };
 
   render() {
     return (
       <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
+        <form onSubmit={this.handleSubmit} className="card white">
           <h5 className="grey-text text-darken-3">Create a new project:</h5>
           <div className="input-field">
             <label htmlFor="title">Title</label>
@@ -51,11 +48,12 @@ export class CreateProject extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  createProject(project) {
-    dispatch(createProjectThunkCreator(project));
-  },
-});
+const mapDispatchToProps = dispatch => {
+  return {
+    createProjectThunk: newProject =>
+      dispatch(createProjectThunkCreator(newProject)),
+  };
+};
 
 export default connect(
   null,

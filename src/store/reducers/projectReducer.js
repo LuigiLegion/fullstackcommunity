@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 // Initial State
 const initialState = {
   projects: [
@@ -14,32 +12,71 @@ const initialState = {
 };
 
 // Actions
-const CREATE_PROJECT = 'CREATE_PROJECT';
+const CREATE_PROJECT_SUCCESS = 'CREATE_PROJECT_SUCCESS';
+const CREATE_PROJECT_ERROR = 'CREATE_PROJECT_ERROR';
 
 // Action Creators
-export const createProjectActionCreator = newProject => ({
-  type: CREATE_PROJECT,
+export const createProjectSuccessActionCreator = newProject => ({
+  type: CREATE_PROJECT_SUCCESS,
   newProject,
 });
 
+export const createProjectErrorActionCreator = error => ({
+  type: CREATE_PROJECT_ERROR,
+  error,
+});
+
 // Thunk Creators
-export const createProjectThunkCreator = projectData => {
-  return async dispatch => {
+export const createProjectThunkCreator = newProject => {
+  return async (dispatch, getState, { getFirestore }) => {
+    // make async call to database
     try {
-      // async call to the db
-      // const { data } = await axios.post('/', projectData);
-      dispatch(createProjectActionCreator(projectData));
+      const firestore = getFirestore();
+      await firestore.collection('projects').add({
+        ...newProject,
+        authorFirstName: 'Doug',
+        authorLastName: 'DaPug',
+        authorId: 2,
+        createdAt: new Date(),
+      });
+      dispatch(createProjectSuccessActionCreator(newProject));
     } catch (error) {
       console.error(error);
+      dispatch(createProjectErrorActionCreator(error));
     }
   };
 };
 
+// export const createProjectThunkCreator = project => {
+//   return (dispatch, getState, { getFirestore }) => {
+//     // make async call to database
+//     const firestore = getFirestore();
+//     firestore
+//       .collection('projects')
+//       .add({
+//         ...project,
+//         authorFirstName: 'Doug',
+//         authorLastName: 'DaPug',
+//         authorId: 2,
+//         createdAt: new Date(),
+//       })
+//       .then(() => {
+//         dispatch(createProjectActionCreator(project));
+//       })
+//       .catch(error => {
+//         dispatch(createProjectErrorActionCreator(error));
+//       });
+//   };
+// };
+
 // Reducer
 const projectReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_PROJECT:
-      console.log('created project', action.newProject);
+    case CREATE_PROJECT_SUCCESS:
+      console.log('Created new project successfully: ', action.newProject);
+      return state;
+    case CREATE_PROJECT_ERROR:
+      console.log('Create new project error: ', action.error);
       return state;
     default:
       return state;
