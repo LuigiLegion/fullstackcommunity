@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="col l6 s12">
           <h4 className="white-text center">
             FullstackCommunity is a Fullstack Academy, Lyft, and Starbucks
-            partnership:
+            partnership supporting tech education
           </h4>
           <div className="logos-parent-container">
             <div className="logo-container">
