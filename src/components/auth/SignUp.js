@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { signUpThunkCreator } from '../../store/reducers/authReducer';
+
 export class SignUp extends Component {
   constructor() {
     super();
@@ -23,11 +25,12 @@ export class SignUp extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.props.signUpThunk(this.state);
   }
 
   render() {
-    const { auth } = this.props;
+    const { auth, authError } = this.props;
+
     if (auth.uid) {
       return <Redirect to="/" />;
     } else {
@@ -57,6 +60,9 @@ export class SignUp extends Component {
             </div>
             <div className="input-field">
               <button className="btn red lighten-1 z-depth-0">Sign Up</button>
+              <div className="red-text center">
+                {authError ? <p>{authError}</p> : null}
+              </div>
             </div>
           </form>
         </div>
@@ -67,6 +73,16 @@ export class SignUp extends Component {
 
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
+  authError: state.auth.authError,
 });
 
-export default connect(mapStateToProps)(SignUp);
+const mapDispatchToProps = dispatch => ({
+  signUpThunk(newUser) {
+    dispatch(signUpThunkCreator(newUser));
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUp);
