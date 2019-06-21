@@ -24,14 +24,9 @@ class Dashboard extends Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//   projects: state.project.projects,
-// });
-
-const mapStateToProps = state => {
-  console.log('state: ', state);
-  return { projects: state.firestore.ordered.projects };
-};
+const mapStateToProps = state => ({
+  projects: state.firestore.ordered.projects,
+});
 
 export default compose(
   connect(mapStateToProps),
