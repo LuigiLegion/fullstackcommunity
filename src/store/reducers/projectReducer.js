@@ -29,14 +29,16 @@ export const createProjectErrorActionCreator = error => ({
 
 // Thunk Creators
 export const createProjectThunkCreator = newProject => {
-  return async (dispatch, getState, { getFirestore }) => {
+  return async (dispatch, getState, { getFirebase, getFirestore }) => {
     try {
       const firestore = getFirestore();
+      const curAuthorProfile = getState().firebase.profile;
+      const curAuthorId = getState().firebase.auth.uid;
       await firestore.collection('projects').add({
         ...newProject,
-        authorFirstName: 'Doug',
-        authorLastName: 'DaPug',
-        authorId: 2,
+        authorFirstName: curAuthorProfile.firstName,
+        authorLastName: curAuthorProfile.lastName,
+        authorId: curAuthorId,
         createdAt: new Date(),
       });
       dispatch(createProjectSuccessActionCreator(newProject));
