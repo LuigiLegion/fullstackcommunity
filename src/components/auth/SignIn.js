@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { signInThunkCreator } from '../../store/reducers/authReducer';
 
 export class SignIn extends Component {
   constructor() {
@@ -19,10 +22,11 @@ export class SignIn extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.props.signInThunk(this.state);
   }
 
   render() {
+    const { authError } = this.props;
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="card white">
@@ -38,10 +42,26 @@ export class SignIn extends Component {
           <div className="input-field">
             <button className="btn red lighten-1 z-depth-0">Sign In</button>
           </div>
+          <div className="red-text center">
+            {authError ? <p>{authError}</p> : null}
+          </div>
         </form>
       </div>
     );
   }
 }
 
-export default SignIn;
+const mapStateToProps = state => ({
+  authError: state.auth.authError,
+});
+
+const mapDispatchToProps = dispatch => ({
+  signInThunk(userCredentials) {
+    dispatch(signInThunkCreator(userCredentials));
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn);

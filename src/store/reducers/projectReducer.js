@@ -29,7 +29,6 @@ export const createProjectErrorActionCreator = error => ({
 // Thunk Creators
 export const createProjectThunkCreator = newProject => {
   return async (dispatch, getState, { getFirestore }) => {
-    // make async call to database
     try {
       const firestore = getFirestore();
       await firestore.collection('projects').add({
@@ -72,11 +71,11 @@ export const createProjectThunkCreator = newProject => {
 // Reducer
 const projectReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_PROJECT_SUCCESS:
-      console.log('Created new project successfully: ', action.newProject);
-      return state;
     case CREATE_PROJECT_ERROR:
       console.log('Create new project error: ', action.error);
+      return state;
+    case CREATE_PROJECT_SUCCESS:
+      console.log('Created new project successfully: ', action.newProject);
       return state;
     default:
       return state;
