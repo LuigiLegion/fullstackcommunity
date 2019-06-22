@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import React, { useState, useEffect } from 'react';
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 
 import * as starbucksData from '../../data/starbucks-locations.json';
 
@@ -11,6 +11,26 @@ export default function Map() {
     height: '100vh',
     zoom: 15,
   });
+  const [selectedStarbucks, setSelectedStarbucks] = useState(null);
+
+  useEffect(() => {
+    console.log('IN THE USEFFECT');
+    const listener = event => {
+      console.log('IN THE USEFFECT IF');
+      if (event.key === 'Escape') {
+        console.log('KEY IS ESCAPE');
+        setSelectedStarbucks(null);
+      }
+    };
+    console.log('window before add: ', window);
+    window.addEventListener('keydown', listener);
+    console.log('window after add: ', window);
+    return () => {
+      window.removeEventListener('keydown', listener);
+      console.log('window after remove: ', window);
+    };
+  }, []);
+
   return (
     <div>
       <ReactMapGL
@@ -34,7 +54,7 @@ export default function Map() {
             alt="My Location"
           />
         </Marker>
-        {starbucksData.locations.map(curStarbucks => {
+        {starbucksData.branches.map(curStarbucks => {
           if (curStarbucks.city === 'New York') {
             return (
               <Marker
@@ -42,7 +62,13 @@ export default function Map() {
                 latitude={curStarbucks.latitude}
                 longitude={curStarbucks.longitude}
               >
-                <button className="marker-btn">
+                <button
+                  onClick={event => {
+                    event.preventDefault();
+                    setSelectedStarbucks(curStarbucks);
+                  }}
+                  className="marker-btn"
+                >
                   <img
                     src="https://img.icons8.com/color/48/000000/starbucks.png"
                     alt="Starbucks Icon"
@@ -50,8 +76,22 @@ export default function Map() {
                 </button>
               </Marker>
             );
+          } else {
+            return null;
           }
         })}
+
+        {selectedStarbucks ? (
+          <Popup
+            onClose={() => {
+              setSelectedStarbucks(null);
+            }}
+            latitude={selectedStarbucks.latitude}
+            longitude={selectedStarbucks.longitude}
+          >
+            <div className="location-description">{selectedStarbucks.name}</div>
+          </Popup>
+        ) : null}
       </ReactMapGL>
     </div>
   );

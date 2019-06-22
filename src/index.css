@@ -103,3 +103,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   width: 30px;
   height: 30px;
 }
+
+.location-description {
+  color: black;
+}
