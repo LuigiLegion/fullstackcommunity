@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -252,7 +253,8 @@ const Map = ({ auth, users }) => {
             <div className="location-description">
               {selectedAlum.employmentStatus === 'Employed' ? (
                 <span>
-                  <strong>Works at: </strong>Peach Industries
+                  <strong>Works at: </strong>
+                  {selectedAlum.company}
                 </span>
               ) : (
                 selectedAlum.employmentStatus
