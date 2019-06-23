@@ -15,6 +15,7 @@ export class SignUp extends Component {
       lastName: '',
       gender: '',
       employmentStatus: '',
+      cohort: 0,
       location: {},
       invitationKey: '',
     };
@@ -55,25 +56,49 @@ export class SignUp extends Component {
             <h5 className="grey-text text-darken-3">Sign Up</h5>
             <div className="input-field">
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" onChange={this.handleChange} />
+              <input
+                type="email"
+                id="email"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                title="Must be in the following order: characters@characters.domain"
+                onChange={this.handleChange}
+              />
             </div>
             <div className="input-field">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
                 id="password"
+                required
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                 onChange={this.handleChange}
               />
             </div>
 
             <div className="input-field">
               <label htmlFor="firstName">First Name</label>
-              <input type="text" id="firstName" onChange={this.handleChange} />
+              <input
+                type="text"
+                id="firstName"
+                required
+                pattern="[A-Za-z]{2,32}"
+                title="Must contain uppercase and lowercase letters only, and at least 2 or more characters"
+                onChange={this.handleChange}
+              />
             </div>
 
             <div className="input-field">
               <label htmlFor="lastName">Last Name</label>
-              <input type="text" id="lastName" onChange={this.handleChange} />
+              <input
+                type="text"
+                id="lastName"
+                required
+                pattern="[A-Za-z]{2,32}"
+                title="Must contain uppercase and lowercase letters only, and at least 2 or more characters"
+                onChange={this.handleChange}
+              />
             </div>
 
             <div className="input-field col s12">
@@ -83,6 +108,7 @@ export class SignUp extends Component {
               <select
                 id="gender"
                 className="browser-default"
+                required
                 onChange={this.handleChange}
               >
                 <option value="" disabled>
@@ -101,14 +127,29 @@ export class SignUp extends Component {
               <select
                 id="employmentStatus"
                 className="browser-default"
+                required
                 onChange={this.handleChange}
               >
                 <option value="" disabled>
                   --Please choose an option--
                 </option>
+                <option value="Junior">Junior</option>
+                <option value="Senior">Senior</option>
                 <option value="Employed">Employed</option>
                 <option value="Unemployed">Unemployed</option>
               </select>
+            </div>
+
+            <div className="input-field">
+              <label htmlFor="cohort">Cohort</label>
+              <input
+                type="text"
+                id="cohort"
+                required
+                pattern="[0-9]{4,4}"
+                title="Must contain four digits only"
+                onChange={this.handleChange}
+              />
             </div>
 
             <div className="input-field col s12">
@@ -118,6 +159,7 @@ export class SignUp extends Component {
               <select
                 id="location"
                 className="browser-default"
+                required
                 onChange={this.handleSelect}
               >
                 <option value="" disabled>
@@ -133,14 +175,17 @@ export class SignUp extends Component {
               </select>
             </div>
 
-            <div className="input-field">
+            {/* <div className="input-field">
               <label htmlFor="invitationKey">Invitation Key</label>
               <input
                 type="text"
                 id="invitationKey"
+                required
+                pattern="[A-Za-z]{8,32}"
+                title="Must contain uppercase and lowercase letters only, and at least 2 or more characters. Must match the invitation key you received via email"
                 onChange={this.handleChange}
               />
-            </div>
+            </div> */}
 
             <button className="btn red lighten-1 z-depth-0">Sign Up</button>
             <div className="red-text center">
