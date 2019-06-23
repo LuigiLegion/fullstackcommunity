@@ -21,7 +21,7 @@ const Map = ({ auth, users }) => {
     longitude: -73.9844421,
     width: '100vw',
     height: '91vh',
-    zoom: 15,
+    zoom: 14,
   });
 
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
@@ -93,10 +93,6 @@ const Map = ({ auth, users }) => {
                 );
               } else {
                 if (curUser.employmentStatus === 'Unemployed') {
-                  console.log(
-                    'curUser.employmentStatus in the IF: ',
-                    curUser.employmentStatus
-                  );
                   return (
                     <Marker
                       key={curUser.id}
@@ -119,10 +115,6 @@ const Map = ({ auth, users }) => {
                     </Marker>
                   );
                 } else {
-                  console.log(
-                    'curUser.employmentStatus in the ELSE: ',
-                    curUser.employmentStatus
-                  );
                   return (
                     <Marker
                       key={curUser.id}
@@ -200,6 +192,7 @@ const Map = ({ auth, users }) => {
                 .split(' ')
                 .join('+')}&travelmode=transit`}
               target="_blank"
+              rel="noopener noreferrer"
             >
               Navigate
             </a>

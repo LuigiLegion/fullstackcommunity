@@ -77,7 +77,7 @@ export const signOutThunkCreator = () => {
 export const signUpThunkCreator = newUser => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     try {
-      console.log('newUser: ', newUser);
+      // console.log('newUser: ', newUser);
       const firebase = getFirebase();
       const firestore = getFirestore();
       const newUserData = await firebase
@@ -86,7 +86,7 @@ export const signUpThunkCreator = newUser => {
       const { data } = await axios.get(
         `http://mtaapi.herokuapp.com/stop?id=${newUser.location.id}`
       );
-      console.log('data: ', data);
+      // console.log('data: ', data);
       const locationGeocode = { lat: +data.result.lat, lon: +data.result.lon };
       await firestore
         .collection('users')
