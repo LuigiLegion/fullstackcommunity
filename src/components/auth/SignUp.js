@@ -145,7 +145,7 @@ export class SignUp extends Component {
 
             {this.state.employmentStatus === 'Employed' ? (
               <div className="input-field">
-                <label htmlFor="company">Company</label>
+                <label htmlFor="company">Company Name</label>
                 <input
                   type="text"
                   id="company"
