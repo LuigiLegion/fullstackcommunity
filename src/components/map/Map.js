@@ -30,7 +30,7 @@ const Map = ({ auth, users }) => {
 
   const forceUpdate = useForceUpdate();
 
-  console.log('auth: ', auth, 'users: ', users);
+  // console.log('auth: ', auth, 'users: ', users);
 
   // useEffect(() => {
   //   console.log('IN THE USEFFECT');
@@ -114,7 +114,7 @@ const Map = ({ auth, users }) => {
                       </button>
                     </Marker>
                   );
-                } else {
+                } else if (curUser.employmentStatus === 'Employed') {
                   return (
                     <Marker
                       key={curUser.id}
@@ -131,6 +131,28 @@ const Map = ({ auth, users }) => {
                         <img
                           className="marker-others"
                           src="https://img.icons8.com/color/48/000000/briefcase.png"
+                          alt="Employed Others Location"
+                        />
+                      </button>
+                    </Marker>
+                  );
+                } else {
+                  return (
+                    <Marker
+                      key={curUser.id}
+                      latitude={curUser.locationGeocode.lat}
+                      longitude={curUser.locationGeocode.lon}
+                    >
+                      <button
+                        onClick={event => {
+                          event.preventDefault();
+                          setSelectedAlum(curUser);
+                        }}
+                        className="marker-btn"
+                      >
+                        <img
+                          className="marker-others"
+                          src="https://img.icons8.com/ios/50/000000/student-registration-filled.png"
                           alt="Employed Others Location"
                         />
                       </button>
@@ -218,9 +240,21 @@ const Map = ({ auth, users }) => {
               {selectedAlum.gender}
             </div>
             <div className="location-description">
-              {selectedAlum.employmentStatus === 'Employed'
-                ? `${selectedAlum.employmentStatus} at Peach Industries`
-                : selectedAlum.employmentStatus}
+              <strong>Cohort: </strong>
+              {selectedAlum.cohort}
+            </div>
+            <div className="location-description">
+              {selectedAlum.employmentStatus === 'Employed' ? (
+                <span>
+                  <strong>Works at: </strong>Peach Industries
+                </span>
+              ) : (
+                selectedAlum.employmentStatus
+              )}
+            </div>
+            <div className="location-description">
+              <strong>Contact: </strong>
+              {selectedAlum.email}
             </div>
           </Popup>
         ) : null}

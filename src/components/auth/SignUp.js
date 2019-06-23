@@ -15,6 +15,7 @@ export class SignUp extends Component {
       lastName: '',
       gender: '',
       employmentStatus: '',
+      cohort: 0,
       location: {},
       invitationKey: '',
     };
@@ -132,9 +133,23 @@ export class SignUp extends Component {
                 <option value="" disabled>
                   --Please choose an option--
                 </option>
+                <option value="Junior">Junior</option>
+                <option value="Senior">Senior</option>
                 <option value="Employed">Employed</option>
                 <option value="Unemployed">Unemployed</option>
               </select>
+            </div>
+
+            <div className="input-field">
+              <label htmlFor="cohort">Cohort</label>
+              <input
+                type="text"
+                id="cohort"
+                required
+                pattern="[0-9]{4,4}"
+                title="Must contain four digits only"
+                onChange={this.handleChange}
+              />
             </div>
 
             <div className="input-field col s12">
