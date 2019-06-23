@@ -84,7 +84,7 @@ export const signUpThunkCreator = newUser => {
         .auth()
         .createUserWithEmailAndPassword(newUser.email, newUser.password);
       const { data } = await axios.get(
-        `http://mtaapi.herokuapp.com/stop?id=${newUser.location.id}`
+        `https://mtaapi.herokuapp.com/stop?id=${newUser.location.id}`
       );
       // console.log('data: ', data);
       const locationGeocode = { lat: +data.result.lat, lon: +data.result.lon };

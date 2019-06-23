@@ -23,7 +23,15 @@ const ProjectDetails = props => {
             <div>
               Posted by {`${project.authorFirstName} ${project.authorLastName}`}
             </div>
+
             <div>{moment(project.createdAt.toDate()).calendar()}</div>
+            <br />
+            <div style={{ color: 'black' }}>{`Interested in working with ${
+              project.authorFirstName
+            } on this project?`}</div>
+            <div style={{ color: 'black' }}>{`Contact them at ${
+              project.authorEmail
+            }`}</div>
           </div>
         </div>
       </div>
