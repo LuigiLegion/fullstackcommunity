@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -205,19 +206,25 @@ const Map = ({ auth, users }) => {
               <strong>{selectedStarbucks.name}</strong>
             </div>
             <hr />
-            <a
-              href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                .split(' ')
-                .join(
-                  '+'
-                )}&destination=starbucks+${selectedStarbucks.name
-                .split(' ')
-                .join('+')}&travelmode=transit`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Navigate
-            </a>
+            <div className="navigation-container">
+              <div>
+                <strong>Closes at: 10PM</strong>
+              </div>
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}&destination=starbucks+${selectedStarbucks.name
+                  .split(' ')
+                  .join('+')}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Navigate
+              </a>
+            </div>
           </Popup>
         ) : null}
 
@@ -246,7 +253,8 @@ const Map = ({ auth, users }) => {
             <div className="location-description">
               {selectedAlum.employmentStatus === 'Employed' ? (
                 <span>
-                  <strong>Works at: </strong>Peach Industries
+                  <strong>Works at: </strong>
+                  {selectedAlum.company}
                 </span>
               ) : (
                 selectedAlum.employmentStatus

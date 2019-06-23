@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { signUpThunkCreator } from '../../store/reducers/authReducer';
 import * as subwayStationsData from '../../data/nyc-subway-stations.json';
 
+const defaultLocation = subwayStationsData.stations[0];
+
 export class SignUp extends Component {
   constructor() {
     super();
@@ -13,10 +15,11 @@ export class SignUp extends Component {
       password: '',
       firstName: '',
       lastName: '',
-      gender: '',
-      employmentStatus: '',
+      gender: 'Male',
+      employmentStatus: 'Junior',
+      company: '',
       cohort: 0,
-      location: {},
+      location: defaultLocation,
       invitationKey: '',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -139,6 +142,20 @@ export class SignUp extends Component {
                 <option value="Unemployed">Unemployed</option>
               </select>
             </div>
+
+            {this.state.employmentStatus === 'Employed' ? (
+              <div className="input-field">
+                <label htmlFor="company">Company</label>
+                <input
+                  type="text"
+                  id="company"
+                  required
+                  pattern="[A-Za-z]{2,32}"
+                  title="Must contain uppercase and lowercase letters only, and at least 2 or more characters"
+                  onChange={this.handleChange}
+                />
+              </div>
+            ) : null}
 
             <div className="input-field">
               <label htmlFor="cohort">Cohort</label>

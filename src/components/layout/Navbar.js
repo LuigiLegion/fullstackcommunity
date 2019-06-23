@@ -24,13 +24,13 @@ const Navbar = props => {
   );
 };
 
-// const mapStateToProps = state => ({
-//   auth: state.firebase.auth,
-// });
+const mapStateToProps = state => ({
+  auth: state.firebase.auth,
+});
 
-const mapStateToProps = state => {
-  console.log('state: ', state);
-  return { auth: state.firebase.auth, profile: state.firebase.profile };
-};
+// const mapStateToProps = state => {
+//   console.log('state: ', state);
+//   return { auth: state.firebase.auth, profile: state.firebase.profile };
+// };
 
 export default connect(mapStateToProps)(Navbar);
