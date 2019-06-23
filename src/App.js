@@ -23,25 +23,6 @@ class App extends Component {
             <Route path="/signup" component={SignUp} />
             <Route path="/create" component={CreateProject} />
             <Route path="/map" component={Map} />
-            {/* <Route
-              path="/map"
-              component={() => (
-                <div
-                  style={{
-                    position: 'absolute',
-                    height: '100%',
-                    width: '100%',
-                  }}
-                >
-                  <Map
-                  // style={{
-                  //   position: 'absolute',
-                  //   height: '100%',
-                  //   width: '100%',
-                  // }}
-                  />
-                </div>
-              )} */}
             />
           </Switch>
         </div>

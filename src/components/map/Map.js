@@ -70,19 +70,13 @@ const Map = ({ auth, users }) => {
         {users
           ? users.map(curUser => {
               if (curUser.id === auth.uid) {
-                // console.log('in the if: ', curUser);
-                // console.log('in the if: ', curUser.locationGeocode);
-                // console.log('viewport before change: ', viewport);
                 if (firstRenderWithUsers) {
                   viewport.latitude = curUser.locationGeocode.lat;
                   viewport.longitude = curUser.locationGeocode.lon;
-                  // console.log('firstRenderWithUsers: ', firstRenderWithUsers);
                   firstRenderWithUsers = !firstRenderWithUsers;
-                  // console.log('firstRenderWithUsers: ', firstRenderWithUsers);
                   curUserLocationName = curUser.locationName;
                   forceUpdate();
                 }
-                // console.log('viewport after change: ', viewport);
                 return (
                   <Marker
                     key={curUser.id}
@@ -110,8 +104,6 @@ const Map = ({ auth, users }) => {
                   </Marker>
                 );
               } else {
-                // console.log('in the else: ', curUser);
-                // console.log('in the else: ', curUser.locationGeocode);
                 return (
                   <Marker
                     key={curUser.id}

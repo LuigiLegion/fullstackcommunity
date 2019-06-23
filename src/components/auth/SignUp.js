@@ -24,15 +24,12 @@ export class SignUp extends Component {
   }
 
   handleChange(event) {
-    console.log('event.target.id in the handleChange: ', event.target.id);
-    console.log('event.target.value in the handleChange: ', event.target.value);
     this.setState({
       [event.target.id]: event.target.value,
     });
   }
 
   handleSelect(event) {
-    console.log('event.target.value in the handleSelect: ', event.target.value);
     const location = subwayStationsData.stations.filter(
       curSubwayStation => curSubwayStation.name === event.target.value
     )[0];
