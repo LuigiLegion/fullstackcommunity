@@ -199,6 +199,7 @@ const Map = ({ auth, users }) => {
                 )}&destination=starbucks+${selectedStarbucks.name
                 .split(' ')
                 .join('+')}&travelmode=transit`}
+              target="_blank"
             >
               Navigate
             </a>
