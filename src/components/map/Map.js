@@ -69,6 +69,7 @@ const Map = ({ auth, users }) => {
 
         {users
           ? users.map(curUser => {
+              // console.log(curUser);
               if (curUser.id === auth.uid) {
                 if (firstRenderWithUsers) {
                   viewport.latitude = curUser.locationGeocode.lat;
@@ -88,43 +89,62 @@ const Map = ({ auth, users }) => {
                       src="https://img.icons8.com/ultraviolet/40/000000/marker.png"
                       alt="My Location"
                     />
-                    {/* <button
-                      onClick={event => {
-                        event.preventDefault();
-                        setSelectedAlum(curUser);
-                      }}
-                      className="marker-btn"
-                    >
-                      <img
-                        className="marker-me"
-                        src="https://img.icons8.com/ultraviolet/40/000000/marker.png"
-                        alt="My Location"
-                      />
-                    </button> */}
                   </Marker>
                 );
               } else {
-                return (
-                  <Marker
-                    key={curUser.id}
-                    latitude={curUser.locationGeocode.lat}
-                    longitude={curUser.locationGeocode.lon}
-                  >
-                    <button
-                      onClick={event => {
-                        event.preventDefault();
-                        setSelectedAlum(curUser);
-                      }}
-                      className="marker-btn"
+                if (curUser.employmentStatus === 'Unemployed') {
+                  console.log(
+                    'curUser.employmentStatus in the IF: ',
+                    curUser.employmentStatus
+                  );
+                  return (
+                    <Marker
+                      key={curUser.id}
+                      latitude={curUser.locationGeocode.lat}
+                      longitude={curUser.locationGeocode.lon}
                     >
-                      <img
-                        className="marker-others"
-                        src="https://img.icons8.com/office/40/000000/marker.png"
-                        alt="Others Location"
-                      />
-                    </button>
-                  </Marker>
-                );
+                      <button
+                        onClick={event => {
+                          event.preventDefault();
+                          setSelectedAlum(curUser);
+                        }}
+                        className="marker-btn"
+                      >
+                        <img
+                          className="marker-others"
+                          src="https://img.icons8.com/office/40/000000/marker.png"
+                          alt="Unemployed Others Location"
+                        />
+                      </button>
+                    </Marker>
+                  );
+                } else {
+                  console.log(
+                    'curUser.employmentStatus in the ELSE: ',
+                    curUser.employmentStatus
+                  );
+                  return (
+                    <Marker
+                      key={curUser.id}
+                      latitude={curUser.locationGeocode.lat}
+                      longitude={curUser.locationGeocode.lon}
+                    >
+                      <button
+                        onClick={event => {
+                          event.preventDefault();
+                          setSelectedAlum(curUser);
+                        }}
+                        className="marker-btn"
+                      >
+                        <img
+                          className="marker-others"
+                          src="https://img.icons8.com/color/48/000000/briefcase.png"
+                          alt="Employed Others Location"
+                        />
+                      </button>
+                    </Marker>
+                  );
+                }
               }
             })
           : null}
@@ -167,7 +187,10 @@ const Map = ({ auth, users }) => {
             latitude={selectedStarbucks.latitude}
             longitude={selectedStarbucks.longitude}
           >
-            <div className="location-description">{selectedStarbucks.name}</div>
+            <div className="location-description">
+              <strong>{selectedStarbucks.name}</strong>
+            </div>
+            <hr />
             <a
               href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
                 .split(' ')
@@ -191,7 +214,19 @@ const Map = ({ auth, users }) => {
             longitude={selectedAlum.locationGeocode.lon}
           >
             <div className="location-description">
-              {`${selectedAlum.firstName} ${selectedAlum.lastName}`}
+              <strong>{`${selectedAlum.firstName} ${
+                selectedAlum.lastName
+              }`}</strong>
+            </div>
+            <hr />
+            <div className="location-description">
+              <strong>Gender: </strong>
+              {selectedAlum.gender}
+            </div>
+            <div className="location-description">
+              {selectedAlum.employmentStatus === 'Employed'
+                ? `${selectedAlum.employmentStatus} at Peach Industries`
+                : selectedAlum.employmentStatus}
             </div>
           </Popup>
         ) : null}

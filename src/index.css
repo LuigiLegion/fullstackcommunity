@@ -111,4 +111,5 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .location-description {
   color: black;
+  text-align: center;
 }
