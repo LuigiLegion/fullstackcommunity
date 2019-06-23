@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // Initial State
 const initialState = {
   authError: null,
@@ -75,11 +77,17 @@ export const signOutThunkCreator = () => {
 export const signUpThunkCreator = newUser => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     try {
+      console.log('newUser: ', newUser);
       const firebase = getFirebase();
       const firestore = getFirestore();
       const newUserData = await firebase
         .auth()
         .createUserWithEmailAndPassword(newUser.email, newUser.password);
+      const { data } = await axios.get(
+        `http://mtaapi.herokuapp.com/stop?id=${newUser.location.id}`
+      );
+      console.log('data: ', data);
+      const locationGeocode = { lat: +data.result.lat, lon: +data.result.lon };
       await firestore
         .collection('users')
         .doc(newUserData.user.uid)
@@ -87,6 +95,11 @@ export const signUpThunkCreator = newUser => {
           firstName: newUser.firstName,
           lastName: newUser.lastName,
           initials: newUser.firstName[0] + newUser.lastName[0],
+          gender: newUser.gender,
+          employmentStatus: newUser.employmentStatus,
+          locationName: newUser.location.name,
+          locationId: newUser.location.id,
+          locationGeocode,
         });
       dispatch(signUpSuccessActionCreator(newUser));
     } catch (error) {
