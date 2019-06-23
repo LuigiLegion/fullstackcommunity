@@ -16,7 +16,7 @@ const Navbar = props => {
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
         <NavLink to="/" className="left brand-logo">
-          FullstackCommunity
+          <strong>Fullstack Community</strong>
         </NavLink>
         {curLinks}
       </div>

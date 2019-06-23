@@ -6,11 +6,11 @@ const Footer = () => {
       <div className="container">
         <div className="col l6 s12">
           <h4 className="white-text center">
-            FullstackCommunity is a Fullstack Academy, Lyft, and Starbucks
-            partnership supporting tech education
+            Fullstack Community is a Fullstack Academy and Starbucks partnership
+            supporting tech education
           </h4>
           <div className="logos-parent-container">
-            <div className="logo-container">
+            {/* <div className="logo-container">
               <a
                 className="grey-text text-lighten-3"
                 href="https://www.lyft.com/"
@@ -21,7 +21,7 @@ const Footer = () => {
                   alt="Lyft Logo"
                 />
               </a>
-            </div>
+            </div> */}
             <div className="logo-container">
               <a
                 className="grey-text text-lighten-3"
@@ -51,7 +51,7 @@ const Footer = () => {
       </div>
       <div className="footer-copyright">
         <div className="container">
-          © 2019 FullstackCommunity
+          © 2019 Fullstack Community
           <a
             className="grey-text text-lighten-3 right"
             href="https://github.com/LuigiLegion"

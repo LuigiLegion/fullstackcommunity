@@ -9,10 +9,11 @@ export class SignUp extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: '',
-      lastName: '',
       email: '',
       password: '',
+      firstName: '',
+      lastName: '',
+      gender: '',
       employmentStatus: '',
       location: {},
       invitationKey: '',
@@ -23,12 +24,15 @@ export class SignUp extends Component {
   }
 
   handleChange(event) {
+    console.log('event.target.id in the handleChange: ', event.target.id);
+    console.log('event.target.value in the handleChange: ', event.target.value);
     this.setState({
       [event.target.id]: event.target.value,
     });
   }
 
   handleSelect(event) {
+    console.log('event.target.value in the handleSelect: ', event.target.value);
     const location = subwayStationsData.stations.filter(
       curSubwayStation => curSubwayStation.name === event.target.value
     )[0];
@@ -64,31 +68,61 @@ export class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
+
             <div className="input-field">
               <label htmlFor="firstName">First Name</label>
               <input type="text" id="firstName" onChange={this.handleChange} />
             </div>
+
             <div className="input-field">
               <label htmlFor="lastName">Last Name</label>
               <input type="text" id="lastName" onChange={this.handleChange} />
             </div>
+
+            <div className="input-field col s12">
+              <label htmlFor="gender">Gender</label>
+              <br />
+              <br />
+              <select
+                id="gender"
+                className="browser-default"
+                onChange={this.handleChange}
+              >
+                <option value="" disabled>
+                  --Please choose an option--
+                </option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-binary">Non-binary</option>
+              </select>
+            </div>
+
             <div className="input-field col s12">
               <label htmlFor="employmentStatus">Employment Status</label>
               <br />
               <br />
-              <select className="browser-default" onChange={this.handleChange}>
+              <select
+                id="employmentStatus"
+                className="browser-default"
+                onChange={this.handleChange}
+              >
                 <option value="" disabled>
                   --Please choose an option--
                 </option>
-                <option value="employed">Employed</option>
-                <option value="unemployed">Unemployed</option>
+                <option value="Employed">Employed</option>
+                <option value="Unemployed">Unemployed</option>
               </select>
             </div>
+
             <div className="input-field col s12">
               <label htmlFor="location">Location</label>
               <br />
               <br />
-              <select className="browser-default" onChange={this.handleSelect}>
+              <select
+                id="location"
+                className="browser-default"
+                onChange={this.handleSelect}
+              >
                 <option value="" disabled>
                   --Please choose an option--
                 </option>
@@ -101,6 +135,7 @@ export class SignUp extends Component {
                 })}
               </select>
             </div>
+
             <div className="input-field">
               <label htmlFor="invitationKey">Invitation Key</label>
               <input
@@ -109,6 +144,7 @@ export class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
+
             <button className="btn red lighten-1 z-depth-0">Sign Up</button>
             <div className="red-text center">
               {authError ? <p>{authError}</p> : null}

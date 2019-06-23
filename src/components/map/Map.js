@@ -1,35 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import PropTypes from 'prop-types';
 
 import * as starbucksData from '../../data/starbucks-locations.json';
 
-export default function Map() {
+let firstRenderWithUsers = true;
+let curUserLocationName = '';
+
+function useForceUpdate() {
+  const [value, set] = useState(true);
+  return () => set(!value);
+}
+
+const Map = ({ auth, users }) => {
   const [viewport, setViewport] = useState({
     latitude: 40.7531823,
     longitude: -73.9844421,
     width: '100vw',
-    height: '100vh',
+    height: '91vh',
     zoom: 15,
   });
+
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
 
-  useEffect(() => {
-    console.log('IN THE USEFFECT');
-    const listener = event => {
-      console.log('IN THE USEFFECT IF');
-      if (event.key === 'Escape') {
-        console.log('KEY IS ESCAPE');
-        setSelectedStarbucks(null);
-      }
-    };
-    console.log('window before add: ', window);
-    window.addEventListener('keydown', listener);
-    console.log('window after add: ', window);
-    return () => {
-      window.removeEventListener('keydown', listener);
-      console.log('window after remove: ', window);
-    };
-  }, []);
+  const [selectedAlum, setSelectedAlum] = useState(null);
+
+  const forceUpdate = useForceUpdate();
+
+  console.log('auth: ', auth, 'users: ', users);
+
+  // useEffect(() => {
+  //   console.log('IN THE USEFFECT');
+  //   const listener = event => {
+  //     console.log('IN THE USEFFECT IF');
+  //     if (event.key === 'Escape') {
+  //       console.log('KEY IS ESCAPE');
+  //       setSelectedStarbucks(null);
+  //     }
+  //   };
+  //   console.log('window before add: ', window);
+  //   window.addEventListener('keydown', listener);
+  //   console.log('window after add: ', window);
+  //   return () => {
+  //     window.removeEventListener('keydown', listener);
+  //     console.log('window after remove: ', window);
+  //   };
+  // }, []);
 
   return (
     <div>
@@ -40,13 +59,6 @@ export default function Map() {
           setViewport(viewport);
         }}
       >
-        <Marker latitude={40.7531823} longitude={-73.9844421}>
-          <img
-            className="marker-me"
-            src="https://img.icons8.com/ultraviolet/40/000000/marker.png"
-            alt="My Location"
-          />
-        </Marker>
         <Marker latitude={40.7050758} longitude={-74.0113491}>
           <img
             className="marker-fullstack"
@@ -54,8 +66,82 @@ export default function Map() {
             alt="My Location"
           />
         </Marker>
+
+        {users
+          ? users.map(curUser => {
+              if (curUser.id === auth.uid) {
+                // console.log('in the if: ', curUser);
+                // console.log('in the if: ', curUser.locationGeocode);
+                // console.log('viewport before change: ', viewport);
+                if (firstRenderWithUsers) {
+                  viewport.latitude = curUser.locationGeocode.lat;
+                  viewport.longitude = curUser.locationGeocode.lon;
+                  // console.log('firstRenderWithUsers: ', firstRenderWithUsers);
+                  firstRenderWithUsers = !firstRenderWithUsers;
+                  // console.log('firstRenderWithUsers: ', firstRenderWithUsers);
+                  curUserLocationName = curUser.locationName;
+                  forceUpdate();
+                }
+                // console.log('viewport after change: ', viewport);
+                return (
+                  <Marker
+                    key={curUser.id}
+                    latitude={curUser.locationGeocode.lat}
+                    longitude={curUser.locationGeocode.lon}
+                  >
+                    <img
+                      className="marker-me"
+                      src="https://img.icons8.com/ultraviolet/40/000000/marker.png"
+                      alt="My Location"
+                    />
+                    {/* <button
+                      onClick={event => {
+                        event.preventDefault();
+                        setSelectedAlum(curUser);
+                      }}
+                      className="marker-btn"
+                    >
+                      <img
+                        className="marker-me"
+                        src="https://img.icons8.com/ultraviolet/40/000000/marker.png"
+                        alt="My Location"
+                      />
+                    </button> */}
+                  </Marker>
+                );
+              } else {
+                // console.log('in the else: ', curUser);
+                // console.log('in the else: ', curUser.locationGeocode);
+                return (
+                  <Marker
+                    key={curUser.id}
+                    latitude={curUser.locationGeocode.lat}
+                    longitude={curUser.locationGeocode.lon}
+                  >
+                    <button
+                      onClick={event => {
+                        event.preventDefault();
+                        setSelectedAlum(curUser);
+                      }}
+                      className="marker-btn"
+                    >
+                      <img
+                        className="marker-others"
+                        src="https://img.icons8.com/office/40/000000/marker.png"
+                        alt="Others Location"
+                      />
+                    </button>
+                  </Marker>
+                );
+              }
+            })
+          : null}
+
         {starbucksData.branches.map(curStarbucks => {
-          if (curStarbucks.city === 'New York') {
+          if (
+            curStarbucks.city === 'New York' ||
+            curStarbucks.city === 'Astoria'
+          ) {
             return (
               <Marker
                 key={curStarbucks.store_id}
@@ -90,9 +176,53 @@ export default function Map() {
             longitude={selectedStarbucks.longitude}
           >
             <div className="location-description">{selectedStarbucks.name}</div>
+            <a
+              href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                .split(' ')
+                .join(
+                  '+'
+                )}&destination=starbucks+${selectedStarbucks.name
+                .split(' ')
+                .join('+')}&travelmode=transit`}
+            >
+              Navigate
+            </a>
+          </Popup>
+        ) : null}
+
+        {selectedAlum ? (
+          <Popup
+            onClose={() => {
+              setSelectedAlum(null);
+            }}
+            latitude={selectedAlum.locationGeocode.lat}
+            longitude={selectedAlum.locationGeocode.lon}
+          >
+            <div className="location-description">
+              {`${selectedAlum.firstName} ${selectedAlum.lastName}`}
+            </div>
           </Popup>
         ) : null}
       </ReactMapGL>
     </div>
   );
-}
+};
+
+const mapStateToProps = state => ({
+  auth: state.firebase.auth,
+  users: state.firestore.ordered.users,
+});
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    {
+      collection: 'users',
+    },
+  ])
+)(Map);
+
+Map.propTypes = {
+  auth: PropTypes.object,
+  users: PropTypes.array,
+};
