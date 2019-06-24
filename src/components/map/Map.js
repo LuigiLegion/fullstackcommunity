@@ -165,10 +165,24 @@ const Map = ({ auth, users }) => {
           : null}
 
         {starbucksData.branches.map(curStarbucks => {
-          if (
-            curStarbucks.city === 'New York' ||
-            curStarbucks.city === 'Astoria'
-          ) {
+          const citiesOfInterest = [
+            'New York',
+            'Brooklyn',
+            'Bronx',
+            'Staten Island',
+            'Astoria',
+            'Steinway',
+            'Long Island City',
+            'Sunnyside',
+            'Woodside',
+            'Jackson Heights',
+            'Long Beach Township',
+            'East Elmhurst',
+            'Corona',
+            'Elmhurt',
+            'Jamaica',
+          ];
+          if (citiesOfInterest.includes(curStarbucks.city)) {
             return (
               <Marker
                 key={curStarbucks.store_id}

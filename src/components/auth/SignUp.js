@@ -150,7 +150,7 @@ export class SignUp extends Component {
                   type="text"
                   id="company"
                   required
-                  pattern="[A-Za-z]{2,32}"
+                  pattern="[A-Za-z]+{2,32}"
                   title="Must contain uppercase and lowercase letters only, and at least 2 or more characters"
                   onChange={this.handleChange}
                 />
@@ -158,7 +158,7 @@ export class SignUp extends Component {
             ) : null}
 
             <div className="input-field">
-              <label htmlFor="cohort">Cohort</label>
+              <label htmlFor="cohort">Cohort (Example: 1904)</label>
               <input
                 type="text"
                 id="cohort"
@@ -170,7 +170,9 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field col s12">
-              <label htmlFor="location">Location</label>
+              <label htmlFor="location">
+                Location (Please choose the subway stop closest to home)
+              </label>
               <br />
               <br />
               <select
