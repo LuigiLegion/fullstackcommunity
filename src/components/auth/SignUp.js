@@ -29,6 +29,8 @@ export class SignUp extends Component {
   }
 
   handleChange(event) {
+    // console.log('event.target.id: ', event.target.id);
+    // console.log('event.target.value: ', event.target.value);
     this.setState({
       [event.target.id]: event.target.value,
     });
@@ -193,8 +195,7 @@ export class SignUp extends Component {
 
             <div className="input-field col s12">
               <label htmlFor="location">
-                Location (Please choose the subway stop closest to where you
-                live)
+                Location (Please pick the subway stop closest to where you live)
               </label>
               <br />
               <br />
