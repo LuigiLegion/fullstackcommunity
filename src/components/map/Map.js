@@ -93,7 +93,7 @@ const Map = ({ auth, users }) => {
                   </Marker>
                 );
               } else {
-                if (curUser.employmentStatus === 'Unemployed') {
+                if (curUser.status === 'Unemployed') {
                   return (
                     <Marker
                       key={curUser.id}
@@ -115,7 +115,7 @@ const Map = ({ auth, users }) => {
                       </button>
                     </Marker>
                   );
-                } else if (curUser.employmentStatus === 'Employed') {
+                } else if (curUser.status === 'Employed') {
                   return (
                     <Marker
                       key={curUser.id}
@@ -166,6 +166,7 @@ const Map = ({ auth, users }) => {
 
         {starbucksData.branches.map(curStarbucks => {
           const citiesOfInterest = [
+            'Chicago',
             'New York',
             'Brooklyn',
             'Bronx',
@@ -221,9 +222,9 @@ const Map = ({ auth, users }) => {
             </div>
             <hr />
             <div className="navigation-container">
-              <div>
+              {/* <div>
                 <strong>Closes at: 10PM</strong>
-              </div>
+              </div> */}
               <br />
               <a
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
@@ -262,16 +263,16 @@ const Map = ({ auth, users }) => {
             </div>
             <div className="location-description">
               <strong>Cohort: </strong>
-              {selectedAlum.cohort}
+              {`${selectedAlum.cohort}-${selectedAlum.program}`}
             </div>
             <div className="location-description">
-              {selectedAlum.employmentStatus === 'Employed' ? (
+              {selectedAlum.status === 'Employed' ? (
                 <span>
                   <strong>Works at: </strong>
                   {selectedAlum.company}
                 </span>
               ) : (
-                selectedAlum.employmentStatus
+                selectedAlum.status
               )}
             </div>
             <div className="location-description">

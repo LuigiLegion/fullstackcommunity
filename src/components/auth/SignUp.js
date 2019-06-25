@@ -16,9 +16,10 @@ export class SignUp extends Component {
       firstName: '',
       lastName: '',
       gender: 'Male',
-      employmentStatus: 'Junior',
+      status: 'Junior',
       company: '',
       cohort: 0,
+      program: 'FSA-NY',
       location: defaultLocation,
       invitationKey: '',
     };
@@ -28,6 +29,8 @@ export class SignUp extends Component {
   }
 
   handleChange(event) {
+    // console.log('event.target.id: ', event.target.id);
+    // console.log('event.target.value: ', event.target.value);
     this.setState({
       [event.target.id]: event.target.value,
     });
@@ -75,7 +78,7 @@ export class SignUp extends Component {
                 id="password"
                 required
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}"
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                title="Must contain at least one number and one uppercase one, lowercase letter, one digit, and at least 8 or more characters"
                 onChange={this.handleChange}
               />
             </div>
@@ -124,11 +127,11 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field col s12">
-              <label htmlFor="employmentStatus">Employment Status</label>
+              <label htmlFor="status">Status</label>
               <br />
               <br />
               <select
-                id="employmentStatus"
+                id="status"
                 className="browser-default"
                 required
                 onChange={this.handleChange}
@@ -143,7 +146,7 @@ export class SignUp extends Component {
               </select>
             </div>
 
-            {this.state.employmentStatus === 'Employed' ? (
+            {this.state.status === 'Employed' ? (
               <div className="input-field">
                 <label htmlFor="company">Company Name</label>
                 <input
@@ -170,8 +173,29 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field col s12">
+              <label htmlFor="program">Program</label>
+              <br />
+              <br />
+              <select
+                id="program"
+                className="browser-default"
+                required
+                onChange={this.handleChange}
+              >
+                <option value="" disabled>
+                  --Please choose an option--
+                </option>
+                <option value="FSA-NY">FSA-NY</option>
+                <option value="GH-NY">GH-NY</option>
+                <option value="FLEX-NY">FLEX-NY</option>
+                <option value="FSA-CH">FSA-CH</option>
+                <option value="REMOTE">REMOTE</option>
+              </select>
+            </div>
+
+            <div className="input-field col s12">
               <label htmlFor="location">
-                Location (Please choose the subway stop closest to home)
+                Location (Please pick the subway stop closest to where you live)
               </label>
               <br />
               <br />
