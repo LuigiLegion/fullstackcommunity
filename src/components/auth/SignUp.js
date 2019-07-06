@@ -18,7 +18,7 @@ export class SignUp extends Component {
       gender: 'Male',
       status: 'Junior',
       company: '',
-      cohort: 0,
+      cohort: '1907',
       program: 'FSA-NY',
       location: defaultLocation,
       invitationKey: '',
@@ -160,16 +160,61 @@ export class SignUp extends Component {
               </div>
             ) : null}
 
-            <div className="input-field">
-              <label htmlFor="cohort">Cohort (Example: 1904)</label>
-              <input
-                type="text"
+            <div className="input-field col s12">
+              <label htmlFor="cohort">Cohort</label>
+              <br />
+              <br />
+              <select
                 id="cohort"
+                className="browser-default"
                 required
-                pattern="[0-9]{4,4}"
-                title="Must contain four digits only"
                 onChange={this.handleChange}
-              />
+              >
+                <option value="" disabled>
+                  --Please choose an option--
+                </option>
+                <option value="1907">1907</option>
+                <option value="1906">1906</option>
+                <option value="1904">1904</option>
+                <option value="1902">1902</option>
+                <option value="1901">1901</option>
+                <option value="1810">1810</option>
+                <option value="1809">1809</option>
+                <option value="1807">1807</option>
+                <option value="1806">1806</option>
+                <option value="1804">1804</option>
+                <option value="1802">1802</option>
+                <option value="1801">1801</option>
+                <option value="1710">1710</option>
+                <option value="1709">1709</option>
+                <option value="1707">1707</option>
+                <option value="1706">1706</option>
+                <option value="1704">1704</option>
+                <option value="1702">1702</option>
+                <option value="1701">1701</option>
+                <option value="1610">1610</option>
+                <option value="1609">1609</option>
+                <option value="1607">1607</option>
+                <option value="1606">1606</option>
+                <option value="1604">1604</option>
+                <option value="1602">1602</option>
+                <option value="1601">1601</option>
+                <option value="1511">1511</option>
+                <option value="1510">1510</option>
+                <option value="1509">1509</option>
+                <option value="1507">1507</option>
+                <option value="1506">1506</option>
+                <option value="1504">1504</option>
+                <option value="1503">1503</option>
+                <option value="1501">1501</option>
+                <option value="1411">1411</option>
+                <option value="1409">1409</option>
+                <option value="1407">1407</option>
+                <option value="1406">1406</option>
+                <option value="1404">1404</option>
+                <option value="1401">1401</option>
+                <option value="1309">1309</option>
+              </select>
             </div>
 
             <div className="input-field col s12">
@@ -187,9 +232,10 @@ export class SignUp extends Component {
                 </option>
                 <option value="FSA-NY">FSA-NY</option>
                 <option value="GH-NY">GH-NY</option>
-                <option value="FLEX-NY">FLEX-NY</option>
-                <option value="FSA-CH">FSA-CH</option>
-                <option value="REMOTE">REMOTE</option>
+                <option value="FLEX-NY">FSA-FLEX</option>
+                <option value="REMOTE">FSA-REMOTE</option>
+                {/* <option value="FSA-CH">FSA-CH</option>
+                <option value="GH-NY">GH-CH</option> */}
               </select>
             </div>
 
