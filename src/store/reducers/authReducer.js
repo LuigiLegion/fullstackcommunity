@@ -99,7 +99,7 @@ export const signUpThunkCreator = newUser => {
           gender: newUser.gender,
           status: newUser.status,
           company: newUser.company ? newUser.company : null,
-          cohort: +newUser.cohort,
+          cohort: newUser.cohort,
           program: newUser.program,
           locationName: newUser.location.name,
           locationId: newUser.location.id,

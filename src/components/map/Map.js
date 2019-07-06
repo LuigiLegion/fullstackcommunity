@@ -166,7 +166,7 @@ const Map = ({ auth, users }) => {
 
         {starbucksData.branches.map(curStarbucks => {
           const citiesOfInterest = [
-            'Chicago',
+            // 'Chicago',
             'New York',
             'Brooklyn',
             'Bronx',
