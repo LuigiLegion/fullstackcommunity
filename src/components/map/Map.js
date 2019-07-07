@@ -167,23 +167,31 @@ const Map = ({ auth, users }) => {
         {starbucksData.branches.map(curStarbucks => {
           const citiesOfInterest = [
             // 'Chicago',
-            'New York',
-            'Brooklyn',
-            'Bronx',
-            'Staten Island',
-            'Astoria',
-            'Steinway',
-            'Long Island City',
-            'Sunnyside',
-            'Woodside',
-            'Jackson Heights',
-            'Long Beach Township',
-            'East Elmhurst',
-            'Corona',
-            'Elmhurt',
-            'Jamaica',
+            'new york',
+            'brooklyn',
+            'bronx',
+            'staten island',
+            'astoria',
+            'jackson heights',
+            'sunnyside',
+            'bayside',
+            'bellerose',
+            'flushing',
+            'fresh meadows',
+            'whitestone',
+            'elmhurst',
+            'forest hills',
+            'kew gardens',
+            'rego park',
+            'woodside',
+            'jamaica',
+            'howard beach',
+            'richmond hill',
+            'woodhaven',
+            'rockaway',
+            'west roxbury',
           ];
-          if (citiesOfInterest.includes(curStarbucks.city)) {
+          if (citiesOfInterest.includes(curStarbucks.city.toLowerCase())) {
             return (
               <Marker
                 key={curStarbucks.store_id}
