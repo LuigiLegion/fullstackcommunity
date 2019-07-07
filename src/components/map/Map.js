@@ -166,7 +166,6 @@ const Map = ({ auth, users }) => {
 
         {starbucksData.branches.map(curStarbucks => {
           const citiesOfInterest = [
-            // 'Chicago',
             'new york',
             'brooklyn',
             'bronx',
@@ -190,6 +189,7 @@ const Map = ({ auth, users }) => {
             'woodhaven',
             'rockaway',
             'west roxbury',
+            // 'chicago',
           ];
           if (citiesOfInterest.includes(curStarbucks.city.toLowerCase())) {
             return (
