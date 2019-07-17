@@ -37,6 +37,8 @@ export class SignUp extends Component {
   }
 
   handleSelect(event) {
+    // console.log('event.target.id: ', event.target.id);
+    // console.log('event.target.value: ', event.target.value);
     const location = subwayStationsData.stations.filter(
       curSubwayStation => curSubwayStation.name === event.target.value
     )[0];
@@ -46,6 +48,8 @@ export class SignUp extends Component {
   }
 
   handleSubmit(event) {
+    // console.log('event.target.id: ', event.target.id);
+    // console.log('event.target.value: ', event.target.value);
     event.preventDefault();
     this.props.signUpThunk(this.state);
   }
