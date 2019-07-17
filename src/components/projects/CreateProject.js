@@ -33,11 +33,16 @@ class CreateProject extends Component {
           <form onSubmit={this.handleSubmit} className="card white">
             <h5 className="grey-text text-darken-3">Create a new project:</h5>
             <div className="input-field">
-              <label htmlFor="title">Title</label>
+              <label htmlFor="title">
+                Project Title: (What is your idea in one short sentence)
+              </label>
               <input type="text" id="title" onChange={this.handleChange} />
             </div>
             <div className="input-field">
-              <label htmlFor="content">Project Content</label>
+              <label htmlFor="content">
+                Project Content: (Elaborate on your idea and the stack you plan
+                to use)
+              </label>
               <textarea
                 className="materialize-text-area"
                 id="content"
