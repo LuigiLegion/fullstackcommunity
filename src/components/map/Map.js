@@ -278,15 +278,18 @@ const Map = ({ auth, users }) => {
                   {selectedAlum.company}
                 </span>
               ) : (
-                selectedAlum.status
+                <span>
+                  <strong>Status: </strong>
+                  {selectedAlum.status}
+                </span>
               )}
             </div>
             <div className="location-description">
-              <strong>Contact: </strong>
+              <strong>Contact Information: </strong>
               {selectedAlum.email}
             </div>
             <div className="location-description">
-              <strong>Subway Location: </strong>
+              <strong>Subway Station: </strong>
               {selectedAlum.locationName}
             </div>
           </Popup>
