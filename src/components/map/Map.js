@@ -285,6 +285,10 @@ const Map = ({ auth, users }) => {
               <strong>Contact: </strong>
               {selectedAlum.email}
             </div>
+            <div className="location-description">
+              <strong>Subway Location: </strong>
+              {selectedAlum.locationName}
+            </div>
           </Popup>
         ) : null}
       </ReactMapGL>
