@@ -1,49 +1,6 @@
 {
   "branches": [
     {
-      "id": "4b33a664f964a520201c25e3",
-      "name": "Whole Foods Market",
-      "location": {
-        "address": "2101 Northern Blvd",
-        "crossStreet": "at Port Washington Blvd",
-        "lat": 40.79749518693169,
-        "lng": -73.67063688320194,
-        "labeledLatLngs": [
-          {
-            "label": "display",
-            "lat": 40.79749518693169,
-            "lng": -73.67063688320194
-          }
-        ],
-        "distance": 30389,
-        "postalCode": "11030",
-        "cc": "US",
-        "city": "Manhasset",
-        "state": "NY",
-        "country": "United States",
-        "formattedAddress": [
-          "2101 Northern Blvd (at Port Washington Blvd)",
-          "Manhasset, NY 11030",
-          "United States"
-        ]
-      },
-      "categories": [
-        {
-          "id": "4bf58dd8d48988d118951735",
-          "name": "Grocery Store",
-          "pluralName": "Grocery Stores",
-          "shortName": "Grocery Store",
-          "icon": {
-            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
-            "suffix": ".png"
-          },
-          "primary": true
-        }
-      ],
-      "referralId": "v-1561257420",
-      "hasPerk": false
-    },
-    {
       "id": "5749875c498e1c0c6e530433",
       "name": "Whole Foods Market",
       "location": {
