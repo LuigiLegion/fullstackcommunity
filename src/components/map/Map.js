@@ -7,7 +7,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 
 import * as starbucksData from '../../data/starbucks-locations.json';
-import * as wholeFoodsMarketData from '../../data/whole-foods-market-locations.json';
+import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
 
 const citiesOfInterest = [
   'New York',
@@ -51,9 +51,11 @@ const Map = ({ auth, users }) => {
     zoom: 14,
   });
 
+  const [selectedAlum, setSelectedAlum] = useState(null);
+
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
 
-  const [selectedAlum, setSelectedAlum] = useState(null);
+  const [selectedWholeFoods, setSelectedWholeFoods] = useState(null);
 
   const forceUpdate = useForceUpdate();
 
@@ -217,39 +219,28 @@ const Map = ({ auth, users }) => {
           }
         })}
 
-        {selectedStarbucks ? (
-          <Popup
-            onClose={() => {
-              setSelectedStarbucks(null);
-            }}
-            latitude={selectedStarbucks.latitude}
-            longitude={selectedStarbucks.longitude}
-          >
-            <div className="location-description">
-              <strong>{selectedStarbucks.name}</strong>
-            </div>
-            <hr />
-            <div className="navigation-container">
-              {/* <div>
-                <strong>Closes at: 10PM</strong>
-              </div> */}
-              <br />
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}&destination=starbucks+${selectedStarbucks.name
-                  .split(' ')
-                  .join('+')}&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
+        {wholeFoodsData.branches.map(curWholeFoods => {
+          return (
+            <Marker
+              key={curWholeFoods.location.address}
+              latitude={curWholeFoods.location.lat}
+              longitude={curWholeFoods.location.lng}
+            >
+              <button
+                onClick={event => {
+                  event.preventDefault();
+                  setSelectedWholeFoods(curWholeFoods);
+                }}
+                className="marker-btn"
               >
-                Navigate
-              </a>
-            </div>
-          </Popup>
-        ) : null}
+                <img
+                  src="https://img.icons8.com/color/48/000000/amazon.png"
+                  alt="Whole Foods Icon"
+                />
+              </button>
+            </Marker>
+          );
+        })}
 
         {selectedAlum ? (
           <Popup
@@ -293,6 +284,74 @@ const Map = ({ auth, users }) => {
             <div className="location-description">
               <strong>Subway Station: </strong>
               {selectedAlum.locationName}
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedStarbucks ? (
+          <Popup
+            onClose={() => {
+              setSelectedStarbucks(null);
+            }}
+            latitude={selectedStarbucks.latitude}
+            longitude={selectedStarbucks.longitude}
+          >
+            <div className="location-description">
+              <strong>{selectedStarbucks.name}</strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              {/* <div>
+                <strong>Closes at: 10PM</strong>
+              </div> */}
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}&destination=Starbucks+${selectedStarbucks.name
+                  .split(' ')
+                  .join('+')}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Navigate
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedWholeFoods ? (
+          <Popup
+            onClose={() => {
+              setSelectedWholeFoods(null);
+            }}
+            latitude={selectedWholeFoods.location.lat}
+            longitude={selectedWholeFoods.location.lng}
+          >
+            <div className="location-description">
+              <strong>{selectedWholeFoods.location.address}</strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              <div>
+                <strong>Opening Hours: </strong>8AM-10PM, Monday through Sunday
+              </div>
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}&destination=Whole+Foods+Market+${selectedWholeFoods.location.address
+                  .split(' ')
+                  .join('+')}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Navigate
+              </a>
             </div>
           </Popup>
         ) : null}
