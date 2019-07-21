@@ -7,6 +7,32 @@ import { firestoreConnect } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 
 import * as starbucksData from '../../data/starbucks-locations.json';
+import * as wholeFoodsMarketData from '../../data/whole-foods-market-locations.json';
+
+const citiesOfInterest = [
+  'New York',
+  'Brooklyn',
+  'Bronx',
+  'Staten Island',
+  'Astoria',
+  'Jackson Heights',
+  'Sunnyside',
+  'Bayside',
+  'Bellerose',
+  'Flushing',
+  'Fresh Meadows',
+  'Whitestone',
+  'Elmhurst',
+  'Forest Hills',
+  'Kew Gardens',
+  'Rego Park',
+  'Woodside',
+  'Jamaica',
+  'Howard Beach',
+  'Richmond Hill',
+  'Rockaway',
+  // 'Chicago',
+];
 
 let firstRenderWithUsers = true;
 let curUserLocationName = '';
@@ -165,30 +191,6 @@ const Map = ({ auth, users }) => {
           : null}
 
         {starbucksData.branches.map(curStarbucks => {
-          const citiesOfInterest = [
-            'New York',
-            'Brooklyn',
-            'Bronx',
-            'Staten Island',
-            'Astoria',
-            'Jackson Heights',
-            'Sunnyside',
-            'Bayside',
-            'Bellerose',
-            'Flushing',
-            'Fresh Meadows',
-            'Whitestone',
-            'Elmhurst',
-            'Forest Hills',
-            'Kew Gardens',
-            'Rego Park',
-            'Woodside',
-            'Jamaica',
-            'Howard Beach',
-            'Richmond Hill',
-            'Rockaway',
-            // 'Chicago',
-          ];
           if (citiesOfInterest.includes(curStarbucks.city)) {
             return (
               <Marker

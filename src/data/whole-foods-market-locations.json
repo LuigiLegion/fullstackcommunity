@@ -1,0 +1,567 @@
+{
+  "branches": [
+    {
+      "id": "4b33a664f964a520201c25e3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "2101 Northern Blvd",
+        "crossStreet": "at Port Washington Blvd",
+        "lat": 40.79749518693169,
+        "lng": -73.67063688320194,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.79749518693169,
+            "lng": -73.67063688320194
+          }
+        ],
+        "distance": 30389,
+        "postalCode": "11030",
+        "cc": "US",
+        "city": "Manhasset",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "2101 Northern Blvd (at Port Washington Blvd)",
+          "Manhasset, NY 11030",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "5749875c498e1c0c6e530433",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "100 W 125th St",
+        "crossStreet": "at Lenox Ave",
+        "lat": 40.80778099697608,
+        "lng": -73.9459228655522,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.80778099697608,
+            "lng": -73.9459228655522
+          }
+        ],
+        "distance": 12680,
+        "postalCode": "10027",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "100 W 125th St (at Lenox Ave)",
+          "New York, NY 10027",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4a95cf86f964a520c92420e3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "808 Columbus Avenue",
+        "crossStreet": "at W 97th St",
+        "lat": 40.79410991232108,
+        "lng": -73.96663311005508,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.79410991232108,
+            "lng": -73.96663311005508
+          }
+        ],
+        "distance": 10605,
+        "postalCode": "10025",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "808 Columbus Avenue (at W 97th St)",
+          "New York, NY 10025",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "52517696498e820f4e998347",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "1551 3rd Ave",
+        "crossStreet": "East 88th St.",
+        "lat": 40.779668027961236,
+        "lng": -73.9531079662105,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.779668027961236,
+            "lng": -73.9531079662105
+          }
+        ],
+        "distance": 9619,
+        "postalCode": "10128",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "1551 3rd Ave (East 88th St.)",
+          "New York, NY 10128",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4530db29f964a520613b1fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "10 Columbus Circle",
+        "crossStreet": "at W 58th St",
+        "lat": 40.76801497132407,
+        "lng": -73.98172253878273,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.76801497132407,
+            "lng": -73.98172253878273
+          }
+        ],
+        "distance": 7443,
+        "postalCode": "10019",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "10 Columbus Circle (at W 58th St)",
+          "New York, NY 10019",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4f2ad1fa6b74bfbf8bb98162",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "226 E 57th Street",
+        "crossStreet": "btwn 2nd & 3rd Ave",
+        "lat": 40.759709268743435,
+        "lng": -73.96616626565199,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.759709268743435,
+            "lng": -73.96616626565199
+          }
+        ],
+        "distance": 7145,
+        "postalCode": "10022",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "226 E 57th Street (btwn 2nd & 3rd Ave)",
+          "New York, NY 10022",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "5866f5c30b7e937108ec2adb",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "1095 Avenue Of The Americas",
+        "crossStreet": "at W 41st St",
+        "lat": 40.75450746689136,
+        "lng": -73.98429874954766,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.75450746689136,
+            "lng": -73.98429874954766
+          }
+        ],
+        "distance": 5953,
+        "postalCode": "10036",
+        "cc": "US",
+        "neighborhood": "Theater District",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "1095 Avenue Of The Americas (at W 41st St)",
+          "New York, NY 10036",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "460d4b66f964a52005451fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "250 7th Ave",
+        "crossStreet": "at W 24th St",
+        "lat": 40.745057497004666,
+        "lng": -73.99554284770052,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.745057497004666,
+            "lng": -73.99554284770052
+          }
+        ],
+        "distance": 4660,
+        "postalCode": "10001",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "250 7th Ave (at W 24th St)",
+          "New York, NY 10001",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "43bba61df964a520eb2c1fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "4 Union Square South",
+        "crossStreet": "btwn Broadway & University Pl",
+        "lat": 40.73504451480305,
+        "lng": -73.99110084279937,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.73504451480305,
+            "lng": -73.99110084279937
+          }
+        ],
+        "distance": 3732,
+        "postalCode": "10003",
+        "cc": "US",
+        "neighborhood": "Union Square",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "4 Union Square South (btwn Broadway & University Pl)",
+          "New York, NY 10003",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "460d4b1ef964a52004451fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "95 East Houston St",
+        "crossStreet": "btwn Bowery & Chrystie St",
+        "lat": 40.723792913183296,
+        "lng": -73.99146099967388,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.723792913183296,
+            "lng": -73.99146099967388
+          }
+        ],
+        "distance": 2627,
+        "postalCode": "10002",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "95 East Houston St (btwn Bowery & Chrystie St)",
+          "New York, NY 10002",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "49bc3b0af964a52020541fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "270 Greenwich Street",
+        "crossStreet": "at Warren St",
+        "lat": 40.715579155420606,
+        "lng": -74.01136823958119,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.715579155420606,
+            "lng": -74.01136823958119
+          }
+        ],
+        "distance": 1239,
+        "postalCode": "10007",
+        "cc": "US",
+        "neighborhood": "Tribeca",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "270 Greenwich Street (at Warren St)",
+          "New York, NY 10007",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "589ccf6cf16bb565be3091d4",
+      "name": "Whole Foods Market 365",
+      "location": {
+        "address": "292 Ashland Place",
+        "crossStreet": "Lafayette Ave",
+        "lat": 40.68633674088106,
+        "lng": -73.97846730744199,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.68633674088106,
+            "lng": -73.97846730744199
+          }
+        ],
+        "distance": 3309,
+        "postalCode": "11217",
+        "cc": "US",
+        "neighborhood": "Fort Greene",
+        "city": "Brooklyn",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "292 Ashland Place (Lafayette Ave)",
+          "Brooklyn, NY 11217",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "52781665498e79b52476d279",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "214 3rd St",
+        "crossStreet": "at 3rd Ave",
+        "lat": 40.67526187880738,
+        "lng": -73.98886312774594,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.67526187880738,
+            "lng": -73.98886312774594
+          }
+        ],
+        "distance": 3694,
+        "postalCode": "11215",
+        "cc": "US",
+        "city": "Brooklyn",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "214 3rd St (at 3rd Ave)",
+          "Brooklyn, NY 11215",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    }
+  ]
+}
