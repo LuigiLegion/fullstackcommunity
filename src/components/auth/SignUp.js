@@ -245,7 +245,8 @@ export class SignUp extends Component {
 
             <div className="input-field col s12">
               <label htmlFor="location">
-                Location (Please pick the subway stop closest to where you live)
+                Location (Please pick the subway station closest to where you
+                live)
               </label>
               <br />
               <br />
