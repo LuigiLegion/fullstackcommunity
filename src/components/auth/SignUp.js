@@ -143,10 +143,10 @@ export class SignUp extends Component {
                 <option value="" disabled>
                   --Please choose an option--
                 </option>
-                <option value="Junior">Junior</option>
-                <option value="Senior">Senior</option>
-                <option value="Employed">Employed</option>
-                <option value="Unemployed">Unemployed</option>
+                <option value="Junior">Student - Junior Phase</option>
+                <option value="Senior">Student - Senior Phase</option>
+                <option value="Unemployed">Alum - Unemployed</option>
+                <option value="Employed">Alum - Employed</option>
               </select>
             </div>
 
