@@ -53,6 +53,8 @@ const Map = ({ auth, users }) => {
 
   const [selectedAlum, setSelectedAlum] = useState(null);
 
+  const [selectedCampus, setSelectedCampus] = useState(false);
+
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
 
   const [selectedWholeFoods, setSelectedWholeFoods] = useState(null);
@@ -89,11 +91,19 @@ const Map = ({ auth, users }) => {
         }}
       >
         <Marker latitude={40.7050758} longitude={-74.0113491}>
-          <img
-            className="marker-fullstack"
-            src="https://yt3.ggpht.com/a/AGF-l78JV4ZDPmU85HhYboU07siMZjFL_dHgm6o6Zg=s288-mo-c-c0xffffffff-rj-k-no"
-            alt="My Location"
-          />
+          <button
+            onClick={event => {
+              event.preventDefault();
+              setSelectedCampus(true);
+            }}
+            className="marker-btn"
+          >
+            <img
+              className="marker-fullstack"
+              src="https://yt3.ggpht.com/a/AGF-l78JV4ZDPmU85HhYboU07siMZjFL_dHgm6o6Zg=s288-mo-c-c0xffffffff-rj-k-no"
+              alt="Fullstack Academy Location"
+            />
+          </button>
         </Marker>
 
         {users
@@ -288,6 +298,46 @@ const Map = ({ auth, users }) => {
           </Popup>
         ) : null}
 
+        {selectedCampus ? (
+          <Popup
+            onClose={() => {
+              setSelectedCampus(false);
+            }}
+            latitude={40.7050758}
+            longitude={-74.0113491}
+          >
+            <div className="location-description">
+              <strong>Fullstack Academy of Code</strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              <div>
+                <strong>Next Hacker Hours Meetup: </strong>Monday, August 12th,
+                6:30PM-9:30PM EDT
+              </div>
+              <a
+                href={
+                  'https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2'
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RSVP
+              </a>
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join('+')}&destination=Fullstack+Academy&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Navigate
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
         {selectedStarbucks ? (
           <Popup
             onClose={() => {
@@ -297,7 +347,7 @@ const Map = ({ auth, users }) => {
             longitude={selectedStarbucks.longitude}
           >
             <div className="location-description">
-              <strong>{selectedStarbucks.name}</strong>
+              <strong>Starbucks - {selectedStarbucks.name}</strong>
             </div>
             <hr />
             <div className="navigation-container">
@@ -331,12 +381,15 @@ const Map = ({ auth, users }) => {
             longitude={selectedWholeFoods.location.lng}
           >
             <div className="location-description">
-              <strong>{selectedWholeFoods.location.address}</strong>
+              <strong>
+                Whole Foods Market - {selectedWholeFoods.location.address}
+              </strong>
             </div>
             <hr />
             <div className="navigation-container">
               <div>
-                <strong>Opening Hours: </strong>8AM-10PM, Monday through Sunday
+                <strong>Opening Hours: </strong>8AM-10PM EDT, Monday through
+                Sunday
               </div>
               <br />
               <a
