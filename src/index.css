@@ -121,3 +121,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   align-items: center;
   color: black;
 }
+
+.red-text-color {
+  color: #ef5350;
+}
