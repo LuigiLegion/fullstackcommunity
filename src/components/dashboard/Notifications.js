@@ -13,7 +13,9 @@ const Notifications = props => {
               notifications.map(curNotification => {
                 return (
                   <li key={curNotification.id}>
-                    <span className="red-text">{curNotification.user} </span>
+                    <span className="red-text-color">
+                      {curNotification.user}{' '}
+                    </span>
                     <span>{curNotification.content}</span>
                     <div className="grey-text note-date">
                       {moment(curNotification.time.toDate()).fromNow()}
