@@ -45,17 +45,17 @@ class SignedInLinksBurger extends Component {
                 to="/"
                 className="btn btn-floating grey darken-3"
               >
-                {this.props.profile.initials}
+                <strong>{this.props.profile.initials}</strong>
               </NavLink>
             </div>
             <div>
               <NavLink onClick={() => this.closeMenu()} to="/map">
-                Map
+                <strong>Map</strong>
               </NavLink>
             </div>
             <div>
               <NavLink onClick={() => this.closeMenu()} to="/create">
-                New Project
+                <strong>New Project</strong>
               </NavLink>
             </div>
             <div>
@@ -66,7 +66,7 @@ class SignedInLinksBurger extends Component {
                 }}
                 to="/"
               >
-                Sign Out
+                <strong>Sign Out</strong>
               </NavLink>
             </div>
           </div>
