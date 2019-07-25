@@ -16,10 +16,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
-  background: url(/img/background.jpeg);
+  /* background: url(/img/background.jpeg); */
   background-size: 100%;
   background-position: bottom;
-  background-color: grey;
+  background-color: #212121;
 }
 
 /* main {
