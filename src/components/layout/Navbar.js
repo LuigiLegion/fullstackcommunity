@@ -36,12 +36,7 @@ class Navbar extends Component {
       } else {
         curLinks = <SignedInLinksBurger profile={profile} />;
       }
-    }
-
-    // else {
-    //   curLinks = <SignedOutLinks />;
-    // }
-    else {
+    } else {
       if (document.body.offsetWidth > 1007) {
         curLinks = <SignedOutLinks />;
       } else {
