@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import SignedInLinks from './SignedInLinks';
 import SignedInLinksBurger from './SignedInLinksBurger';
 import SignedOutLinks from './SignedOutLinks';
+import SignedOutLinksBurger from './SignedOutLinksBurger';
 
 class Navbar extends Component {
   constructor() {
@@ -35,17 +36,18 @@ class Navbar extends Component {
       } else {
         curLinks = <SignedInLinksBurger profile={profile} />;
       }
-    } else {
-      curLinks = <SignedOutLinks />;
     }
 
     // else {
-    //   if(document.body.offsetWidth > 1007) {
-    //     curLinks = <SignedOutLinks />
-    //   } else {
-    //     curLinks = <SignedOutLinksBurger />
-    //   }
+    //   curLinks = <SignedOutLinks />;
     // }
+    else {
+      if (document.body.offsetWidth > 1007) {
+        curLinks = <SignedOutLinks />;
+      } else {
+        curLinks = <SignedOutLinksBurger />;
+      }
+    }
 
     // const curLinks = auth.uid ? (
     //   // <SignedInLinks profile={profile} />

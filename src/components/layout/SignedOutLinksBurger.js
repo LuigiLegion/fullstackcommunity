@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { slide as Menu } from 'react-burger-menu';
-
-import { signOutThunkCreator } from '../../store/reducers/authReducer';
 
 class SignedOutLinksBurger extends Component {
   constructor() {
@@ -41,32 +38,22 @@ class SignedOutLinksBurger extends Component {
           <div styles={divStyles}>
             <div>
               <NavLink
-                onClick={() => this.closeMenu()}
-                to="/"
-                className="btn btn-floating grey darken-3"
+                onClick={() => {
+                  this.closeMenu();
+                }}
+                to="/signup"
               >
-                <strong>{this.props.profile.initials}</strong>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink onClick={() => this.closeMenu()} to="/map">
-                <strong>Map</strong>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink onClick={() => this.closeMenu()} to="/create">
-                <strong>New Project</strong>
+                <strong>Sign Up</strong>
               </NavLink>
             </div>
             <div>
               <NavLink
                 onClick={() => {
                   this.closeMenu();
-                  this.props.signOutThunk();
                 }}
-                to="/"
+                to="/signin"
               >
-                <strong>Sign Out</strong>
+                <strong>Sign In</strong>
               </NavLink>
             </div>
           </div>
@@ -76,16 +63,7 @@ class SignedOutLinksBurger extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  signOutThunk() {
-    dispatch(signOutThunkCreator());
-  },
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignedOutLinksBurger);
+export default SignedOutLinksBurger;
 
 const burgerStyles = {
   bmBurgerButton: {
