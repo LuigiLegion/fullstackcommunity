@@ -5,7 +5,7 @@ import { slide as Menu } from 'react-burger-menu';
 
 import { signOutThunkCreator } from '../../store/reducers/authReducer';
 
-class SignedInLinks extends Component {
+class SignedInLinksBurger extends Component {
   constructor() {
     super();
     this.state = {
@@ -85,7 +85,7 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   null,
   mapDispatchToProps
-)(SignedInLinks);
+)(SignedInLinksBurger);
 
 const burgerStyles = {
   bmBurgerButton: {
