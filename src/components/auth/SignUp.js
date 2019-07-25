@@ -145,7 +145,7 @@ export class SignUp extends Component {
                 </option>
                 <option value="Junior">Student - Junior Phase</option>
                 <option value="Senior">Student - Senior Phase</option>
-                <option value="Unemployed">Alum - Unemployed</option>
+                <option value="Unemployed">Alum - Seeking Opportunities</option>
                 <option value="Employed">Alum - Employed</option>
               </select>
             </div>

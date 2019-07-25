@@ -125,7 +125,8 @@ const Map = ({ auth, users }) => {
                   >
                     <img
                       className="marker-me"
-                      src="https://img.icons8.com/ultraviolet/40/000000/marker.png"
+                      // src="https://img.icons8.com/ultraviolet/40/000000/marker.png"
+                      src="https://img.icons8.com/dusk/64/000000/student-center.png"
                       alt="My Location"
                     />
                   </Marker>
@@ -147,7 +148,8 @@ const Map = ({ auth, users }) => {
                       >
                         <img
                           className="marker-others"
-                          src="https://img.icons8.com/office/40/000000/marker.png"
+                          // src="https://img.icons8.com/office/40/000000/marker.png"
+                          src="https://img.icons8.com/dusk/64/000000/find-matching-job.png"
                           alt="Unemployed Others Location"
                         />
                       </button>
@@ -169,7 +171,8 @@ const Map = ({ auth, users }) => {
                       >
                         <img
                           className="marker-others"
-                          src="https://img.icons8.com/color/48/000000/briefcase.png"
+                          // src="https://img.icons8.com/color/48/000000/briefcase.png"
+                          src="https://img.icons8.com/dusk/64/000000/new-job.png"
                           alt="Employed Others Location"
                         />
                       </button>
@@ -191,8 +194,9 @@ const Map = ({ auth, users }) => {
                       >
                         <img
                           className="marker-others"
-                          src="https://img.icons8.com/ios/50/000000/student-registration-filled.png"
-                          alt="Employed Others Location"
+                          // src="https://img.icons8.com/ios/50/000000/student-registration-filled.png"
+                          src="https://img.icons8.com/dusk/64/000000/student-male.png"
+                          alt="Others Location"
                         />
                       </button>
                     </Marker>
@@ -283,7 +287,9 @@ const Map = ({ auth, users }) => {
               ) : (
                 <span>
                   <strong>Status: </strong>
-                  {selectedAlum.status}
+                  {selectedAlum.status === 'Unemployed'
+                    ? 'Seeking Opportunities'
+                    : selectedAlum.status}
                 </span>
               )}
             </div>
