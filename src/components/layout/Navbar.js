@@ -15,10 +15,10 @@ const Navbar = props => {
     <SignedOutLinks />
   );
   return (
-    <div className="navbar-fixed grey darken-3">
+    <div className="navbar-fixed">
       <nav className="nav-wrapper grey darken-3">
-        <div className="container">
-          <NavLink to="/" className="left brand-logo">
+        <div>
+          <NavLink to="/" className="left brand-logo name-text-positioning">
             <strong>Fullstack Community</strong>
           </NavLink>
           {curLinks}

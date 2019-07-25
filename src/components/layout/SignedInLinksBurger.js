@@ -8,41 +8,67 @@ import { signOutThunkCreator } from '../../store/reducers/authReducer';
 class SignedInLinks extends Component {
   constructor() {
     super();
-    this.showSettings = this.showSettings.bind(this);
+    this.state = {
+      menuOpen: false,
+    };
+    this.handleStateChange = this.handleStateChange.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-  showSettings(event) {
-    event.preventDefault();
-    // fill in
+  handleStateChange(state) {
+    this.setState({ menuOpen: state.isOpen });
+  }
+
+  closeMenu() {
+    this.setState({ menuOpen: false });
+  }
+
+  toggleMenu() {
+    this.setState(state => ({ menuOpen: !state.menuOpen }));
   }
 
   render() {
     return (
-      <div className="right">
-        <NavLink to="/" className="btn btn-floating red lighten-1">
-          {this.props.profile.initials}
-        </NavLink>
-        <Menu right width={'20%'} styles={burgerStyles}>
+      <div>
+        <Menu
+          isOpen={this.state.menuOpen}
+          onStateChange={state => this.handleStateChange(state)}
+          right
+          width={'15%'}
+          styles={burgerStyles}
+        >
           <div styles={divStyles}>
             <div>
-              <NavLink to="/map">Map</NavLink>
+              <NavLink
+                onClick={() => this.closeMenu()}
+                to="/"
+                className="btn btn-floating grey darken-3"
+              >
+                {this.props.profile.initials}
+              </NavLink>
             </div>
             <div>
-              <NavLink to="/create">New Project</NavLink>
+              <NavLink onClick={() => this.closeMenu()} to="/map">
+                Map
+              </NavLink>
             </div>
             <div>
-              <NavLink to="/" onClick={this.props.signOutThunk}>
+              <NavLink onClick={() => this.closeMenu()} to="/create">
+                New Project
+              </NavLink>
+            </div>
+            <div>
+              <NavLink
+                onClick={() => {
+                  this.closeMenu();
+                  this.props.signOutThunk();
+                }}
+                to="/"
+              >
                 Sign Out
               </NavLink>
             </div>
-
-            <a
-              onClick={this.showSettings}
-              className="menu-item--small"
-              href="#!"
-            >
-              Settings
-            </a>
           </div>
         </Menu>
       </div>
@@ -67,7 +93,7 @@ const burgerStyles = {
     width: '36px',
     height: '30px',
     right: '30px',
-    top: '20px',
+    top: '17.5px',
   },
   bmBurgerBars: {
     background: '#ef5350',
@@ -78,6 +104,7 @@ const burgerStyles = {
   bmCrossButton: {
     height: '24px',
     width: '24px',
+    backgroundColor: '#424242',
   },
   bmCross: {
     background: '#bdc3c7',
