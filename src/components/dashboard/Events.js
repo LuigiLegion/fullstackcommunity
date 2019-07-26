@@ -1,31 +1,37 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+// import axios from 'axios';
 import moment from 'moment';
 
+import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
+
 class Events extends Component {
-  constructor() {
-    super();
-    this.state = {
-      events: [],
-    };
-    this.fetchEvents = this.fetchEvents.bind(this);
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     events: [],
+  //   };
+  //   this.fetchEvents = this.fetchEvents.bind(this);
+  // }
 
   componentDidMount() {
-    this.fetchEvents();
+    // this.fetchEvents();
+    this.props.getEventsThunk();
   }
 
-  async fetchEvents() {
-    const { data } = await axios.get(
-      'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
-    );
-    console.log('Events data.results: ', data.results);
-    this.setState({
-      events: data.results,
-    });
-  }
+  // async fetchEvents() {
+  //   const { data } = await axios.get(
+  //     'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
+  //   );
+  //   console.log('Events data.results: ', data.results);
+  //   this.setState({
+  //     events: data.results,
+  //   });
+  // }
 
   render() {
+    console.log('events: ', this.props.events.events);
+    console.log('events.length: ', this.props.events.events.length);
     return (
       <div className="section">
         <div className="card z-depth-0">
@@ -34,8 +40,10 @@ class Events extends Component {
               <strong>Upcoming Events</strong>
             </span>
             <ul className="notifications">
-              {this.state.events && this.state.events.length ? (
-                this.state.events.map(curEvent => {
+              {/* {this.state.events && this.state.events.length ? (
+                this.state.events.map(curEvent => { */}
+              {this.props.events.events && this.props.events.events.length ? (
+                this.props.events.events.map(curEvent => {
                   return (
                     <li key={curEvent.id}>
                       <span className="red-text-color">
@@ -62,9 +70,9 @@ class Events extends Component {
                   );
                 })
               ) : (
-                <li>No upcoming events were found.</li>
+                <li>No upcoming Meetups were found.</li>
               )}
-
+              <br />
               <li>
                 <span className="red-text-color">
                   <strong>Hacker Hours at Fullstack Academy of Code</strong>
@@ -92,4 +100,19 @@ class Events extends Component {
   }
 }
 
-export default Events;
+const mapStateToProps = state => ({
+  auth: state.firebase.auth,
+  users: state.firestore.ordered.users,
+  events: state.events,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getEventsThunk() {
+    dispatch(getEventsThunkCreator());
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Events);

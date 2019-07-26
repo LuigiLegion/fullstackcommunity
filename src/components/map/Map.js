@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 
-import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
+// import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
 import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
 
@@ -43,7 +43,7 @@ function useForceUpdate() {
   return () => set(!value);
 }
 
-const Map = ({ auth, users }) => {
+const Map = ({ auth, users, events }) => {
   const [viewport, setViewport] = useState({
     latitude: 40.7531823,
     longitude: -73.9844421,
@@ -59,6 +59,8 @@ const Map = ({ auth, users }) => {
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
 
   const [selectedWholeFoods, setSelectedWholeFoods] = useState(null);
+
+  const [selectedMeetup, setSelectedMeetup] = useState(null);
 
   const forceUpdate = useForceUpdate();
 
@@ -279,6 +281,32 @@ const Map = ({ auth, users }) => {
           );
         })}
 
+        {events && events.length
+          ? events.map(curMeetup => {
+              return (
+                <Marker
+                  key={curMeetup.id}
+                  latitude={curMeetup.venue.lat}
+                  longitude={curMeetup.venue.lon}
+                >
+                  <button
+                    onClick={event => {
+                      event.preventDefault();
+                      setSelectedMeetup(curMeetup);
+                    }}
+                    className="marker-btn"
+                  >
+                    <img
+                      // src="https://img.icons8.com/ios/50/000000/meetup.png"
+                      src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
+                      alt="Whole Foods Icon"
+                    />
+                  </button>
+                </Marker>
+              );
+            })
+          : null}
+
         {selectedAlum ? (
           <Popup
             onClose={() => {
@@ -445,18 +473,19 @@ const Map = ({ auth, users }) => {
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
   users: state.firestore.ordered.users,
+  events: state.events,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getEventsThunk() {
-    dispatch(getEventsThunkCreator());
-  },
-});
+// const mapDispatchToProps = dispatch => ({
+//   getEventsThunk() {
+//     dispatch(getEventsThunkCreator());
+//   },
+// });
 
 export default compose(
   connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
+    // mapDispatchToProps
   ),
   firestoreConnect([
     {

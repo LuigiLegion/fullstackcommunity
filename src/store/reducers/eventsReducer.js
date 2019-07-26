@@ -33,7 +33,7 @@ export const getEventsThunkCreator = () => {
 const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_EVENTS:
-      console.log('Fetched meetups successfully: ', action.events);
+      console.log('Fetched meetups successfully in the reducer');
       return { ...state, events: action.events };
     default:
       return state;
