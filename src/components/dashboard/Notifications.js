@@ -7,14 +7,16 @@ const Notifications = props => {
     <div className="section">
       <div className="card z-depth-0">
         <div className="card-content grey-text text-darken-3">
-          <span className="card-title">Notifications</span>
+          <span className="card-title">
+            <strong>Notifications</strong>
+          </span>
           <ul className="notifications">
             {notifications &&
               notifications.map(curNotification => {
                 return (
                   <li key={curNotification.id}>
                     <span className="red-text-color">
-                      {curNotification.user}{' '}
+                      <strong>{curNotification.user} </strong>
                     </span>
                     <span>{curNotification.content}</span>
                     <div className="grey-text note-date">

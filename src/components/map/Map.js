@@ -234,7 +234,7 @@ const Map = ({ auth, users }) => {
 
           return (
             <Marker
-              key={curStarbucks.store_id}
+              key={curStarbucks.storeId}
               latitude={curStarbucks.latitude}
               longitude={curStarbucks.longitude}
             >
@@ -246,6 +246,7 @@ const Map = ({ auth, users }) => {
                 className="marker-btn"
               >
                 <img
+                  // src="https://img.icons8.com/nolan/64/000000/starbucks.png"
                   src="https://img.icons8.com/color/48/000000/starbucks.png"
                   alt="Starbucks Icon"
                 />
