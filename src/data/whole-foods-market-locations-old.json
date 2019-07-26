@@ -1,0 +1,1293 @@
+{
+  "branches": [
+    {
+      "id": "49bc3b0af964a52020541fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "270 Greenwich Street",
+        "crossStreet": "at Warren St",
+        "lat": 40.715579155420606,
+        "lng": -74.01136823958119,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.715579155420606,
+            "lng": -74.01136823958119
+          }
+        ],
+        "distance": 1239,
+        "postalCode": "10007",
+        "cc": "US",
+        "neighborhood": "Tribeca",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "270 Greenwich Street (at Warren St)",
+          "New York, NY 10007",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "43bba61df964a520eb2c1fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "4 Union Square South",
+        "crossStreet": "btwn Broadway & University Pl",
+        "lat": 40.73504451480305,
+        "lng": -73.99110084279937,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.73504451480305,
+            "lng": -73.99110084279937
+          }
+        ],
+        "distance": 3732,
+        "postalCode": "10003",
+        "cc": "US",
+        "neighborhood": "Union Square",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "4 Union Square South (btwn Broadway & University Pl)",
+          "New York, NY 10003",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4530db29f964a520613b1fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "10 Columbus Circle",
+        "crossStreet": "at W 58th St",
+        "lat": 40.76801497132407,
+        "lng": -73.98172253878273,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.76801497132407,
+            "lng": -73.98172253878273
+          }
+        ],
+        "distance": 7443,
+        "postalCode": "10019",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "10 Columbus Circle (at W 58th St)",
+          "New York, NY 10019",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "460d4b1ef964a52004451fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "95 East Houston St",
+        "crossStreet": "btwn Bowery & Chrystie St",
+        "lat": 40.723792913183296,
+        "lng": -73.99146099967388,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.723792913183296,
+            "lng": -73.99146099967388
+          }
+        ],
+        "distance": 2627,
+        "postalCode": "10002",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "95 East Houston St (btwn Bowery & Chrystie St)",
+          "New York, NY 10002",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "460d4b66f964a52005451fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "250 7th Ave",
+        "crossStreet": "at W 24th St",
+        "lat": 40.745057497004666,
+        "lng": -73.99554284770052,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.745057497004666,
+            "lng": -73.99554284770052
+          }
+        ],
+        "distance": 4660,
+        "postalCode": "10001",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "250 7th Ave (at W 24th St)",
+          "New York, NY 10001",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "5866f5c30b7e937108ec2adb",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "1095 Avenue Of The Americas",
+        "crossStreet": "at W 41st St",
+        "lat": 40.75450746689136,
+        "lng": -73.98429874954766,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.75450746689136,
+            "lng": -73.98429874954766
+          }
+        ],
+        "distance": 5953,
+        "postalCode": "10036",
+        "cc": "US",
+        "neighborhood": "Theater District",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "1095 Avenue Of The Americas (at W 41st St)",
+          "New York, NY 10036",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4f2ad1fa6b74bfbf8bb98162",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "226 E 57th Street",
+        "crossStreet": "btwn 2nd & 3rd Ave",
+        "lat": 40.759709268743435,
+        "lng": -73.96616626565199,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.759709268743435,
+            "lng": -73.96616626565199
+          }
+        ],
+        "distance": 7145,
+        "postalCode": "10022",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "226 E 57th Street (btwn 2nd & 3rd Ave)",
+          "New York, NY 10022",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "589ccf6cf16bb565be3091d4",
+      "name": "Whole Foods Market 365",
+      "location": {
+        "address": "292 Ashland Place",
+        "crossStreet": "Lafayette Ave",
+        "lat": 40.68633674088106,
+        "lng": -73.97846730744199,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.68633674088106,
+            "lng": -73.97846730744199
+          }
+        ],
+        "distance": 3309,
+        "postalCode": "11217",
+        "cc": "US",
+        "neighborhood": "Fort Greene",
+        "city": "Brooklyn",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "292 Ashland Place (Lafayette Ave)",
+          "Brooklyn, NY 11217",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4a95cf86f964a520c92420e3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "808 Columbus Avenue",
+        "crossStreet": "at W 97th St",
+        "lat": 40.79410991232108,
+        "lng": -73.96663311005508,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.79410991232108,
+            "lng": -73.96663311005508
+          }
+        ],
+        "distance": 10605,
+        "postalCode": "10025",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "808 Columbus Avenue (at W 97th St)",
+          "New York, NY 10025",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "57ffc2e438fad9d2a9122e23",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "238 Bedford Ave",
+        "crossStreet": "at N 4th St",
+        "lat": 40.71626934343042,
+        "lng": -73.9597792074956,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.71626934343042,
+            "lng": -73.9597792074956
+          }
+        ],
+        "distance": 4391,
+        "postalCode": "11249",
+        "cc": "US",
+        "city": "Brooklyn",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "238 Bedford Ave (at N 4th St)",
+          "Brooklyn, NY 11249",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "5749875c498e1c0c6e530433",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "100 W 125th St",
+        "crossStreet": "at Lenox Ave",
+        "lat": 40.80778099697608,
+        "lng": -73.9459228655522,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.80778099697608,
+            "lng": -73.9459228655522
+          }
+        ],
+        "distance": 12680,
+        "postalCode": "10027",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "100 W 125th St (at Lenox Ave)",
+          "New York, NY 10027",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "52781665498e79b52476d279",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "214 3rd St",
+        "crossStreet": "at 3rd Ave",
+        "lat": 40.67526187880738,
+        "lng": -73.98886312774594,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.67526187880738,
+            "lng": -73.98886312774594
+          }
+        ],
+        "distance": 3694,
+        "postalCode": "11215",
+        "cc": "US",
+        "city": "Brooklyn",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "214 3rd St (at 3rd Ave)",
+          "Brooklyn, NY 11215",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4b42a69ff964a52043d825e3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "300 Bergen Town Center",
+        "crossStreet": "Route 4",
+        "lat": 40.91431692837788,
+        "lng": -74.05785160955287,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.91431692837788,
+            "lng": -74.05785160955287
+          }
+        ],
+        "distance": 23705,
+        "postalCode": "07652",
+        "cc": "US",
+        "city": "Paramus",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "300 Bergen Town Center (Route 4)",
+          "Paramus, NJ 07652",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "5807f88838fa256d00c4ead1",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "45 Vervalen Street",
+        "lat": 40.970626995482256,
+        "lng": -73.95634707897197,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.970626995482256,
+            "lng": -73.95634707897197
+          }
+        ],
+        "distance": 29956,
+        "postalCode": "07624",
+        "cc": "US",
+        "city": "Closter",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "45 Vervalen Street",
+          "Closter, NJ 07624",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4a7c833ff964a520ddec1fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "110 Bloomingdale Road",
+        "crossStreet": "at Maple Ave",
+        "lat": 41.02866770247504,
+        "lng": -73.75837343217466,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 41.02866770247504,
+            "lng": -73.75837343217466
+          }
+        ],
+        "distance": 41817,
+        "postalCode": "10605",
+        "cc": "US",
+        "city": "White Plains",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "110 Bloomingdale Road (at Maple Ave)",
+          "White Plains, NY 10605",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "52517696498e820f4e998347",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "1551 3rd Ave",
+        "crossStreet": "East 88th St.",
+        "lat": 40.779668027961236,
+        "lng": -73.9531079662105,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.779668027961236,
+            "lng": -73.9531079662105
+          }
+        ],
+        "distance": 9619,
+        "postalCode": "10128",
+        "cc": "US",
+        "city": "New York",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "1551 3rd Ave (East 88th St.)",
+          "New York, NY 10128",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4dd0ff5522718eed7a750fda",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "Westchester's Ridge Hill",
+        "lat": 40.96144258609537,
+        "lng": -73.85650720768109,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.96144258609537,
+            "lng": -73.85650720768109
+          }
+        ],
+        "distance": 31366,
+        "postalCode": "10710",
+        "cc": "US",
+        "city": "Yonkers",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "Westchester's Ridge Hill",
+          "Yonkers, NY 10710",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4a64ca9af964a520b2c61fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "2245 Springfield Ave.",
+        "crossStreet": "Marion St",
+        "lat": 40.7170552041893,
+        "lng": -74.28654430825806,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.7170552041893,
+            "lng": -74.28654430825806
+          }
+        ],
+        "distance": 23421,
+        "postalCode": "07088",
+        "cc": "US",
+        "city": "Vauxhall",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "2245 Springfield Ave. (Marion St)",
+          "Vauxhall, NJ 07088",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "55c51a4b498e6a7ffd5ac998",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "1255 Raritan Road",
+        "lat": 40.63149784984362,
+        "lng": -74.30422764207012,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.63149784984362,
+            "lng": -74.30422764207012
+          }
+        ],
+        "distance": 26182,
+        "postalCode": "07066",
+        "cc": "US",
+        "city": "Clark",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "1255 Raritan Road",
+          "Clark, NJ 07066",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4b33a664f964a520201c25e3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "2101 Northern Blvd",
+        "crossStreet": "at Port Washington Blvd",
+        "lat": 40.79749518693169,
+        "lng": -73.67063688320194,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.79749518693169,
+            "lng": -73.67063688320194
+          }
+        ],
+        "distance": 30389,
+        "postalCode": "11030",
+        "cc": "US",
+        "city": "Manhasset",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "2101 Northern Blvd (at Port Washington Blvd)",
+          "Manhasset, NY 11030",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4a75b594f964a5200de11fe3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "429 North Broadway",
+        "crossStreet": "at Market St.",
+        "lat": 40.78899539319698,
+        "lng": -73.53466270992101,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.78899539319698,
+            "lng": -73.53466270992101
+          }
+        ],
+        "distance": 41131,
+        "postalCode": "11753",
+        "cc": "US",
+        "city": "Jericho",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "429 North Broadway (at Market St.)",
+          "Jericho, NY 11753",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4a9c36b9f964a520763620e3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "90 E. Putnam Ave",
+        "crossStreet": "at Washington Ave",
+        "lat": 41.03319289895075,
+        "lng": -73.6239446849178,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 41.03319289895075,
+            "lng": -73.6239446849178
+          }
+        ],
+        "distance": 48904,
+        "postalCode": "06830",
+        "cc": "US",
+        "city": "Greenwich",
+        "state": "CT",
+        "country": "United States",
+        "formattedAddress": [
+          "90 E. Putnam Ave (at Washington Ave)",
+          "Greenwich, CT 06830",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4aaadf68f964a520ce5720e3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "235 Prospect Ave",
+        "crossStreet": "Eagle Rock Ave.",
+        "lat": 40.80426058867242,
+        "lng": -74.24866478560105,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.80426058867242,
+            "lng": -74.24866478560105
+          }
+        ],
+        "distance": 23023,
+        "postalCode": "07052",
+        "cc": "US",
+        "city": "West Orange",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "235 Prospect Ave (Eagle Rock Ave.)",
+          "West Orange, NJ 07052",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4b282ed5f964a5206c9024e3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "701 Bloomfield Ave",
+        "lat": 40.81851806413375,
+        "lng": -74.22296583745927,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.81851806413375,
+            "lng": -74.22296583745927
+          }
+        ],
+        "distance": 22023,
+        "postalCode": "07042",
+        "cc": "US",
+        "city": "Montclair",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "701 Bloomfield Ave",
+          "Montclair, NJ 07042",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "537a6236498ebbb9a9fc7cb5",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "113 Route 9 South",
+        "crossStreet": "Robertsville",
+        "lat": 40.35206316833705,
+        "lng": -74.30946394396454,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.35206316833705,
+            "lng": -74.30946394396454
+          }
+        ],
+        "distance": 46731,
+        "postalCode": "07726",
+        "cc": "US",
+        "city": "Marlboro",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "113 Route 9 South (Robertsville)",
+          "Marlboro, NJ 07726",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "58b863a6ef46945fb4115ddd",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "633 Broad Street",
+        "crossStreet": "New Street",
+        "lat": 40.74005477916467,
+        "lng": -74.16991365014131,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.74005477916467,
+            "lng": -74.16991365014131
+          }
+        ],
+        "distance": 14101,
+        "postalCode": "07102",
+        "cc": "US",
+        "city": "Newark",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "633 Broad Street (New Street)",
+          "Newark, NJ 07102",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4b0d7238f964a520844823e3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "222 Main St",
+        "crossStreet": "at Samson Ave.",
+        "lat": 40.75355391514896,
+        "lng": -74.40566946074597,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.75355391514896,
+            "lng": -74.40566946074597
+          }
+        ],
+        "distance": 33865,
+        "postalCode": "07940",
+        "cc": "US",
+        "city": "Madison",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "222 Main St (at Samson Ave.)",
+          "Madison, NJ 07940",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4b60f495f964a5206b032ae3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "471 State Route 35",
+        "crossStreet": "Chapel Hill Rd",
+        "lat": 40.37514933006295,
+        "lng": -74.08783226196186,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.37514933006295,
+            "lng": -74.08783226196186
+          }
+        ],
+        "distance": 37261,
+        "postalCode": "07701",
+        "cc": "US",
+        "city": "Red Bank",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "471 State Route 35 (Chapel Hill Rd)",
+          "Red Bank, NJ 07701",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "4b5762e8f964a520243528e3",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "44 Godwin Ave",
+        "crossStreet": "Wilsey Sq",
+        "lat": 40.978417587813986,
+        "lng": -74.12259307781991,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.978417587813986,
+            "lng": -74.12259307781991
+          }
+        ],
+        "distance": 31941,
+        "postalCode": "07450",
+        "cc": "US",
+        "city": "Ridgewood",
+        "state": "NJ",
+        "country": "United States",
+        "formattedAddress": [
+          "44 Godwin Ave (Wilsey Sq)",
+          "Ridgewood, NJ 07450",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    },
+    {
+      "id": "51f8f4a4498e01583c2f48af",
+      "name": "Whole Foods Market",
+      "location": {
+        "address": "575 Boston Post Road",
+        "lat": 40.99251077909493,
+        "lng": -73.67535230042093,
+        "labeledLatLngs": [
+          {
+            "label": "display",
+            "lat": 40.99251077909493,
+            "lng": -73.67535230042093
+          }
+        ],
+        "distance": 42651,
+        "postalCode": "10573",
+        "cc": "US",
+        "city": "Port Chester",
+        "state": "NY",
+        "country": "United States",
+        "formattedAddress": [
+          "575 Boston Post Road",
+          "Port Chester, NY 10573",
+          "United States"
+        ]
+      },
+      "categories": [
+        {
+          "id": "4bf58dd8d48988d118951735",
+          "name": "Grocery Store",
+          "pluralName": "Grocery Stores",
+          "shortName": "Grocery Store",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          },
+          "primary": true
+        }
+      ],
+      "referralId": "v-1561257420",
+      "hasPerk": false
+    }
+  ]
+}
