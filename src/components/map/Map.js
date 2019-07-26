@@ -483,6 +483,16 @@ const Map = ({ auth, users, events }) => {
                 <strong>Opening Hours: </strong>8AM-10PM EDT, Monday through
                 Sunday
               </div> */}
+              <div>
+                <strong>{selectedMeetup.name}</strong>
+              </div>
+              <a
+                href={selectedMeetup.event_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RSVP
+              </a>
               <br />
               <a
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName

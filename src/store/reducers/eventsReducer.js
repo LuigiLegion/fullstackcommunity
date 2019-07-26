@@ -21,7 +21,7 @@ export const getEventsThunkCreator = () => {
       const { data } = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
       );
-      console.log('eventReducer data.results: ', data.results);
+      // console.log('eventReducer data.results: ', data.results);
       dispatch(gotEventsActionCreator(data.results));
     } catch (error) {
       console.error(error);
@@ -33,7 +33,7 @@ export const getEventsThunkCreator = () => {
 const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_EVENTS:
-      console.log('Fetched meetups successfully in the reducer');
+      // console.log('Fetched meetups successfully in the reducer');
       return { ...state, allEvents: action.events };
     default:
       return state;
