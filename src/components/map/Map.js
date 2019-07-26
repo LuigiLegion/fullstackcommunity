@@ -469,27 +469,27 @@ const Map = ({ auth, users, events }) => {
         {selectedMeetup ? (
           <Popup
             onClose={() => {
-              setSelectedWholeFoods(null);
+              setSelectedMeetup(null);
             }}
             latitude={selectedMeetup.venue.lat}
             longitude={selectedMeetup.venue.lon}
           >
             <div className="location-description">
-              <strong>WeWork - {selectedWholeFoods.venue.address_1}</strong>
+              <strong>WeWork - {selectedMeetup.venue.address_1}</strong>
             </div>
             <hr />
             <div className="navigation-container">
-              <div>
+              {/* <div>
                 <strong>Opening Hours: </strong>8AM-10PM EDT, Monday through
                 Sunday
-              </div>
+              </div> */}
               <br />
               <a
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
                   .split(' ')
                   .join(
                     '+'
-                  )}&destination=Whole+Foods+Market+${selectedWholeFoods.location.address
+                  )}&destination=WeWork+${selectedMeetup.venue.address_1
                   .split(' ')
                   .join('+')}&travelmode=transit`}
                 target="_blank"
