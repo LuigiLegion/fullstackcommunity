@@ -9,30 +9,30 @@ import PropTypes from 'prop-types';
 import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
 
-const citiesOfInterest = [
-  'New York',
-  'Brooklyn',
-  'Bronx',
-  'Staten Island',
-  'Astoria',
-  'Jackson Heights',
-  'Sunnyside',
-  'Bayside',
-  'Bellerose',
-  'Flushing',
-  'Fresh Meadows',
-  'Whitestone',
-  'Elmhurst',
-  'Forest Hills',
-  'Kew Gardens',
-  'Rego Park',
-  'Woodside',
-  'Jamaica',
-  'Howard Beach',
-  'Richmond Hill',
-  'Rockaway',
-  // 'Chicago',
-];
+// const citiesOfInterest = [
+//   'New York',
+//   'Brooklyn',
+//   'Bronx',
+//   'Staten Island',
+//   'Astoria',
+//   'Jackson Heights',
+//   'Sunnyside',
+//   'Bayside',
+//   'Bellerose',
+//   'Flushing',
+//   'Fresh Meadows',
+//   'Whitestone',
+//   'Elmhurst',
+//   'Forest Hills',
+//   'Kew Gardens',
+//   'Rego Park',
+//   'Woodside',
+//   'Jamaica',
+//   'Howard Beach',
+//   'Richmond Hill',
+//   'Rockaway',
+//   // 'Chicago',
+// ];
 
 let firstRenderWithUsers = true;
 let curUserLocationName = '';
@@ -207,30 +207,51 @@ const Map = ({ auth, users }) => {
           : null}
 
         {starbucksData.branches.map(curStarbucks => {
-          if (citiesOfInterest.includes(curStarbucks.city)) {
-            return (
-              <Marker
-                key={curStarbucks.store_id}
-                latitude={curStarbucks.latitude}
-                longitude={curStarbucks.longitude}
+          // if (citiesOfInterest.includes(curStarbucks.city)) {
+          //   return (
+          //     <Marker
+          //       key={curStarbucks.store_id}
+          //       latitude={curStarbucks.latitude}
+          //       longitude={curStarbucks.longitude}
+          //     >
+          //       <button
+          //         onClick={event => {
+          //           event.preventDefault();
+          //           setSelectedStarbucks(curStarbucks);
+          //         }}
+          //         className="marker-btn"
+          //       >
+          //         <img
+          //           src="https://img.icons8.com/color/48/000000/starbucks.png"
+          //           alt="Starbucks Icon"
+          //         />
+          //       </button>
+          //     </Marker>
+          //   );
+          // } else {
+          //   return null;
+          // }
+
+          return (
+            <Marker
+              key={curStarbucks.store_id}
+              latitude={curStarbucks.latitude}
+              longitude={curStarbucks.longitude}
+            >
+              <button
+                onClick={event => {
+                  event.preventDefault();
+                  setSelectedStarbucks(curStarbucks);
+                }}
+                className="marker-btn"
               >
-                <button
-                  onClick={event => {
-                    event.preventDefault();
-                    setSelectedStarbucks(curStarbucks);
-                  }}
-                  className="marker-btn"
-                >
-                  <img
-                    src="https://img.icons8.com/color/48/000000/starbucks.png"
-                    alt="Starbucks Icon"
-                  />
-                </button>
-              </Marker>
-            );
-          } else {
-            return null;
-          }
+                <img
+                  src="https://img.icons8.com/color/48/000000/starbucks.png"
+                  alt="Starbucks Icon"
+                />
+              </button>
+            </Marker>
+          );
         })}
 
         {wholeFoodsData.branches.map(curWholeFoods => {
