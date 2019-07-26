@@ -19,7 +19,7 @@ class Events extends Component {
     const { data } = await axios.get(
       'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
     );
-    console.log('data: ', data.results);
+    console.log('Events data.results: ', data.results);
     this.setState({
       events: data.results,
     });
