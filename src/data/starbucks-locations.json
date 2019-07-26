@@ -129,22 +129,6 @@
       "storeId": 7098
     },
     {
-      "city": "Jamaica",
-      "name": "JFK T1 pre security food court",
-      "country": "US",
-      "longitude": -73.7912826538086,
-      "latitude": 40.6426429748535,
-      "storeId": 7497
-    },
-    {
-      "city": "Jamaica",
-      "name": "JFK T7 Pre Security Ticketing",
-      "country": "US",
-      "longitude": -73.7819519042969,
-      "latitude": 40.6484832763672,
-      "storeId": 7702
-    },
-    {
       "city": "New York",
       "name": "Empire State Building",
       "country": "US",
@@ -423,14 +407,6 @@
       "longitude": -73.7961349487305,
       "latitude": 40.7225151062012,
       "storeId": 10917
-    },
-    {
-      "city": "Jamaica",
-      "name": "JFK T7 Gate 7",
-      "country": "US",
-      "longitude": -73.7823715209961,
-      "latitude": 40.6484565734863,
-      "storeId": 10792
     },
     {
       "city": "Bronx",
@@ -1087,14 +1063,6 @@
       "longitude": -74.0034255981445,
       "latitude": 40.7567825317383,
       "storeId": 14762
-    },
-    {
-      "city": "Jamaica",
-      "name": "JFK - T8 American Air",
-      "country": "US",
-      "longitude": -73.7917251586914,
-      "latitude": 40.6483192443848,
-      "storeId": 14373
     },
     {
       "city": "New York",
@@ -2025,14 +1993,6 @@
       "storeId": 1005807
     },
     {
-      "city": "Jamaica",
-      "name": "JFK T8 North",
-      "country": "US",
-      "longitude": -73.7932586669922,
-      "latitude": 40.6448936462402,
-      "storeId": 1005566
-    },
-    {
       "city": "New York",
       "name": "Macy's Mezzanine",
       "country": "US",
@@ -2087,14 +2047,6 @@
       "longitude": -73.9705963134766,
       "latitude": 40.7967872619629,
       "storeId": 1006372
-    },
-    {
-      "city": "Jamaica",
-      "name": "JFK T5 Gate 22",
-      "country": "US",
-      "longitude": -73.7932586669922,
-      "latitude": 40.6448936462402,
-      "storeId": 1006479
     },
     {
       "city": "New York",
@@ -2287,14 +2239,6 @@
       "longitude": -73.9961776733398,
       "latitude": 40.7296562194824,
       "storeId": 14149
-    },
-    {
-      "city": "Jamaica",
-      "name": "JFK - T1 Evenings",
-      "country": "US",
-      "longitude": -73.7906875610352,
-      "latitude": 40.6431312561035,
-      "storeId": 1011319
     },
     {
       "city": "New York",
