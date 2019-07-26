@@ -281,8 +281,8 @@ const Map = ({ auth, users, events }) => {
           );
         })}
 
-        {events && events.length
-          ? events.map(curMeetup => {
+        {events.allEvents
+          ? events.allEvents.map(curMeetup => {
               return (
                 <Marker
                   key={curMeetup.id}
@@ -441,6 +441,41 @@ const Map = ({ auth, users, events }) => {
               <strong>
                 Whole Foods Market - {selectedWholeFoods.location.address}
               </strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              <div>
+                <strong>Opening Hours: </strong>8AM-10PM EDT, Monday through
+                Sunday
+              </div>
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}&destination=Whole+Foods+Market+${selectedWholeFoods.location.address
+                  .split(' ')
+                  .join('+')}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Navigate
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedMeetup ? (
+          <Popup
+            onClose={() => {
+              setSelectedWholeFoods(null);
+            }}
+            latitude={selectedMeetup.venue.lat}
+            longitude={selectedMeetup.venue.lon}
+          >
+            <div className="location-description">
+              <strong>WeWork - {selectedWholeFoods.venue.address_1}</strong>
             </div>
             <hr />
             <div className="navigation-container">

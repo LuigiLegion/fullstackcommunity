@@ -30,8 +30,8 @@ class Events extends Component {
   // }
 
   render() {
-    console.log('events: ', this.props.events.events);
-    console.log('events.length: ', this.props.events.events.length);
+    // console.log('events: ', this.props.events.events);
+    // console.log('events.length: ', this.props.events.events.length);
     return (
       <div className="section">
         <div className="card z-depth-0">
@@ -42,8 +42,9 @@ class Events extends Component {
             <ul className="notifications">
               {/* {this.state.events && this.state.events.length ? (
                 this.state.events.map(curEvent => { */}
-              {this.props.events.events && this.props.events.events.length ? (
-                this.props.events.events.map(curEvent => {
+              {this.props.events.allEvents &&
+              this.props.events.allEvents.length ? (
+                this.props.events.allEvents.map(curEvent => {
                   return (
                     <li key={curEvent.id}>
                       <span className="red-text-color">
@@ -72,6 +73,8 @@ class Events extends Component {
               ) : (
                 <li>No upcoming Meetups were found.</li>
               )}
+              <br />
+              <hr />
               <br />
               <li>
                 <span className="red-text-color">

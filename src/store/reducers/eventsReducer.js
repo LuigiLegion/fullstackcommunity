@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Initial State
 const initialState = {
-  events: [],
+  allEvents: [],
 };
 
 // Actions
@@ -34,7 +34,7 @@ const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_EVENTS:
       console.log('Fetched meetups successfully in the reducer');
-      return { ...state, events: action.events };
+      return { ...state, allEvents: action.events };
     default:
       return state;
   }
