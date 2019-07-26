@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 
+// import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
 import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
 
@@ -42,7 +43,7 @@ function useForceUpdate() {
   return () => set(!value);
 }
 
-const Map = ({ auth, users }) => {
+const Map = ({ auth, users, events }) => {
   const [viewport, setViewport] = useState({
     latitude: 40.7531823,
     longitude: -73.9844421,
@@ -58,6 +59,8 @@ const Map = ({ auth, users }) => {
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
 
   const [selectedWholeFoods, setSelectedWholeFoods] = useState(null);
+
+  const [selectedMeetup, setSelectedMeetup] = useState(null);
 
   const forceUpdate = useForceUpdate();
 
@@ -278,6 +281,32 @@ const Map = ({ auth, users }) => {
           );
         })}
 
+        {events.allEvents
+          ? events.allEvents.map(curMeetup => {
+              return (
+                <Marker
+                  key={curMeetup.id}
+                  latitude={curMeetup.venue.lat}
+                  longitude={curMeetup.venue.lon}
+                >
+                  <button
+                    onClick={event => {
+                      event.preventDefault();
+                      setSelectedMeetup(curMeetup);
+                    }}
+                    className="marker-btn"
+                  >
+                    <img
+                      // src="https://img.icons8.com/ios/50/000000/meetup.png"
+                      src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
+                      alt="Whole Foods Icon"
+                    />
+                  </button>
+                </Marker>
+              );
+            })
+          : null}
+
         {selectedAlum ? (
           <Popup
             onClose={() => {
@@ -436,6 +465,51 @@ const Map = ({ auth, users }) => {
             </div>
           </Popup>
         ) : null}
+
+        {selectedMeetup ? (
+          <Popup
+            onClose={() => {
+              setSelectedMeetup(null);
+            }}
+            latitude={selectedMeetup.venue.lat}
+            longitude={selectedMeetup.venue.lon}
+          >
+            <div className="location-description">
+              <strong>WeWork - {selectedMeetup.venue.address_1}</strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              {/* <div>
+                <strong>Opening Hours: </strong>8AM-10PM EDT, Monday through
+                Sunday
+              </div> */}
+              <div>
+                <strong>{selectedMeetup.name}</strong>
+              </div>
+              <a
+                href={selectedMeetup.event_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RSVP
+              </a>
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}&destination=WeWork+${selectedMeetup.venue.address_1
+                  .split(' ')
+                  .join('+')}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Navigate
+              </a>
+            </div>
+          </Popup>
+        ) : null}
       </ReactMapGL>
     </div>
   );
@@ -444,10 +518,20 @@ const Map = ({ auth, users }) => {
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
   users: state.firestore.ordered.users,
+  events: state.events,
 });
 
+// const mapDispatchToProps = dispatch => ({
+//   getEventsThunk() {
+//     dispatch(getEventsThunkCreator());
+//   },
+// });
+
 export default compose(
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps
+    // mapDispatchToProps
+  ),
   firestoreConnect([
     {
       collection: 'users',
