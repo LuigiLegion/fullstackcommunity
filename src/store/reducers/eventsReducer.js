@@ -15,7 +15,7 @@ export const gotEventsActionCreator = events => ({
 });
 
 // Thunk Creators
-export const getEventsThunkCreator = newProject => {
+export const getEventsThunkCreator = () => {
   return async dispatch => {
     try {
       const { data } = await axios.get(

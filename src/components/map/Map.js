@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 
+import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
 import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
 
@@ -446,8 +447,17 @@ const mapStateToProps = state => ({
   users: state.firestore.ordered.users,
 });
 
+const mapDispatchToProps = dispatch => ({
+  getEventsThunk() {
+    dispatch(getEventsThunkCreator());
+  },
+});
+
 export default compose(
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   firestoreConnect([
     {
       collection: 'users',
