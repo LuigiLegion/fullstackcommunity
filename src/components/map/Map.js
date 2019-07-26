@@ -234,7 +234,7 @@ const Map = ({ auth, users }) => {
 
           return (
             <Marker
-              key={curStarbucks.store_id}
+              key={curStarbucks.storeId}
               latitude={curStarbucks.latitude}
               longitude={curStarbucks.longitude}
             >

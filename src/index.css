@@ -133,3 +133,14 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .name-text-positioning {
   left: 30px;
 }
+
+.events-time-and-rsvp-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.events-time-and-rsvp-containee {
+  flex: 1;
+}
