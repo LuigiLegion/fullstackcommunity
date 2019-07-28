@@ -23,6 +23,11 @@ export const getEventsThunkCreator = () => {
       );
       // console.log('eventReducer data.results: ', data.results);
       dispatch(gotEventsActionCreator(data.results));
+
+      console.log('localStorage BEFORE: ', localStorage);
+      localStorage.clear();
+      localStorage.setItem('meetups', JSON.stringify(data.results));
+      console.log('localStorage AFTER: ', localStorage);
     } catch (error) {
       console.error(error);
     }
