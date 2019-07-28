@@ -67,6 +67,8 @@ const Map = ({ auth, users, events }) => {
 
   const forceUpdate = useForceUpdate();
 
+  const allMeetups = JSON.parse(localStorage.meetups);
+
   // console.log('auth: ', auth, 'users: ', users);
 
   // useEffect(() => {
@@ -308,8 +310,10 @@ const Map = ({ auth, users, events }) => {
           );
         })}
 
-        {events.allEvents
-          ? events.allEvents.map(curMeetup => {
+        {/* {events.allEvents
+          ? events.allEvents.map(curMeetup => { */}
+        {allMeetups
+          ? allMeetups.map(curMeetup => {
               return (
                 <Marker
                   key={curMeetup.id}
