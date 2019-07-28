@@ -284,6 +284,30 @@ const Map = ({ auth, users, events }) => {
           );
         })}
 
+        {publicLibrariesData.branches.map(curPublicLibrary => {
+          return (
+            <Marker
+              key={curPublicLibrary.id}
+              latitude={curPublicLibrary.lat}
+              longitude={curPublicLibrary.lon}
+            >
+              <button
+                onClick={event => {
+                  event.preventDefault();
+                  setSelectedPublicLibrary(curPublicLibrary);
+                }}
+                className="marker-btn"
+              >
+                <img
+                  // src="https://img.icons8.com/dusk/64/000000/book.png"
+                  src="https://img.icons8.com/dusk/64/000000/book-shelf.png"
+                  alt="Public Library Icon"
+                />
+              </button>
+            </Marker>
+          );
+        })}
+
         {events.allEvents
           ? events.allEvents.map(curMeetup => {
               return (
