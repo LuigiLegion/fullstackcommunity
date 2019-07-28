@@ -509,9 +509,85 @@ const Map = ({ auth, users, events }) => {
             </div>
             <hr />
             <div className="navigation-container">
-              {/* <div>
-                <strong>Closes at: 10PM</strong>
-              </div> */}
+              <div>
+                <strong>Opening Hours:</strong>
+                <div>
+                  <strong>Monday: </strong>
+                  {selectedPublicLibrary.monOpen} -{' '}
+                  {selectedPublicLibrary.monClose}
+                  {selectedPublicLibrary.monReopen
+                    ? `, ${selectedPublicLibrary.monReopen}-${
+                        selectedPublicLibrary.monReclose
+                      }`
+                    : null}
+                </div>
+                <div>
+                  <strong>Tuesday: </strong>
+                  {selectedPublicLibrary.tueOpen} -{' '}
+                  {selectedPublicLibrary.tueClose}
+                  {selectedPublicLibrary.tueReopen
+                    ? `, ${selectedPublicLibrary.tueReopen}-${
+                        selectedPublicLibrary.tueReclose
+                      }`
+                    : null}
+                </div>
+                <div>
+                  <strong>Wednesday: </strong>
+                  {selectedPublicLibrary.wedOpen} -{' '}
+                  {selectedPublicLibrary.wedClose}
+                  {selectedPublicLibrary.wedReopen
+                    ? `, ${selectedPublicLibrary.wedReopen}-${
+                        selectedPublicLibrary.wedReclose
+                      }`
+                    : null}
+                </div>
+                <div>
+                  <strong>Thursday: </strong>
+                  {selectedPublicLibrary.thuOpen} -{' '}
+                  {selectedPublicLibrary.thuClose}
+                  {selectedPublicLibrary.thuReopen
+                    ? `, ${selectedPublicLibrary.thuReopen}-${
+                        selectedPublicLibrary.thuReclose
+                      }`
+                    : null}
+                </div>
+                <div>
+                  <strong>Friday: </strong>
+                  {selectedPublicLibrary.friOpen} -{' '}
+                  {selectedPublicLibrary.friClose}
+                  {selectedPublicLibrary.friReopen
+                    ? `, ${selectedPublicLibrary.friReopen}-${
+                        selectedPublicLibrary.friReclose
+                      }`
+                    : null}
+                </div>
+                <div>
+                  <strong>Saturday: </strong>
+                  {selectedPublicLibrary.satOpen} -{' '}
+                  {selectedPublicLibrary.satClose}
+                  {selectedPublicLibrary.satReopen
+                    ? `, ${selectedPublicLibrary.satReopen}-${
+                        selectedPublicLibrary.satReclose
+                      }`
+                    : null}
+                </div>
+                <div>
+                  <strong>Sunday: </strong>
+                  {selectedPublicLibrary.sunOpen === 'Closed' ? (
+                    selectedPublicLibrary.sunOpen
+                  ) : (
+                    <div>
+                      {selectedPublicLibrary.sunOpen} -{' '}
+                      {selectedPublicLibrary.sunClose}
+                      {selectedPublicLibrary.sunReopen
+                        ? `, ${selectedPublicLibrary.sunReopen}-${
+                            selectedPublicLibrary.sunReclose
+                          }`
+                        : null}
+                    </div>
+                  )}
+                </div>
+              </div>
               <br />
               <a
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
