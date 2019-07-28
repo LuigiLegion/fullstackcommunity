@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 // import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
 import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
+import * as publicLibrariesData from '../../data/public-libraries-locations.json';
 
 // const citiesOfInterest = [
 //   'New York',
@@ -59,6 +60,8 @@ const Map = ({ auth, users, events }) => {
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
 
   const [selectedWholeFoods, setSelectedWholeFoods] = useState(null);
+
+  const [selectedPublicLibrary, setSelectedPublicLibrary] = useState(null);
 
   const [selectedMeetup, setSelectedMeetup] = useState(null);
 
@@ -281,6 +284,30 @@ const Map = ({ auth, users, events }) => {
           );
         })}
 
+        {publicLibrariesData.branches.map(curPublicLibrary => {
+          return (
+            <Marker
+              key={curPublicLibrary.id}
+              latitude={curPublicLibrary.lat}
+              longitude={curPublicLibrary.lon}
+            >
+              <button
+                onClick={event => {
+                  event.preventDefault();
+                  setSelectedPublicLibrary(curPublicLibrary);
+                }}
+                className="marker-btn"
+              >
+                <img
+                  // src="https://img.icons8.com/dusk/64/000000/book.png"
+                  src="https://img.icons8.com/dusk/64/000000/book-shelf.png"
+                  alt="Public Library Icon"
+                />
+              </button>
+            </Marker>
+          );
+        })}
+
         {events.allEvents
           ? events.allEvents.map(curMeetup => {
               return (
@@ -455,6 +482,45 @@ const Map = ({ auth, users, events }) => {
                   .join(
                     '+'
                   )}&destination=Whole+Foods+Market+${selectedWholeFoods.location.address
+                  .split(' ')
+                  .join('+')}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Navigate
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedPublicLibrary ? (
+          <Popup
+            onClose={() => {
+              setSelectedPublicLibrary(null);
+            }}
+            latitude={selectedPublicLibrary.lat}
+            longitude={selectedPublicLibrary.lon}
+          >
+            <div className="location-description">
+              <strong>
+                {selectedPublicLibrary.oversightAgency} -{' '}
+                {selectedPublicLibrary.address}
+              </strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              {/* <div>
+                <strong>Closes at: 10PM</strong>
+              </div> */}
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}&destination=${selectedPublicLibrary.oversightAgency
+                  .split(' ')
+                  .join('+')}+${selectedPublicLibrary.address
                   .split(' ')
                   .join('+')}&travelmode=transit`}
                 target="_blank"
