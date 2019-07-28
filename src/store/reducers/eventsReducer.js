@@ -21,27 +21,27 @@ export const getEventsThunkCreator = () => {
       const javascriptCodersMeetupsData = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
       );
-      console.log(
-        'javascriptCodersMeetupsData: ',
-        javascriptCodersMeetupsData.data.results
-      );
+      // console.log(
+      //   'javascriptCodersMeetupsData: ',
+      //   javascriptCodersMeetupsData.data.results
+      // );
       const bootcampersAnonymousMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=19344391&page=20'
       );
-      console.log(
-        'bootcampersAnonymousMeetupsData: ',
-        bootcampersAnonymousMeetups.data.results
-      );
+      // console.log(
+      //   'bootcampersAnonymousMeetupsData: ',
+      //   bootcampersAnonymousMeetups.data.results
+      // );
       const allMeetupsData = [
         ...javascriptCodersMeetupsData.data.results,
         ...bootcampersAnonymousMeetups.data.results,
       ];
       dispatch(gotEventsActionCreator(allMeetupsData));
 
-      console.log('localStorage BEFORE: ', localStorage);
+      // console.log('localStorage BEFORE: ', localStorage);
       localStorage.clear();
       localStorage.setItem('meetups', JSON.stringify(allMeetupsData));
-      console.log('localStorage AFTER: ', localStorage);
+      // console.log('localStorage AFTER: ', localStorage);
     } catch (error) {
       console.error(error);
     }
