@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 // import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
 import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
+import * as publicLibrariesData from '../../data/public-libraries-locations.json';
 
 // const citiesOfInterest = [
 //   'New York',
@@ -59,6 +60,8 @@ const Map = ({ auth, users, events }) => {
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
 
   const [selectedWholeFoods, setSelectedWholeFoods] = useState(null);
+
+  const [selectedPublicLibrary, setSelectedPublicLibrary] = useState(null);
 
   const [selectedMeetup, setSelectedMeetup] = useState(null);
 
