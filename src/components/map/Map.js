@@ -638,7 +638,13 @@ const Map = ({ auth, users, events }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                RSVP
+                {selectedMeetup.rsvp_limit
+                  ? `RSVP (${selectedMeetup.yes_rsvp_count}/${
+                      selectedMeetup.rsvp_limit
+                    }
+                Attending)`
+                  : `RSVP (${selectedMeetup.yes_rsvp_count}
+                Attending)`}
               </a>
               <br />
               <a
