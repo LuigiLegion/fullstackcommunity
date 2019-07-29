@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -29,9 +29,18 @@ const ProjectDetails = props => {
             <div style={{ color: 'black' }}>{`Interested in working with ${
               project.authorFirstName
             } on this project?`}</div>
-            <div style={{ color: 'black' }}>{`Contact them at ${
-              project.authorEmail
-            }`}</div>
+            <div>
+              <span style={{ color: 'black' }}>{`Contact them at ${
+                project.authorEmail
+              }`}</span>
+              <NavLink
+                style={{ color: '#ef5350' }}
+                activeClassName="right"
+                to="/"
+              >
+                <strong>Back</strong>
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>
