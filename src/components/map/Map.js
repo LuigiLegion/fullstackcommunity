@@ -625,12 +625,13 @@ const Map = ({ auth, users, events }) => {
             </div>
             <hr />
             <div className="navigation-container">
-              {/* <div>
-                <strong>Opening Hours: </strong>8AM-10PM EDT, Monday through
-                Sunday
-              </div> */}
               <div>
-                <strong>{selectedMeetup.name}</strong>
+                <strong>Meetup Title: </strong>
+                {selectedMeetup.name}
+              </div>
+              <div>
+                <strong>Date: </strong>
+                {new Date(selectedMeetup.time).toString().slice(0, 15)}
               </div>
               <a
                 href={selectedMeetup.event_url}
