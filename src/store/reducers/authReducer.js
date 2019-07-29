@@ -67,6 +67,10 @@ export const signOutThunkCreator = () => {
       const firebase = getFirebase();
       await firebase.auth().signOut();
       dispatch(signOutSuccessActionCreator());
+
+      // console.log('authReducer localStorage pre-clear: ', localStorage);
+      localStorage.clear();
+      // console.log('authReducer localStorage post-clear: ', localStorage);
     } catch (error) {
       console.error(error);
       dispatch(signOutErrorActionCreator());
