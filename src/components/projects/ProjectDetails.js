@@ -29,13 +29,18 @@ const ProjectDetails = props => {
             <div style={{ color: 'black' }}>{`Interested in working with ${
               project.authorFirstName
             } on this project?`}</div>
-            <div style={{ color: 'black' }}>{`Contact them at ${
-              project.authorEmail
-            }`}</div>
-            <br />
-            <NavLink style={{ color: '#ef5350' }} to="/">
-              <strong>Back</strong>
-            </NavLink>
+            <div>
+              <span style={{ color: 'black' }}>{`Contact them at ${
+                project.authorEmail
+              }`}</span>
+              <NavLink
+                style={{ color: '#ef5350' }}
+                activeClassName="right"
+                to="/"
+              >
+                <strong>Back</strong>
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>
