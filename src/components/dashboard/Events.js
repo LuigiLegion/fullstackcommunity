@@ -32,19 +32,31 @@ class Events extends Component {
   render() {
     // console.log('events: ', this.props.events.events);
     // console.log('events.length: ', this.props.events.events.length);
+    // console.log(
+    //   'this.props.events.fetchedEvents: ',
+    //   this.props.events.fetchedEvents
+    // );
+    // console.log('this.props.events.allEvents: ', this.props.events.allEvents);
     return (
       <div className="section">
         <div className="card z-depth-0">
           <div className="card-content grey-text text-darken-3">
             <span className="card-title">
-              <strong>Upcoming Events</strong>
+              <strong>Upcoming Meetups</strong>
             </span>
-            <ul className="notifications">
-              {/* {this.state.events && this.state.events.length ? (
-                this.state.events.map(curEvent => { */}
-              {this.props.events.allEvents &&
-              this.props.events.allEvents.length ? (
-                this.props.events.allEvents.map(curEvent => {
+            {!this.props.events.fetchedEvents ? (
+              <div className="logos-parent-container">
+                <div className="logo-container">Loading Meetups...</div>
+              </div>
+            ) : !this.props.events.allEvents.length ? (
+              <div className="logos-parent-container">
+                <div className="logo-container">
+                  No upcoming Meetups were found.
+                </div>
+              </div>
+            ) : (
+              <ul className="notifications">
+                {this.props.events.allEvents.map(curEvent => {
                   return (
                     <li key={curEvent.id}>
                       <span className="red-text-color">
@@ -77,33 +89,31 @@ class Events extends Component {
                       </div>
                     </li>
                   );
-                })
-              ) : (
-                <li>No upcoming Meetups were found.</li>
-              )}
-              <br />
-              <hr />
-              <br />
-              <li>
-                <span className="red-text-color">
-                  <strong>Hacker Hours at Fullstack Academy of Code</strong>
-                </span>
-                <div>5 Hanover Square, New York</div>
-                <div className="events-time-and-rsvp-container">
-                  <div className="grey-text note-date events-time-and-rsvp-containee">
-                    Every second Monday of the Month
+                })}
+                <br />
+                <hr />
+                <br />
+                <li>
+                  <span className="red-text-color">
+                    <strong>Hacker Hours at Fullstack Academy of Code</strong>
+                  </span>
+                  <div>5 Hanover Square, New York</div>
+                  <div className="events-time-and-rsvp-container">
+                    <div className="grey-text note-date events-time-and-rsvp-containee">
+                      Every second Monday of the Month
+                    </div>
+                    <a
+                      className="events-time-and-rsvp-containee"
+                      href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="right">RSVP</span>
+                    </a>
                   </div>
-                  <a
-                    className="events-time-and-rsvp-containee"
-                    href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="right">RSVP</span>
-                  </a>
-                </div>
-              </li>
-            </ul>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       </div>
