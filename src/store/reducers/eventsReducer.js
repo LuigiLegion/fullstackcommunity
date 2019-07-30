@@ -3,6 +3,7 @@ import axios from 'axios';
 // Initial State
 const initialState = {
   allEvents: [],
+  fetchedEvents: false,
 };
 
 // Actions
@@ -18,18 +19,33 @@ export const gotEventsActionCreator = events => ({
 export const getEventsThunkCreator = () => {
   return async dispatch => {
     try {
+      // // Meetup group with no future meetups test:
+      // const starWarsNycMeetups = await axios.get(
+      //   'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=148015&page=20'
+      // );
+      // console.log(
+      //   'starWarsNycMeetups: ',
+      //   starWarsNycMeetups.data.results,
+      //   'is an Array: ',
+      //   Array.isArray(starWarsNycMeetups.data.results)
+      // );
+      // const allMeetupsData = [...starWarsNycMeetups.data.results];
+      // console.log('allMeetupsData: ', allMeetupsData);
+      // dispatch(gotEventsActionCreator(allMeetupsData));
+
+      // Meetup groups with future meetups:
       const javascriptCodersMeetupsData = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
       );
       // console.log(
-      //   'javascriptCodersMeetupsData: ',
+      //   'javascriptCodersMeetups: ',
       //   javascriptCodersMeetupsData.data.results
       // );
       const bootcampersAnonymousMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=19344391&page=20'
       );
       // console.log(
-      //   'bootcampersAnonymousMeetupsData: ',
+      //   'bootcampersAnonymousMeetups: ',
       //   bootcampersAnonymousMeetups.data.results
       // );
       const allMeetupsData = [
@@ -53,7 +69,7 @@ const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_EVENTS:
       // console.log('Fetched meetups successfully in the reducer');
-      return { ...state, allEvents: action.events };
+      return { ...state, allEvents: action.events, fetchedEvents: true };
     default:
       return state;
   }
