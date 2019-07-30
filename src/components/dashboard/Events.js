@@ -32,11 +32,11 @@ class Events extends Component {
   render() {
     // console.log('events: ', this.props.events.events);
     // console.log('events.length: ', this.props.events.events.length);
-    console.log(
-      'this.props.events.fetchedEvents: ',
-      this.props.events.fetchedEvents
-    );
-    console.log('this.props.events.allEvents: ', this.props.events.allEvents);
+    // console.log(
+    //   'this.props.events.fetchedEvents: ',
+    //   this.props.events.fetchedEvents
+    // );
+    // console.log('this.props.events.allEvents: ', this.props.events.allEvents);
     return (
       <div className="section">
         <div className="card z-depth-0">

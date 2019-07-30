@@ -19,7 +19,7 @@ export const gotEventsActionCreator = events => ({
 export const getEventsThunkCreator = () => {
   return async dispatch => {
     try {
-      // // Meetup group with no future meetups test:
+      // // Meetup group with no upcoming meetups for testing purposes:
       // const starWarsNycMeetups = await axios.get(
       //   'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=148015&page=20'
       // );
