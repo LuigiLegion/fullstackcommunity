@@ -47,12 +47,14 @@ class Events extends Component {
             {!this.props.events.fetchedEvents ? (
               <div className="logos-parent-container">
                 <div className="logo-container">Loading Meetups...</div>
+                <br />
               </div>
             ) : !this.props.events.allEvents.length ? (
               <div className="logos-parent-container">
                 <div className="logo-container">
                   No upcoming Meetups were found.
                 </div>
+                <br />
               </div>
             ) : (
               <ul className="notifications">
@@ -87,10 +89,10 @@ class Events extends Component {
                           </span>
                         </a>
                       </div>
+                      <br />
                     </li>
                   );
                 })}
-                <br />
                 <hr />
                 <br />
                 <li>
