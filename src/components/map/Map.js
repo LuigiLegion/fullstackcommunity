@@ -335,175 +335,6 @@ const Map = ({ auth, users }) => {
           </button>
         </Marker>
 
-        {selectedAlum ? (
-          <Popup
-            onClose={() => {
-              setSelectedAlum(null);
-            }}
-            latitude={selectedAlum.locationGeocode.lat}
-            longitude={selectedAlum.locationGeocode.lon}
-          >
-            <div className="location-description">
-              <strong>{`${selectedAlum.firstName} ${
-                selectedAlum.lastName
-              }`}</strong>
-            </div>
-            <hr />
-            <div className="location-description">
-              <strong>Gender: </strong>
-              {selectedAlum.gender}
-            </div>
-            <div className="location-description">
-              <strong>Cohort: </strong>
-              {`${selectedAlum.cohort}-${selectedAlum.program}`}
-            </div>
-            <div className="location-description">
-              {selectedAlum.status === 'Employed' ? (
-                <span>
-                  <strong>Works at: </strong>
-                  {selectedAlum.company}
-                </span>
-              ) : (
-                <span>
-                  <strong>Status: </strong>
-                  {selectedAlum.status === 'Unemployed'
-                    ? 'Seeking Opportunities'
-                    : selectedAlum.status}
-                </span>
-              )}
-            </div>
-            <div className="location-description">
-              <strong>Contact Information: </strong>
-              <a
-                href={`mailto:${selectedAlum.email}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <strong>{selectedAlum.email}</strong>
-              </a>
-            </div>
-            <div className="location-description">
-              <strong>Subway Station: </strong>
-              {selectedAlum.locationName}
-            </div>
-          </Popup>
-        ) : null}
-
-        {selectedCampus ? (
-          <Popup
-            onClose={() => {
-              setSelectedCampus(false);
-            }}
-            latitude={40.7050758}
-            longitude={-74.0113491}
-          >
-            <div className="location-description">
-              <strong>Fullstack Academy of Code</strong>
-            </div>
-            <hr />
-            <div className="navigation-container">
-              <div>
-                <strong>Next Hacker Hours Meetup: </strong>Monday, August 12th,
-                6:30PM-9:30PM EDT
-              </div>
-              <a
-                href={
-                  'https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2'
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                RSVP
-              </a>
-              <br />
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}+Station&destination=Fullstack+Academy&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Navigate
-              </a>
-            </div>
-          </Popup>
-        ) : null}
-
-        {selectedStarbucks ? (
-          <Popup
-            onClose={() => {
-              setSelectedStarbucks(null);
-            }}
-            latitude={selectedStarbucks.latitude}
-            longitude={selectedStarbucks.longitude}
-          >
-            <div className="location-description">
-              <strong>Starbucks - {selectedStarbucks.name}</strong>
-            </div>
-            <hr />
-            <div className="navigation-container">
-              {/* <div>
-                <strong>Closes at: 10PM</strong>
-              </div> */}
-              <br />
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}+Station&destination=Starbucks+${selectedStarbucks.name
-                  .split(' ')
-                  .join('+')}&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Navigate
-              </a>
-            </div>
-          </Popup>
-        ) : null}
-
-        {selectedWholeFoods ? (
-          <Popup
-            onClose={() => {
-              setSelectedWholeFoods(null);
-            }}
-            latitude={selectedWholeFoods.location.lat}
-            longitude={selectedWholeFoods.location.lng}
-          >
-            <div className="location-description">
-              <strong>
-                Whole Foods Market - {selectedWholeFoods.location.address}
-              </strong>
-            </div>
-            <hr />
-            <div className="navigation-container">
-              <div className="navigation-containee">
-                <strong>Opening Hours</strong>
-              </div>
-              <div className="navigation-containee">
-                8AM - 10PM, Monday through Sunday
-              </div>
-              <br />
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}+Station&destination=Whole+Foods+Market+${selectedWholeFoods.location.address
-                  .split(' ')
-                  .join('+')}&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Navigate
-              </a>
-            </div>
-          </Popup>
-        ) : null}
-
         {selectedPublicLibrary ? (
           <Popup
             onClose={() => {
@@ -619,6 +450,79 @@ const Map = ({ auth, users }) => {
           </Popup>
         ) : null}
 
+        {selectedStarbucks ? (
+          <Popup
+            onClose={() => {
+              setSelectedStarbucks(null);
+            }}
+            latitude={selectedStarbucks.latitude}
+            longitude={selectedStarbucks.longitude}
+          >
+            <div className="location-description">
+              <strong>Starbucks - {selectedStarbucks.name}</strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              {/* <div>
+                <strong>Closes at: 10PM</strong>
+              </div> */}
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}+Station&destination=Starbucks+${selectedStarbucks.name
+                  .split(' ')
+                  .join('+')}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Navigate
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedWholeFoods ? (
+          <Popup
+            onClose={() => {
+              setSelectedWholeFoods(null);
+            }}
+            latitude={selectedWholeFoods.location.lat}
+            longitude={selectedWholeFoods.location.lng}
+          >
+            <div className="location-description">
+              <strong>
+                Whole Foods Market - {selectedWholeFoods.location.address}
+              </strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              <div className="navigation-containee">
+                <strong>Opening Hours</strong>
+              </div>
+              <div className="navigation-containee">
+                8AM - 10PM, Monday through Sunday
+              </div>
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}+Station&destination=Whole+Foods+Market+${selectedWholeFoods.location.address
+                  .split(' ')
+                  .join('+')}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Navigate
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
         {selectedMeetup ? (
           <Popup
             onClose={() => {
@@ -649,9 +553,9 @@ const Map = ({ auth, users }) => {
                   ? `RSVP (${selectedMeetup.yes_rsvp_count}/${
                       selectedMeetup.rsvp_limit
                     }
-                Attending)`
+        Attending)`
                   : `RSVP (${selectedMeetup.yes_rsvp_count}
-                Attending)`}
+        Attending)`}
               </a>
               <br />
               <a
@@ -662,6 +566,102 @@ const Map = ({ auth, users }) => {
                   )}+Station&destination=WeWork+${selectedMeetup.venue.address_1
                   .split(' ')
                   .join('+')}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Navigate
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedAlum ? (
+          <Popup
+            onClose={() => {
+              setSelectedAlum(null);
+            }}
+            latitude={selectedAlum.locationGeocode.lat}
+            longitude={selectedAlum.locationGeocode.lon}
+          >
+            <div className="location-description">
+              <strong>{`${selectedAlum.firstName} ${
+                selectedAlum.lastName
+              }`}</strong>
+            </div>
+            <hr />
+            <div className="location-description">
+              <strong>Gender: </strong>
+              {selectedAlum.gender}
+            </div>
+            <div className="location-description">
+              <strong>Cohort: </strong>
+              {`${selectedAlum.cohort}-${selectedAlum.program}`}
+            </div>
+            <div className="location-description">
+              {selectedAlum.status === 'Employed' ? (
+                <span>
+                  <strong>Works at: </strong>
+                  {selectedAlum.company}
+                </span>
+              ) : (
+                <span>
+                  <strong>Status: </strong>
+                  {selectedAlum.status === 'Unemployed'
+                    ? 'Seeking Opportunities'
+                    : selectedAlum.status}
+                </span>
+              )}
+            </div>
+            <div className="location-description">
+              <strong>Contact Information: </strong>
+              <a
+                href={`mailto:${selectedAlum.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>{selectedAlum.email}</strong>
+              </a>
+            </div>
+            <div className="location-description">
+              <strong>Subway Station: </strong>
+              {selectedAlum.locationName}
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedCampus ? (
+          <Popup
+            onClose={() => {
+              setSelectedCampus(false);
+            }}
+            latitude={40.7050758}
+            longitude={-74.0113491}
+          >
+            <div className="location-description">
+              <strong>Fullstack Academy of Code</strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              <div>
+                <strong>Next Hacker Hours Meetup: </strong>Monday, August 12th,
+                6:30PM-9:30PM EDT
+              </div>
+              <a
+                href={
+                  'https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2'
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RSVP
+              </a>
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}+Station&destination=Fullstack+Academy&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
