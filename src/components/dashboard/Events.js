@@ -79,13 +79,16 @@ class Events extends Component {
                           rel="noopener noreferrer"
                         >
                           <span className="right">
-                            {curEvent.rsvp_limit
-                              ? `RSVP (${curEvent.yes_rsvp_count}/${
-                                  curEvent.rsvp_limit
-                                }
-                Attending)`
-                              : `RSVP (${curEvent.yes_rsvp_count}
-                Attending)`}
+                            {curEvent.rsvp_limit ? (
+                              <strong>
+                                RSVP ({curEvent.yes_rsvp_count}/
+                                {curEvent.rsvp_limit} Attending)
+                              </strong>
+                            ) : (
+                              <strong>
+                                RSVP ({curEvent.yes_rsvp_count} Attending)
+                              </strong>
+                            )}
                           </span>
                         </a>
                       </div>
@@ -110,7 +113,9 @@ class Events extends Component {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <span className="right">RSVP</span>
+                      <span className="right">
+                        <strong>RSVP</strong>
+                      </span>
                     </a>
                   </div>
                 </li>
