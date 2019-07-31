@@ -6,7 +6,6 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 
-// import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
 import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
 import * as publicLibrariesData from '../../data/public-library-locations.json';
@@ -44,7 +43,7 @@ function useForceUpdate() {
   return () => set(!value);
 }
 
-const Map = ({ auth, users, events }) => {
+const Map = ({ auth, users }) => {
   const [viewport, setViewport] = useState({
     latitude: 40.7531823,
     longitude: -73.9844421,
@@ -98,121 +97,29 @@ const Map = ({ auth, users, events }) => {
           setViewport(viewport);
         }}
       >
-        <Marker latitude={40.7050758} longitude={-74.0113491}>
-          <button
-            onClick={event => {
-              event.preventDefault();
-              setSelectedCampus(true);
-            }}
-            className="marker-btn"
-          >
-            <img
-              className="marker-fullstack"
-              src="https://yt3.ggpht.com/a/AGF-l78JV4ZDPmU85HhYboU07siMZjFL_dHgm6o6Zg=s288-mo-c-c0xffffffff-rj-k-no"
-              alt="Fullstack Academy Location"
-            />
-          </button>
-        </Marker>
-
-        {users
-          ? users.map(curUser => {
-              // console.log(curUser);
-              if (curUser.id === auth.uid) {
-                if (firstRenderWithUsers) {
-                  viewport.latitude = curUser.locationGeocode.lat;
-                  viewport.longitude = curUser.locationGeocode.lon;
-                  firstRenderWithUsers = !firstRenderWithUsers;
-                  curUserLocationName = curUser.locationName;
-                  forceUpdate();
-                }
-                return (
-                  <Marker
-                    key={curUser.id}
-                    latitude={curUser.locationGeocode.lat}
-                    longitude={curUser.locationGeocode.lon}
-                  >
-                    <img
-                      className="marker-me"
-                      // src="https://img.icons8.com/ultraviolet/40/000000/marker.png"
-                      src="https://img.icons8.com/dusk/64/000000/student-center.png"
-                      alt="My Location"
-                    />
-                  </Marker>
-                );
-              } else {
-                if (curUser.status === 'Unemployed') {
-                  return (
-                    <Marker
-                      key={curUser.id}
-                      latitude={curUser.locationGeocode.lat}
-                      longitude={curUser.locationGeocode.lon}
-                    >
-                      <button
-                        onClick={event => {
-                          event.preventDefault();
-                          setSelectedAlum(curUser);
-                        }}
-                        className="marker-btn"
-                      >
-                        <img
-                          className="marker-others"
-                          // src="https://img.icons8.com/office/40/000000/marker.png"
-                          src="https://img.icons8.com/dusk/64/000000/find-matching-job.png"
-                          alt="Unemployed Others Location"
-                        />
-                      </button>
-                    </Marker>
-                  );
-                } else if (curUser.status === 'Employed') {
-                  return (
-                    <Marker
-                      key={curUser.id}
-                      latitude={curUser.locationGeocode.lat}
-                      longitude={curUser.locationGeocode.lon}
-                    >
-                      <button
-                        onClick={event => {
-                          event.preventDefault();
-                          setSelectedAlum(curUser);
-                        }}
-                        className="marker-btn"
-                      >
-                        <img
-                          className="marker-others"
-                          // src="https://img.icons8.com/color/48/000000/briefcase.png"
-                          src="https://img.icons8.com/dusk/64/000000/new-job.png"
-                          alt="Employed Others Location"
-                        />
-                      </button>
-                    </Marker>
-                  );
-                } else {
-                  return (
-                    <Marker
-                      key={curUser.id}
-                      latitude={curUser.locationGeocode.lat}
-                      longitude={curUser.locationGeocode.lon}
-                    >
-                      <button
-                        onClick={event => {
-                          event.preventDefault();
-                          setSelectedAlum(curUser);
-                        }}
-                        className="marker-btn"
-                      >
-                        <img
-                          className="marker-others"
-                          // src="https://img.icons8.com/ios/50/000000/student-registration-filled.png"
-                          src="https://img.icons8.com/dusk/64/000000/student-male.png"
-                          alt="Others Location"
-                        />
-                      </button>
-                    </Marker>
-                  );
-                }
-              }
-            })
-          : null}
+        {publicLibrariesData.branches.map(curPublicLibrary => {
+          return (
+            <Marker
+              key={curPublicLibrary.id}
+              latitude={curPublicLibrary.lat}
+              longitude={curPublicLibrary.lon}
+            >
+              <button
+                onClick={event => {
+                  event.preventDefault();
+                  setSelectedPublicLibrary(curPublicLibrary);
+                }}
+                className="marker-btn"
+              >
+                <img
+                  // src="https://img.icons8.com/dusk/64/000000/book.png"
+                  src="https://img.icons8.com/dusk/64/000000/book-shelf.png"
+                  alt="Public Library Icon"
+                />
+              </button>
+            </Marker>
+          );
+        })}
 
         {starbucksData.branches.map(curStarbucks => {
           // if (citiesOfInterest.includes(curStarbucks.city)) {
@@ -279,39 +186,13 @@ const Map = ({ auth, users, events }) => {
               >
                 <img
                   src="https://img.icons8.com/color/48/000000/amazon.png"
-                  alt="Whole Foods Icon"
+                  alt="Whole Foods Market Icon"
                 />
               </button>
             </Marker>
           );
         })}
 
-        {publicLibrariesData.branches.map(curPublicLibrary => {
-          return (
-            <Marker
-              key={curPublicLibrary.id}
-              latitude={curPublicLibrary.lat}
-              longitude={curPublicLibrary.lon}
-            >
-              <button
-                onClick={event => {
-                  event.preventDefault();
-                  setSelectedPublicLibrary(curPublicLibrary);
-                }}
-                className="marker-btn"
-              >
-                <img
-                  // src="https://img.icons8.com/dusk/64/000000/book.png"
-                  src="https://img.icons8.com/dusk/64/000000/book-shelf.png"
-                  alt="Public Library Icon"
-                />
-              </button>
-            </Marker>
-          );
-        })}
-
-        {/* {events.allEvents
-          ? events.allEvents.map(curMeetup => { */}
         {allMeetups
           ? allMeetups.map(curMeetup => {
               return (
@@ -330,13 +211,129 @@ const Map = ({ auth, users, events }) => {
                     <img
                       // src="https://img.icons8.com/ios/50/000000/meetup.png"
                       src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
-                      alt="Whole Foods Icon"
+                      alt="Meetup Icon"
                     />
                   </button>
                 </Marker>
               );
             })
           : null}
+
+        {users
+          ? users.map(curUser => {
+              // console.log(curUser);
+              if (curUser.id === auth.uid) {
+                if (firstRenderWithUsers) {
+                  viewport.latitude = curUser.locationGeocode.lat;
+                  viewport.longitude = curUser.locationGeocode.lon;
+                  firstRenderWithUsers = !firstRenderWithUsers;
+                  curUserLocationName = curUser.locationName;
+                  forceUpdate();
+                }
+                return (
+                  <Marker
+                    key={curUser.id}
+                    latitude={curUser.locationGeocode.lat}
+                    longitude={curUser.locationGeocode.lon}
+                  >
+                    <img
+                      className="marker-me"
+                      // src="https://img.icons8.com/ultraviolet/40/000000/marker.png"
+                      src="https://img.icons8.com/dusk/64/000000/student-center.png"
+                      alt="My Location Icon"
+                    />
+                  </Marker>
+                );
+              } else {
+                if (curUser.status === 'Unemployed') {
+                  return (
+                    <Marker
+                      key={curUser.id}
+                      latitude={curUser.locationGeocode.lat}
+                      longitude={curUser.locationGeocode.lon}
+                    >
+                      <button
+                        onClick={event => {
+                          event.preventDefault();
+                          setSelectedAlum(curUser);
+                        }}
+                        className="marker-btn"
+                      >
+                        <img
+                          className="marker-others"
+                          // src="https://img.icons8.com/office/40/000000/marker.png"
+                          src="https://img.icons8.com/dusk/64/000000/find-matching-job.png"
+                          alt="Seeking Opportunities Others Location Icon"
+                        />
+                      </button>
+                    </Marker>
+                  );
+                } else if (curUser.status === 'Employed') {
+                  return (
+                    <Marker
+                      key={curUser.id}
+                      latitude={curUser.locationGeocode.lat}
+                      longitude={curUser.locationGeocode.lon}
+                    >
+                      <button
+                        onClick={event => {
+                          event.preventDefault();
+                          setSelectedAlum(curUser);
+                        }}
+                        className="marker-btn"
+                      >
+                        <img
+                          className="marker-others"
+                          // src="https://img.icons8.com/color/48/000000/briefcase.png"
+                          src="https://img.icons8.com/dusk/64/000000/new-job.png"
+                          alt="Employed Others Location Icon"
+                        />
+                      </button>
+                    </Marker>
+                  );
+                } else {
+                  return (
+                    <Marker
+                      key={curUser.id}
+                      latitude={curUser.locationGeocode.lat}
+                      longitude={curUser.locationGeocode.lon}
+                    >
+                      <button
+                        onClick={event => {
+                          event.preventDefault();
+                          setSelectedAlum(curUser);
+                        }}
+                        className="marker-btn"
+                      >
+                        <img
+                          className="marker-others"
+                          // src="https://img.icons8.com/ios/50/000000/student-registration-filled.png"
+                          src="https://img.icons8.com/dusk/64/000000/student-male.png"
+                          alt="Others Location Icon"
+                        />
+                      </button>
+                    </Marker>
+                  );
+                }
+              }
+            })
+          : null}
+
+        <Marker latitude={40.7050758} longitude={-74.0113491}>
+          <button
+            onClick={event => {
+              event.preventDefault();
+              setSelectedCampus(true);
+            }}
+            className="marker-btn"
+          >
+            <img
+              className="marker-fullstack"
+              src="https://yt3.ggpht.com/a/AGF-l78JV4ZDPmU85HhYboU07siMZjFL_dHgm6o6Zg=s288-mo-c-c0xffffffff-rj-k-no"
+              alt="Fullstack Academy Location Icon"
+            />
+          </button>
+        </Marker>
 
         {selectedAlum ? (
           <Popup
@@ -681,20 +678,10 @@ const Map = ({ auth, users, events }) => {
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
   users: state.firestore.ordered.users,
-  events: state.events,
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   getEventsThunk() {
-//     dispatch(getEventsThunkCreator());
-//   },
-// });
-
 export default compose(
-  connect(
-    mapStateToProps
-    // mapDispatchToProps
-  ),
+  connect(mapStateToProps),
   firestoreConnect([
     {
       collection: 'users',
