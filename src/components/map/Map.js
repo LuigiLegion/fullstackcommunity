@@ -515,8 +515,8 @@ const Map = ({ auth, users, events }) => {
             </div>
             <hr />
             <div className="navigation-container">
-              <div>
-                <strong>Opening Hours:</strong>
+              <div className="navigation-containee">
+                <strong>Opening Hours</strong>
                 <div>
                   <strong>Monday: </strong>
                   {selectedPublicLibrary.monOpen} -{' '}
