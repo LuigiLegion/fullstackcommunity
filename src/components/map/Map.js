@@ -56,13 +56,13 @@ const Map = ({ auth, users }) => {
 
   const [selectedCampus, setSelectedCampus] = useState(false);
 
+  const [selectedMeetup, setSelectedMeetup] = useState(null);
+
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
 
   const [selectedWholeFoods, setSelectedWholeFoods] = useState(null);
 
   const [selectedPublicLibrary, setSelectedPublicLibrary] = useState(null);
-
-  const [selectedMeetup, setSelectedMeetup] = useState(null);
 
   const forceUpdate = useForceUpdate();
 
