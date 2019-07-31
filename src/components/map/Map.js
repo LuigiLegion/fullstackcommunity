@@ -477,9 +477,11 @@ const Map = ({ auth, users, events }) => {
             </div>
             <hr />
             <div className="navigation-container">
-              <div>
-                <strong>Opening Hours: </strong>8AM-10PM EDT, Monday through
-                Sunday
+              <div className="navigation-containee">
+                <strong>Opening Hours</strong>
+              </div>
+              <div className="navigation-containee">
+                8AM - 10PM, Monday through Sunday
               </div>
               <br />
               <a
