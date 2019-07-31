@@ -36,7 +36,7 @@ const ProjectDetails = props => {
                   href={`mailto:${project.authorEmail}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#ef5350' }}
+                  style={{ color: '#039be5' }}
                 >
                   <strong>{project.authorEmail}</strong>
                 </a>

@@ -137,6 +137,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
   color: #ef5350;
 }
 
+.blue-text-color {
+  color: #039be5;
+}
+
 .name-text-positioning {
   left: 30px;
 }
