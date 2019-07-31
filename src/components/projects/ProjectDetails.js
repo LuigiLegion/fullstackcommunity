@@ -30,9 +30,17 @@ const ProjectDetails = props => {
               project.authorFirstName
             } on this project?`}</div>
             <div>
-              <span style={{ color: 'black' }}>{`Contact them at ${
-                project.authorEmail
-              }`}</span>
+              <span style={{ color: 'black' }}>
+                Contact them at{' '}
+                <a
+                  href={`mailto:${project.authorEmail}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#ef5350' }}
+                >
+                  <strong>{project.authorEmail}</strong>
+                </a>
+              </span>
               <NavLink
                 style={{ color: '#ef5350' }}
                 activeClassName="right"
