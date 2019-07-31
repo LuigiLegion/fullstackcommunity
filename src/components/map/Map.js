@@ -377,7 +377,13 @@ const Map = ({ auth, users, events }) => {
             </div>
             <div className="location-description">
               <strong>Contact Information: </strong>
-              {selectedAlum.email}
+              <a
+                href={`mailto:${selectedAlum.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>{selectedAlum.email}</strong>
+              </a>
             </div>
             <div className="location-description">
               <strong>Subway Station: </strong>
