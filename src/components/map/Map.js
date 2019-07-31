@@ -416,7 +416,9 @@ const Map = ({ auth, users, events }) => {
               <a
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
                   .split(' ')
-                  .join('+')}&destination=Fullstack+Academy&travelmode=transit`}
+                  .join(
+                    '+'
+                  )}+Station&destination=Fullstack+Academy&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -448,7 +450,7 @@ const Map = ({ auth, users, events }) => {
                   .split(' ')
                   .join(
                     '+'
-                  )}&destination=Starbucks+${selectedStarbucks.name
+                  )}+Station&destination=Starbucks+${selectedStarbucks.name
                   .split(' ')
                   .join('+')}&travelmode=transit`}
                 target="_blank"
@@ -485,7 +487,7 @@ const Map = ({ auth, users, events }) => {
                   .split(' ')
                   .join(
                     '+'
-                  )}&destination=Whole+Foods+Market+${selectedWholeFoods.location.address
+                  )}+Station&destination=Whole+Foods+Market+${selectedWholeFoods.location.address
                   .split(' ')
                   .join('+')}&travelmode=transit`}
                 target="_blank"
@@ -513,8 +515,8 @@ const Map = ({ auth, users, events }) => {
             </div>
             <hr />
             <div className="navigation-container">
-              <div>
-                <strong>Opening Hours:</strong>
+              <div className="navigation-containee">
+                <strong>Opening Hours</strong>
                 <div>
                   <strong>Monday: </strong>
                   {selectedPublicLibrary.monOpen} -{' '}
@@ -598,7 +600,7 @@ const Map = ({ auth, users, events }) => {
                   .split(' ')
                   .join(
                     '+'
-                  )}&destination=${selectedPublicLibrary.oversightAgency
+                  )}+Station&destination=${selectedPublicLibrary.oversightAgency
                   .split(' ')
                   .join('+')}+${selectedPublicLibrary.address
                   .split(' ')
@@ -652,7 +654,7 @@ const Map = ({ auth, users, events }) => {
                   .split(' ')
                   .join(
                     '+'
-                  )}&destination=WeWork+${selectedMeetup.venue.address_1
+                  )}+Station&destination=WeWork+${selectedMeetup.venue.address_1
                   .split(' ')
                   .join('+')}&travelmode=transit`}
                 target="_blank"
