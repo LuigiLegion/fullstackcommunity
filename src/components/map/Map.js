@@ -444,7 +444,7 @@ const Map = ({ auth, users }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Navigate
+                <strong>Navigate</strong>
               </a>
             </div>
           </Popup>
@@ -478,7 +478,7 @@ const Map = ({ auth, users }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Navigate
+                <strong>Navigate</strong>
               </a>
             </div>
           </Popup>
@@ -517,7 +517,7 @@ const Map = ({ auth, users }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Navigate
+                <strong>Navigate</strong>
               </a>
             </div>
           </Popup>
@@ -569,7 +569,7 @@ const Map = ({ auth, users }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Navigate
+                <strong>Navigate</strong>
               </a>
             </div>
           </Popup>
@@ -653,7 +653,7 @@ const Map = ({ auth, users }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                RSVP
+                <strong>RSVP</strong>
               </a>
               <br />
               <a
@@ -665,7 +665,7 @@ const Map = ({ auth, users }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Navigate
+                <strong>Navigate</strong>
               </a>
             </div>
           </Popup>
