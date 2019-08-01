@@ -42,7 +42,7 @@ class Events extends Component {
         <div className="card z-depth-0">
           <div className="card-content grey-text text-darken-3">
             <span className="card-title">
-              <strong>Upcoming Meetups</strong>
+              <strong>Upcoming Meetups & Events</strong>
             </span>
             {!this.props.events.fetchedEvents ? (
               <div className="logos-parent-container">
@@ -54,6 +54,7 @@ class Events extends Component {
                 <div className="logo-container">
                   No upcoming Meetups were found.
                 </div>
+                <br />
                 <br />
               </div>
             ) : (
@@ -96,31 +97,56 @@ class Events extends Component {
                     </li>
                   );
                 })}
-                <hr />
-                <br />
-                <li>
-                  <span className="red-text-color">
-                    <strong>Hacker Hours at Fullstack Academy of Code</strong>
-                  </span>
-                  <div>5 Hanover Square, New York</div>
-                  <div className="events-time-and-rsvp-container">
-                    <div className="grey-text note-date events-time-and-rsvp-containee">
-                      Every second Monday of the Month
-                    </div>
-                    <a
-                      className="events-time-and-rsvp-containee"
-                      href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span className="right">
-                        <strong>RSVP</strong>
-                      </span>
-                    </a>
-                  </div>
-                </li>
               </ul>
             )}
+            <hr />
+            <ul className="notifications">
+              <li>
+                <span className="red-text-color">
+                  <strong>Free working spaces at Freelancers Hub</strong>
+                </span>
+                <div>5 Hanover Square, New York</div>
+                <div className="events-time-and-rsvp-container">
+                  <div className="grey-text note-date events-time-and-rsvp-containee">
+                    8 free work spaces a month
+                  </div>
+                  <a
+                    className="events-time-and-rsvp-containee"
+                    href="https://freelancershub.nymediacenter.com/member/daypass"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="right">
+                      <strong>RSVP</strong>
+                    </span>
+                  </a>
+                </div>
+              </li>
+            </ul>
+            <hr />
+            <ul className="notifications">
+              <li>
+                <span className="red-text-color">
+                  <strong>Hacker Hours at Fullstack Academy of Code</strong>
+                </span>
+                <div>5 Hanover Square, New York</div>
+                <div className="events-time-and-rsvp-container">
+                  <div className="grey-text note-date events-time-and-rsvp-containee">
+                    Every second Monday of the month
+                  </div>
+                  <a
+                    className="events-time-and-rsvp-containee"
+                    href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="right">
+                      <strong>RSVP</strong>
+                    </span>
+                  </a>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
