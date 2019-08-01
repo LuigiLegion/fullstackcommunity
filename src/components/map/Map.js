@@ -187,6 +187,7 @@ const Map = ({ auth, users }) => {
                 className="marker-btn"
               >
                 <img
+                  // src="https://img.icons8.com/dusk/64/000000/amazon.png"
                   src="https://img.icons8.com/color/48/000000/amazon.png"
                   alt="Whole Foods Market Icon"
                 />
@@ -320,6 +321,22 @@ const Map = ({ auth, users }) => {
               }
             })
           : null}
+
+        <Marker latitude={40.7042358} longitude={-73.9892133}>
+          <button
+            onClick={event => {
+              event.preventDefault();
+              setSelectedFreelancersHub(true);
+            }}
+            className="marker-btn"
+          >
+            <img
+              // src="https://img.icons8.com/wired/64/000000/under-computer.png"
+              src="https://img.icons8.com/dusk/64/000000/under-computer.png"
+              alt="Freelancers Hub Location Icon"
+            />
+          </button>
+        </Marker>
 
         <Marker latitude={40.7050758} longitude={-74.0113491}>
           <button
