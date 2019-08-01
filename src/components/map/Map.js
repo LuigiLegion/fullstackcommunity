@@ -56,6 +56,8 @@ const Map = ({ auth, users }) => {
 
   const [selectedCampus, setSelectedCampus] = useState(false);
 
+  const [selectedFreelancersHub, setSelectedFreelancersHub] = useState(false);
+
   const [selectedMeetup, setSelectedMeetup] = useState(null);
 
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
@@ -185,6 +187,7 @@ const Map = ({ auth, users }) => {
                 className="marker-btn"
               >
                 <img
+                  // src="https://img.icons8.com/dusk/64/000000/amazon.png"
                   src="https://img.icons8.com/color/48/000000/amazon.png"
                   alt="Whole Foods Market Icon"
                 />
@@ -318,6 +321,22 @@ const Map = ({ auth, users }) => {
               }
             })
           : null}
+
+        <Marker latitude={40.7042358} longitude={-73.9892133}>
+          <button
+            onClick={event => {
+              event.preventDefault();
+              setSelectedFreelancersHub(true);
+            }}
+            className="marker-btn"
+          >
+            <img
+              // src="https://img.icons8.com/wired/64/000000/under-computer.png"
+              src="https://img.icons8.com/dusk/64/000000/under-computer.png"
+              alt="Freelancers Hub Location Icon"
+            />
+          </button>
+        </Marker>
 
         <Marker latitude={40.7050758} longitude={-74.0113491}>
           <button
@@ -669,6 +688,42 @@ const Map = ({ auth, users }) => {
                   .join(
                     '+'
                   )}+Station&destination=Fullstack+Academy&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>Navigate</strong>
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedFreelancersHub ? (
+          <Popup
+            onClose={() => {
+              setSelectedFreelancersHub(false);
+            }}
+            latitude={40.7042358}
+            longitude={-73.9892133}
+          >
+            <div className="location-description">
+              <strong>Freelancers Hub - Free Workspaces for Freelancers</strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              <a
+                href={'https://freelancershub.nymediacenter.com/member/daypass'}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>RSVP</strong>
+              </a>
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}+Station&destination=Freelancers+Hub&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
