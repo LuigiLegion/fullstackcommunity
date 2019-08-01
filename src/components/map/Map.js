@@ -56,6 +56,8 @@ const Map = ({ auth, users }) => {
 
   const [selectedCampus, setSelectedCampus] = useState(false);
 
+  const [selectedFreelancersHub, setSelectedFreelancersHub] = useState(false);
+
   const [selectedMeetup, setSelectedMeetup] = useState(null);
 
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
