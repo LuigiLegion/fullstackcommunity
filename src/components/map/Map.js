@@ -655,6 +655,42 @@ const Map = ({ auth, users }) => {
           </Popup>
         ) : null}
 
+        {selectedFreelancersHub ? (
+          <Popup
+            onClose={() => {
+              setSelectedFreelancersHub(false);
+            }}
+            latitude={40.7042358}
+            longitude={-73.9892133}
+          >
+            <div className="location-description">
+              <strong>Freelancers Hub - Free Workspaces for Freelancers</strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              <a
+                href={'https://freelancershub.nymediacenter.com/member/daypass'}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>RSVP</strong>
+              </a>
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join(
+                    '+'
+                  )}+Station&destination=Freelancers+Hub&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>Navigate</strong>
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
         {selectedCampus ? (
           <Popup
             onClose={() => {
@@ -688,42 +724,6 @@ const Map = ({ auth, users }) => {
                   .join(
                     '+'
                   )}+Station&destination=Fullstack+Academy&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <strong>Navigate</strong>
-              </a>
-            </div>
-          </Popup>
-        ) : null}
-
-        {selectedFreelancersHub ? (
-          <Popup
-            onClose={() => {
-              setSelectedFreelancersHub(false);
-            }}
-            latitude={40.7042358}
-            longitude={-73.9892133}
-          >
-            <div className="location-description">
-              <strong>Freelancers Hub - Free Workspaces for Freelancers</strong>
-            </div>
-            <hr />
-            <div className="navigation-container">
-              <a
-                href={'https://freelancershub.nymediacenter.com/member/daypass'}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <strong>RSVP</strong>
-              </a>
-              <br />
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}+Station&destination=Freelancers+Hub&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
