@@ -1,41 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import axios from 'axios';
 import moment from 'moment';
 
 import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
 
 class Events extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     events: [],
-  //   };
-  //   this.fetchEvents = this.fetchEvents.bind(this);
-  // }
-
   componentDidMount() {
-    // this.fetchEvents();
     this.props.getEventsThunk();
   }
 
-  // async fetchEvents() {
-  //   const { data } = await axios.get(
-  //     'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
-  //   );
-  //   console.log('Events data.results: ', data.results);
-  //   this.setState({
-  //     events: data.results,
-  //   });
-  // }
-
   render() {
-    // console.log('events: ', this.props.events.events);
-    // console.log('events.length: ', this.props.events.events.length);
-    // console.log(
-    //   'this.props.events.fetchedEvents: ',
-    //   this.props.events.fetchedEvents
-    // );
     // console.log('this.props.events.allEvents: ', this.props.events.allEvents);
     return (
       <div className="section">
