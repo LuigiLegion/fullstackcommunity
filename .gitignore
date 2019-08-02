@@ -18,14 +18,14 @@
 .env.test.local
 .env.production.local
 secrets.js
+
+# additional misc
+.env
 .firebase
+.gitignore
 dist
 src/config
 src/data
-.env
-dataconfig/
-.gitignore
-.firebase.indexes.json
 
 npm-debug.log*
 yarn-debug.log*
