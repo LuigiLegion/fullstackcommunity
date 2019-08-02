@@ -18,6 +18,10 @@
 .env.test.local
 .env.production.local
 secrets.js
+.firebase
+dist
+src/config
+src/data
 
 npm-debug.log*
 yarn-debug.log*
