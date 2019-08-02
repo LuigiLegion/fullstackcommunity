@@ -56,7 +56,7 @@ const Map = ({ auth, users }) => {
 
   const [selectedCampus, setSelectedCampus] = useState(false);
 
-  const [selectedFreelancersHub, setSelectedFreelancersHub] = useState(false);
+  const [selectedWorkSpace, setSelectedWorkSpace] = useState(false);
 
   const [selectedMeetup, setSelectedMeetup] = useState(null);
 
@@ -326,7 +326,7 @@ const Map = ({ auth, users }) => {
           <button
             onClick={event => {
               event.preventDefault();
-              setSelectedFreelancersHub(true);
+              setSelectedWorkSpace(true);
             }}
             className="marker-btn"
           >
@@ -655,10 +655,10 @@ const Map = ({ auth, users }) => {
           </Popup>
         ) : null}
 
-        {selectedFreelancersHub ? (
+        {selectedWorkSpace ? (
           <Popup
             onClose={() => {
-              setSelectedFreelancersHub(false);
+              setSelectedWorkSpace(false);
             }}
             latitude={40.7042358}
             longitude={-73.9892133}
