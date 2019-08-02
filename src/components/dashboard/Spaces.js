@@ -16,7 +16,7 @@ const Spaces = props => {
               <div>30 John Street, Brooklyn</div>
               <div className="events-time-and-rsvp-container">
                 <div className="grey-text note-date events-time-and-rsvp-containee">
-                  8 free work spaces a month
+                  Get up to 8 free work spaces a month
                 </div>
                 <a
                   className="events-time-and-rsvp-containee"
