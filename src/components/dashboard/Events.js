@@ -77,30 +77,6 @@ class Events extends Component {
             <ul className="notifications">
               <li>
                 <span className="red-text-color">
-                  <strong>Free working spaces at Freelancers Hub</strong>
-                </span>
-                <div>5 Hanover Square, New York</div>
-                <div className="events-time-and-rsvp-container">
-                  <div className="grey-text note-date events-time-and-rsvp-containee">
-                    8 free work spaces a month
-                  </div>
-                  <a
-                    className="events-time-and-rsvp-containee"
-                    href="https://freelancershub.nymediacenter.com/member/daypass"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="right">
-                      <strong>RSVP</strong>
-                    </span>
-                  </a>
-                </div>
-              </li>
-            </ul>
-            <hr />
-            <ul className="notifications">
-              <li>
-                <span className="red-text-color">
                   <strong>Hacker Hours at Fullstack Academy of Code</strong>
                 </span>
                 <div>5 Hanover Square, New York</div>
