@@ -664,10 +664,11 @@ const Map = ({ auth, users }) => {
             longitude={-73.9892133}
           >
             <div className="location-description">
-              <strong>Freelancers Hub - Free Workspaces for Freelancers</strong>
+              <strong>Freelancers Hub - 30 John Street, Brooklyn</strong>
             </div>
             <hr />
             <div className="navigation-container">
+              <div>Get up to 8 free work spaces a month</div>
               <a
                 href={'https://freelancershub.nymediacenter.com/member/daypass'}
                 target="_blank"
@@ -700,14 +701,16 @@ const Map = ({ auth, users }) => {
             longitude={-74.0113491}
           >
             <div className="location-description">
-              <strong>Fullstack Academy of Code</strong>
+              <strong>
+                Fullstack Academy of Code - 5 Hanover Square, New York
+              </strong>
             </div>
             <hr />
             <div className="navigation-container">
               <div>
-                <strong>Next Hacker Hours Meetup: </strong>Monday, August 12th,
-                6:30PM-9:30PM EDT
+                <strong>Next Hacker Hours Meetup: </strong>
               </div>
+              <div>Monday, August 12th, 6:30PM-9:30PM EDT</div>
               <a
                 href={
                   'https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2'
