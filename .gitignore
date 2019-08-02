@@ -22,6 +22,9 @@ secrets.js
 dist
 src/config
 src/data
+.env
+dataconfig/
+.gitignore
 
 npm-debug.log*
 yarn-debug.log*
