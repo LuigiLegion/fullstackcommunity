@@ -22,7 +22,6 @@ secrets.js
 # additional misc
 .env
 .firebase
-.gitignore
 dist
 src/config
 src/data

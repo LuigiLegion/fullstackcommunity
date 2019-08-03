@@ -94,7 +94,7 @@ const Map = ({ auth, users }) => {
     <div>
       <ReactMapGL
         {...viewport}
-        mapboxApiAccessToken="pk.eyJ1IjoibHVpZ2lsZWdpb24iLCJhIjoiY2p4N2luaGI3MGF4YjQwbnBqeDJyenh1aiJ9.sXpWHhDhquAAaheRvujObA"
+        mapboxApiAccessToken={process.env.local}
         onViewportChange={viewport => {
           setViewport(viewport);
         }}
