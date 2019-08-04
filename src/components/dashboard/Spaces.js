@@ -11,6 +11,27 @@ const Spaces = props => {
           <ul className="notifications">
             <li>
               <span className="red-text-color">
+                <strong>Free working spaces at AWS Loft</strong>
+              </span>
+              <div>350 West Broadway, New York</div>
+              <div className="events-time-and-rsvp-container">
+                <div className="grey-text note-date events-time-and-rsvp-containee">
+                  Open Monday-Friday, 9:30am-5:30pm
+                </div>
+                <a
+                  className="events-time-and-rsvp-containee"
+                  href="https://aws.amazon.com/start-ups/loft/ny-loft"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="right">
+                    <strong>RSVP</strong>
+                  </span>
+                </a>
+              </div>
+            </li>
+            <li>
+              <span className="red-text-color">
                 <strong>Free working spaces at Freelancers Hub</strong>
               </span>
               <div>30 John Street, Brooklyn</div>

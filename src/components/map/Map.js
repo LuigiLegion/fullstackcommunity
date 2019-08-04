@@ -56,7 +56,9 @@ const Map = ({ auth, users }) => {
 
   const [selectedCampus, setSelectedCampus] = useState(false);
 
-  const [selectedWorkSpace, setSelectedWorkSpace] = useState(false);
+  const [selectedAwsLoft, setSelectedAwsLoft] = useState(false);
+
+  const [selectedFreelancersHub, setSelectedFreelancersHub] = useState(false);
 
   const [selectedMeetup, setSelectedMeetup] = useState(null);
 
@@ -326,7 +328,7 @@ const Map = ({ auth, users }) => {
           <button
             onClick={event => {
               event.preventDefault();
-              setSelectedWorkSpace(true);
+              setSelectedFreelancersHub(true);
             }}
             className="marker-btn"
           >
@@ -334,6 +336,22 @@ const Map = ({ auth, users }) => {
               // src="https://img.icons8.com/wired/64/000000/under-computer.png"
               src="https://img.icons8.com/dusk/64/000000/under-computer.png"
               alt="Freelancers Hub Location Icon"
+            />
+          </button>
+        </Marker>
+
+        <Marker latitude={40.7245956} longitude={-73.9976034}>
+          <button
+            onClick={event => {
+              event.preventDefault();
+              setSelectedAwsLoft(true);
+            }}
+            className="marker-btn"
+          >
+            <img
+              // src="https://img.icons8.com/wired/64/000000/under-computer.png"
+              src="https://img.icons8.com/dusk/64/000000/under-computer.png"
+              alt="AWS Loft Location Icon"
             />
           </button>
         </Marker>
@@ -655,10 +673,10 @@ const Map = ({ auth, users }) => {
           </Popup>
         ) : null}
 
-        {selectedWorkSpace ? (
+        {selectedFreelancersHub ? (
           <Popup
             onClose={() => {
-              setSelectedWorkSpace(false);
+              setSelectedFreelancersLoft(false);
             }}
             latitude={40.7042358}
             longitude={-73.9892133}
@@ -683,6 +701,41 @@ const Map = ({ auth, users }) => {
                   .join(
                     '+'
                   )}+Station&destination=Freelancers+Hub&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>Navigate</strong>
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedAwsLoft ? (
+          <Popup
+            onClose={() => {
+              setSelectedAwsLoft(false);
+            }}
+            latitude={40.7245956}
+            longitude={-73.9976034}
+          >
+            <div className="location-description">
+              <strong>AWS Loft - 350 West Broadway, New York</strong>
+            </div>
+            <hr />
+            <div className="navigation-container">
+              <div>Open Monday-Friday, 9:30am-5:30pm</div>
+              <a
+                href={'https://aws.amazon.com/start-ups/loft/ny-loft'}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>RSVP</strong>
+              </a>
+              <br />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
+                  .split(' ')
+                  .join('+')}+Station&destination=AWS+Loft&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
