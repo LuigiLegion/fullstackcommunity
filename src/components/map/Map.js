@@ -676,7 +676,7 @@ const Map = ({ auth, users }) => {
         {selectedFreelancersHub ? (
           <Popup
             onClose={() => {
-              setSelectedFreelancersLoft(false);
+              setSelectedFreelancersHub(false);
             }}
             latitude={40.7042358}
             longitude={-73.9892133}
