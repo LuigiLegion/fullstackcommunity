@@ -686,7 +686,12 @@ const Map = ({ auth, users }) => {
             </div>
             <hr />
             <div className="navigation-container">
-              <div>Open Monday through Friday, 9:00AM - 5:00PM</div>
+              <div className="navigation-containee">
+                <strong>Opening Hours</strong>
+              </div>
+              <div className="navigation-containee">
+                Monday through Friday, 9:00AM - 5:00PM
+              </div>
               <a
                 href={'https://freelancershub.nymediacenter.com/member/daypass'}
                 target="_blank"
@@ -723,7 +728,12 @@ const Map = ({ auth, users }) => {
             </div>
             <hr />
             <div className="navigation-container">
-              <div>Open Monday through Friday, 9:30AM - 5:30PM</div>
+              <div className="navigation-containee">
+                <strong>Opening Hours</strong>
+              </div>
+              <div className="navigation-containee">
+                Monday through Friday, 9:30AM - 5:30PM
+              </div>
               <a
                 href={'https://aws.amazon.com/start-ups/loft/ny-loft'}
                 target="_blank"
