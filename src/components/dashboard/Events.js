@@ -22,6 +22,7 @@ class Events extends Component {
               <div className="logos-parent-container">
                 <div className="logo-container">Loading Meetups...</div>
                 <br />
+                <br />
               </div>
             ) : !this.props.events.allEvents.length ? (
               <div className="logos-parent-container">
