@@ -76,30 +76,53 @@ export const gotCommitsActionCreator = commits => ({
 export const getCommitsThunkCreator = () => {
   return async dispatch => {
     try {
-      const javascriptCodersMeetupsData = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
-      );
-      // console.log(
-      //   'javascriptCodersMeetups: ',
-      //   javascriptCodersMeetupsData.data.results
-      // );
-      const bootcampersAnonymousMeetups = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=19344391&page=20'
-      );
-      // console.log(
-      //   'bootcampersAnonymousMeetups: ',
-      //   bootcampersAnonymousMeetups.data.results
-      // );
-      const allMeetupsData = [
-        ...javascriptCodersMeetupsData.data.results,
-        ...bootcampersAnonymousMeetups.data.results,
-      ];
-      dispatch(gotCommitsActionCreator(allMeetupsData));
+      const allCommitsData = [];
 
-      // console.log('eventsReducer localStorage pre-set: ', localStorage);
+      githubUsers.map(async curGithubUsername => {
+        const curGithubUsernameReposData = await axios.get(
+          `https://api.github.com/users/${curGithubUsername}/repos`
+        );
+
+        console.log(
+          'curGithubUsernameRepos: ',
+          curGithubUsernameReposData.data
+        );
+
+        let curGithubUsernameTotalCommits = 0;
+
+        curGithubUsernameReposData.data.map(async curRepo => {
+          const curRepoContributorsData = await axios.get(
+            `https://api.github.com/repos/${curGithubUsername}/${
+              curRepo.name
+            }/contributors`
+          );
+
+          console.log(
+            'curRepoContributors: ',
+            curRepoContributorsData.data.contributions
+          );
+
+          curGithubUsernameTotalCommits +=
+            curRepoContributorsData.data.contributions;
+
+          console.log(
+            'curGithubUsernameTotalCommits: ',
+            curGithubUsernameTotalCommits
+          );
+        });
+
+        allCommitsData.push({
+          githubUsername: curGithubUsername,
+          totalCommits: curGithubUsernameTotalCommits,
+        });
+      });
+
+      dispatch(gotCommitsActionCreator(allCommitsData));
+
+      console.log('commitsReducer localStorage pre-set: ', localStorage);
       // localStorage.clear();
-      localStorage.setItem('meetups', JSON.stringify(allMeetupsData));
-      // console.log('eventsReducer localStorage post-set: ', localStorage);
+      localStorage.setItem('commits', JSON.stringify(allCommitsData));
+      console.log('commitsReducer localStorage post-set: ', localStorage);
     } catch (error) {
       console.error(error);
     }
@@ -110,7 +133,7 @@ export const getCommitsThunkCreator = () => {
 const commitsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_COMMITS:
-      // console.log('Fetched meetups successfully in the reducer');
+      // console.log('Fetched commits successfully in the reducer');
       return { ...state, allCommits: action.commits, fetchedCommits: true };
     default:
       return state;
