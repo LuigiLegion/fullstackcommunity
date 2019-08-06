@@ -8,6 +8,11 @@ const SignedInLinks = props => {
   return (
     <ul className="right">
       <li>
+        <NavLink to="/leaderboard">
+          <strong>Leaderboard</strong>
+        </NavLink>
+      </li>
+      <li>
         <NavLink to="/map">
           <strong>Map</strong>
         </NavLink>
