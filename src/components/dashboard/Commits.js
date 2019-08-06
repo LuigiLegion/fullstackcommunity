@@ -17,7 +17,7 @@ class Commits extends Component {
             <span className="card-title">
               <strong>Commits Leaderboard</strong>
             </span>
-            {!this.props.events.fetchedEvents ? (
+            {!this.props.commits.fetchedCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">
                   Loading Commits Leaderboard...
@@ -25,7 +25,7 @@ class Commits extends Component {
                 <br />
                 <br />
               </div>
-            ) : !this.props.events.allEvents.length ? (
+            ) : !this.props.commits.allCommits.length ? (
               <div className="logos-parent-container">
                 <div className="logo-container">
                   No users with Commits were found.
@@ -35,14 +35,14 @@ class Commits extends Component {
               </div>
             ) : (
               <ul className="notifications">
-                {this.props.commits.allCommits.map(curUser => {
+                {this.props.commits.allCommits.map(curGithubUser => {
                   return (
-                    <li key={curUser.id}>
+                    <li key={curGithubUser.id}>
                       <span className="red-text-color">
-                        <strong>{curUser.githubHandle} </strong>
+                        <strong>{curGithubUser.githubUsername} </strong>
                       </span>
                       <span className="red-text-color">
-                        <strong>{curUser.commitsCount} </strong>
+                        <strong>{curGithubUser.totalCommits} </strong>
                       </span>
                       <br />
                     </li>
