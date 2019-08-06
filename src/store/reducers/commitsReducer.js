@@ -1,5 +1,62 @@
 import axios from 'axios';
 
+// Data Set:
+const githubUsers = [
+  'marvinody',
+  'mshalam',
+  'sofibee',
+  'TristanWatanabe',
+  'msicil',
+  'dwyfrequency',
+  'SidharthNambiar',
+  'Eutheran',
+  'xMNG',
+  'driver620',
+  'republicofkang',
+  'PeopleMakeCulture',
+  'findkevin',
+  'JorgeAcostaDLP',
+  'jscheinhorn',
+  'Farhuts',
+  'TalRodin',
+  'wilsonleung32',
+  'EricBot89',
+  'malyavka',
+  'constancek',
+  'SunnyChangMei',
+  'LuigiLegion',
+  'mercedesgm',
+  'xavierolivares',
+  'willgolden5',
+  'tjhelsel',
+  'wassermandh',
+  'alvinjtang',
+  'tluo9713',
+  'amneet954',
+  'fjiang91',
+  'stanley-c-so',
+  'hdoshi2',
+  'dbtracy',
+  'nschefer',
+  'girkonv',
+  'ricardopineda93',
+  'dcnycoder',
+  'sam-peach',
+  'mimi-san',
+  'sriv97',
+  'daphne178',
+  'MistuhMok',
+  'ArnaldWong',
+  'cho-jason',
+  'rickylaufitness',
+  'jkichler',
+  'cmart11',
+  'vivtong',
+  'AlexanderMann2015',
+  'RobertSAdams32',
+  'FakeBarenziah',
+];
+
 // Initial State
 const initialState = {
   allCommits: [],
@@ -40,7 +97,7 @@ export const getCommitsThunkCreator = () => {
       dispatch(gotCommitsActionCreator(allMeetupsData));
 
       // console.log('eventsReducer localStorage pre-set: ', localStorage);
-      localStorage.clear();
+      // localStorage.clear();
       localStorage.setItem('meetups', JSON.stringify(allMeetupsData));
       // console.log('eventsReducer localStorage post-set: ', localStorage);
     } catch (error) {

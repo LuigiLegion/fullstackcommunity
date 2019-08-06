@@ -55,7 +55,7 @@ export const getEventsThunkCreator = () => {
       dispatch(gotEventsActionCreator(allMeetupsData));
 
       // console.log('eventsReducer localStorage pre-set: ', localStorage);
-      localStorage.clear();
+      // localStorage.clear();
       localStorage.setItem('meetups', JSON.stringify(allMeetupsData));
       // console.log('eventsReducer localStorage post-set: ', localStorage);
     } catch (error) {
