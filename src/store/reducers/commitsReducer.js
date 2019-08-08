@@ -22,7 +22,6 @@ const githubUsers = [
   'wilsonleung32',
   'EricBot89',
   'malyavka',
-  'constancek',
   'SunnyChangMei',
   'LuigiLegion',
   'mercedesgm',
@@ -90,14 +89,14 @@ export const getCommitsThunkCreator = () => {
               .split(' ');
 
             const curGithubUserTotalCommits = filtResArr[22]
-              ? filtResArr[22]
-              : filtResArr[23];
+              ? filtResArr[22].split(',').join('')
+              : filtResArr[23].split(',').join('');
 
             // console.log('commitsCount: ', curGithubUserTotalCommits);
 
             const curGithubUserObj = {
               githubUsername: curGithubUser,
-              totalCommits: curGithubUserTotalCommits,
+              totalCommits: +curGithubUserTotalCommits,
             };
 
             // console.log('curGithubUserObj: ', curGithubUserObj);
