@@ -68,10 +68,15 @@ const initialState = {
 const GOT_COMMITS = 'GOT_COMMITS';
 
 // Action Creators
-export const gotCommitsActionCreator = commits => ({
-  type: GOT_COMMITS,
-  commits,
-});
+// export const gotCommitsActionCreator = commits => ({
+//   type: GOT_COMMITS,
+//   commits,
+// });
+
+export const gotCommitsActionCreator = commits => {
+  console.log('gotCommitsActionCreator ACTIVATED: ', commits);
+  return { type: GOT_COMMITS, commits };
+};
 
 // Thunk Creators
 export const getCommitsThunkCreator = () => {
@@ -129,11 +134,16 @@ export const getCommitsThunkCreator = () => {
 
 // Reducer
 const commitsReducer = (state = initialState, action) => {
+  console.log('in the commitsReducer');
   switch (action.type) {
     case GOT_COMMITS:
-      // console.log('Fetched commits successfully in the reducer');
+      console.log(
+        'Fetched commits successfully in the reducer: ',
+        action.commits
+      );
       return { ...state, allCommits: action.commits, fetchedCommits: true };
     default:
+      console.log('Right in the default');
       return state;
   }
 };

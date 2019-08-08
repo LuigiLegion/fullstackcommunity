@@ -9,7 +9,16 @@ class Commits extends Component {
   }
 
   render() {
-    // console.log('this.props.commits.allCommits: ', this.props.commits.allCommits);
+    console.log(
+      'this.props.commits.allCommits: ',
+      this.props.commits.allCommits
+    );
+    localStorage.commits
+      ? console.log(
+          'JSON.parse(localStorage.commits): ',
+          JSON.parse(localStorage.commits)
+        )
+      : console.log('localStorage.commits does not exist');
     return (
       <div className="section">
         <div className="card z-depth-0">
