@@ -23,35 +23,45 @@ class Commits extends Component {
             </span>
             {!this.props.commits.fetchedCommits ? (
               <div className="logos-parent-container">
-                <div className="logo-container">
-                  Loading commits...
-                </div>
+                <div className="logo-container">Loading commits...</div>
                 <br />
                 <br />
               </div>
             ) : !this.props.commits.allCommits.length ? (
               <div className="logos-parent-container">
-                <div className="logo-container">
-                  No users were found.
-                </div>
+                <div className="logo-container">No users were found.</div>
                 <br />
                 <br />
               </div>
             ) : (
               <ul className="notifications">
-                {this.props.commits.allCommits.map((curGithubUser, idx) => {
-                  return (
-                    <li key={idx}>
-                      <span className="red-text-color">
-                        <strong>{curGithubUser.githubUsername} </strong>
-                      </span>
-                      <span className="red-text-color">
-                        <strong>{curGithubUser.totalCommits} </strong>
-                      </span>
-                      <br />
-                    </li>
-                  );
-                })}
+                {this.props.commits.allCommits
+                  .sort((githubUserOne, githubUserTwo) => {
+                    if (
+                      githubUserOne.totalCommits > githubUserTwo.totalCommits
+                    ) {
+                      return -1;
+                    } else if (
+                      githubUserOne.totalCommits < githubUserTwo.totalCommits
+                    ) {
+                      return 1;
+                    } else {
+                      return 0;
+                    }
+                  })
+                  .map((curGithubUser, idx) => {
+                    return (
+                      <li key={idx}>
+                        <span className="red-text-color">
+                          <strong>{curGithubUser.githubUsername} </strong>
+                        </span>
+                        <span className="red-text-color">
+                          <strong>{curGithubUser.totalCommits} </strong>
+                        </span>
+                        <br />
+                      </li>
+                    );
+                  })}
               </ul>
             )}
           </div>
