@@ -9,7 +9,7 @@ const SignedInLinks = props => {
     <ul className="right">
       <li>
         <NavLink to="/leaderboard">
-          <strong>Leaderboard</strong>
+          <strong>Gitness Tracker</strong>
         </NavLink>
       </li>
       <li>

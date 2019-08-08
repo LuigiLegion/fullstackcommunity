@@ -19,12 +19,12 @@ class Commits extends Component {
         <div className="card z-depth-0">
           <div className="card-content grey-text text-darken-3">
             <span className="card-title">
-              <strong>Commits Leaderboard</strong>
+              <strong>Gitness Tracker</strong>
             </span>
             {!this.props.commits.fetchedCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">
-                  Loading Commits Leaderboard...
+                  Loading commits...
                 </div>
                 <br />
                 <br />
@@ -32,7 +32,7 @@ class Commits extends Component {
             ) : !this.props.commits.allCommits.length ? (
               <div className="logos-parent-container">
                 <div className="logo-container">
-                  No users with Commits were found.
+                  No users were found.
                 </div>
                 <br />
                 <br />
