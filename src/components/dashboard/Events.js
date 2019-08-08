@@ -13,6 +13,7 @@ class Events extends Component {
 
   render() {
     // console.log('this.props.events.allEvents: ', this.props.events.allEvents);
+
     return (
       <div className="section">
         <div className="card z-depth-0">

@@ -4,21 +4,16 @@ import { connect } from 'react-redux';
 import { getCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class Commits extends Component {
-  componentDidMount() {
-    this.props.getCommitsThunk();
-  }
+  // componentDidMount() {
+  //   this.props.getCommitsThunk();
+  // }
 
   render() {
-    console.log(
-      'this.props.commits.allCommits: ',
-      this.props.commits.allCommits
-    );
-    localStorage.commits
-      ? console.log(
-          'JSON.parse(localStorage.commits): ',
-          JSON.parse(localStorage.commits)
-        )
-      : console.log('localStorage.commits does not exist');
+    // console.log(
+    //   'this.props.commits.allCommits: ',
+    //   this.props.commits.allCommits
+    // );
+
     return (
       <div className="section">
         <div className="card z-depth-0">
@@ -44,9 +39,9 @@ class Commits extends Component {
               </div>
             ) : (
               <ul className="notifications">
-                {this.props.commits.allCommits.map(curGithubUser => {
+                {this.props.commits.allCommits.map((curGithubUser, idx) => {
                   return (
-                    <li key={curGithubUser.id}>
+                    <li key={idx}>
                       <span className="red-text-color">
                         <strong>{curGithubUser.githubUsername} </strong>
                       </span>

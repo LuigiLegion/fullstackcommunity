@@ -5,7 +5,7 @@ import { firebaseReducer } from 'react-redux-firebase';
 import authReducer from './authReducer';
 import projectReducer from './projectReducer';
 import eventsReducer from './eventsReducer';
-import commitsReducer from './eventsReducer';
+import commitsReducer from './commitsReducer';
 
 const rootReducer = combineReducers({
   firestore: firestoreReducer,

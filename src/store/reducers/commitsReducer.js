@@ -68,15 +68,10 @@ const initialState = {
 const GOT_COMMITS = 'GOT_COMMITS';
 
 // Action Creators
-// export const gotCommitsActionCreator = commits => ({
-//   type: GOT_COMMITS,
-//   commits,
-// });
-
-export const gotCommitsActionCreator = commits => {
-  console.log('gotCommitsActionCreator ACTIVATED: ', commits);
-  return { type: GOT_COMMITS, commits };
-};
+export const gotCommitsActionCreator = commits => ({
+  type: GOT_COMMITS,
+  commits,
+});
 
 // Thunk Creators
 export const getCommitsThunkCreator = () => {
@@ -114,17 +109,15 @@ export const getCommitsThunkCreator = () => {
       });
 
       setTimeout(() => {
-        console.log('allCommitsData: ', allCommitsData);
+        // console.log('allCommitsData: ', allCommitsData);
 
         dispatch(gotCommitsActionCreator(allCommitsData));
 
-        console.log('commitsReducer localStorage pre-set: ', localStorage);
-
-        // localStorage.clear();
+        // console.log('commitsReducer localStorage pre-set: ', localStorage);
 
         localStorage.setItem('commits', JSON.stringify(allCommitsData));
 
-        console.log('commitsReducer localStorage post-set: ', localStorage);
+        // console.log('commitsReducer localStorage post-set: ', localStorage);
       }, 10000);
     } catch (error) {
       console.error(error);
@@ -134,16 +127,14 @@ export const getCommitsThunkCreator = () => {
 
 // Reducer
 const commitsReducer = (state = initialState, action) => {
-  console.log('in the commitsReducer');
   switch (action.type) {
     case GOT_COMMITS:
-      console.log(
-        'Fetched commits successfully in the reducer: ',
-        action.commits
-      );
+      // console.log(
+      //   'fetched commits successfully in the commitsReducer: ',
+      //   action.commits
+      // );
       return { ...state, allCommits: action.commits, fetchedCommits: true };
     default:
-      console.log('Right in the default');
       return state;
   }
 };
