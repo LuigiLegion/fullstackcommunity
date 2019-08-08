@@ -86,17 +86,16 @@ export const getCommitsThunkCreator = () => {
             const filtResArr = $(res)
               .find('h2')
               .text()
-              .split(' ');
+              .match(/\d+/g);
 
-            const curGithubUserTotalCommits = filtResArr[22]
-              ? filtResArr[22].split(',').join('')
-              : filtResArr[23].split(',').join('');
+            const curGithubUserTotalCommits =
+              filtResArr.length === 1 ? filtResArr[0] : filtResArr.join('');
 
             // console.log('commitsCount: ', curGithubUserTotalCommits);
 
             const curGithubUserObj = {
               githubUsername: curGithubUser,
-              totalCommits: +curGithubUserTotalCommits,
+              totalCommits: Number(curGithubUserTotalCommits),
             };
 
             // console.log('curGithubUserObj: ', curGithubUserObj);
