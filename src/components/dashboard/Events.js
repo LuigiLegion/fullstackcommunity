@@ -3,14 +3,17 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
+import { getCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class Events extends Component {
   componentDidMount() {
     this.props.getEventsThunk();
+    this.props.getCommitsThunk();
   }
 
   render() {
     // console.log('this.props.events.allEvents: ', this.props.events.allEvents);
+
     return (
       <div className="section">
         <div className="card z-depth-0">
@@ -114,6 +117,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getEventsThunk() {
     dispatch(getEventsThunkCreator());
+  },
+  getCommitsThunk() {
+    dispatch(getCommitsThunkCreator());
   },
 });
 
