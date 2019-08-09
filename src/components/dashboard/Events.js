@@ -8,7 +8,7 @@ import { getCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 class Events extends Component {
   componentDidMount() {
     this.props.getEventsThunk();
-    this.props.getCommitsThunk();
+    // this.props.getCommitsThunk();
   }
 
   render() {

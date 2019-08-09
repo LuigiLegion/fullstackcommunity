@@ -9,10 +9,10 @@ class Commits extends Component {
   // }
 
   render() {
-    // console.log(
-    //   'this.props.commits.allCommits: ',
-    //   this.props.commits.allCommits
-    // );
+    console.log(
+      'this.props.commits.allCommits: ',
+      this.props.commits.allCommits
+    );
 
     return (
       <div className="section center">
