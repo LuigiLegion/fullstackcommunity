@@ -8,8 +8,13 @@ import ProjectList from '../projects/ProjectList';
 import Notifications from './Notifications';
 import Spaces from './Spaces';
 import Events from './Events';
+import { getCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class Dashboard extends Component {
+  componentDidMount() {
+    this.props.getCommitsThunk();
+  }
+
   render() {
     const { auth, projects, notifications } = this.props;
     if (!auth.uid) {
@@ -39,8 +44,17 @@ const mapStateToProps = state => ({
   notifications: state.firestore.ordered.notifications,
 });
 
+const mapDispatchToProps = dispatch => ({
+  getCommitsThunk() {
+    dispatch(getCommitsThunkCreator());
+  },
+});
+
 export default compose(
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   firestoreConnect([
     {
       collection: 'projects',
