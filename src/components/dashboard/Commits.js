@@ -15,12 +15,12 @@ class Commits extends Component {
     // );
 
     return (
-      <div className="section">
-        <div className="card z-depth-0">
-          <div className="card-content grey-text text-darken-3">
-            <span className="card-title">
+      <div className="section center">
+        <div className="card z-depth-0 center">
+          <div className="card-content grey-text text-darken-3 center">
+            {/* <span className="card-title">
               <strong>Gitness Tracker</strong>
-            </span>
+            </span> */}
             {!this.props.commits.fetchedCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">Loading commits...</div>
@@ -34,35 +34,107 @@ class Commits extends Component {
                 <br />
               </div>
             ) : (
-              <ul className="notifications">
-                {this.props.commits.allCommits
-                  .sort((githubUserOne, githubUserTwo) => {
-                    if (
-                      githubUserOne.totalCommits > githubUserTwo.totalCommits
-                    ) {
-                      return -1;
-                    } else if (
-                      githubUserOne.totalCommits < githubUserTwo.totalCommits
-                    ) {
-                      return 1;
-                    } else {
-                      return 0;
-                    }
-                  })
-                  .map((curGithubUser, idx) => {
-                    return (
-                      <li key={idx}>
-                        <span className="red-text-color">
-                          <strong>{curGithubUser.githubUsername} </strong>
-                        </span>
-                        <span className="red-text-color">
-                          <strong>{curGithubUser.totalCommits} </strong>
-                        </span>
-                        <br />
-                      </li>
-                    );
-                  })}
-              </ul>
+              <div className="logos-parent-container">
+                <div className="logo-container">
+                  <table
+                    className="striped centered"
+                    style={{
+                      width: '80%',
+                      minWidth: '80%',
+                      maxWidth: '80%',
+                    }}
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          style={{
+                            width: '100px',
+                            minWidth: '100px',
+                            maxWidth: '100px',
+                            wordBreak: 'break-all',
+                          }}
+                        >
+                          Rank
+                        </th>
+                        <th
+                          style={{
+                            width: '100px',
+                            minWidth: '100px',
+                            maxWidth: '100px',
+                            wordBreak: 'break-all',
+                          }}
+                        >
+                          Github Username
+                        </th>
+                        <th
+                          style={{
+                            width: '100px',
+                            minWidth: '100px',
+                            maxWidth: '100px',
+                            wordBreak: 'break-all',
+                          }}
+                        >
+                          Total Commits
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.props.commits.allCommits
+                        .sort((githubUserOne, githubUserTwo) => {
+                          if (
+                            githubUserOne.totalCommits >
+                            githubUserTwo.totalCommits
+                          ) {
+                            return -1;
+                          } else if (
+                            githubUserOne.totalCommits <
+                            githubUserTwo.totalCommits
+                          ) {
+                            return 1;
+                          } else {
+                            return 0;
+                          }
+                        })
+                        .map((curGithubUser, idx) => {
+                          return (
+                            <tr key={idx}>
+                              <td
+                                style={{
+                                  width: '100px',
+                                  minWidth: '100px',
+                                  maxWidth: '100px',
+                                  wordBreak: 'break-all',
+                                }}
+                              >
+                                <strong>{idx + 1}</strong>
+                              </td>
+                              <td
+                                style={{
+                                  width: '100px',
+                                  minWidth: '100px',
+                                  maxWidth: '100px',
+                                  wordBreak: 'break-all',
+                                }}
+                              >
+                                <strong>{curGithubUser.githubUsername}</strong>
+                              </td>
+                              <td
+                                style={{
+                                  width: '100px',
+                                  minWidth: '100px',
+                                  maxWidth: '100px',
+                                  wordBreak: 'break-all',
+                                }}
+                              >
+                                <strong>{curGithubUser.totalCommits}</strong>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             )}
           </div>
         </div>

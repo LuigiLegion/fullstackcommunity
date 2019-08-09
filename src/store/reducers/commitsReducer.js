@@ -115,7 +115,7 @@ export const getCommitsThunkCreator = () => {
         localStorage.setItem('commits', JSON.stringify(allCommitsData));
 
         // console.log('commitsReducer localStorage post-set: ', localStorage);
-      }, 10000);
+      }, 8000);
     } catch (error) {
       console.error(error);
     }
