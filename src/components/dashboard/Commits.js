@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getCommitsThunkCreator } from '../../store/reducers/commitsReducer';
-
 class Commits extends Component {
-  // componentDidMount() {
-  //   this.props.getCommitsThunk();
-  // }
-
   render() {
-    console.log(
-      'this.props.commits.allCommits: ',
-      this.props.commits.allCommits
-    );
+    // console.log(
+    //   'this.props.commits.allCommits: ',
+    //   this.props.commits.allCommits
+    // );
 
     return (
       <div className="section center">
@@ -149,13 +143,4 @@ const mapStateToProps = state => ({
   commits: state.commits,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getCommitsThunk() {
-    dispatch(getCommitsThunkCreator());
-  },
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Commits);
+export default connect(mapStateToProps)(Commits);

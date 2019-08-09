@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
-import { getCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class Events extends Component {
   componentDidMount() {
     this.props.getEventsThunk();
-    // this.props.getCommitsThunk();
   }
 
   render() {
@@ -117,9 +115,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getEventsThunk() {
     dispatch(getEventsThunkCreator());
-  },
-  getCommitsThunk() {
-    dispatch(getCommitsThunkCreator());
   },
 });
 
