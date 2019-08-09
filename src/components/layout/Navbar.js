@@ -6,6 +6,7 @@ import SignedInLinks from './SignedInLinks';
 import SignedInLinksBurger from './SignedInLinksBurger';
 import SignedOutLinks from './SignedOutLinks';
 import SignedOutLinksBurger from './SignedOutLinksBurger';
+import { getCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class Navbar extends Component {
   constructor() {
@@ -15,6 +16,7 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
+    this.props.getCommitsThunk();
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
@@ -71,4 +73,13 @@ const mapStateToProps = state => {
   return { auth: state.firebase.auth, profile: state.firebase.profile };
 };
 
-export default connect(mapStateToProps)(Navbar);
+const mapDispatchToProps = dispatch => ({
+  getCommitsThunk() {
+    dispatch(getCommitsThunkCreator());
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navbar);

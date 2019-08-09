@@ -1,4 +1,3 @@
-// import axios from 'axios';
 import $ from 'jquery';
 
 // Data Set:
@@ -23,7 +22,6 @@ const githubUsers = [
   'wilsonleung32',
   'EricBot89',
   'malyavka',
-  'constancek',
   'SunnyChangMei',
   'LuigiLegion',
   'mercedesgm',
@@ -56,6 +54,7 @@ const githubUsers = [
   'AlexanderMann2015',
   'RobertSAdams32',
   'FakeBarenziah',
+  'taliacodes',
 ];
 
 // Initial State
@@ -88,17 +87,16 @@ export const getCommitsThunkCreator = () => {
             const filtResArr = $(res)
               .find('h2')
               .text()
-              .split(' ');
+              .match(/\d+/g);
 
-            const curGithubUserTotalCommits = filtResArr[22]
-              ? filtResArr[22]
-              : filtResArr[23];
+            const curGithubUserTotalCommits =
+              filtResArr.length === 1 ? filtResArr[0] : filtResArr.join('');
 
             // console.log('commitsCount: ', curGithubUserTotalCommits);
 
             const curGithubUserObj = {
               githubUsername: curGithubUser,
-              totalCommits: curGithubUserTotalCommits,
+              totalCommits: Number(curGithubUserTotalCommits),
             };
 
             // console.log('curGithubUserObj: ', curGithubUserObj);
@@ -118,7 +116,7 @@ export const getCommitsThunkCreator = () => {
         localStorage.setItem('commits', JSON.stringify(allCommitsData));
 
         // console.log('commitsReducer localStorage post-set: ', localStorage);
-      }, 10000);
+      }, 8000);
     } catch (error) {
       console.error(error);
     }
