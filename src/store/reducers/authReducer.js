@@ -121,10 +121,10 @@ export const signUpThunkCreator = newUser => {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGN_IN_ERROR:
-      console.log('User sign in error: ', action.error);
+      console.log('Sign in error! ', action.error);
       return { ...state, authError: 'Sign in failed' };
     case SIGN_IN_SUCCESS:
-      console.log('User signed in successfully: ', action.userCredentials);
+      console.log('Signed in successfully');
       return { ...state, authError: null };
     case SIGN_OUT_ERROR:
       console.log('Sign out error!');
