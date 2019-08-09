@@ -54,6 +54,7 @@ const githubUsers = [
   'AlexanderMann2015',
   'RobertSAdams32',
   'FakeBarenziah',
+  'taliacodes',
 ];
 
 // Initial State
