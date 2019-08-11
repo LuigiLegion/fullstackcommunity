@@ -8,6 +8,10 @@ Fullstack Community is a Fullstack Academy themed web app that connects past and
 
 The app was built using Node.js and Firebase on the backend, React.js, Redux.js, and Materialize.css on the frontend, and utilizes the Mapbox, MTA, Socrata Open Data, NYC Open Data, and Meetup APIs. It was completed in 4 days for a hackathon, and is continually being improved upon for the benefit of future Fullstack Academy and Grace Hopper generations to come.
 
+# YouTube Presentation:
+
+https://www.youtube.com/watch?v=hm4WL8kcvHo&feature=youtu.be
+
 # URL:
 
 fullstack-community.web.app
