@@ -78,12 +78,13 @@ export const getCommitsThunkCreator = () => {
     try {
       const allCommitsData = [];
 
-      githubUsers.forEach(curGithubUser => {
+      githubUsers.forEach((curGithubUser, idx) => {
         setTimeout(() => {
           $.get(
             `https://cors-anywhere.herokuapp.com/https://github.com/${curGithubUser}`,
             function(res) {
               // console.log('res: ', res);
+              // console.log({res})
 
               const filtResArr = $(res)
                 .find('h2')
@@ -105,8 +106,8 @@ export const getCommitsThunkCreator = () => {
               allCommitsData.push(curGithubUserObj);
             }
           );
-        });
-      }, 250);
+        }, idx * 250);
+      });
 
       setTimeout(() => {
         // console.log('allCommitsData: ', allCommitsData);
@@ -118,7 +119,7 @@ export const getCommitsThunkCreator = () => {
         localStorage.setItem('commits', JSON.stringify(allCommitsData));
 
         // console.log('commitsReducer localStorage post-set: ', localStorage);
-      }, 10000);
+      }, 15000);
     } catch (error) {
       console.error(error);
     }
