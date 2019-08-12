@@ -79,32 +79,34 @@ export const getCommitsThunkCreator = () => {
       const allCommitsData = [];
 
       githubUsers.forEach(curGithubUser => {
-        $.get(
-          `https://cors-anywhere.herokuapp.com/https://github.com/${curGithubUser}`,
-          function(res) {
-            // console.log('res: ', res);
+        setTimeout(() => {
+          $.get(
+            `https://cors-anywhere.herokuapp.com/https://github.com/${curGithubUser}`,
+            function(res) {
+              // console.log('res: ', res);
 
-            const filtResArr = $(res)
-              .find('h2')
-              .text()
-              .match(/\d+/g);
+              const filtResArr = $(res)
+                .find('h2')
+                .text()
+                .match(/\d+/g);
 
-            const curGithubUserTotalCommits =
-              filtResArr.length === 1 ? filtResArr[0] : filtResArr.join('');
+              const curGithubUserTotalCommits =
+                filtResArr.length === 1 ? filtResArr[0] : filtResArr.join('');
 
-            // console.log('commitsCount: ', curGithubUserTotalCommits);
+              // console.log('commitsCount: ', curGithubUserTotalCommits);
 
-            const curGithubUserObj = {
-              githubUsername: curGithubUser,
-              totalCommits: Number(curGithubUserTotalCommits),
-            };
+              const curGithubUserObj = {
+                githubUsername: curGithubUser,
+                totalCommits: Number(curGithubUserTotalCommits),
+              };
 
-            // console.log('curGithubUserObj: ', curGithubUserObj);
+              // console.log('curGithubUserObj: ', curGithubUserObj);
 
-            allCommitsData.push(curGithubUserObj);
-          }
-        );
-      });
+              allCommitsData.push(curGithubUserObj);
+            }
+          );
+        });
+      }, 250);
 
       setTimeout(() => {
         // console.log('allCommitsData: ', allCommitsData);
@@ -116,7 +118,7 @@ export const getCommitsThunkCreator = () => {
         localStorage.setItem('commits', JSON.stringify(allCommitsData));
 
         // console.log('commitsReducer localStorage post-set: ', localStorage);
-      }, 8000);
+      }, 10000);
     } catch (error) {
       console.error(error);
     }
