@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getUserCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class Commits extends Component {
+  componentDidMount() {
+    this.props.getUserCommitsThunk();
+  }
+
   render() {
     // console.log(
     //   'this.props.commits.allCommits: ',
@@ -143,4 +148,13 @@ const mapStateToProps = state => ({
   commits: state.commits,
 });
 
-export default connect(mapStateToProps)(Commits);
+const mapDispatchToProps = dispatch => ({
+  getUserCommitsThunk() {
+    dispatch(getUserCommitsThunkCreator());
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Commits);
