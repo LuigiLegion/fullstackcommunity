@@ -51,6 +51,8 @@ const githubUsers = [
   'AlexanderMann2015',
   'RobertSAdams32',
   'FakeBarenziah',
+  'zyabb',
+  'svetanek',
 ];
 
 // Initial State
@@ -78,17 +80,43 @@ export const getUserCommitsThunkCreator = () => {
             `https://cors-anywhere.herokuapp.com/https://github.com/${curGithubUser}`,
             function(res) {
               // console.log('res: ', res);
-              // console.log({res})
 
-              const filtResArr = $(res)
-                .find('h2')
-                .text()
-                .match(/\d+/g);
+              // Alternative:
+              // console.log({ res });
 
-              const curGithubUserTotalCommits =
-                filtResArr.length === 1 ? filtResArr[0] : filtResArr.join('');
+              let filtResArr;
+              let curGithubUserTotalCommits;
 
-              // console.log('commitsCount: ', curGithubUserTotalCommits);
+              if (document.body.offsetWidth > 1007) {
+                filtResArr = $(res)
+                  .find('h2')
+                  .text()
+                  .match(/\d+/g);
+
+                // console.log('filtResArr: ', filtResArr);
+
+                curGithubUserTotalCommits =
+                  filtResArr.length === 1 ? filtResArr[0] : filtResArr.join('');
+
+                // console.log(
+                //   'curGithubUserTotalCommits: ',
+                //   curGithubUserTotalCommits
+                // );
+              } else {
+                filtResArr = $(res)
+                  .find('button')
+                  .text()
+                  .match(/\d+/g);
+
+                // console.log('filtResArr: ', filtResArr);
+
+                curGithubUserTotalCommits = filtResArr[0];
+
+                // console.log(
+                //   'curGithubUserTotalCommits: ',
+                //   curGithubUserTotalCommits
+                // );
+              }
 
               const curGithubUserObj = {
                 githubUsername: curGithubUser,
@@ -100,7 +128,7 @@ export const getUserCommitsThunkCreator = () => {
               dispatch(gotUserCommitsActionCreator(curGithubUserObj));
             }
           );
-        }, idx * 500);
+        }, idx * 250);
       });
     } catch (error) {
       console.error(error);
@@ -116,6 +144,7 @@ const commitsReducer = (state = initialState, action) => {
       //   'fetched commits successfully in the commitsReducer: ',
       //   action.commits
       // );
+
       return {
         ...state,
         allCommits: [...state.allCommits, action.userCommits],

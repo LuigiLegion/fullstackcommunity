@@ -19,7 +19,7 @@ class Commits extends Component {
         <div className="card z-depth-0 center">
           <div className="card-content grey-text text-darken-3 center">
             <span className="card-title">
-              <strong>Gitness Tracker</strong>
+              <strong>1904 Gitness Tracker</strong>
             </span>
             {!this.props.commits.fetchedCommits ? (
               <div className="logos-parent-container">
@@ -74,7 +74,8 @@ class Commits extends Component {
                             wordBreak: 'break-all',
                           }}
                         >
-                          Total Commits
+                          Total Commits (Past{' '}
+                          {document.body.offsetWidth > 1007 ? 'Year' : 'Month'})
                         </th>
                       </tr>
                     </thead>
