@@ -100,7 +100,7 @@ export const getUserCommitsThunkCreator = () => {
               dispatch(gotUserCommitsActionCreator(curGithubUserObj));
             }
           );
-        }, idx * 500);
+        }, (idx + 1) * 500);
       });
     } catch (error) {
       console.error(error);
