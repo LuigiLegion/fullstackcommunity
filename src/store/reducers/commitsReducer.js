@@ -3,7 +3,6 @@ import $ from 'jquery';
 // Data Set:
 const githubUsers = [
   'marvinody',
-  'mshalam',
   'sofibee',
   'TristanWatanabe',
   'msicil',
@@ -17,7 +16,6 @@ const githubUsers = [
   'findkevin',
   'JorgeAcostaDLP',
   'jscheinhorn',
-  'Farhuts',
   'TalRodin',
   'wilsonleung32',
   'EricBot89',
@@ -29,7 +27,6 @@ const githubUsers = [
   'willgolden5',
   'tjhelsel',
   'wassermandh',
-  'alvinjtang',
   'tluo9713',
   'amneet954',
   'fjiang91',
@@ -54,7 +51,6 @@ const githubUsers = [
   'AlexanderMann2015',
   'RobertSAdams32',
   'FakeBarenziah',
-  'taliacodes',
 ];
 
 // Initial State
@@ -76,8 +72,6 @@ export const gotUserCommitsActionCreator = userCommits => ({
 export const getUserCommitsThunkCreator = () => {
   return async dispatch => {
     try {
-      // const allCommitsData = [];
-
       githubUsers.forEach((curGithubUser, idx) => {
         setTimeout(() => {
           $.get(
@@ -104,26 +98,10 @@ export const getUserCommitsThunkCreator = () => {
               // console.log('curGithubUserObj: ', curGithubUserObj);
 
               dispatch(gotUserCommitsActionCreator(curGithubUserObj));
-
-              // dispatch(gotUserCommitsActionCreator(allCommitsData))
-
-              // allCommitsData.push(curGithubUserObj);
             }
           );
         }, idx * 250);
       });
-
-      // setTimeout(() => {
-      //   // console.log('allCommitsData: ', allCommitsData);
-
-      //   dispatch(gotCommitsActionCreator(allCommitsData));
-
-      //   // console.log('commitsReducer localStorage pre-set: ', localStorage);
-
-      //   localStorage.setItem('commits', JSON.stringify(allCommitsData));
-
-      //   // console.log('commitsReducer localStorage post-set: ', localStorage);
-      // }, 15000);
     } catch (error) {
       console.error(error);
     }
