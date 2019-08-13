@@ -8,11 +8,11 @@ import ProjectList from '../projects/ProjectList';
 import Notifications from './Notifications';
 import Spaces from './Spaces';
 import Events from './Events';
-import { getCommitsThunkCreator } from '../../store/reducers/commitsReducer';
+import { getUserCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.getCommitsThunk();
+    this.props.getUserCommitsThunk();
   }
 
   render() {
@@ -45,8 +45,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getCommitsThunk() {
-    dispatch(getCommitsThunkCreator());
+  getUserCommitsThunk() {
+    dispatch(getUserCommitsThunkCreator());
   },
 });
 

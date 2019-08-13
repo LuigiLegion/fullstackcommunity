@@ -64,19 +64,19 @@ const initialState = {
 };
 
 // Actions
-const GOT_COMMITS = 'GOT_COMMITS';
+const GOT_USER_COMMITS = 'GOT_COMMITS';
 
 // Action Creators
-export const gotCommitsActionCreator = commits => ({
-  type: GOT_COMMITS,
-  commits,
+export const gotUserCommitsActionCreator = userCommits => ({
+  type: GOT_USER_COMMITS,
+  userCommits,
 });
 
 // Thunk Creators
-export const getCommitsThunkCreator = () => {
+export const getUserCommitsThunkCreator = () => {
   return async dispatch => {
     try {
-      const allCommitsData = [];
+      // const allCommitsData = [];
 
       githubUsers.forEach((curGithubUser, idx) => {
         setTimeout(() => {
@@ -103,23 +103,27 @@ export const getCommitsThunkCreator = () => {
 
               // console.log('curGithubUserObj: ', curGithubUserObj);
 
-              allCommitsData.push(curGithubUserObj);
+              dispatch(gotUserCommitsActionCreator(curGithubUserObj));
+
+              // dispatch(gotUserCommitsActionCreator(allCommitsData))
+
+              // allCommitsData.push(curGithubUserObj);
             }
           );
         }, idx * 250);
       });
 
-      setTimeout(() => {
-        // console.log('allCommitsData: ', allCommitsData);
+      // setTimeout(() => {
+      //   // console.log('allCommitsData: ', allCommitsData);
 
-        dispatch(gotCommitsActionCreator(allCommitsData));
+      //   dispatch(gotCommitsActionCreator(allCommitsData));
 
-        // console.log('commitsReducer localStorage pre-set: ', localStorage);
+      //   // console.log('commitsReducer localStorage pre-set: ', localStorage);
 
-        localStorage.setItem('commits', JSON.stringify(allCommitsData));
+      //   localStorage.setItem('commits', JSON.stringify(allCommitsData));
 
-        // console.log('commitsReducer localStorage post-set: ', localStorage);
-      }, 15000);
+      //   // console.log('commitsReducer localStorage post-set: ', localStorage);
+      // }, 15000);
     } catch (error) {
       console.error(error);
     }
@@ -129,12 +133,16 @@ export const getCommitsThunkCreator = () => {
 // Reducer
 const commitsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GOT_COMMITS:
+    case GOT_USER_COMMITS:
       // console.log(
       //   'fetched commits successfully in the commitsReducer: ',
       //   action.commits
       // );
-      return { ...state, allCommits: action.commits, fetchedCommits: true };
+      return {
+        ...state,
+        allCommits: [...state.allCommits, action.userCommits],
+        fetchedCommits: true,
+      };
     default:
       return state;
   }
