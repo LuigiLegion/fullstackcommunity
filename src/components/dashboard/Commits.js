@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { getUserCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class Commits extends Component {
@@ -17,9 +18,9 @@ class Commits extends Component {
       <div className="section center">
         <div className="card z-depth-0 center">
           <div className="card-content grey-text text-darken-3 center">
-            {/* <span className="card-title">
+            <span className="card-title">
               <strong>Gitness Tracker</strong>
-            </span> */}
+            </span>
             {!this.props.commits.fetchedCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">Loading commits...</div>
