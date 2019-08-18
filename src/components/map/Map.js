@@ -37,6 +37,7 @@ import * as publicLibrariesData from '../../data/public-library-locations.json';
 
 let firstRenderWithUsers = true;
 let curUserLocationName = '';
+let replaceWhitespaceWithPlusSignRegex = /\s+/;
 
 function useForceUpdate() {
   const [value, set] = useState(true);
@@ -469,15 +470,16 @@ const Map = ({ auth, users }) => {
               </div>
               <br />
               <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}+Station&destination=${selectedPublicLibrary.oversightAgency
-                  .split(' ')
-                  .join('+')}+${selectedPublicLibrary.address
-                  .split(' ')
-                  .join('+')}&travelmode=transit`}
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}+Station&destination=${selectedPublicLibrary.oversightAgency.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}+${selectedPublicLibrary.address.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -505,13 +507,13 @@ const Map = ({ auth, users }) => {
               </div> */}
               <br />
               <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}+Station&destination=Starbucks+${selectedStarbucks.name
-                  .split(' ')
-                  .join('+')}&travelmode=transit`}
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}+Station&destination=Starbucks+${selectedStarbucks.name.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -544,13 +546,13 @@ const Map = ({ auth, users }) => {
               </div>
               <br />
               <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}+Station&destination=Whole+Foods+Market+${selectedWholeFoods.location.address
-                  .split(' ')
-                  .join('+')}&travelmode=transit`}
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}+Station&destination=Whole+Foods+Market+${selectedWholeFoods.location.address.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -603,13 +605,13 @@ const Map = ({ auth, users }) => {
               </a>
               <br />
               <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}+Station&destination=WeWork+${selectedMeetup.venue.address_1
-                  .split(' ')
-                  .join('+')}&travelmode=transit`}
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}+Station&destination=WeWork+${selectedMeetup.venue.address_1.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -701,11 +703,10 @@ const Map = ({ auth, users }) => {
               </a>
               <br />
               <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}+Station&destination=Freelancers+Hub&travelmode=transit`}
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}+Station&destination=Freelancers+Hub&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -743,9 +744,10 @@ const Map = ({ auth, users }) => {
               </a>
               <br />
               <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join('+')}+Station&destination=AWS+Loft&travelmode=transit`}
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}+Station&destination=AWS+Loft&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -785,11 +787,10 @@ const Map = ({ auth, users }) => {
               </a>
               <br />
               <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName
-                  .split(' ')
-                  .join(
-                    '+'
-                  )}+Station&destination=Fullstack+Academy&travelmode=transit`}
+                href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
+                  replaceWhitespaceWithPlusSignRegex,
+                  '+'
+                )}+Station&destination=Fullstack+Academy&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
