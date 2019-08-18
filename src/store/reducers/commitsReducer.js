@@ -95,8 +95,11 @@ export const getUserCommitsThunkCreator = () => {
 
                 // console.log('filtResArr: ', filtResArr);
 
-                curGithubUserTotalCommits =
-                  filtResArr.length === 1 ? filtResArr[0] : filtResArr.join('');
+                curGithubUserTotalCommits = filtResArr
+                  ? filtResArr.length === 1
+                    ? filtResArr[0]
+                    : filtResArr.join('')
+                  : 0;
 
                 // console.log(
                 //   'curGithubUserTotalCommits: ',
@@ -110,7 +113,7 @@ export const getUserCommitsThunkCreator = () => {
 
                 // console.log('filtResArr: ', filtResArr);
 
-                curGithubUserTotalCommits = filtResArr[0];
+                curGithubUserTotalCommits = filtResArr ? filtResArr[0] : 0;
 
                 // console.log(
                 //   'curGithubUserTotalCommits: ',
