@@ -14,4 +14,4 @@ https://www.youtube.com/watch?v=hm4WL8kcvHo&feature=youtu.be
 
 # URL:
 
-fullstack-community.web.app
+https://fullstack-community.web.app
