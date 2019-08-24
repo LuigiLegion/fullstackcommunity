@@ -1,59 +1,5 @@
 import $ from 'jquery';
-
-// Data Set:
-const githubUsers = [
-  'marvinody',
-  'sofibee',
-  'TristanWatanabe',
-  'msicil',
-  'dwyfrequency',
-  'SidharthNambiar',
-  'Eutheran',
-  'xMNG',
-  'driver620',
-  'republicofkang',
-  'PeopleMakeCulture',
-  'findkevin',
-  'JorgeAcostaDLP',
-  'jscheinhorn',
-  'TalRodin',
-  'wilsonleung32',
-  'EricBot89',
-  'malyavka',
-  'SunnyChangMei',
-  'LuigiLegion',
-  'mercedesgm',
-  'xavierolivares',
-  'willgolden5',
-  'tjhelsel',
-  'wassermandh',
-  'tluo9713',
-  'amneet954',
-  'fjiang91',
-  'stanley-c-so',
-  'hdoshi2',
-  'dbtracy',
-  'nschefer',
-  'girkonv',
-  'ricardopineda93',
-  'dcnycoder',
-  'sam-peach',
-  'mimi-san',
-  'sriv97',
-  'daphne178',
-  'MistuhMok',
-  'ArnaldWong',
-  'cho-jason',
-  'rickylaufitness',
-  'jkichler',
-  'cmart11',
-  'vivtong',
-  'AlexanderMann2015',
-  'RobertSAdams32',
-  'FakeBarenziah',
-  'zyabb',
-  'svetanek',
-];
+import * as githubUsersData from '../../data/github-users-data.json';
 
 // Initial State
 const initialState = {
@@ -74,7 +20,7 @@ export const gotUserCommitsActionCreator = userCommits => ({
 export const getUserCommitsThunkCreator = () => {
   return async dispatch => {
     try {
-      githubUsers.forEach((curGithubUser, idx) => {
+      githubUsersData.githubUsernames.forEach((curGithubUser, idx) => {
         setTimeout(() => {
           $.get(
             `https://cors-anywhere.herokuapp.com/https://github.com/${curGithubUser}`,
@@ -131,7 +77,7 @@ export const getUserCommitsThunkCreator = () => {
               dispatch(gotUserCommitsActionCreator(curGithubUserObj));
             }
           );
-        }, idx * 250);
+        }, idx * 200);
       });
     } catch (error) {
       console.error(error);

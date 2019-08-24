@@ -88,7 +88,7 @@ class Events extends Component {
                   </div>
                   <a
                     className="events-time-and-rsvp-containee"
-                    href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2"
+                    href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423943723?aff=erelexpmlt"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
