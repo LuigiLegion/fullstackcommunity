@@ -32,7 +32,7 @@ class SignedOutLinksBurger extends Component {
           isOpen={this.state.menuOpen}
           onStateChange={state => this.handleStateChange(state)}
           right
-          width={'33%'}
+          width={'40%'}
           styles={burgerStyles}
         >
           <div styles={divStyles}>

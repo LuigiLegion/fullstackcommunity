@@ -34,13 +34,14 @@ export const getEventsThunkCreator = () => {
       // dispatch(gotEventsActionCreator(allMeetupsData));
 
       // Meetup groups with future meetups:
-      const javascriptCodersMeetupsData = await axios.get(
+      const javascriptCodersMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
       );
       // console.log(
       //   'javascriptCodersMeetups: ',
       //   javascriptCodersMeetupsData.data.results
       // );
+
       const bootcampersAnonymousMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=19344391&page=20'
       );
@@ -48,10 +49,21 @@ export const getEventsThunkCreator = () => {
       //   'bootcampersAnonymousMeetups: ',
       //   bootcampersAnonymousMeetups.data.results
       // );
+
+      const reactNycMeetups = await axios.get(
+        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=22884788&page=20'
+      );
+      // console.log(
+      //   'reactNycMeetups: ',
+      //   reactNycMeetups.data.results
+      // );
+
       const allMeetupsData = [
-        ...javascriptCodersMeetupsData.data.results,
+        ...javascriptCodersMeetups.data.results,
         ...bootcampersAnonymousMeetups.data.results,
+        ...reactNycMeetups.data.results,
       ];
+
       dispatch(gotEventsActionCreator(allMeetupsData));
 
       // console.log('eventsReducer localStorage pre-set: ', localStorage);
