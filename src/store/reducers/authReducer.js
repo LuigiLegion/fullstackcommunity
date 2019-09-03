@@ -91,15 +91,16 @@ export const signUpThunkCreator = newUser => {
         `https://mtaapi.herokuapp.com/stop?id=${newUser.location.id}`
       );
       // console.log('data: ', data);
-      const locationGeocode = { lat: +data.result.lat, lon: +data.result.lon };
+      const locationGeocode = { lat: Number(data.result.lat), lon: Number(data.result.lon) };
       await firestore
         .collection('users')
         .doc(newUserData.user.uid)
         .set({
+          email: newUser.email,
+          githubUsername: newUser.githubUsername,
           firstName: newUser.firstName,
           lastName: newUser.lastName,
           initials: newUser.firstName[0] + newUser.lastName[0],
-          email: newUser.email,
           gender: newUser.gender,
           status: newUser.status,
           company: newUser.company ? newUser.company : null,
