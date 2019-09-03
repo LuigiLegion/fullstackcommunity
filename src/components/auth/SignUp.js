@@ -13,6 +13,7 @@ export class SignUp extends Component {
     this.state = {
       email: '',
       password: '',
+      githubUsername: '',
       firstName: '',
       lastName: '',
       gender: 'Male',
@@ -88,25 +89,37 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field">
-              <label htmlFor="firstName">First Name (Must contain uppercase and lowercase letters only, and at least 2 characters)</label>
+              <label htmlFor="githubUsername">GitHub Username (Must contain at least 1 character in total)</label>
               <input
                 type="text"
-                id="firstName"
+                id="githubUsername"
                 required
-                pattern="[A-Za-z]{2,32}"
-                title="Must contain uppercase and lowercase letters only, and at least 2 characters"
+                pattern="[A-Za-z]{1,32}"
+                title="Must contain at least 1 character in total"
                 onChange={this.handleChange}
               />
             </div>
 
             <div className="input-field">
-              <label htmlFor="lastName">Last Name (Must contain uppercase and lowercase letters only, and at least 2 characters)</label>
+              <label htmlFor="firstName">First Name (Must contain uppercase and lowercase letters only, and at least 2 characters in total)</label>
+              <input
+                type="text"
+                id="firstName"
+                required
+                pattern="[A-Za-z]{2,32}"
+                title="Must contain uppercase and lowercase letters only, and at least 2 characters in total"
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className="input-field">
+              <label htmlFor="lastName">Last Name (Must contain uppercase and lowercase letters only, and at least 2 characters in total)</label>
               <input
                 type="text"
                 id="lastName"
                 required
                 pattern="[A-Za-z]{2,32}"
-                title="Must contain uppercase and lowercase letters only, and at least 2 characters"
+                title="Must contain uppercase and lowercase letters only, and at least 2 characters in total"
                 onChange={this.handleChange}
               />
             </div>
@@ -152,13 +165,13 @@ export class SignUp extends Component {
 
             {this.state.status === 'Employed' ? (
               <div className="input-field">
-                <label htmlFor="company">Company Name (Must contain uppercase and lowercase letters only, and at least 2 characters)</label>
+                <label htmlFor="company">Company Name (Must contain uppercase and lowercase letters only, and at least 2 characters in total)</label>
                 <input
                   type="text"
                   id="company"
                   required
                   pattern="[A-Za-z]+{2,32}"
-                  title="Must contain uppercase and lowercase letters only, and at least 2 characters"
+                  title="Must contain uppercase and lowercase letters only, and at least 2 characters in total"
                   onChange={this.handleChange}
                 />
               </div>
