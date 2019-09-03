@@ -1,6 +1,6 @@
 # Fullstack Community - Always Be Coding. Together.
 
-![Fullstack Community Screenshot](./public/fullstack_community.png)
+![Fullstack Community Screenshot](./public/img/screenshot.png)
 
 ### Video Presentation:
 
@@ -9,10 +9,6 @@
 ### URL:
 
 https://fullstack-community.web.app
-
-### GitHub Repository:
-
-https://github.com/LuigiLegion/fullstackcommunity
 
 ### Description:
 
