@@ -1,10 +1,10 @@
 # Fullstack Community - Always Be Coding. Together.
 
-![Fullstack Community](./public/fullstack_community.png)
+![Fullstack Community Screenshot](./public/fullstack_community.png)
 
 ### Video Presentation:
 
-[![Alt text](https://img.youtube.com/vi/hm4WL8kcvHo/0.jpg)](hhttps://www.youtube.com/watch?v=hm4WL8kcvHo&feature=youtu.be)
+[![Fullstack Community Video Presentation](https://img.youtube.com/vi/hm4WL8kcvHo/0.jpg)](https://www.youtube.com/watch?v=hm4WL8kcvHo&feature=youtu.be)
 
 ### URL:
 
