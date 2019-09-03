@@ -447,7 +447,7 @@ const Map = ({ auth = {}, users = [] }) => {
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
-                )}+Station&destination=${selectedPublicLibrary.oversightAgency.replace(
+                )}+Subway+Station&destination=${selectedPublicLibrary.oversightAgency.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
                 )}+${selectedPublicLibrary.address.replace(
@@ -484,7 +484,7 @@ const Map = ({ auth = {}, users = [] }) => {
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
-                )}+Station&destination=Starbucks+${selectedStarbucks.name.replace(
+                )}+Subway+Station&destination=Starbucks+${selectedStarbucks.name.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
                 )}&travelmode=transit`}
@@ -523,7 +523,7 @@ const Map = ({ auth = {}, users = [] }) => {
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
-                )}+Station&destination=Whole+Foods+Market+${selectedWholeFoods.location.address.replace(
+                )}+Subway+Station&destination=Whole+Foods+Market+${selectedWholeFoods.location.address.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
                 )}&travelmode=transit`}
@@ -582,7 +582,7 @@ const Map = ({ auth = {}, users = [] }) => {
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
-                )}+Station&destination=WeWork+${selectedMeetup.venue.address_1.replace(
+                )}+Subway+Station&destination=WeWork+${selectedMeetup.venue.address_1.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
                 )}&travelmode=transit`}
@@ -680,7 +680,7 @@ const Map = ({ auth = {}, users = [] }) => {
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
-                )}+Station&destination=Freelancers+Hub&travelmode=transit`}
+                )}+Subway+Station&destination=Freelancers+Hub&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -721,7 +721,7 @@ const Map = ({ auth = {}, users = [] }) => {
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
-                )}+Station&destination=AWS+Loft&travelmode=transit`}
+                )}+Subway+Station&destination=AWS+Loft&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -764,7 +764,7 @@ const Map = ({ auth = {}, users = [] }) => {
                 href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                   replaceWhitespaceWithPlusSignRegex,
                   '+'
-                )}+Station&destination=Fullstack+Academy&travelmode=transit`}
+                )}+Subway+Station&destination=Fullstack+Academy&travelmode=transit`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
