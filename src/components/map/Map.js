@@ -4,6 +4,7 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import PropTypes from 'prop-types';
 
 import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
@@ -18,7 +19,7 @@ function useForceUpdate() {
   return () => set(!value);
 }
 
-const Map = ({ auth = {}, users = [] }) => {
+const Map = ({ auth, users }) => {
   const [viewport, setViewport] = useState({
     latitude: 40.7531823,
     longitude: -73.9844421,
@@ -791,3 +792,8 @@ export default compose(
     },
   ])
 )(Map);
+
+Map.propTypes = {
+  auth: PropTypes.object,
+  users: PropTypes.array,
+};
