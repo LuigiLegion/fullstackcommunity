@@ -97,8 +97,8 @@ const burgerStyles = {
     position: 'fixed',
     width: '36px',
     height: '30px',
-    right: '30px',
-    top: '17.5px',
+    right: '14px',
+    top: '14px',
   },
   bmBurgerBars: {
     background: '#ef5350',
