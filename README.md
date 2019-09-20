@@ -10,6 +10,10 @@
 
 https://fullstack-community.web.app
 
+### Dev Team:
+
+- Tal Luigi ([LinkedIn](https://www.linkedin.com/in/talluigi) | [GitHub](https://github.com/luigilegion))
+
 ### Description:
 
 Fullstack Community is a Fullstack Academy themed web app that connects past and present Fullstack students. The app allows current students and unemployed alums to form study groups and work on projects or practice algorithms together, while also allowing unemployed alums set up coffee meetings with employed alums that work for companies that they would like to work for in New York City.

@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
-import { getUserCommitsThunkCreator } from '../../store/reducers/commitsReducer';
+import { getUserYearlyCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
-class Commits extends Component {
+class CommitsYearly extends Component {
   componentDidMount() {
-    if (!this.props.fetchedCommits) {
-      this.props.getUserCommitsThunk();
+    if (!this.props.fetchedYearlyCommits) {
+      this.props.getUserYearlyCommitsThunk();
     }
   }
 
   render() {
     // console.log(
-    //   'this.props.allCommits: ',
-    //   this.props.allCommits
+    //   'this.props.yearlyCommits: ',
+    //   this.props.yearlyCommits
     // );
 
     return (
@@ -24,8 +23,8 @@ class Commits extends Component {
           <div className="card-content grey-text text-darken-3 center">
             {document.body.offsetWidth > 1007 ? (
               <div>
-                <NavLink activeClassName="right" to="/yearlyleaderboard">
-                  <strong>Past Year Leaderboard</strong>
+                <NavLink activeClassName="right" to="/leaderboard">
+                  <strong>Current Month Leaderboard</strong>
                 </NavLink>
 
                 <br />
@@ -34,18 +33,15 @@ class Commits extends Component {
             ) : null}
 
             <span className="card-title">
-              <strong>
-                {moment(new Date()).format('MMMM YYYY')} Season Leaderboard
-              </strong>
+              <strong>Past Year Leaderboard</strong>
             </span>
-
-            {!this.props.fetchedCommits ? (
+            {!this.props.fetchedYearlyCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">Loading commits...</div>
                 <br />
                 <br />
               </div>
-            ) : !this.props.allCommits.length ? (
+            ) : !this.props.yearlyCommits.length ? (
               <div className="logos-parent-container">
                 <div className="logo-container">No users were found.</div>
                 <br />
@@ -92,12 +88,12 @@ class Commits extends Component {
                             wordBreak: 'break-all',
                           }}
                         >
-                          Total Commits (Current Month)
+                          Total Commits (Past Year)
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      {this.props.allCommits
+                      {this.props.yearlyCommits
                         .sort((githubUserOne, githubUserTwo) => {
                           if (
                             githubUserOne.totalCommits >
@@ -164,17 +160,17 @@ class Commits extends Component {
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
   users: state.firestore.ordered.users,
-  allCommits: state.commits.allCommits,
-  fetchedCommits: state.commits.fetchedCommits,
+  yearlyCommits: state.commits.yearlyCommits,
+  fetchedYearlyCommits: state.commits.fetchedYearlyCommits,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getUserCommitsThunk() {
-    dispatch(getUserCommitsThunkCreator());
+  getUserYearlyCommitsThunk() {
+    dispatch(getUserYearlyCommitsThunkCreator());
   },
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Commits);
+)(CommitsYearly);
