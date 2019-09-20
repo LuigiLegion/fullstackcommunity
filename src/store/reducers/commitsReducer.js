@@ -142,7 +142,7 @@ export const getUserYearlyCommitsThunkCreator = () => {
 
               // console.log('curGithubUserObj: ', curGithubUserObj);
 
-              dispatch(gotUserCommitsActionCreator(curGithubUserObj));
+              dispatch(gotUserYearlyCommitsActionCreator(curGithubUserObj));
             }
           );
         }, idx * 200);
