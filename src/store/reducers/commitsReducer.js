@@ -41,14 +41,14 @@ export const getUserCommitsThunkCreator = () => {
               // Alternative:
               // console.log({ res });
 
-              console.log('curGithubUser: ', curGithubUser);
+              // console.log('curGithubUser: ', curGithubUser);
 
               let filtResArr;
               let curMonthCommitsCheck;
 
               const curMonth = moment(Date.now()).format('MMMM');
 
-              console.log('curMonth: ', curMonth);
+              // console.log('curMonth: ', curMonth);
 
               if (document.body.offsetWidth > 1007) {
                 curMonthCommitsCheck = $(res)
@@ -62,7 +62,7 @@ export const getUserCommitsThunkCreator = () => {
                   .includes(`- ${curMonth}`);
               }
 
-              console.log('curMonthCommitsCheck: ', curMonthCommitsCheck);
+              // console.log('curMonthCommitsCheck: ', curMonthCommitsCheck);
 
               if (!curMonthCommitsCheck) {
                 filtResArr = $(res)
@@ -71,21 +71,21 @@ export const getUserCommitsThunkCreator = () => {
                   .match(/\d+/g);
               }
 
-              console.log('filtResArr: ', filtResArr);
+              // console.log('filtResArr: ', filtResArr);
 
               const curGithubUserTotalCommits = filtResArr ? filtResArr[0] : 0;
 
-              console.log(
-                'curGithubUserTotalCommits: ',
-                curGithubUserTotalCommits
-              );
+              // console.log(
+              //   'curGithubUserTotalCommits: ',
+              //   curGithubUserTotalCommits
+              // );
 
               const curGithubUserObj = {
                 githubUsername: curGithubUser,
                 totalCommits: Number(curGithubUserTotalCommits),
               };
 
-              console.log('curGithubUserObj: ', curGithubUserObj);
+              // console.log('curGithubUserObj: ', curGithubUserObj);
 
               dispatch(gotUserCommitsActionCreator(curGithubUserObj));
             }
@@ -111,17 +111,20 @@ export const getUserYearlyCommitsThunkCreator = () => {
               // Alternative:
               // console.log({ res });
 
-              let filtResArr;
-              let curGithubUserTotalCommits;
+              // console.log('curGithubUser: ', curGithubUser);
 
-              filtResArr = $(res)
-                .find('h2')
-                .text()
-                .match(/\d+/g);
+              let filtResArr;
+
+              if (document.body.offsetWidth > 1007) {
+                filtResArr = $(res)
+                  .find('h2')
+                  .text()
+                  .match(/\d+/g);
+              }
 
               // console.log('filtResArr: ', filtResArr);
 
-              curGithubUserTotalCommits = filtResArr
+              const curGithubUserTotalCommits = filtResArr
                 ? filtResArr.length === 1
                   ? filtResArr[0]
                   : filtResArr.join('')
