@@ -22,7 +22,7 @@ class CommitsYearly extends Component {
             {document.body.offsetWidth > 1007 ? (
               <div>
                 <NavLink activeClassName="right" to="/leaderboard">
-                  <strong>Past Month Leaderboard</strong>
+                  <strong>Current Month Leaderboard</strong>
                 </NavLink>
 
                 <br />
