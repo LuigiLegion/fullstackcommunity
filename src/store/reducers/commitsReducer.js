@@ -41,42 +41,51 @@ export const getUserCommitsThunkCreator = () => {
               // Alternative:
               // console.log({ res });
 
+              console.log('curGithubUser: ', curGithubUser);
+
               let filtResArr;
-              let curGithubUserTotalCommits;
+              let curMonthCommitsCheck;
 
               const curMonth = moment(Date.now()).format('MMMM');
 
-              // console.log('curMonth: ', curMonth);
+              console.log('curMonth: ', curMonth);
 
-              const curMonthCommitsCheck = $(res)
-                .find('span')
-                .text()
-                .includes(`- ${curMonth}`);
+              if (document.body.offsetWidth > 1007) {
+                curMonthCommitsCheck = $(res)
+                  .find('h3')
+                  .text()
+                  .includes(`- ${curMonth}`);
+              } else {
+                curMonthCommitsCheck = $(res)
+                  .find('span')
+                  .text()
+                  .includes(`- ${curMonth}`);
+              }
 
-              // console.log('curMonthCommitsCheck: ', curMonthCommitsCheck);
+              console.log('curMonthCommitsCheck: ', curMonthCommitsCheck);
 
               if (!curMonthCommitsCheck) {
                 filtResArr = $(res)
                   .find('button')
                   .text()
                   .match(/\d+/g);
-
-                // console.log('filtResArr: ', filtResArr);
-
-                curGithubUserTotalCommits = filtResArr ? filtResArr[0] : 0;
-
-                // console.log(
-                //   'curGithubUserTotalCommits: ',
-                //   curGithubUserTotalCommits
-                // );
               }
+
+              console.log('filtResArr: ', filtResArr);
+
+              const curGithubUserTotalCommits = filtResArr ? filtResArr[0] : 0;
+
+              console.log(
+                'curGithubUserTotalCommits: ',
+                curGithubUserTotalCommits
+              );
 
               const curGithubUserObj = {
                 githubUsername: curGithubUser,
                 totalCommits: Number(curGithubUserTotalCommits),
               };
 
-              // console.log('curGithubUserObj: ', curGithubUserObj);
+              console.log('curGithubUserObj: ', curGithubUserObj);
 
               dispatch(gotUserCommitsActionCreator(curGithubUserObj));
             }
