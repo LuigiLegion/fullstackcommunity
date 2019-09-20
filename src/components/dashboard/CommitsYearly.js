@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 import { getUserCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
-class Commits extends Component {
+class CommitsYearly extends Component {
   componentDidMount() {
     this.props.getUserCommitsThunk();
   }
@@ -20,7 +19,7 @@ class Commits extends Component {
         <div className="card z-depth-0 center">
           <div className="card-content grey-text text-darken-3 center">
             <span className="card-title">
-              <strong>{moment(new Date()).format('MMMM YYYY')} Season Leaderboard</strong>
+              <strong>Past Year Leaderboard</strong>
             </span>
             {!this.props.commits.fetchedCommits ? (
               <div className="logos-parent-container">
@@ -75,8 +74,7 @@ class Commits extends Component {
                             wordBreak: 'break-all',
                           }}
                         >
-                          Total Commits (Past{' '}
-                          {document.body.offsetWidth > 1007 ? 'Year' : 'Month'})
+                          Total Commits (Past Year')
                         </th>
                       </tr>
                     </thead>
@@ -160,4 +158,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Commits);
+)(CommitsYearly);
