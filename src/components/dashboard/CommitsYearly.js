@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { getUserYearlyCommitsThunkCreator } from '../../store/reducers/commitsReducer';
@@ -10,14 +11,25 @@ class CommitsYearly extends Component {
 
   render() {
     // console.log(
-    //   'this.props.allCommits: ',
-    //   this.props.allCommits
+    //   'this.props.yearlyCommits: ',
+    //   this.props.yearlyCommits
     // );
 
     return (
       <div className="section center">
         <div className="card z-depth-0 center">
           <div className="card-content grey-text text-darken-3 center">
+            {document.body.offsetWidth > 1007 ? (
+              <div>
+                <NavLink activeClassName="right" to="/leaderboard">
+                  <strong>Past Month Leaderboard</strong>
+                </NavLink>
+
+                <br />
+                <br />
+              </div>
+            ) : null}
+
             <span className="card-title">
               <strong>Past Year Leaderboard</strong>
             </span>
