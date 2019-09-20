@@ -6,16 +6,20 @@ import * as githubUsersData from '../../data/github-users-data.json';
 // Initial State
 const initialState = {
   allCommits: [],
+  yearlyCommits: [],
   fetchedCommits: false,
+  fetchedYearlyCommits: false,
 };
 
 // Actions
-const GOT_USER_COMMITS = 'GOT_COMMITS';
+const GOT_USER_COMMITS = 'GOT_USER_COMMITS';
+
+const GOT_USER_YEARLY_COMMITS = 'GOT_USER_YEARLY_COMMITS';
 
 // Action Creators
-export const gotUserCommitsActionCreator = userCommits => ({
+export const gotUserCommitsActionCreator = commits => ({
   type: GOT_USER_COMMITS,
-  userCommits,
+  commits,
 });
 
 // Thunk Creators
@@ -35,42 +39,22 @@ export const getUserCommitsThunkCreator = () => {
               let filtResArr;
               let curGithubUserTotalCommits;
 
-              if (document.body.offsetWidth > 1007) {
+              const curMonth = moment(Date.now()).format('MMMM');
+
+              // console.log('curMonth: ', curMonth);
+
+              const curMonthCommitsCheck = $(res)
+                .find('span')
+                .text()
+                .includes(`- ${curMonth}`);
+
+              // console.log('curMonthCommitsCheck: ', curMonthCommitsCheck);
+
+              if (!curMonthCommitsCheck) {
                 filtResArr = $(res)
-                  .find('h2')
+                  .find('button')
                   .text()
                   .match(/\d+/g);
-
-                // console.log('filtResArr: ', filtResArr);
-
-                curGithubUserTotalCommits = filtResArr
-                  ? filtResArr.length === 1
-                    ? filtResArr[0]
-                    : filtResArr.join('')
-                  : 0;
-
-                // console.log(
-                //   'curGithubUserTotalCommits: ',
-                //   curGithubUserTotalCommits
-                // );
-              } else {
-                const curMonth = moment(Date.now()).format('MMMM');
-
-                // console.log('curMonth: ', curMonth);
-
-                const curMonthCommitsCheck = $(res)
-                  .find('span')
-                  .text()
-                  .includes(`- ${curMonth}`);
-
-                // console.log('curMonthCommitsCheck: ', curMonthCommitsCheck);
-
-                if (!curMonthCommitsCheck) {
-                  filtResArr = $(res)
-                    .find('button')
-                    .text()
-                    .match(/\d+/g);
-                }
 
                 // console.log('filtResArr: ', filtResArr);
 
@@ -81,6 +65,58 @@ export const getUserCommitsThunkCreator = () => {
                 //   curGithubUserTotalCommits
                 // );
               }
+
+              const curGithubUserObj = {
+                githubUsername: curGithubUser,
+                totalCommits: Number(curGithubUserTotalCommits),
+              };
+
+              // console.log('curGithubUserObj: ', curGithubUserObj);
+
+              dispatch(gotUserCommitsActionCreator(curGithubUserObj));
+            }
+          );
+        }, idx * 200);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const getUserYearlyCommitsThunkCreator = () => {
+  return async dispatch => {
+    try {
+      githubUsersData.githubUsernames.forEach((curGithubUser, idx) => {
+        setTimeout(() => {
+          $.get(
+            `https://cors-anywhere.herokuapp.com/https://github.com/${curGithubUser}`,
+            function(res) {
+              // console.log('res: ', res);
+
+              // Alternative:
+              // console.log({ res });
+
+              let filtResArr;
+              let curGithubUserTotalCommits;
+
+              filtResArr = $(res)
+                .find('h2')
+                .text()
+                .match(/\d+/g);
+
+              // console.log('filtResArr: ', filtResArr);
+
+              curGithubUserTotalCommits = filtResArr
+                ? filtResArr.length === 1
+                  ? filtResArr[0]
+                  : filtResArr.join('')
+                : 0;
+
+              // console.log(
+              //   'curGithubUserTotalCommits: ',
+              //   curGithubUserTotalCommits
+              // );
 
               const curGithubUserObj = {
                 githubUsername: curGithubUser,
@@ -111,7 +147,7 @@ const commitsReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        allCommits: [...state.allCommits, action.userCommits],
+        allCommits: [...state.allCommits, action.commits],
         fetchedCommits: true,
       };
     default:
