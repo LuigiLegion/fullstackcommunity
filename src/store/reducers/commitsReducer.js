@@ -1,4 +1,6 @@
 import $ from 'jquery';
+import moment from 'moment';
+
 import * as githubUsersData from '../../data/github-users-data.json';
 
 // Initial State
@@ -52,10 +54,23 @@ export const getUserCommitsThunkCreator = () => {
                 //   curGithubUserTotalCommits
                 // );
               } else {
-                filtResArr = $(res)
-                  .find('button')
+                const curMonth = moment(Date.now()).format('MMMM');
+
+                // console.log('curMonth: ', curMonth);
+
+                const curMonthCommitsCheck = $(res)
+                  .find('span')
                   .text()
-                  .match(/\d+/g);
+                  .includes(`- ${curMonth}`);
+
+                // console.log('curMonthCommitsCheck: ', curMonthCommitsCheck);
+
+                if (!curMonthCommitsCheck) {
+                  filtResArr = $(res)
+                    .find('button')
+                    .text()
+                    .match(/\d+/g);
+                }
 
                 // console.log('filtResArr: ', filtResArr);
 
