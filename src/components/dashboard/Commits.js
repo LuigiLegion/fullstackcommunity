@@ -11,8 +11,8 @@ class Commits extends Component {
 
   render() {
     // console.log(
-    //   'this.props.commits.allCommits: ',
-    //   this.props.commits.allCommits
+    //   'this.props.allCommits: ',
+    //   this.props.allCommits
     // );
 
     return (
@@ -20,15 +20,17 @@ class Commits extends Component {
         <div className="card z-depth-0 center">
           <div className="card-content grey-text text-darken-3 center">
             <span className="card-title">
-              <strong>{moment(new Date()).format('MMMM YYYY')} Season Leaderboard</strong>
+              <strong>
+                {moment(new Date()).format('MMMM YYYY')} Season Leaderboard
+              </strong>
             </span>
-            {!this.props.commits.fetchedCommits ? (
+            {!this.props.fetchedCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">Loading commits...</div>
                 <br />
                 <br />
               </div>
-            ) : !this.props.commits.allCommits.length ? (
+            ) : !this.props.allCommits.length ? (
               <div className="logos-parent-container">
                 <div className="logo-container">No users were found.</div>
                 <br />
@@ -75,13 +77,12 @@ class Commits extends Component {
                             wordBreak: 'break-all',
                           }}
                         >
-                          Total Commits (Past{' '}
-                          {document.body.offsetWidth > 1007 ? 'Year' : 'Month'})
+                          Total Commits (Current Month)
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      {this.props.commits.allCommits
+                      {this.props.allCommits
                         .sort((githubUserOne, githubUserTwo) => {
                           if (
                             githubUserOne.totalCommits >
@@ -148,7 +149,8 @@ class Commits extends Component {
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
   users: state.firestore.ordered.users,
-  commits: state.commits,
+  allCommits: state.commits.allCommits,
+  fetchedCommits: state.commits.fetchedCommits,
 });
 
 const mapDispatchToProps = dispatch => ({
