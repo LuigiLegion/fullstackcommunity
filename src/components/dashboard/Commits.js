@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
@@ -19,11 +20,23 @@ class Commits extends Component {
       <div className="section center">
         <div className="card z-depth-0 center">
           <div className="card-content grey-text text-darken-3 center">
+            {document.body.offsetWidth > 1007 ? (
+              <div>
+                <NavLink activeClassName="right" to="/yearlyleaderboard">
+                  <strong>Yearly Leaderboard</strong>
+                </NavLink>
+
+                <br />
+                <br />
+              </div>
+            ) : null}
+
             <span className="card-title">
               <strong>
                 {moment(new Date()).format('MMMM YYYY')} Season Leaderboard
               </strong>
             </span>
+
             {!this.props.fetchedCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">Loading commits...</div>
