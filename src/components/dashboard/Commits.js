@@ -7,7 +7,9 @@ import { getUserCommitsThunkCreator } from '../../store/reducers/commitsReducer'
 
 class Commits extends Component {
   componentDidMount() {
-    this.props.getUserCommitsThunk();
+    if (!this.props.fetchedCommits) {
+      this.props.getUserCommitsThunk();
+    }
   }
 
   render() {

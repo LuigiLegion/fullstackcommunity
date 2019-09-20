@@ -6,7 +6,9 @@ import { getUserYearlyCommitsThunkCreator } from '../../store/reducers/commitsRe
 
 class CommitsYearly extends Component {
   componentDidMount() {
-    this.props.getUserYearlyCommitsThunk();
+    if (!this.props.fetchedYearlyCommits) {
+      this.props.getUserYearlyCommitsThunk();
+    }
   }
 
   render() {
