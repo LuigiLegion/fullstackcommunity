@@ -22,6 +22,11 @@ export const gotUserCommitsActionCreator = commits => ({
   commits,
 });
 
+export const gotUserYearlyCommitsActionCreator = commits => ({
+  type: GOT_USER_YEARLY_COMMITS,
+  commits,
+});
+
 // Thunk Creators
 export const getUserCommitsThunkCreator = () => {
   return async dispatch => {
