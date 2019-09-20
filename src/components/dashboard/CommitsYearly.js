@@ -10,8 +10,8 @@ class CommitsYearly extends Component {
 
   render() {
     // console.log(
-    //   'this.props.commits.allCommits: ',
-    //   this.props.commits.allCommits
+    //   'this.props.allCommits: ',
+    //   this.props.allCommits
     // );
 
     return (
@@ -21,7 +21,7 @@ class CommitsYearly extends Component {
             <span className="card-title">
               <strong>Past Year Leaderboard</strong>
             </span>
-            {!this.props.commits.fetchedYearlyCommits ? (
+            {!this.props.fetchedYearlyCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">Loading commits...</div>
                 <br />
