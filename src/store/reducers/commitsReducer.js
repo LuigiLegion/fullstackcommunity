@@ -146,7 +146,7 @@ const commitsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_USER_COMMITS:
       // console.log(
-      //   'fetched commits successfully in the commitsReducer: ',
+      //   'fetched all commits successfully in the commitsReducer: ',
       //   action.commits
       // );
 
@@ -155,6 +155,19 @@ const commitsReducer = (state = initialState, action) => {
         allCommits: [...state.allCommits, action.commits],
         fetchedCommits: true,
       };
+
+    case GOT_USER_YEARLY_COMMITS:
+      // console.log(
+      //   'fetched yearly commits successfully in the commitsReducer: ',
+      //   action.commits
+      // );
+
+      return {
+        ...state,
+        yearlyCommits: [...state.yearlyCommits, action.commits],
+        fetchedYearlyCommits: true,
+      };
+
     default:
       return state;
   }
