@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getUserCommitsThunkCreator } from '../../store/reducers/commitsReducer';
+import { getUserYearlyCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class CommitsYearly extends Component {
   componentDidMount() {
-    this.props.getUserCommitsThunk();
+    this.props.getUserYearlyCommitsThunk();
   }
 
   render() {
@@ -21,13 +21,13 @@ class CommitsYearly extends Component {
             <span className="card-title">
               <strong>Past Year Leaderboard</strong>
             </span>
-            {!this.props.commits.fetchedCommits ? (
+            {!this.props.commits.fetchedYearlyCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">Loading commits...</div>
                 <br />
                 <br />
               </div>
-            ) : !this.props.commits.allCommits.length ? (
+            ) : !this.props.yearlyCommits.length ? (
               <div className="logos-parent-container">
                 <div className="logo-container">No users were found.</div>
                 <br />
@@ -79,7 +79,7 @@ class CommitsYearly extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.props.commits.allCommits
+                      {this.props.yearlyCommits
                         .sort((githubUserOne, githubUserTwo) => {
                           if (
                             githubUserOne.totalCommits >
@@ -146,12 +146,13 @@ class CommitsYearly extends Component {
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
   users: state.firestore.ordered.users,
-  commits: state.commits,
+  yearlyCommits: state.commits.yearlyCommits,
+  fetchedYearlyCommits: state.commits.fetchedYearlyCommits,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getUserCommitsThunk() {
-    dispatch(getUserCommitsThunkCreator());
+  getUserYearlyCommitsThunk() {
+    dispatch(getUserYearlyCommitsThunkCreator());
   },
 });
 
