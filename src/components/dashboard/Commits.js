@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
@@ -17,6 +17,12 @@ class Commits extends Component {
     //   'this.props.allCommits: ',
     //   this.props.allCommits
     // );
+
+    const { auth } = this.props;
+
+    if (!auth.uid) {
+      return <Redirect to="/signin" />;
+    }
 
     return (
       <div className="section center">
