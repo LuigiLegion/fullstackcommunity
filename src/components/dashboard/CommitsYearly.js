@@ -17,12 +17,17 @@ class CommitsYearly extends Component {
     //   this.props.yearlyCommits
     // );
 
+    // console.log(
+    //   'this.props.fetchedYearlyCommits: ',
+    //   this.props.fetchedYearlyCommits
+    // );
+
     const { auth } = this.props;
 
     if (!auth.uid) {
       return <Redirect to="/signin" />;
     }
-    g;
+
     return (
       <div className="section center">
         <div className="card z-depth-0 center">

@@ -18,6 +18,11 @@ class Commits extends Component {
     //   this.props.allCommits
     // );
 
+    // console.log(
+    //   'this.props.fetchedCommits: ',
+    //   this.props.fetchedCommits
+    // );
+
     const { auth } = this.props;
 
     if (!auth.uid) {
