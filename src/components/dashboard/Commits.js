@@ -148,6 +148,7 @@ class Commits extends Component {
                               >
                                 <strong>{curGithubUser.githubUsername}</strong>
                               </td>
+
                               <td
                                 style={{
                                   width: '100px',

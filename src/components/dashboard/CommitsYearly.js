@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { getUserYearlyCommitsThunkCreator } from '../../store/reducers/commitsReducer';
@@ -16,6 +16,12 @@ class CommitsYearly extends Component {
     //   'this.props.yearlyCommits: ',
     //   this.props.yearlyCommits
     // );
+
+    const { auth } = this.props;
+
+    if (!auth.uid) {
+      return <Redirect to="/signin" />;
+    }
 
     return (
       <div className="section center">
@@ -35,15 +41,18 @@ class CommitsYearly extends Component {
             <span className="card-title">
               <strong>Past Year Leaderboard</strong>
             </span>
+
             {!this.props.fetchedYearlyCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">Loading commits...</div>
+
                 <br />
                 <br />
               </div>
             ) : !this.props.yearlyCommits.length ? (
               <div className="logos-parent-container">
                 <div className="logo-container">No users were found.</div>
+
                 <br />
                 <br />
               </div>
@@ -70,6 +79,7 @@ class CommitsYearly extends Component {
                         >
                           Rank
                         </th>
+
                         <th
                           style={{
                             width: '100px',
@@ -80,6 +90,7 @@ class CommitsYearly extends Component {
                         >
                           Github Username
                         </th>
+
                         <th
                           style={{
                             width: '100px',
@@ -92,6 +103,7 @@ class CommitsYearly extends Component {
                         </th>
                       </tr>
                     </thead>
+
                     <tbody>
                       {this.props.yearlyCommits
                         .sort((githubUserOne, githubUserTwo) => {
@@ -122,6 +134,7 @@ class CommitsYearly extends Component {
                               >
                                 <strong>{idx + 1}</strong>
                               </td>
+
                               <td
                                 style={{
                                   width: '100px',
@@ -132,6 +145,7 @@ class CommitsYearly extends Component {
                               >
                                 <strong>{curGithubUser.githubUsername}</strong>
                               </td>
+
                               <td
                                 style={{
                                   width: '100px',
