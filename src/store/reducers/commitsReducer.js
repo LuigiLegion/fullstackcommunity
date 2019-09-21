@@ -90,7 +90,7 @@ export const getUserCommitsThunkCreator = () => {
               dispatch(gotUserCommitsActionCreator(curGithubUserObj));
             }
           );
-        }, idx * 200);
+        }, idx * 250);
       });
     } catch (error) {
       console.error(error);
@@ -145,7 +145,7 @@ export const getUserYearlyCommitsThunkCreator = () => {
               dispatch(gotUserYearlyCommitsActionCreator(curGithubUserObj));
             }
           );
-        }, idx * 200);
+        }, idx * 250);
       });
     } catch (error) {
       console.error(error);
