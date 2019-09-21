@@ -48,12 +48,14 @@ class Commits extends Component {
             {!this.props.fetchedCommits ? (
               <div className="logos-parent-container">
                 <div className="logo-container">Loading commits...</div>
+
                 <br />
                 <br />
               </div>
             ) : !this.props.allCommits.length ? (
               <div className="logos-parent-container">
                 <div className="logo-container">No users were found.</div>
+
                 <br />
                 <br />
               </div>
@@ -80,6 +82,7 @@ class Commits extends Component {
                         >
                           Rank
                         </th>
+
                         <th
                           style={{
                             width: '100px',
@@ -90,6 +93,7 @@ class Commits extends Component {
                         >
                           Github Username
                         </th>
+
                         <th
                           style={{
                             width: '100px',
@@ -102,6 +106,7 @@ class Commits extends Component {
                         </th>
                       </tr>
                     </thead>
+
                     <tbody>
                       {this.props.allCommits
                         .sort((githubUserOne, githubUserTwo) => {
@@ -132,6 +137,7 @@ class Commits extends Component {
                               >
                                 <strong>{idx + 1}</strong>
                               </td>
+
                               <td
                                 style={{
                                   width: '100px',
