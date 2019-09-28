@@ -10,7 +10,7 @@ import SignedOutLinksBurger from './SignedOutLinksBurger';
 class Navbar extends Component {
   constructor() {
     super();
-    this.state = { width: 0, height: 0 };
+    this.state = { width: 0 };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -24,12 +24,12 @@ class Navbar extends Component {
   }
 
   updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
+    this.setState({ width: window.innerWidth });
   }
 
   render() {
     const { auth, profile } = this.props;
-    const largeViewCheck = window.innerWidth > 1007;
+    const largeViewCheck = this.state.width > 1007;
     let curLinks;
 
     if (auth.uid) {
