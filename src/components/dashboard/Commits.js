@@ -20,6 +20,7 @@ class Commits extends Component {
 
     const { auth } = this.props;
     const largeViewCheck = window.innerWidth > 1007;
+    const tableWidth = largeViewCheck ? '80%' : '100%';
 
     if (!auth.uid) {
       return <Redirect to="/signin" />;
@@ -66,9 +67,9 @@ class Commits extends Component {
                   <table
                     className="striped centered"
                     style={{
-                      width: '80%',
-                      minWidth: '80%',
-                      maxWidth: '80%',
+                      width: tableWidth,
+                      minWidth: tableWidth,
+                      maxWidth: tableWidth,
                     }}
                   >
                     <thead>
@@ -92,7 +93,9 @@ class Commits extends Component {
                             wordBreak: 'break-all',
                           }}
                         >
-                          Github Username
+                          Github
+                          <br />
+                          Username
                         </th>
 
                         <th
@@ -103,7 +106,9 @@ class Commits extends Component {
                             wordBreak: 'break-all',
                           }}
                         >
-                          Total Commits (Current Month)
+                          Total
+                          <br />
+                          Commits
                         </th>
                       </tr>
                     </thead>
