@@ -69,7 +69,9 @@ export const signOutThunkCreator = () => {
       dispatch(signOutSuccessActionCreator());
 
       // console.log('authReducer localStorage pre-clear: ', localStorage);
+
       localStorage.clear();
+
       // console.log('authReducer localStorage post-clear: ', localStorage);
     } catch (error) {
       console.error(error);
@@ -82,6 +84,7 @@ export const signUpThunkCreator = newUser => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     try {
       // console.log('newUser: ', newUser);
+
       const firebase = getFirebase();
       const firestore = getFirestore();
       const newUserData = await firebase
@@ -90,8 +93,13 @@ export const signUpThunkCreator = newUser => {
       const { data } = await axios.get(
         `https://mtaapi.herokuapp.com/stop?id=${newUser.location.id}`
       );
+
       // console.log('data: ', data);
-      const locationGeocode = { lat: Number(data.result.lat), lon: Number(data.result.lon) };
+
+      const locationGeocode = {
+        lat: Number(data.result.lat),
+        lon: Number(data.result.lon),
+      };
       await firestore
         .collection('users')
         .doc(newUserData.user.uid)

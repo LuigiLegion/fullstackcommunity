@@ -32,6 +32,7 @@ export class SignUp extends Component {
   handleChange(event) {
     // console.log('event.target.id: ', event.target.id);
     // console.log('event.target.value: ', event.target.value);
+
     this.setState({
       [event.target.id]: event.target.value,
     });
@@ -40,6 +41,7 @@ export class SignUp extends Component {
   handleSelect(event) {
     // console.log('event.target.id: ', event.target.id);
     // console.log('event.target.value: ', event.target.value);
+
     const location = subwayStationsData.stations.filter(
       curSubwayStation => curSubwayStation.name === event.target.value
     )[0];
@@ -51,6 +53,7 @@ export class SignUp extends Component {
   handleSubmit(event) {
     // console.log('event.target.id: ', event.target.id);
     // console.log('event.target.value: ', event.target.value);
+
     event.preventDefault();
     this.props.signUpThunk(this.state);
   }
@@ -77,7 +80,10 @@ export class SignUp extends Component {
               />
             </div>
             <div className="input-field">
-              <label htmlFor="password">Password (Must contain at least one uppercase letter, one lowercase letter, one digit, and at least 8 characters in total)</label>
+              <label htmlFor="password">
+                Password (Must contain at least one uppercase letter, one
+                lowercase letter, one digit, and at least 8 characters in total)
+              </label>
               <input
                 type="password"
                 id="password"
@@ -89,7 +95,9 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field">
-              <label htmlFor="githubUsername">GitHub Username (Must contain at least 1 character in total)</label>
+              <label htmlFor="githubUsername">
+                GitHub Username (Must contain at least 1 character in total)
+              </label>
               <input
                 type="text"
                 id="githubUsername"
@@ -101,7 +109,10 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field">
-              <label htmlFor="firstName">First Name (Must contain uppercase and lowercase letters only, and at least 2 characters in total)</label>
+              <label htmlFor="firstName">
+                First Name (Must contain uppercase and lowercase letters only,
+                and at least 2 characters in total)
+              </label>
               <input
                 type="text"
                 id="firstName"
@@ -113,7 +124,10 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field">
-              <label htmlFor="lastName">Last Name (Must contain uppercase and lowercase letters only, and at least 2 characters in total)</label>
+              <label htmlFor="lastName">
+                Last Name (Must contain uppercase and lowercase letters only,
+                and at least 2 characters in total)
+              </label>
               <input
                 type="text"
                 id="lastName"
@@ -165,7 +179,10 @@ export class SignUp extends Component {
 
             {this.state.status === 'Employed' ? (
               <div className="input-field">
-                <label htmlFor="company">Company Name (Must contain uppercase and lowercase letters only, and at least 2 characters in total)</label>
+                <label htmlFor="company">
+                  Company Name (Must contain uppercase and lowercase letters
+                  only, and at least 2 characters in total)
+                </label>
                 <input
                   type="text"
                   id="company"

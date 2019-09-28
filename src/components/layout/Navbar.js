@@ -29,34 +29,29 @@ class Navbar extends Component {
 
   render() {
     const { auth, profile } = this.props;
+    const largeViewCheck = window.innerWidth > 1007;
     let curLinks;
+
     if (auth.uid) {
-      if (document.body.offsetWidth > 1007) {
+      if (largeViewCheck) {
         curLinks = <SignedInLinks profile={profile} />;
       } else {
         curLinks = <SignedInLinksBurger profile={profile} />;
       }
     } else {
-      if (document.body.offsetWidth > 1007) {
+      if (largeViewCheck) {
         curLinks = <SignedOutLinks />;
       } else {
         curLinks = <SignedOutLinksBurger />;
       }
     }
 
-    // const curLinks = auth.uid ? (
-    //   // <SignedInLinks profile={profile} />
-    //   <SignedInLinksBurger profile={profile} />
-    // ) : (
-    //   <SignedOutLinks />
-    // );
-
     return (
       <div className="navbar-fixed">
         <nav className="nav-wrapper grey darken-3">
           <div>
             <NavLink to="/" className="left brand-logo name-text-positioning">
-              <strong>Fullstack Community</strong>
+              {largeViewCheck ? 'Fullstack Community' : 'FSCommunity'}
             </NavLink>
             {curLinks}
           </div>
@@ -68,6 +63,7 @@ class Navbar extends Component {
 
 const mapStateToProps = state => {
   // console.log('state: ', state);
+
   return { auth: state.firebase.auth, profile: state.firebase.profile };
 };
 

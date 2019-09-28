@@ -11,9 +11,9 @@ import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
 import * as publicLibrariesData from '../../data/public-library-locations.json';
 
+const replaceWhitespaceWithPlusSignRegex = /\s+/g;
 let firstRenderWithUsers = true;
 let curUserLocationName = '';
-let replaceWhitespaceWithPlusSignRegex = /\s+/g;
 
 function useForceUpdate() {
   const [value, set] = useState(true);
@@ -49,8 +49,6 @@ const Map = ({ auth, users }) => {
 
   const allMeetups = JSON.parse(localStorage.meetups);
 
-  // console.log('auth: ', auth, 'users: ', users);
-
   // useEffect(() => {
   //   console.log('IN THE USEFFECT');
   //   const listener = event => {
@@ -68,6 +66,8 @@ const Map = ({ auth, users }) => {
   //     console.log('window after remove: ', window);
   //   };
   // }, []);
+
+  // console.log('auth: ', auth, 'users: ', users);
 
   if (!auth.uid) {
     return <Redirect to="/signin" />;
@@ -106,31 +106,6 @@ const Map = ({ auth, users }) => {
           })}
 
           {starbucksData.branches.map(curStarbucks => {
-            // if (citiesOfInterest.includes(curStarbucks.city)) {
-            //   return (
-            //     <Marker
-            //       key={curStarbucks.store_id}
-            //       latitude={curStarbucks.latitude}
-            //       longitude={curStarbucks.longitude}
-            //     >
-            //       <button
-            //         onClick={event => {
-            //           event.preventDefault();
-            //           setSelectedStarbucks(curStarbucks);
-            //         }}
-            //         className="marker-btn"
-            //       >
-            //         <img
-            //           src="https://img.icons8.com/color/48/000000/starbucks.png"
-            //           alt="Starbucks Icon"
-            //         />
-            //       </button>
-            //     </Marker>
-            //   );
-            // } else {
-            //   return null;
-            // }
-
             return (
               <Marker
                 key={curStarbucks.storeId}
@@ -207,6 +182,7 @@ const Map = ({ auth, users }) => {
           {users
             ? users.map(curUser => {
                 // console.log(curUser);
+
                 if (curUser.id === auth.uid) {
                   if (firstRenderWithUsers) {
                     viewport.latitude = curUser.locationGeocode.lat;
