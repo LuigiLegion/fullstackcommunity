@@ -103,7 +103,7 @@ class Commits extends Component {
                             wordBreak: 'break-all',
                           }}
                         >
-                          Total Commits (Current Month)
+                          Total Commits
                         </th>
                       </tr>
                     </thead>

@@ -100,7 +100,7 @@ class CommitsYearly extends Component {
                             wordBreak: 'break-all',
                           }}
                         >
-                          Total Commits (Past Year)
+                          Total Commits
                         </th>
                       </tr>
                     </thead>
