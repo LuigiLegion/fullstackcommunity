@@ -50,7 +50,9 @@ export const getUserCommitsThunkCreator = () => {
 
               // console.log('curMonth: ', curMonth);
 
-              if (document.body.offsetWidth > 1007) {
+              const largeViewCheck = window.innerWidth > 1007;
+
+              if (largeViewCheck) {
                 curMonthCommitsCheck = $(res)
                   .find('h3')
                   .text()
@@ -114,8 +116,9 @@ export const getUserYearlyCommitsThunkCreator = () => {
               // console.log('curGithubUser: ', curGithubUser);
 
               let filtResArr;
+              const largeViewCheck = window.innerWidth > 1007;
 
-              if (document.body.offsetWidth > 1007) {
+              if (largeViewCheck) {
                 filtResArr = $(res)
                   .find('h2')
                   .text()

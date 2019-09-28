@@ -19,6 +19,7 @@ class Commits extends Component {
     // );
 
     const { auth } = this.props;
+    const largeViewCheck = window.innerWidth > 1007;
 
     if (!auth.uid) {
       return <Redirect to="/signin" />;
@@ -28,7 +29,7 @@ class Commits extends Component {
       <div className="section center">
         <div className="card z-depth-0 center">
           <div className="card-content grey-text text-darken-3 center">
-            {document.body.offsetWidth > 1007 ? (
+            {largeViewCheck ? (
               <div>
                 <NavLink activeClassName="right" to="/yearlyleaderboard">
                   <strong>Past Year Leaderboard</strong>
