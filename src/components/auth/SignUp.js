@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import fullstackCommunityAccessToken from '../../config/fscConfig';
 import { signUpThunkCreator } from '../../store/reducers/authReducer';
 import * as subwayStationsData from '../../data/nyc-subway-stations.json';
 
@@ -22,7 +23,8 @@ export class SignUp extends Component {
       cohort: '1907',
       program: 'FSA-NY',
       location: defaultLocation,
-      invitationKey: '',
+      accessToken: '',
+      accessTokenError: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
@@ -55,7 +57,16 @@ export class SignUp extends Component {
     // console.log('event.target.value: ', event.target.value);
 
     event.preventDefault();
-    this.props.signUpThunk(this.state);
+    if (this.state.accessToken === fullstackCommunityAccessToken) {
+      this.setState({
+        accessTokenError: false,
+      });
+      this.props.signUpThunk(this.state);
+    } else {
+      this.setState({
+        accessTokenError: true,
+      });
+    }
   }
 
   render() {
@@ -207,6 +218,8 @@ export class SignUp extends Component {
                 <option value="" disabled>
                   --Please choose an option--
                 </option>
+                <option value="1911">1911</option>
+                <option value="1909">1909</option>
                 <option value="1907">1907</option>
                 <option value="1906">1906</option>
                 <option value="1904">1904</option>
@@ -299,21 +312,26 @@ export class SignUp extends Component {
               </select>
             </div>
 
-            {/* <div className="input-field">
-              <label htmlFor="invitationKey">Invitation Key</label>
+            <div className="input-field">
+              <label htmlFor="accessToken">
+                Access Token (Must match the access token you received via email
+                invitation)
+              </label>
               <input
                 type="text"
-                id="invitationKey"
+                id="accessToken"
                 required
-                pattern="[A-Za-z]{8,32}"
-                title="Must contain uppercase and lowercase letters only, and at least 2 or more characters. Must match the invitation key you received via email"
                 onChange={this.handleChange}
               />
-            </div> */}
+            </div>
 
             <button className="btn red lighten-1 z-depth-0">Sign Up</button>
             <div className="red-text center">
-              {authError ? <p>{authError}</p> : null}
+              {authError ? (
+                <p>{authError}</p>
+              ) : this.state.accessTokenError ? (
+                'Invalid Access Token! Please try again.'
+              ) : null}
             </div>
           </form>
         </div>

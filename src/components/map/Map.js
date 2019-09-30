@@ -7,6 +7,7 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 
+import mapboxAccessToken from '../../config/mbglConfig';
 import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
 import * as publicLibrariesData from '../../data/public-library-locations.json';
@@ -76,7 +77,7 @@ const Map = ({ auth, users }) => {
       <div>
         <ReactMapGL
           {...viewport}
-          mapboxApiAccessToken={process.env.local}
+          mapboxApiAccessToken={mapboxAccessToken}
           onViewportChange={viewport => {
             setViewport(viewport);
           }}
