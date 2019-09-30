@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import fullstackCommunityAccessToken from '../../config/fscConfig';
 import { signUpThunkCreator } from '../../store/reducers/authReducer';
 import * as subwayStationsData from '../../data/nyc-subway-stations.json';
 
@@ -207,6 +208,8 @@ export class SignUp extends Component {
                 <option value="" disabled>
                   --Please choose an option--
                 </option>
+                <option value="1911">1911</option>
+                <option value="1909">1909</option>
                 <option value="1907">1907</option>
                 <option value="1906">1906</option>
                 <option value="1904">1904</option>
