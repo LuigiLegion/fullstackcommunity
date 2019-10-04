@@ -62,11 +62,26 @@ export const getEventsThunkCreator = () => {
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31543338&page=20'
         );
 
+      // console.log(
+      //   'useReactNycMeetups: ',
+      //   useReactNycMeetups.data.results
+      // );
+
+      const mongodbNycMeetups = await axios.get(
+        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=1629296&page=20'
+        );
+      
+      // console.log(
+      //   'mongodbNycMeetups: ',
+      //   mongodbNycMeetups.data.results
+      // );
+
       const allMeetupsData = [
         ...javascriptCodersMeetups.data.results,
         ...bootcampersAnonymousMeetups.data.results,
         ...reactNycMeetups.data.results,
         ...useReactNycMeetups.data.results,
+        ...mongodbNycMeetups.data.results,
       ];
 
       dispatch(gotEventsActionCreator(allMeetupsData));
