@@ -58,10 +58,15 @@ export const getEventsThunkCreator = () => {
       //   reactNycMeetups.data.results
       // );
 
+      const useReactNycMeetups = await axios.get(
+        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31543338&page=20'
+        );
+
       const allMeetupsData = [
         ...javascriptCodersMeetups.data.results,
         ...bootcampersAnonymousMeetups.data.results,
         ...reactNycMeetups.data.results,
+        ...useReactNycMeetups.data.results,
       ];
 
       dispatch(gotEventsActionCreator(allMeetupsData));
