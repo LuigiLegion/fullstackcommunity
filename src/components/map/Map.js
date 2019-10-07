@@ -157,25 +157,29 @@ const Map = ({ auth, users }) => {
           {allMeetups
             ? allMeetups.map(curMeetup => {
                 return (
-                  <Marker
-                    key={curMeetup.id}
-                    latitude={curMeetup.venue.lat}
-                    longitude={curMeetup.venue.lon}
-                  >
-                    <button
-                      onClick={event => {
-                        event.preventDefault();
-                        setSelectedMeetup(curMeetup);
-                      }}
-                      className="marker-btn"
+                  curMeetup.venue ? (
+
+                    <Marker
+                      key={curMeetup.id}
+                      latitude={curMeetup.venue.lat}
+                      longitude={curMeetup.venue.lon}
                     >
-                      <img
-                        // src="https://img.icons8.com/ios/50/000000/meetup.png"
-                        src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
-                        alt="Meetup Icon"
-                      />
-                    </button>
-                  </Marker>
+                      <button
+                        onClick={event => {
+                          event.preventDefault();
+                          setSelectedMeetup(curMeetup);
+                        }}
+                        className="marker-btn"
+                      >
+                        <img
+                          // src="https://img.icons8.com/ios/50/000000/meetup.png"
+                          src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
+                          alt="Meetup Icon"
+                        />
+                      </button>
+                    </Marker>
+                  ) : 
+                  null
                 );
               })
             : null}
