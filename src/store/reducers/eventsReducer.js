@@ -86,8 +86,9 @@ export const getEventsThunkCreator = () => {
         ...javascriptCodersMeetups.data.results,
         ...bootcampersAnonymousMeetups.data.results,
         ...reactNycMeetups.data.results,
-        ...mongodbNycMeetups,
-        ...vueNycMeetups,
+        ...useReactNycMeetups.data.results,
+        ...mongodbNycMeetups.data.results,
+        ...vueNycMeetups.data.results,
       ];
 
       dispatch(gotEventsActionCreator(allMeetupsData));
