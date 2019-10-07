@@ -1,103 +1,81 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import moment from 'moment';
 
-import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
+const Group = ({name, events, fetchedEvents}) => {
+  console.log({name});
+  console.log({events});
+  console.log({fetchedEvents});
 
-class Events extends Component {
-  componentDidMount() {
-    this.props.getEventsThunk();
-  }
-
-  render() {
-    // console.log('this.props.events.allEvents: ', this.props.events.allEvents);
-
-    return (
-      <div className="section">
-        <div className="card z-depth-0">
-          <div className="card-content grey-text text-darken-3">
-            <span className="card-title">
-              <strong>Upcoming Meetups & Events</strong>
-            </span>
-            {!this.props.events.fetchedEvents ? (
-              <div className="logos-parent-container">
-                <div className="logo-container">Loading Meetups...</div>
-                <br />
-                <br />
+  return (
+    <div className="section">
+      <div className="card z-depth-0">
+        <div className="card-content grey-text text-darken-3">
+          <span className="card-title">
+            <strong>{name}</strong>
+          </span>
+          {!fetchedEvents ? (
+            <div className="logos-parent-container">
+              <div className="logo-container">Loading Meetups...</div>
+              <br />
+              <br />
+            </div>
+          ) : !events.length ? (
+            <div className="logos-parent-container">
+              <div className="logo-container">
+                No upcoming Meetups were found.
               </div>
-            ) : !this.props.events.allEvents.length ? (
-              <div className="logos-parent-container">
-                <div className="logo-container">
-                  No upcoming Meetups were found.
-                </div>
-                <br />
-                <br />
-              </div>
-            ) : (
-              <ul className="notifications">
-                {this.props.events.allEvents.map(curEvent => {
-                  return (
-                    <li key={curEvent.id}>
-                      <span className="red-text-color">
-                        <strong>{curEvent.name} </strong>
-                      </span>
-                      <div>
-                        {curEvent.venue ? (
-                          `${curEvent.venue.address_1}, ${curEvent.venue.city}`
-                        ) : (
-                          'TBD'
-                        )}
+              <br />
+              <br />
+            </div>
+          ) : (
+            <ul className="notifications">
+              {events.map(curEvent => {
+                return (
+                  <li key={curEvent.id}>
+                    <span className="red-text-color">
+                      <strong>{curEvent.name} </strong>
+                    </span>
+                    <div>
+                      {curEvent.venue ? (
+                        `${curEvent.venue.address_1}, ${curEvent.venue.city}`
+                      ) : (
+                        'TBD'
+                      )}
+                    </div>
+                    <div className="events-time-and-rsvp-container">
+                      <div className="grey-text note-date events-time-and-rsvp-containee">
+                        {moment(curEvent.time).fromNow()}
                       </div>
-                      <div className="events-time-and-rsvp-container">
-                        <div className="grey-text note-date events-time-and-rsvp-containee">
-                          {moment(curEvent.time).fromNow()}
-                        </div>
-                        <a
-                          className="events-time-and-rsvp-containee"
-                          href={curEvent.event_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <span className="right">
-                            {curEvent.rsvp_limit ? (
-                              <strong>
-                                RSVP ({curEvent.yes_rsvp_count}/
-                                {curEvent.rsvp_limit} Attending)
-                              </strong>
-                            ) : (
-                              <strong>
-                                RSVP ({curEvent.yes_rsvp_count} Attending)
-                              </strong>
-                            )}
-                          </span>
-                        </a>
-                      </div>
-                      <br />
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </div>
+                      <a
+                        className="events-time-and-rsvp-containee"
+                        href={curEvent.event_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span className="right">
+                          {curEvent.rsvp_limit ? (
+                            <strong>
+                              RSVP ({curEvent.yes_rsvp_count}/
+                              {curEvent.rsvp_limit} Attending)
+                            </strong>
+                          ) : (
+                            <strong>
+                              RSVP ({curEvent.yes_rsvp_count} Attending)
+                            </strong>
+                          )}
+                        </span>
+                      </a>
+                    </div>
+                    <br />
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-const mapStateToProps = state => ({
-  auth: state.firebase.auth,
-  users: state.firestore.ordered.users,
-  events: state.events,
-});
-
-const mapDispatchToProps = dispatch => ({
-  getEventsThunk() {
-    dispatch(getEventsThunkCreator());
-  },
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Events);
+export default Group;
