@@ -3,30 +3,12 @@ import axios from 'axios';
 // Initial State
 const initialState = {
   allEvents: {
-    javascriptCoders: {
-      name: 'JavaScript Coders',
-      events: [],
-    },
-    bootcampersAnonymous: {
-      name: 'Bootcampers Anonymous',
-      events: [],
-    },
-    reactNyc: {
-      name: 'React NYC',
-      events: [],
-    },
-    useReactNycMeetups: {
-      name: 'useReactNYC',
-      events: [],
-    },
-    mongodbNyc: {
-      name: 'MongoDB NYC',
-      events: [],
-    },
-    vueNyc: {
-      name: 'Vue NYC',
-      events: [],
-    },
+    javascriptCoders: [],
+    bootcampersAnonymous: [],
+    reactNyc: [],
+    useReactNycMeetups: [],
+    mongodbNyc: [],
+    vueNyc: [],
   },
   fetchedEvents: false,
 };
@@ -107,6 +89,17 @@ export const getEventsThunkCreator = () => {
       //   vueNycMeetups.data.results
       // );
 
+      const allMeetupsReducerData = {
+        javascriptCoders: [...javascriptCodersMeetups.data.results],
+        bootcampersAnonymous: [...bootcampersAnonymousMeetups.data.results],
+        reactNyc: [...reactNycMeetups.data.results],
+        useReactNyc: [...useReactNycMeetups.data.results],
+        mongodbNyc: [...mongodbNycMeetups.data.results],
+        vueNyc: [...vueNycMeetups.data.results],
+      }
+
+      dispatch(gotEventsActionCreator(allMeetupsReducerData));
+
       const allMeetupsMapData = [
         ...javascriptCodersMeetups.data.results,
         ...bootcampersAnonymousMeetups.data.results,
@@ -115,8 +108,6 @@ export const getEventsThunkCreator = () => {
         ...mongodbNycMeetups.data.results,
         ...vueNycMeetups.data.results,
       ];
-      
-      dispatch(gotEventsActionCreator(allMeetupsMapData));
 
       // console.log('eventsReducer localStorage pre-set: ', localStorage);
 
