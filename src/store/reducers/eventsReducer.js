@@ -2,7 +2,32 @@ import axios from 'axios';
 
 // Initial State
 const initialState = {
-  allEvents: [],
+  allEvents: {
+    javascriptCoders: {
+      name: 'JavaScript Coders',
+      events: [],
+    },
+    bootcampersAnonymous: {
+      name: 'Bootcampers Anonymous',
+      events: [],
+    },
+    reactNyc: {
+      name: 'React NYC',
+      events: [],
+    },
+    useReactNycMeetups: {
+      name: 'useReactNYC',
+      events: [],
+    },
+    mongodbNyc: {
+      name: 'MongoDB NYC',
+      events: [],
+    },
+    vueNyc: {
+      name: 'Vue NYC',
+      events: [],
+    },
+  },
   fetchedEvents: false,
 };
 
@@ -82,7 +107,7 @@ export const getEventsThunkCreator = () => {
       //   vueNycMeetups.data.results
       // );
 
-      const allMeetupsData = [
+      const allMeetupsMapData = [
         ...javascriptCodersMeetups.data.results,
         ...bootcampersAnonymousMeetups.data.results,
         ...reactNycMeetups.data.results,
@@ -90,12 +115,12 @@ export const getEventsThunkCreator = () => {
         ...mongodbNycMeetups.data.results,
         ...vueNycMeetups.data.results,
       ];
-
-      dispatch(gotEventsActionCreator(allMeetupsData));
+      
+      dispatch(gotEventsActionCreator(allMeetupsMapData));
 
       // console.log('eventsReducer localStorage pre-set: ', localStorage);
 
-      localStorage.setItem('meetups', JSON.stringify(allMeetupsData));
+      localStorage.setItem('meetups', JSON.stringify(allMeetupsMapData));
 
       // console.log('eventsReducer localStorage post-set: ', localStorage);
     } catch (error) {
