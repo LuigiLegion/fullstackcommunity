@@ -24,7 +24,7 @@ class GroupsList extends Component {
           <div className="row">
             <div className="col s12 m5 offset-m1">
               {events.map((curGroup, idx) => {
-                return <Group key={idx} group={curGroup} fetchedEvents={events.fetchedEvents} />
+                return <Group key={idx} name={curGroup.name} events={curGroup.events} fetchedEvents={events.fetchedEvents} />
               })}
             </div>
 
