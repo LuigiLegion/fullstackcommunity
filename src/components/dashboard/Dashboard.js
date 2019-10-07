@@ -7,7 +7,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import ProjectList from '../projects/ProjectList';
 import Notifications from './Notifications';
 import Spaces from './Spaces';
-import Events from './Events';
+// import Events from './Events';
 
 class Dashboard extends Component {
   render() {

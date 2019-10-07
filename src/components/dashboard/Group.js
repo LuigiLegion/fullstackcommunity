@@ -19,7 +19,7 @@ const Group = ({name, events, fetchedEvents}) => {
               <br />
               <br />
             </div>
-          ) : !events.length ? (
+          ) : !events ? (
             <div className="logos-parent-container">
               <div className="logo-container">
                 No upcoming Meetups were found.

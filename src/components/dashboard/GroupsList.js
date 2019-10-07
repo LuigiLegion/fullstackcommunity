@@ -23,9 +23,15 @@ class GroupsList extends Component {
         <div className="dashboard container">
           <div className="row">
             <div className="col s12 m5 offset-m1">
-              {events.map((curGroup, idx) => {
-                return <Group key={idx} name={curGroup.name} events={curGroup.events} fetchedEvents={events.fetchedEvents} />
-              })}
+              {
+                events.fetchedEvents ? (
+                  events.allEvents.map((curGroup, idx) => {
+                    return <Group key={idx} name={curGroup.name} events={curGroup.events} fetchedEvents={events.fetchedEvents} />
+                  })
+                ) : (
+                  null
+                )
+              }
             </div>
 
             <div className="col s12 m5 offset-m1">
