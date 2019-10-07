@@ -1,126 +1,91 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import moment from 'moment';
+import axios from 'axios';
 
-import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
+// Initial State
+const initialState = {
+  allEvents: [],
+  fetchedEvents: false,
+};
 
-class Events extends Component {
-  componentDidMount() {
-    this.props.getEventsThunk();
-  }
+// Actions
+const GOT_EVENTS = 'GOT_EVENTS';
 
-  render() {
-    // console.log('this.props.events.allEvents: ', this.props.events.allEvents);
-
-    return (
-      <div className="section">
-        <div className="card z-depth-0">
-          <div className="card-content grey-text text-darken-3">
-            <span className="card-title">
-              <strong>Upcoming Meetups & Events</strong>
-            </span>
-            {!this.props.events.fetchedEvents ? (
-              <div className="logos-parent-container">
-                <div className="logo-container">Loading Meetups...</div>
-                <br />
-                <br />
-              </div>
-            ) : !this.props.events.allEvents.length ? (
-              <div className="logos-parent-container">
-                <div className="logo-container">
-                  No upcoming Meetups were found.
-                </div>
-                <br />
-                <br />
-              </div>
-            ) : (
-              <ul className="notifications">
-                {this.props.events.allEvents.map(curEvent => {
-                  return (
-                    <li key={curEvent.id}>
-                      <span className="red-text-color">
-                        <strong>{curEvent.name} </strong>
-                      </span>
-                      <div>
-                        WeWork space at {curEvent.venue ?
-                        `${curEvent.venue.address_1}, ${curEvent.venue.city}`
-                        :
-                        'TBD'}
-                      </div>
-                      <div className="events-time-and-rsvp-container">
-                        <div className="grey-text note-date events-time-and-rsvp-containee">
-                          {moment(curEvent.time).fromNow()}
-                        </div>
-                        <a
-                          className="events-time-and-rsvp-containee"
-                          href={curEvent.event_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <span className="right">
-                            {curEvent.rsvp_limit ? (
-                              <strong>
-                                RSVP ({curEvent.yes_rsvp_count}/
-                                {curEvent.rsvp_limit} Attending)
-                              </strong>
-                            ) : (
-                              <strong>
-                                RSVP ({curEvent.yes_rsvp_count} Attending)
-                              </strong>
-                            )}
-                          </span>
-                        </a>
-                      </div>
-                      <br />
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-            <hr />
-            <ul className="notifications">
-              <li>
-                <span className="red-text-color">
-                  <strong>Hacker Hours at Fullstack Academy of Code</strong>
-                </span>
-                <div>5 Hanover Square, New York</div>
-                <div className="events-time-and-rsvp-container">
-                  <div className="grey-text note-date events-time-and-rsvp-containee">
-                    Every second Monday of the month
-                  </div>
-                  <a
-                    className="events-time-and-rsvp-containee"
-                    href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423943723?aff=erelexpmlt"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="right">
-                      <strong>RSVP</strong>
-                    </span>
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = state => ({
-  auth: state.firebase.auth,
-  users: state.firestore.ordered.users,
-  events: state.events,
+// Action Creators
+export const gotEventsActionCreator = events => ({
+  type: GOT_EVENTS,
+  events,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getEventsThunk() {
-    dispatch(getEventsThunkCreator());
-  },
-});
+// Thunk Creators
+export const getEventsThunkCreator = () => {
+  return async dispatch => {
+    try {
+      // // Meetup group with no upcoming meetups for testing purposes:
+      // const starWarsNycMeetups = await axios.get(
+      //   'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=148015&page=20'
+      // );
+      // console.log(
+      //   'starWarsNycMeetups: ',
+      //   starWarsNycMeetups.data.results,
+      //   'is an Array: ',
+      //   Array.isArray(starWarsNycMeetups.data.results)
+      // );
+      // const allMeetupsData = [...starWarsNycMeetups.data.results];
+      // console.log('allMeetupsData: ', allMeetupsData);
+      // dispatch(gotEventsActionCreator(allMeetupsData));
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Events);
+      // Meetup groups with future meetups:
+      const javascriptCodersMeetups = await axios.get(
+        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
+      );
+      // console.log(
+      //   'javascriptCodersMeetups: ',
+      //   javascriptCodersMeetupsData.data.results
+      // );
+
+      const bootcampersAnonymousMeetups = await axios.get(
+        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=19344391&page=20'
+      );
+      // console.log(
+      //   'bootcampersAnonymousMeetups: ',
+      //   bootcampersAnonymousMeetups.data.results
+      // );
+
+      const reactNycMeetups = await axios.get(
+        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=22884788&page=20'
+      );
+      // console.log(
+      //   'reactNycMeetups: ',
+      //   reactNycMeetups.data.results
+      // );
+
+      const allMeetupsData = [
+        ...javascriptCodersMeetups.data.results,
+        ...bootcampersAnonymousMeetups.data.results,
+        ...reactNycMeetups.data.results,
+      ];
+
+      dispatch(gotEventsActionCreator(allMeetupsData));
+
+      // console.log('eventsReducer localStorage pre-set: ', localStorage);
+
+      localStorage.setItem('meetups', JSON.stringify(allMeetupsData));
+
+      // console.log('eventsReducer localStorage post-set: ', localStorage);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+// Reducer
+const eventsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GOT_EVENTS:
+      // console.log('Fetched meetups successfully in the reducer');
+      return { ...state, allEvents: action.events, fetchedEvents: true };
+    default:
+      return state;
+  }
+};
+
+export default eventsReducer;
