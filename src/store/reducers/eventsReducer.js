@@ -2,14 +2,7 @@ import axios from 'axios';
 
 // Initial State
 const initialState = {
-  allEvents: {
-    javascriptCoders: [],
-    bootcampersAnonymous: [],
-    reactNyc: [],
-    useReactNycMeetups: [],
-    mongodbNyc: [],
-    vueNyc: [],
-  },
+  allEvents: [],
   fetchedEvents: false,
 };
 
@@ -88,16 +81,34 @@ export const getEventsThunkCreator = () => {
       //   'vueNycMeetups: ',
       //   vueNycMeetups.data.results
       // );
-
-      const allMeetupsReducerData = {
-        javascriptCoders: [...javascriptCodersMeetups.data.results],
-        bootcampersAnonymous: [...bootcampersAnonymousMeetups.data.results],
-        reactNyc: [...reactNycMeetups.data.results],
-        useReactNyc: [...useReactNycMeetups.data.results],
-        mongodbNyc: [...mongodbNycMeetups.data.results],
-        vueNyc: [...vueNycMeetups.data.results],
-      }
-
+      
+      const allMeetupsReducerData = [
+        {
+          name: 'JavaScript Coders',
+          events: [...javascriptCodersMeetups.data.results],
+        },
+        {
+          name: 'Bootcampers Anonymous',
+          events: [...bootcampersAnonymousMeetups.data.results],
+        },
+        {
+          name: 'React NYC',
+          reactNyc: [...reactNycMeetups.data.results],
+        },
+        {
+          name: 'useReactNYC',
+          events: [...useReactNycMeetups.data.results],
+        },
+        {
+          name: 'MongoDB NYC',
+          events: [...mongodbNycMeetups.data.results],
+        },
+        {
+          name: 'Vue NYC',
+          events: [...vueNycMeetups.data.results],
+        },
+      ];
+      
       dispatch(gotEventsActionCreator(allMeetupsReducerData));
 
       const allMeetupsMapData = [

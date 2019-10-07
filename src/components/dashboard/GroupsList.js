@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Group from './Group';
 import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
+import Group from './Group';
+import HackerHours from './HackerHours';
 
 class GroupsList extends Component {
   componentDidMount() {
@@ -25,6 +26,10 @@ class GroupsList extends Component {
               {/* {events.map((curEvent, idx) => {
                 return <Group key={idx}  />
               })} */}
+            </div>
+
+            <div className="col s12 m5 offset-m1">
+              <HackerHours />
             </div>
           </div>
         </div>
