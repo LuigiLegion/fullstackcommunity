@@ -54,12 +54,10 @@ const Group = ({ name, events, fetchedEvents }) => {
                           {curEvent.rsvp_limit ? (
                             <strong>
                               RSVP ({curEvent.yes_rsvp_count}/
-                              {curEvent.rsvp_limit} Attending)
+                              {curEvent.rsvp_limit})
                             </strong>
                           ) : (
-                            <strong>
-                              RSVP ({curEvent.yes_rsvp_count} Attending)
-                            </strong>
+                            <strong>RSVP ({curEvent.yes_rsvp_count})</strong>
                           )}
                         </span>
                       </a>
