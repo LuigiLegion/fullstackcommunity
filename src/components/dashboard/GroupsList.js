@@ -41,9 +41,6 @@ class GroupsList extends Component {
                   </div>
                 );
               })}
-            {/* <div className="col s12 m6 l4">
-              <HackerHours />
-            </div> */}
           </div>
         </div>
       );
