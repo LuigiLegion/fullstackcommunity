@@ -1,10 +1,10 @@
-import React from 'react';
 import moment from 'moment';
+import React from 'react';
 
-const Group = ({name, events, fetchedEvents}) => {
-  console.log({name});
-  console.log({events});
-  console.log({fetchedEvents});
+const Group = ({ name, events, fetchedEvents }) => {
+  console.log({ name });
+  console.log({ events });
+  console.log({ fetchedEvents });
 
   return (
     <div className="section">
@@ -19,7 +19,7 @@ const Group = ({name, events, fetchedEvents}) => {
               <br />
               <br />
             </div>
-          ) : !events ? (
+          ) : !events.length ? (
             <div className="logos-parent-container">
               <div className="logo-container">
                 No upcoming Meetups were found.
@@ -36,11 +36,9 @@ const Group = ({name, events, fetchedEvents}) => {
                       <strong>{curEvent.name} </strong>
                     </span>
                     <div>
-                      {curEvent.venue ? (
-                        `${curEvent.venue.address_1}, ${curEvent.venue.city}`
-                      ) : (
-                        'TBD'
-                      )}
+                      {curEvent.venue
+                        ? `${curEvent.venue.address_1}, ${curEvent.venue.city}`
+                        : 'TBD'}
                     </div>
                     <div className="events-time-and-rsvp-container">
                       <div className="grey-text note-date events-time-and-rsvp-containee">
@@ -76,6 +74,6 @@ const Group = ({name, events, fetchedEvents}) => {
       </div>
     </div>
   );
-}
+};
 
 export default Group;
