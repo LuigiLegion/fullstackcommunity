@@ -81,7 +81,7 @@ export const getEventsThunkCreator = () => {
       //   'vueNycMeetups: ',
       //   vueNycMeetups.data.results
       // );
-      
+
       const allMeetupsReducerData = [
         {
           name: 'JavaScript Coders',
@@ -93,7 +93,7 @@ export const getEventsThunkCreator = () => {
         },
         {
           name: 'React NYC',
-          reactNyc: [...reactNycMeetups.data.results],
+          events: [...reactNycMeetups.data.results],
         },
         {
           name: 'useReactNYC',
@@ -108,7 +108,7 @@ export const getEventsThunkCreator = () => {
           events: [...vueNycMeetups.data.results],
         },
       ];
-      
+
       dispatch(gotEventsActionCreator(allMeetupsReducerData));
 
       const allMeetupsMapData = [
