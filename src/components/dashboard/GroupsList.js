@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
 import Group from './Group';
-import HackerHours from './HackerHours';
 
 class GroupsList extends Component {
   componentDidMount() {
@@ -21,23 +20,22 @@ class GroupsList extends Component {
       return (
         <div className="dashboard container">
           <div className="row">
-            <div className="col s12 m5 offset-m1 row">
-              {events.allEvents.map((curGroup, idx) => {
-                return (
+            {events.allEvents.map((curGroup, idx) => {
+              return (
+                <div key={idx} className="col s12 m6 l3">
                   <Group
-                    key={idx}
                     name={curGroup.name}
                     events={curGroup.events}
                     fetchedEvents={events.fetchedEvents}
                   />
-                );
-              })}
-            </div>
-
-            <div className="col s12 m5 offset-m1">
-              <HackerHours />
-            </div>
+                </div>
+              );
+            })}
           </div>
+
+          {/* <div className="col s4">
+              <HackerHours />
+            </div> */}
         </div>
       );
     }
