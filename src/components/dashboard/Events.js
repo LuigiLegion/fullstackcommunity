@@ -42,8 +42,11 @@ class Events extends Component {
                         <strong>{curEvent.name} </strong>
                       </span>
                       <div>
-                        WeWork space at {curEvent.venue.address_1},{' '}
-                        {curEvent.venue.city}{' '}
+                        {curEvent.venue ? (
+                          `${curEvent.venue.address_1}, ${curEvent.venue.city}`
+                        ) : (
+                          'TBD'
+                        )}
                       </div>
                       <div className="events-time-and-rsvp-container">
                         <div className="grey-text note-date events-time-and-rsvp-containee">

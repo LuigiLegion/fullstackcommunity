@@ -7,7 +7,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import ProjectList from '../projects/ProjectList';
 import Notifications from './Notifications';
 import Spaces from './Spaces';
-import Events from './Events';
+// import Events from './Events';
 
 class Dashboard extends Component {
   render() {
@@ -24,7 +24,7 @@ class Dashboard extends Component {
             <div className="col s12 m5 offset-m1">
               <Notifications notifications={notifications} />
               <Spaces />
-              <Events />
+              {/* <Events /> */}
             </div>
           </div>
         </div>

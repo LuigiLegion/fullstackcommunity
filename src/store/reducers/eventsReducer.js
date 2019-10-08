@@ -60,7 +60,7 @@ export const getEventsThunkCreator = () => {
 
       const useReactNycMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31543338&page=20'
-        );
+      );
       // console.log(
       //   'useReactNycMeetups: ',
       //   useReactNycMeetups.data.results
@@ -68,7 +68,7 @@ export const getEventsThunkCreator = () => {
 
       const mongodbNycMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=1629296&page=20'
-        );
+      );
       // console.log(
       //   'mongodbNycMeetups: ',
       //   mongodbNycMeetups.data.results
@@ -76,13 +76,42 @@ export const getEventsThunkCreator = () => {
 
       const vueNycMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=23275212&page=20'
-        );
+      );
       // console.log(
       //   'vueNycMeetups: ',
       //   vueNycMeetups.data.results
       // );
 
-      const allMeetupsData = [
+      const allMeetupsReducerData = [
+        {
+          name: 'JavaScript Coders',
+          events: [...javascriptCodersMeetups.data.results],
+        },
+        {
+          name: 'Bootcampers Anonymous',
+          events: [...bootcampersAnonymousMeetups.data.results],
+        },
+        {
+          name: 'React NYC',
+          events: [...reactNycMeetups.data.results],
+        },
+        {
+          name: 'useReactNYC',
+          events: [...useReactNycMeetups.data.results],
+        },
+        {
+          name: 'MongoDB NYC',
+          events: [...mongodbNycMeetups.data.results],
+        },
+        {
+          name: 'Vue NYC',
+          events: [...vueNycMeetups.data.results],
+        },
+      ];
+
+      dispatch(gotEventsActionCreator(allMeetupsReducerData));
+
+      const allMeetupsMapData = [
         ...javascriptCodersMeetups.data.results,
         ...bootcampersAnonymousMeetups.data.results,
         ...reactNycMeetups.data.results,
@@ -91,11 +120,9 @@ export const getEventsThunkCreator = () => {
         ...vueNycMeetups.data.results,
       ];
 
-      dispatch(gotEventsActionCreator(allMeetupsData));
-
       // console.log('eventsReducer localStorage pre-set: ', localStorage);
 
-      localStorage.setItem('meetups', JSON.stringify(allMeetupsData));
+      localStorage.setItem('meetups', JSON.stringify(allMeetupsMapData));
 
       // console.log('eventsReducer localStorage post-set: ', localStorage);
     } catch (error) {
