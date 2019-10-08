@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HackerHours = () => {
+const HackerHours = props => {
   return (
     <div className="section">
       <div className="card z-depth-0">
