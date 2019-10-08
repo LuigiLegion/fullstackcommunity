@@ -20,22 +20,31 @@ class GroupsList extends Component {
       return (
         <div className="dashboard container">
           <div className="row">
-            {events.allEvents.map((curGroup, idx) => {
-              return (
-                <div key={idx} className="col s12 m6 l3">
-                  <Group
-                    name={curGroup.name}
-                    events={curGroup.events}
-                    fetchedEvents={events.fetchedEvents}
-                  />
-                </div>
-              );
-            })}
-          </div>
-
-          {/* <div className="col s4">
+            {events.allEvents
+              .sort((groupOne, groupTwo) => {
+                if (groupOne.events.length > groupTwo.events.length) {
+                  return -1;
+                } else if (groupTwo.events.length < groupOne.events.length) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              })
+              .map((curGroup, idx) => {
+                return (
+                  <div key={idx} className="col s12 m6 l4">
+                    <Group
+                      name={curGroup.name}
+                      events={curGroup.events}
+                      fetchedEvents={events.fetchedEvents}
+                    />
+                  </div>
+                );
+              })}
+            {/* <div className="col s12 m6 l4">
               <HackerHours />
             </div> */}
+          </div>
         </div>
       );
     }
