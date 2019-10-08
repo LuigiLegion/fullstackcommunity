@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { Redirect } from 'react-router-dom';
 import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
 import Group from './Group';
 import HackerHours from './HackerHours';
@@ -14,7 +13,7 @@ class GroupsList extends Component {
   render() {
     const { auth, events } = this.props;
 
-    console.log('events in the GroupsList component: ', events);
+    // console.log('events in the GroupsList component: ', events);
 
     if (!auth.uid) {
       return <Redirect to="/signin" />;
@@ -23,11 +22,16 @@ class GroupsList extends Component {
         <div className="dashboard container">
           <div className="row">
             <div className="col s12 m5 offset-m1 row">
-              {
-                events.allEvents.map((curGroup, idx) => {
-                  return <Group key={idx} name={curGroup.name} events={curGroup.events} fetchedEvents={events.fetchedEvents} />
-                })
-              }
+              {events.allEvents.map((curGroup, idx) => {
+                return (
+                  <Group
+                    key={idx}
+                    name={curGroup.name}
+                    events={curGroup.events}
+                    fetchedEvents={events.fetchedEvents}
+                  />
+                );
+              })}
             </div>
 
             <div className="col s12 m5 offset-m1">

@@ -2,9 +2,9 @@ import moment from 'moment';
 import React from 'react';
 
 const Group = ({ name, events, fetchedEvents }) => {
-  console.log({ name });
-  console.log({ events });
-  console.log({ fetchedEvents });
+  // console.log({ name });
+  // console.log({ events });
+  // console.log({ fetchedEvents });
 
   return (
     <div className="section">
