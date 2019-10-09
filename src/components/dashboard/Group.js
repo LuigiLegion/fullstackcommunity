@@ -41,7 +41,10 @@ const Group = ({ name, events, fetchedEvents }) => {
                         : 'TBD'}
                     </div>
                     <div className="events-time-and-rsvp-container">
-                      <div className="grey-text note-date events-time-and-rsvp-containee">
+                      <div
+                        className="grey-text note-date events-time-and-rsvp-containee"
+                        title={moment(curEvent.time).format('LLLL')}
+                      >
                         {moment(curEvent.time).fromNow()}
                       </div>
                       <a
