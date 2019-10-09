@@ -1,16 +1,16 @@
 // import React, { useState, useEffect } from 'react';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import PropTypes from 'prop-types';
-
+import { Redirect } from 'react-router-dom';
+import { compose } from 'redux';
 import mapboxAccessToken from '../../config/mbglConfig';
+import * as publicLibrariesData from '../../data/public-library-locations.json';
 import * as starbucksData from '../../data/starbucks-locations.json';
 import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
-import * as publicLibrariesData from '../../data/public-library-locations.json';
 
 const replaceWhitespaceWithPlusSignRegex = /\s+/g;
 let firstRenderWithUsers = true;
@@ -156,31 +156,27 @@ const Map = ({ auth, users }) => {
 
           {allMeetups
             ? allMeetups.map(curMeetup => {
-                return (
-                  curMeetup.venue ? (
-
-                    <Marker
-                      key={curMeetup.id}
-                      latitude={curMeetup.venue.lat}
-                      longitude={curMeetup.venue.lon}
+                return curMeetup.venue ? (
+                  <Marker
+                    key={curMeetup.id}
+                    latitude={curMeetup.venue.lat}
+                    longitude={curMeetup.venue.lon}
+                  >
+                    <button
+                      onClick={event => {
+                        event.preventDefault();
+                        setSelectedMeetup(curMeetup);
+                      }}
+                      className="marker-btn"
                     >
-                      <button
-                        onClick={event => {
-                          event.preventDefault();
-                          setSelectedMeetup(curMeetup);
-                        }}
-                        className="marker-btn"
-                      >
-                        <img
-                          // src="https://img.icons8.com/ios/50/000000/meetup.png"
-                          src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
-                          alt="Meetup Icon"
-                        />
-                      </button>
-                    </Marker>
-                  ) : 
-                  null
-                );
+                      <img
+                        // src="https://img.icons8.com/ios/50/000000/meetup.png"
+                        src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
+                        alt="Meetup Icon"
+                      />
+                    </button>
+                  </Marker>
+                ) : null;
               })
             : null}
 
@@ -210,8 +206,7 @@ const Map = ({ auth, users }) => {
                       />
                     </Marker>
                   );
-                } else {
-                  if (curUser.status === 'Unemployed') {
+                } else if (curUser.status === 'Unemployed') {
                     return (
                       <Marker
                         key={curUser.id}
@@ -281,7 +276,6 @@ const Map = ({ auth, users }) => {
                       </Marker>
                     );
                   }
-                }
               })
             : null}
 
@@ -517,7 +511,7 @@ const Map = ({ auth, users }) => {
               longitude={selectedMeetup.venue.lon}
             >
               <div className="location-description">
-                <strong>WeWork - {selectedMeetup.venue.address_1}</strong>
+                <strong>{selectedMeetup.venue.address_1}</strong>
               </div>
               <hr />
               <div className="navigation-container">
@@ -527,7 +521,7 @@ const Map = ({ auth, users }) => {
                 </div>
                 <div>
                   <strong>Date: </strong>
-                  {new Date(selectedMeetup.time).toString().slice(0, 15)}
+                  {moment(selectedMeetup.time).format('LLLL')}
                 </div>
                 <a
                   href={selectedMeetup.event_url}
@@ -639,9 +633,7 @@ const Map = ({ auth, users }) => {
                   Monday through Friday, 9:00AM - 5:00PM
                 </div>
                 <a
-                  href={
-                    'https://freelancershub.nymediacenter.com/member/daypass'
-                  }
+                  href="https://freelancershub.nymediacenter.com/member/daypass"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -682,7 +674,7 @@ const Map = ({ auth, users }) => {
                   Monday through Friday, 9:30AM - 5:30PM
                 </div>
                 <a
-                  href={'https://aws.amazon.com/start-ups/loft/ny-loft'}
+                  href="https://aws.amazon.com/start-ups/loft/ny-loft"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -723,9 +715,7 @@ const Map = ({ auth, users }) => {
                 </div>
                 <div>Monday, August 12th, 6:30PM-9:30PM EDT</div>
                 <a
-                  href={
-                    'https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2'
-                  }
+                  href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
