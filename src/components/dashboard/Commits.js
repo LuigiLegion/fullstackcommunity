@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 import moment from 'moment';
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { NavLink, Redirect } from 'react-router-dom';
 import { getUserCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class Commits extends Component {
@@ -152,7 +151,18 @@ class Commits extends Component {
                                   wordBreak: 'break-all',
                                 }}
                               >
-                                <strong>{curGithubUser.githubUsername}</strong>
+                                <a
+                                  className="events-time-and-rsvp-containee"
+                                  href={`https://github.com/${curGithubUser.githubUsername}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <span>
+                                    <strong>
+                                      {curGithubUser.githubUsername}
+                                    </strong>
+                                  </span>
+                                </a>
                               </td>
 
                               <td
