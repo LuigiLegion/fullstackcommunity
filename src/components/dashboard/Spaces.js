@@ -16,7 +16,7 @@ const Spaces = props => {
               <div>350 West Broadway, New York</div>
               <div className="events-time-and-rsvp-container">
                 <div className="grey-text note-date events-time-and-rsvp-containee">
-                  Open Monday-Friday, 9:30am-5:30pm
+                  Open Monday through Friday, 9:30 AM - 5:30PM
                 </div>
                 <a
                   className="events-time-and-rsvp-containee"

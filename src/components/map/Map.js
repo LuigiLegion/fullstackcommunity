@@ -207,75 +207,75 @@ const Map = ({ auth, users }) => {
                     </Marker>
                   );
                 } else if (curUser.status === 'Unemployed') {
-                    return (
-                      <Marker
-                        key={curUser.id}
-                        latitude={curUser.locationGeocode.lat}
-                        longitude={curUser.locationGeocode.lon}
+                  return (
+                    <Marker
+                      key={curUser.id}
+                      latitude={curUser.locationGeocode.lat}
+                      longitude={curUser.locationGeocode.lon}
+                    >
+                      <button
+                        onClick={event => {
+                          event.preventDefault();
+                          setSelectedAlum(curUser);
+                        }}
+                        className="marker-btn"
                       >
-                        <button
-                          onClick={event => {
-                            event.preventDefault();
-                            setSelectedAlum(curUser);
-                          }}
-                          className="marker-btn"
-                        >
-                          <img
-                            className="marker-others"
-                            // src="https://img.icons8.com/office/40/000000/marker.png"
-                            src="https://img.icons8.com/dusk/64/000000/find-matching-job.png"
-                            alt="Seeking Opportunities Others Location Icon"
-                          />
-                        </button>
-                      </Marker>
-                    );
-                  } else if (curUser.status === 'Employed') {
-                    return (
-                      <Marker
-                        key={curUser.id}
-                        latitude={curUser.locationGeocode.lat}
-                        longitude={curUser.locationGeocode.lon}
+                        <img
+                          className="marker-others"
+                          // src="https://img.icons8.com/office/40/000000/marker.png"
+                          src="https://img.icons8.com/dusk/64/000000/find-matching-job.png"
+                          alt="Seeking Opportunities Others Location Icon"
+                        />
+                      </button>
+                    </Marker>
+                  );
+                } else if (curUser.status === 'Employed') {
+                  return (
+                    <Marker
+                      key={curUser.id}
+                      latitude={curUser.locationGeocode.lat}
+                      longitude={curUser.locationGeocode.lon}
+                    >
+                      <button
+                        onClick={event => {
+                          event.preventDefault();
+                          setSelectedAlum(curUser);
+                        }}
+                        className="marker-btn"
                       >
-                        <button
-                          onClick={event => {
-                            event.preventDefault();
-                            setSelectedAlum(curUser);
-                          }}
-                          className="marker-btn"
-                        >
-                          <img
-                            className="marker-others"
-                            // src="https://img.icons8.com/color/48/000000/briefcase.png"
-                            src="https://img.icons8.com/dusk/64/000000/new-job.png"
-                            alt="Employed Others Location Icon"
-                          />
-                        </button>
-                      </Marker>
-                    );
-                  } else {
-                    return (
-                      <Marker
-                        key={curUser.id}
-                        latitude={curUser.locationGeocode.lat}
-                        longitude={curUser.locationGeocode.lon}
+                        <img
+                          className="marker-others"
+                          // src="https://img.icons8.com/color/48/000000/briefcase.png"
+                          src="https://img.icons8.com/dusk/64/000000/new-job.png"
+                          alt="Employed Others Location Icon"
+                        />
+                      </button>
+                    </Marker>
+                  );
+                } else {
+                  return (
+                    <Marker
+                      key={curUser.id}
+                      latitude={curUser.locationGeocode.lat}
+                      longitude={curUser.locationGeocode.lon}
+                    >
+                      <button
+                        onClick={event => {
+                          event.preventDefault();
+                          setSelectedAlum(curUser);
+                        }}
+                        className="marker-btn"
                       >
-                        <button
-                          onClick={event => {
-                            event.preventDefault();
-                            setSelectedAlum(curUser);
-                          }}
-                          className="marker-btn"
-                        >
-                          <img
-                            className="marker-others"
-                            // src="https://img.icons8.com/ios/50/000000/student-registration-filled.png"
-                            src="https://img.icons8.com/dusk/64/000000/student-male.png"
-                            alt="Others Location Icon"
-                          />
-                        </button>
-                      </Marker>
-                    );
-                  }
+                        <img
+                          className="marker-others"
+                          // src="https://img.icons8.com/ios/50/000000/student-registration-filled.png"
+                          src="https://img.icons8.com/dusk/64/000000/student-male.png"
+                          alt="Others Location Icon"
+                        />
+                      </button>
+                    </Marker>
+                  );
+                }
               })
             : null}
 
@@ -443,7 +443,7 @@ const Map = ({ auth, users }) => {
               <hr />
               <div className="navigation-container">
                 {/* <div>
-                    <strong>Closes at: 10PM</strong>
+                    <strong>Closes at: 10 PM</strong>
                   </div> */}
                 <br />
                 <a
@@ -482,7 +482,7 @@ const Map = ({ auth, users }) => {
                   <strong>Opening Hours</strong>
                 </div>
                 <div className="navigation-containee">
-                  Monday through Sunday, 8:00AM - 10:00PM
+                  Monday through Sunday, 8:00 AM - 10:00 PM
                 </div>
                 <br />
                 <a
@@ -630,7 +630,7 @@ const Map = ({ auth, users }) => {
                   <strong>Opening Hours</strong>
                 </div>
                 <div className="navigation-containee">
-                  Monday through Friday, 9:00AM - 5:00PM
+                  Monday through Friday, 9:00 AM - 5:00 PM
                 </div>
                 <a
                   href="https://freelancershub.nymediacenter.com/member/daypass"
@@ -671,7 +671,7 @@ const Map = ({ auth, users }) => {
                   <strong>Opening Hours</strong>
                 </div>
                 <div className="navigation-containee">
-                  Monday through Friday, 9:30AM - 5:30PM
+                  Monday through Friday, 9:30 AM - 5:30 PM
                 </div>
                 <a
                   href="https://aws.amazon.com/start-ups/loft/ny-loft"
@@ -713,7 +713,7 @@ const Map = ({ auth, users }) => {
                 <div>
                   <strong>Next Hacker Hours Meetup: </strong>
                 </div>
-                <div>Monday, August 12th, 6:30PM-9:30PM EDT</div>
+                <div>Monday, August 12th, 6:30 PM - 9:30 PM</div>
                 <a
                   href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2"
                   target="_blank"
