@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { NavLink, Redirect } from 'react-router-dom';
 import { getUserYearlyCommitsThunkCreator } from '../../store/reducers/commitsReducer';
 
 class CommitsYearly extends Component {
@@ -149,7 +148,18 @@ class CommitsYearly extends Component {
                                   wordBreak: 'break-all',
                                 }}
                               >
-                                <strong>{curGithubUser.githubUsername}</strong>
+                                <a
+                                  className="events-time-and-rsvp-containee"
+                                  href={`https://github.com/${curGithubUser.githubUsername}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <span>
+                                    <strong>
+                                      {curGithubUser.githubUsername}
+                                    </strong>
+                                  </span>
+                                </a>
                               </td>
 
                               <td
