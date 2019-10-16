@@ -82,6 +82,10 @@ export const getEventsThunkCreator = () => {
       //   vueNycMeetups.data.results
       // );
 
+      const graphqlNycMeetups = await axios.get(
+        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=24714233&page=20'
+      );
+
       const allMeetupsReducerData = [
         {
           name: 'JavaScript Coders',
@@ -100,12 +104,16 @@ export const getEventsThunkCreator = () => {
           events: [...useReactNycMeetups.data.results],
         },
         {
-          name: 'MongoDB NYC',
+          name: 'Vue NYC',
+          events: [...vueNycMeetups.data.results],
+        },
+        {
+          name: 'mongoDB NYC',
           events: [...mongodbNycMeetups.data.results],
         },
         {
-          name: 'Vue NYC',
-          events: [...vueNycMeetups.data.results],
+          name: 'graphQL NYC',
+          events: [...graphqlNycMeetups.data.results],
         },
       ];
 
