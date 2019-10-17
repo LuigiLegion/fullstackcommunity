@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 // import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -94,6 +95,7 @@ const Map = ({ auth, users }) => {
                     event.preventDefault();
                     setSelectedPublicLibrary(curPublicLibrary);
                   }}
+                  type="button"
                   className="marker-btn"
                 >
                   <img
@@ -118,6 +120,7 @@ const Map = ({ auth, users }) => {
                     event.preventDefault();
                     setSelectedStarbucks(curStarbucks);
                   }}
+                  type="button"
                   className="marker-btn"
                 >
                   <img
@@ -142,6 +145,7 @@ const Map = ({ auth, users }) => {
                     event.preventDefault();
                     setSelectedWholeFoods(curWholeFoods);
                   }}
+                  type="button"
                   className="marker-btn"
                 >
                   <img
@@ -167,6 +171,7 @@ const Map = ({ auth, users }) => {
                         event.preventDefault();
                         setSelectedMeetup(curMeetup);
                       }}
+                      type="button"
                       className="marker-btn"
                     >
                       <img
@@ -218,6 +223,7 @@ const Map = ({ auth, users }) => {
                           event.preventDefault();
                           setSelectedAlum(curUser);
                         }}
+                        type="button"
                         className="marker-btn"
                       >
                         <img
@@ -241,6 +247,7 @@ const Map = ({ auth, users }) => {
                           event.preventDefault();
                           setSelectedAlum(curUser);
                         }}
+                        type="button"
                         className="marker-btn"
                       >
                         <img
@@ -264,6 +271,7 @@ const Map = ({ auth, users }) => {
                           event.preventDefault();
                           setSelectedAlum(curUser);
                         }}
+                        type="button"
                         className="marker-btn"
                       >
                         <img
@@ -285,6 +293,7 @@ const Map = ({ auth, users }) => {
                 event.preventDefault();
                 setSelectedFreelancersHub(true);
               }}
+              type="button"
               className="marker-btn"
             >
               <img
@@ -301,6 +310,7 @@ const Map = ({ auth, users }) => {
                 event.preventDefault();
                 setSelectedAwsLoft(true);
               }}
+              type="button"
               className="marker-btn"
             >
               <img
@@ -317,6 +327,7 @@ const Map = ({ auth, users }) => {
                 event.preventDefault();
                 setSelectedCampus(true);
               }}
+              type="button"
               className="marker-btn"
             >
               <img
