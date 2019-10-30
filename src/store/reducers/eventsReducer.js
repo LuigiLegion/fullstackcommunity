@@ -66,14 +66,6 @@ export const getEventsThunkCreator = () => {
       //   useReactNycMeetups.data.results
       // );
 
-      const mongodbNycMeetups = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=1629296&page=20'
-      );
-      // console.log(
-      //   'mongodbNycMeetups: ',
-      //   mongodbNycMeetups.data.results
-      // );
-
       const vueNycMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=23275212&page=20'
       );
@@ -85,6 +77,14 @@ export const getEventsThunkCreator = () => {
       const graphqlNycMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=24714233&page=20'
       );
+
+      const mongodbNycMeetups = await axios.get(
+        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=1629296&page=20'
+      );
+      // console.log(
+      //   'mongodbNycMeetups: ',
+      //   mongodbNycMeetups.data.results
+      // );
 
       const allMeetupsReducerData = [
         {
@@ -108,13 +108,13 @@ export const getEventsThunkCreator = () => {
           events: [...vueNycMeetups.data.results],
         },
         {
-          name: 'mongoDB NYC',
-          events: [...mongodbNycMeetups.data.results],
-        },
-        {
           name: 'graphQL NYC',
           events: [...graphqlNycMeetups.data.results],
         },
+        // {
+        //   name: 'mongoDB NYC',
+        //   events: [...mongodbNycMeetups.data.results],
+        // },
       ];
 
       dispatch(gotEventsActionCreator(allMeetupsReducerData));
