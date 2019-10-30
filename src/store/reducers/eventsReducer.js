@@ -124,8 +124,8 @@ export const getEventsThunkCreator = () => {
         ...bootcampersAnonymousMeetups.data.results,
         ...reactNycMeetups.data.results,
         ...useReactNycMeetups.data.results,
-        ...mongodbNycMeetups.data.results,
         ...vueNycMeetups.data.results,
+        // ...mongodbNycMeetups.data.results,
       ];
 
       // console.log('eventsReducer localStorage pre-set: ', localStorage);
