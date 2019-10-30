@@ -78,9 +78,9 @@ export const getEventsThunkCreator = () => {
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=24714233&page=20'
       );
 
-      const mongodbNycMeetups = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=1629296&page=20'
-      );
+      // const mongodbNycMeetups = await axios.get(
+      //   'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=1629296&page=20'
+      // );
       // console.log(
       //   'mongodbNycMeetups: ',
       //   mongodbNycMeetups.data.results
