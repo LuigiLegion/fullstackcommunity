@@ -49,7 +49,9 @@ const Map = ({ auth, users }) => {
 
   const forceUpdate = useForceUpdate();
 
-  const allMeetups = JSON.parse(localStorage.meetups);
+  const allMeetups = localStorage.meetups
+    ? JSON.parse(localStorage.meetups)
+    : null;
 
   // useEffect(() => {
   //   console.log('IN THE USEFFECT');
