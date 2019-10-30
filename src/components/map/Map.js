@@ -79,8 +79,8 @@ const Map = ({ auth, users }) => {
         <ReactMapGL
           {...viewport}
           mapboxApiAccessToken={mapboxAccessToken}
-          onViewportChange={curViewport => {
-            setViewport(curViewport);
+          onViewportChange={viewport => {
+            setViewport(viewport);
           }}
         >
           {publicLibrariesData.branches.map(curPublicLibrary => {
