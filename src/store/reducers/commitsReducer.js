@@ -1,7 +1,6 @@
 import $ from 'jquery';
-import moment from 'moment';
-import { githubUsernames } from '../../data/github-users-data.json';
 
+import { githubUsernames } from '../../data/github-users-data.json';
 
 // Initial State
 const initialState = {
@@ -13,7 +12,6 @@ const initialState = {
 
 // Actions
 const GOT_USER_COMMITS = 'GOT_USER_COMMITS';
-
 const GOT_USER_YEARLY_COMMITS = 'GOT_USER_YEARLY_COMMITS';
 
 // Action Creators
@@ -29,7 +27,7 @@ export const gotUserYearlyCommitsActionCreator = commits => ({
 
 // Thunk Creators
 export const getUserCommitsThunkCreator = () => {
-  return async dispatch => {
+  return dispatch => {
     try {
       githubUsernames.forEach((curGithubUser, idx) => {
         setTimeout(() => {
@@ -44,40 +42,46 @@ export const getUserCommitsThunkCreator = () => {
               // console.log('curGithubUser: ', curGithubUser);
 
               let filtResArr;
-              let curMonthCommitsCheck;
 
-              const curMonth = moment(Date.now()).format('MMMM');
-
-              // console.log('curMonth: ', curMonth);
+              let curMonthCommits;
 
               const largeViewCheck = window.innerWidth > 1007;
 
               if (largeViewCheck) {
-                curMonthCommitsCheck = $(res)
-                  .find('h3')
-                  .text()
-                  .includes(`- ${curMonth}`);
-              } else {
-                curMonthCommitsCheck = $(res)
+                curMonthCommits = $(res)
                   .find('span')
-                  .text()
-                  .includes(`- ${curMonth}`);
+                  .text();
+              } else {
+                curMonthCommits = $(res)
+                  .find('div')
+                  .text();
               }
 
-              // console.log('curMonthCommitsCheck: ', curMonthCommitsCheck);
+              // console.log(curGithubUser, 'curMonthCommits: ', curMonthCommits);
 
-              if (!curMonthCommitsCheck) {
+              const curMonthCommitsCheck = !curMonthCommits.includes(
+                'no activity'
+              );
+
+              // console.log(
+              //   curGithubUser,
+              //   'curMonthCommitsCheck: ',
+              //   curMonthCommitsCheck
+              // );
+
+              if (curMonthCommitsCheck) {
                 filtResArr = $(res)
                   .find('button')
                   .text()
                   .match(/\d+/g);
               }
 
-              // console.log('filtResArr: ', filtResArr);
+              // console.log(curGithubUser, 'filtResArr: ', filtResArr);
 
               const curGithubUserTotalCommits = filtResArr ? filtResArr[0] : 0;
 
               // console.log(
+              //   curGithubUser,
               //   'curGithubUserTotalCommits: ',
               //   curGithubUserTotalCommits
               // );
@@ -101,7 +105,7 @@ export const getUserCommitsThunkCreator = () => {
 };
 
 export const getUserYearlyCommitsThunkCreator = () => {
-  return async dispatch => {
+  return dispatch => {
     try {
       githubUsernames.forEach((curGithubUser, idx) => {
         setTimeout(() => {
@@ -116,6 +120,7 @@ export const getUserYearlyCommitsThunkCreator = () => {
               // console.log('curGithubUser: ', curGithubUser);
 
               let filtResArr;
+
               const largeViewCheck = window.innerWidth > 1007;
 
               if (largeViewCheck) {
@@ -125,7 +130,7 @@ export const getUserYearlyCommitsThunkCreator = () => {
                   .match(/\d+/g);
               }
 
-              // console.log('filtResArr: ', filtResArr);
+              // console.log(curGithubUser, 'filtResArr: ', filtResArr);
 
               const curGithubUserTotalCommits = filtResArr
                 ? filtResArr.length === 1
@@ -134,6 +139,7 @@ export const getUserYearlyCommitsThunkCreator = () => {
                 : 0;
 
               // console.log(
+              //   curGithubUser,
               //   'curGithubUserTotalCommits: ',
               //   curGithubUserTotalCommits
               // );
