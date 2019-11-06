@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import * as githubUsersData from '../../data/github-users-data.json';
+import { githubUsernames } from '../../data/github-users-data.json';
 
 // Initial State
 const initialState = {
@@ -29,7 +29,7 @@ export const gotUserYearlyCommitsActionCreator = commits => ({
 export const getUserCommitsThunkCreator = () => {
   return dispatch => {
     try {
-      githubUsersData.githubUsernames.forEach((curGithubUser, idx) => {
+      githubUsernames.forEach((curGithubUser, idx) => {
         setTimeout(() => {
           $.get(
             `https://cors-anywhere.herokuapp.com/https://github.com/${curGithubUser}`,
@@ -107,7 +107,7 @@ export const getUserCommitsThunkCreator = () => {
 export const getUserYearlyCommitsThunkCreator = () => {
   return dispatch => {
     try {
-      githubUsersData.githubUsernames.forEach((curGithubUser, idx) => {
+      githubUsernames.forEach((curGithubUser, idx) => {
         setTimeout(() => {
           $.get(
             `https://cors-anywhere.herokuapp.com/https://github.com/${curGithubUser}`,

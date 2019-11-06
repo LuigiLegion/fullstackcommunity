@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { Redirect } from 'react-router-dom';
 import fullstackCommunityAccessToken from '../../config/fscConfig';
+import { stations } from '../../data/nyc-subway-stations.json';
 import { signUpThunkCreator } from '../../store/reducers/authReducer';
-import * as subwayStationsData from '../../data/nyc-subway-stations.json';
 
-const defaultLocation = subwayStationsData.stations[0];
+
+const defaultLocation = stations[0];
 
 export class SignUp extends Component {
   constructor() {
@@ -44,7 +44,7 @@ export class SignUp extends Component {
     // console.log('event.target.id: ', event.target.id);
     // console.log('event.target.value: ', event.target.value);
 
-    const location = subwayStationsData.stations.filter(
+    const location = stations.filter(
       curSubwayStation => curSubwayStation.name === event.target.value
     )[0];
     this.setState({
@@ -302,7 +302,7 @@ export class SignUp extends Component {
                 <option value="" disabled>
                   --Please choose an option--
                 </option>
-                {subwayStationsData.stations.map(curSubwayStation => {
+                {stations.map(curSubwayStation => {
                   return (
                     <option key={curSubwayStation.id}>
                       {curSubwayStation.name}

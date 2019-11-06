@@ -9,9 +9,9 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 import mapboxAccessToken from '../../config/mbglConfig';
-import * as publicLibrariesData from '../../data/public-library-locations.json';
-import * as starbucksData from '../../data/starbucks-locations.json';
-import * as wholeFoodsData from '../../data/whole-foods-market-locations.json';
+import { branches as libraries } from '../../data/public-library-locations.json';
+import { branches as starbucks } from '../../data/starbucks-locations.json';
+import { branches as wholefoodsMarkets } from '../../data/whole-foods-market-locations.json';
 
 const replaceWhitespaceWithPlusSignRegex = /\s+/g;
 let firstRenderWithUsers = true;
@@ -85,7 +85,7 @@ const Map = ({ auth, users }) => {
             setViewport(viewport);
           }}
         >
-          {publicLibrariesData.branches.map(curPublicLibrary => {
+          {libraries.map(curPublicLibrary => {
             return (
               <Marker
                 key={curPublicLibrary.id}
@@ -110,7 +110,7 @@ const Map = ({ auth, users }) => {
             );
           })}
 
-          {starbucksData.branches.map(curStarbucks => {
+          {starbucks.map(curStarbucks => {
             return (
               <Marker
                 key={curStarbucks.storeId}
@@ -135,7 +135,7 @@ const Map = ({ auth, users }) => {
             );
           })}
 
-          {wholeFoodsData.branches.map(curWholeFoods => {
+          {wholefoodsMarkets.map(curWholeFoods => {
             return (
               <Marker
                 key={curWholeFoods.location.address}
