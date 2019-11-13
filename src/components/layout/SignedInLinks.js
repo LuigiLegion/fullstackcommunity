@@ -8,13 +8,13 @@ const SignedInLinks = props => {
   return (
     <ul className="right">
       <li>
-        <NavLink to="/meetups">
-          <strong>Meetup Manager</strong>
+        <NavLink to="/leaderboard">
+          <strong>Gitness Tracker</strong>
         </NavLink>
       </li>
       <li>
-        <NavLink to="/leaderboard">
-          <strong>Gitness Tracker</strong>
+        <NavLink to="/meetups">
+          <strong>Meetup Manager</strong>
         </NavLink>
       </li>
       <li>
