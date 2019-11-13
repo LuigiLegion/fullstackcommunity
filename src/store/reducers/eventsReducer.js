@@ -34,12 +34,12 @@ export const getEventsThunkCreator = () => {
       // dispatch(gotEventsActionCreator(allMeetupsData));
 
       // Meetup groups with future meetups:
-      const javascriptCodersMeetups = await axios.get(
+      const nycCodersMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
       );
       // console.log(
-      //   'javascriptCodersMeetups: ',
-      //   javascriptCodersMeetupsData.data.results
+      //   'nycCodersMeetups: ',
+      //   nycCodersMeetupsData.data.results
       // );
 
       const bootcampersAnonymousMeetups = await axios.get(
@@ -88,8 +88,8 @@ export const getEventsThunkCreator = () => {
 
       const allMeetupsReducerData = [
         {
-          name: 'JavaScript Coders',
-          events: [...javascriptCodersMeetups.data.results],
+          name: 'NYC Coders',
+          events: [...nycCodersMeetups.data.results],
         },
         {
           name: 'Bootcampers Anonymous',
@@ -120,7 +120,7 @@ export const getEventsThunkCreator = () => {
       dispatch(gotEventsActionCreator(allMeetupsReducerData));
 
       const allMeetupsMapData = [
-        ...javascriptCodersMeetups.data.results,
+        ...nycCodersMeetups.data.results,
         ...bootcampersAnonymousMeetups.data.results,
         ...reactNycMeetups.data.results,
         ...useReactNycMeetups.data.results,
