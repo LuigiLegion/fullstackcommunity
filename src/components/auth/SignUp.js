@@ -5,7 +5,6 @@ import fullstackCommunityAccessToken from '../../config/fscConfig';
 import { stations } from '../../data/nyc-subway-stations.json';
 import { signUpThunkCreator } from '../../store/reducers/authReducer';
 
-
 const defaultLocation = stations[0];
 
 export class SignUp extends Component {
@@ -80,7 +79,10 @@ export class SignUp extends Component {
           <form onSubmit={this.handleSubmit} className="card white">
             <h5 className="grey-text text-darken-3">Sign Up</h5>
             <div className="input-field">
-              <label htmlFor="email">Email (Example: cody@email.com)</label>
+              <label htmlFor="email">
+                Email<span className="red-text-color">*</span> (Example:
+                cody@email.com)
+              </label>
               <input
                 type="email"
                 id="email"
@@ -92,65 +94,73 @@ export class SignUp extends Component {
             </div>
             <div className="input-field">
               <label htmlFor="password">
-                Password (Must contain at least one uppercase letter, one
-                lowercase letter, one digit, and at least 8 characters in total)
+                Password<span className="red-text-color">*</span> (May only
+                contain one uppercase letter, one lowercase letter, one digit,
+                and at least 8 characters in total)
               </label>
               <input
                 type="password"
                 id="password"
                 required
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}"
-                title="Must contain at least one uppercase letter, one lowercase letter, one digit, and at least 8 characters in total"
+                title="May only contain one uppercase letter, one lowercase letter, one digit, and at least 8 characters in total"
                 onChange={this.handleChange}
               />
             </div>
 
             <div className="input-field">
               <label htmlFor="githubUsername">
-                GitHub Username (Must contain at least 1 character in total)
+                GitHub Username<span className="red-text-color">*</span> (May
+                only contain alphanumeric characters or hyphens, and a maximum
+                of 39 characters in total)
               </label>
               <input
                 type="text"
                 id="githubUsername"
                 required
-                pattern="[A-Za-z]{1,32}"
-                title="Must contain at least 1 character in total"
+                pattern="[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$"
+                title="May only contain alphanumeric characters or
+                hyphens, and a maximum of 39 characters in total"
                 onChange={this.handleChange}
               />
             </div>
 
             <div className="input-field">
               <label htmlFor="firstName">
-                First Name (Must contain uppercase and lowercase letters only,
-                and at least 2 characters in total)
+                First Name<span className="red-text-color">*</span> (May only
+                contain uppercase and lowercase letters only, and at least 2
+                characters in total)
               </label>
               <input
                 type="text"
                 id="firstName"
                 required
                 pattern="[A-Za-z]{2,32}"
-                title="Must contain uppercase and lowercase letters only, and at least 2 characters in total"
+                title="May only contain uppercase and lowercase letters only, and at least 2 characters in total"
                 onChange={this.handleChange}
               />
             </div>
 
             <div className="input-field">
               <label htmlFor="lastName">
-                Last Name (Must contain uppercase and lowercase letters only,
-                and at least 2 characters in total)
+                Last Name<span className="red-text-color">*</span> (May only
+                contain uppercase and lowercase letters only, and at least 2
+                characters in total)
               </label>
               <input
                 type="text"
                 id="lastName"
                 required
                 pattern="[A-Za-z]{2,32}"
-                title="Must contain uppercase and lowercase letters only, and at least 2 characters in total"
+                title="May only contain uppercase and lowercase letters only, and at least 2 characters in total"
                 onChange={this.handleChange}
               />
             </div>
 
             <div className="input-field col s12">
-              <label htmlFor="gender">Gender</label>
+              <label htmlFor="gender">
+                Gender<span className="red-text-color">*</span>
+              </label>
               <br />
               <br />
               <select
@@ -169,7 +179,9 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field col s12">
-              <label htmlFor="status">Status</label>
+              <label htmlFor="status">
+                Status<span className="red-text-color">*</span>
+              </label>
               <br />
               <br />
               <select
@@ -191,22 +203,25 @@ export class SignUp extends Component {
             {this.state.status === 'Employed' ? (
               <div className="input-field">
                 <label htmlFor="company">
-                  Company Name (Must contain uppercase and lowercase letters
-                  only, and at least 2 characters in total)
+                  Company Name<span className="red-text-color">*</span> (May
+                  only contain uppercase and lowercase letters only, and at
+                  least 2 characters in total)
                 </label>
                 <input
                   type="text"
                   id="company"
                   required
                   pattern="[A-Za-z]+{2,32}"
-                  title="Must contain uppercase and lowercase letters only, and at least 2 characters in total"
+                  title="May only contain uppercase and lowercase letters only, and at least 2 characters in total"
                   onChange={this.handleChange}
                 />
               </div>
             ) : null}
 
             <div className="input-field col s12">
-              <label htmlFor="cohort">Cohort</label>
+              <label htmlFor="cohort">
+                Cohort<span className="red-text-color">*</span>
+              </label>
               <br />
               <br />
               <select
@@ -265,7 +280,9 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field col s12">
-              <label htmlFor="program">Program</label>
+              <label htmlFor="program">
+                Program<span className="red-text-color">*</span>
+              </label>
               <br />
               <br />
               <select
@@ -279,17 +296,18 @@ export class SignUp extends Component {
                 </option>
                 <option value="FSA-NY">FSA-NY</option>
                 <option value="GH-NY">GH-NY</option>
+                <option value="GH-NY">WDF-NY</option>
                 <option value="FLEX-NY">FSA-FLEX</option>
                 <option value="REMOTE">FSA-REMOTE</option>
-                {/* <option value="FSA-CH">FSA-CH</option>
-                <option value="GH-NY">GH-CH</option> */}
+                {/* <option value="FSA-CH">FSA-CH</option> */}
+                {/* <option value="GH-NY">GH-CH</option> */}
               </select>
             </div>
 
             <div className="input-field col s12">
               <label htmlFor="location">
-                Location (Please pick the subway station closest to where you
-                live)
+                Location<span className="red-text-color">*</span> (Please pick
+                the subway station closest to where you live)
               </label>
               <br />
               <br />
@@ -314,8 +332,8 @@ export class SignUp extends Component {
 
             <div className="input-field">
               <label htmlFor="accessToken">
-                Access Token (Must match the access token you received via email
-                invitation)
+                Access Token<span className="red-text-color">*</span> (Must
+                match the access token you received via email invitation)
               </label>
               <input
                 type="text"
