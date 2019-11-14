@@ -5,7 +5,6 @@ import fullstackCommunityAccessToken from '../../config/fscConfig';
 import { stations } from '../../data/nyc-subway-stations.json';
 import { signUpThunkCreator } from '../../store/reducers/authReducer';
 
-
 const defaultLocation = stations[0];
 
 export class SignUp extends Component {
@@ -279,10 +278,11 @@ export class SignUp extends Component {
                 </option>
                 <option value="FSA-NY">FSA-NY</option>
                 <option value="GH-NY">GH-NY</option>
+                <option value="GH-NY">WDF-NY</option>
                 <option value="FLEX-NY">FSA-FLEX</option>
                 <option value="REMOTE">FSA-REMOTE</option>
-                {/* <option value="FSA-CH">FSA-CH</option>
-                <option value="GH-NY">GH-CH</option> */}
+                {/* <option value="FSA-CH">FSA-CH</option> */}
+                {/* <option value="GH-NY">GH-CH</option> */}
               </select>
             </div>
 
