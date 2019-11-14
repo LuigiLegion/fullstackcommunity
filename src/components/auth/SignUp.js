@@ -344,9 +344,7 @@ export class SignUp extends Component {
               />
             </div>
 
-            <button type="button" className="btn red lighten-1 z-depth-0">
-              Sign Up
-            </button>
+            <button className="btn red lighten-1 z-depth-0">Sign Up</button>
             <div className="red-text center">
               {authError ? (
                 <p>{authError}</p>
