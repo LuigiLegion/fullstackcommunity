@@ -175,6 +175,7 @@ export class SignUp extends Component {
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Non-binary">Non-binary</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
@@ -343,7 +344,9 @@ export class SignUp extends Component {
               />
             </div>
 
-            <button className="btn red lighten-1 z-depth-0">Sign Up</button>
+            <button type="button" className="btn red lighten-1 z-depth-0">
+              Sign Up
+            </button>
             <div className="red-text center">
               {authError ? (
                 <p>{authError}</p>

@@ -52,7 +52,9 @@ export class SignIn extends Component {
               />
             </div>
             <div className="input-field">
-              <button className="btn red lighten-1 z-depth-0">Sign In</button>
+              <button type="button" className="btn red lighten-1 z-depth-0">
+                Sign In
+              </button>
             </div>
             <div className="red-text center">
               {authError ? <p>{authError}</p> : null}
