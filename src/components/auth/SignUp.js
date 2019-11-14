@@ -91,7 +91,7 @@ export class SignUp extends Component {
             </div>
             <div className="input-field">
               <label htmlFor="password">
-                Password (Must contain one uppercase letter, one lowercase
+                Password (May only contain one uppercase letter, one lowercase
                 letter, one digit, and at least 8 characters in total)
               </label>
               <input
@@ -99,7 +99,7 @@ export class SignUp extends Component {
                 id="password"
                 required
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}"
-                title="Must contain one uppercase letter, one lowercase letter, one digit, and at least 8 characters in total"
+                title="May only contain one uppercase letter, one lowercase letter, one digit, and at least 8 characters in total"
                 onChange={this.handleChange}
               />
             </div>
@@ -122,30 +122,30 @@ export class SignUp extends Component {
 
             <div className="input-field">
               <label htmlFor="firstName">
-                First Name (Must contain uppercase and lowercase letters only,
-                and at least 2 characters in total)
+                First Name (May only contain uppercase and lowercase letters
+                only, and at least 2 characters in total)
               </label>
               <input
                 type="text"
                 id="firstName"
                 required
                 pattern="[A-Za-z]{2,32}"
-                title="Must contain uppercase and lowercase letters only, and at least 2 characters in total"
+                title="May only contain uppercase and lowercase letters only, and at least 2 characters in total"
                 onChange={this.handleChange}
               />
             </div>
 
             <div className="input-field">
               <label htmlFor="lastName">
-                Last Name (Must contain uppercase and lowercase letters only,
-                and at least 2 characters in total)
+                Last Name (May only contain uppercase and lowercase letters
+                only, and at least 2 characters in total)
               </label>
               <input
                 type="text"
                 id="lastName"
                 required
                 pattern="[A-Za-z]{2,32}"
-                title="Must contain uppercase and lowercase letters only, and at least 2 characters in total"
+                title="May only contain uppercase and lowercase letters only, and at least 2 characters in total"
                 onChange={this.handleChange}
               />
             </div>
@@ -192,7 +192,7 @@ export class SignUp extends Component {
             {this.state.status === 'Employed' ? (
               <div className="input-field">
                 <label htmlFor="company">
-                  Company Name (Must contain uppercase and lowercase letters
+                  Company Name (May only contain uppercase and lowercase letters
                   only, and at least 2 characters in total)
                 </label>
                 <input
@@ -200,7 +200,7 @@ export class SignUp extends Component {
                   id="company"
                   required
                   pattern="[A-Za-z]+{2,32}"
-                  title="Must contain uppercase and lowercase letters only, and at least 2 characters in total"
+                  title="May only contain uppercase and lowercase letters only, and at least 2 characters in total"
                   onChange={this.handleChange}
                 />
               </div>
