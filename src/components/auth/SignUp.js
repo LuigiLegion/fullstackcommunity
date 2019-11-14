@@ -112,7 +112,7 @@ export class SignUp extends Component {
                 type="text"
                 id="githubUsername"
                 required
-                pattern="[A-Za-z]{1,32}"
+                pattern="[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$"
                 title="Must contain at least 1 character in total"
                 onChange={this.handleChange}
               />
