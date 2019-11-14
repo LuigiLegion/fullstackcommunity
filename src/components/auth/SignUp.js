@@ -106,14 +106,16 @@ export class SignUp extends Component {
 
             <div className="input-field">
               <label htmlFor="githubUsername">
-                GitHub Username (Must contain at least 1 character in total)
+                GitHub Username (May only contain alphanumeric characters or
+                hyphens, and a maximum of 39 characters in total)
               </label>
               <input
                 type="text"
                 id="githubUsername"
                 required
                 pattern="[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$"
-                title="Must contain at least 1 character in total"
+                title="May only contain alphanumeric characters or
+                hyphens, and a maximum of 39 characters in total"
                 onChange={this.handleChange}
               />
             </div>
