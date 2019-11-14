@@ -91,15 +91,15 @@ export class SignUp extends Component {
             </div>
             <div className="input-field">
               <label htmlFor="password">
-                Password (Must contain at least one uppercase letter, one
-                lowercase letter, one digit, and at least 8 characters in total)
+                Password (Must contain one uppercase letter, one lowercase
+                letter, one digit, and at least 8 characters in total)
               </label>
               <input
                 type="password"
                 id="password"
                 required
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}"
-                title="Must contain at least one uppercase letter, one lowercase letter, one digit, and at least 8 characters in total"
+                title="Must contain one uppercase letter, one lowercase letter, one digit, and at least 8 characters in total"
                 onChange={this.handleChange}
               />
             </div>
