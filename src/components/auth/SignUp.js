@@ -19,7 +19,7 @@ export class SignUp extends Component {
       gender: 'Male',
       status: 'Junior',
       company: '',
-      cohort: '1907',
+      cohort: '1911',
       program: 'FSA-NY',
       location: defaultLocation,
       accessToken: '',
