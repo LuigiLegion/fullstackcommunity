@@ -79,7 +79,10 @@ export class SignUp extends Component {
           <form onSubmit={this.handleSubmit} className="card white">
             <h5 className="grey-text text-darken-3">Sign Up</h5>
             <div className="input-field">
-              <label htmlFor="email">Email (Example: cody@email.com)</label>
+              <label htmlFor="email">
+                Email<span className="red-text-color">*</span> (Example:
+                cody@email.com)
+              </label>
               <input
                 type="email"
                 id="email"
@@ -91,8 +94,9 @@ export class SignUp extends Component {
             </div>
             <div className="input-field">
               <label htmlFor="password">
-                Password (May only contain one uppercase letter, one lowercase
-                letter, one digit, and at least 8 characters in total)
+                Password<span className="red-text-color">*</span> (May only
+                contain one uppercase letter, one lowercase letter, one digit,
+                and at least 8 characters in total)
               </label>
               <input
                 type="password"
@@ -106,8 +110,9 @@ export class SignUp extends Component {
 
             <div className="input-field">
               <label htmlFor="githubUsername">
-                GitHub Username (May only contain alphanumeric characters or
-                hyphens, and a maximum of 39 characters in total)
+                GitHub Username<span className="red-text-color">*</span> (May
+                only contain alphanumeric characters or hyphens, and a maximum
+                of 39 characters in total)
               </label>
               <input
                 type="text"
@@ -122,8 +127,9 @@ export class SignUp extends Component {
 
             <div className="input-field">
               <label htmlFor="firstName">
-                First Name (May only contain uppercase and lowercase letters
-                only, and at least 2 characters in total)
+                First Name<span className="red-text-color">*</span> (May only
+                contain uppercase and lowercase letters only, and at least 2
+                characters in total)
               </label>
               <input
                 type="text"
@@ -137,8 +143,9 @@ export class SignUp extends Component {
 
             <div className="input-field">
               <label htmlFor="lastName">
-                Last Name (May only contain uppercase and lowercase letters
-                only, and at least 2 characters in total)
+                Last Name<span className="red-text-color">*</span> (May only
+                contain uppercase and lowercase letters only, and at least 2
+                characters in total)
               </label>
               <input
                 type="text"
@@ -151,7 +158,9 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field col s12">
-              <label htmlFor="gender">Gender</label>
+              <label htmlFor="gender">
+                Gender<span className="red-text-color">*</span>
+              </label>
               <br />
               <br />
               <select
@@ -170,7 +179,9 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field col s12">
-              <label htmlFor="status">Status</label>
+              <label htmlFor="status">
+                Status<span className="red-text-color">*</span>
+              </label>
               <br />
               <br />
               <select
@@ -192,8 +203,9 @@ export class SignUp extends Component {
             {this.state.status === 'Employed' ? (
               <div className="input-field">
                 <label htmlFor="company">
-                  Company Name (May only contain uppercase and lowercase letters
-                  only, and at least 2 characters in total)
+                  Company Name<span className="red-text-color">*</span> (May
+                  only contain uppercase and lowercase letters only, and at
+                  least 2 characters in total)
                 </label>
                 <input
                   type="text"
@@ -207,7 +219,9 @@ export class SignUp extends Component {
             ) : null}
 
             <div className="input-field col s12">
-              <label htmlFor="cohort">Cohort</label>
+              <label htmlFor="cohort">
+                Cohort<span className="red-text-color">*</span>
+              </label>
               <br />
               <br />
               <select
@@ -266,7 +280,9 @@ export class SignUp extends Component {
             </div>
 
             <div className="input-field col s12">
-              <label htmlFor="program">Program</label>
+              <label htmlFor="program">
+                Program<span className="red-text-color">*</span>
+              </label>
               <br />
               <br />
               <select
@@ -290,8 +306,8 @@ export class SignUp extends Component {
 
             <div className="input-field col s12">
               <label htmlFor="location">
-                Location (Please pick the subway station closest to where you
-                live)
+                Location<span className="red-text-color">*</span> (Please pick
+                the subway station closest to where you live)
               </label>
               <br />
               <br />
@@ -316,8 +332,8 @@ export class SignUp extends Component {
 
             <div className="input-field">
               <label htmlFor="accessToken">
-                Access Token (Must match the access token you received via email
-                invitation)
+                Access Token<span className="red-text-color">*</span> (Must
+                match the access token you received via email invitation)
               </label>
               <input
                 type="text"
