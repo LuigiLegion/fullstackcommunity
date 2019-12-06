@@ -24,7 +24,7 @@ Built using Node.js and Firebase on the backend, React, Redux, and Materialize.c
 
 - Tal Luigi ([LinkedIn](https://www.linkedin.com/in/talluigi) | [GitHub](https://github.com/luigilegion))
 
-### Setting Up Dev Environment
+### Setting Up Dev Environment:
 
 - Clone the repo and `npm install` the dependencies.
 - In the `src/config/` directory rename all the `.example.js` to remove the `.example`.
