@@ -4,7 +4,7 @@
 
 ### Video Presentation:
 
-[![Fullstack Community Video Presentation](https://img.youtube.com/vi/hm4WL8kcvHo/0.jpg)](https://www.youtube.com/watch?v=hm4WL8kcvHo&feature=youtu.be)
+[![Fullstack Community Video Presentation](https://img.youtube.com/vi/hm4WL8kcvHo/0.jpg)](https://www.youtube.com/watch?v=hm4WL8kcvHo)
 
 ### Deployed Web App:
 
