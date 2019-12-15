@@ -15,10 +15,9 @@ export const burgerStyles = {
   bmCrossButton: {
     height: '24px',
     width: '24px',
-    backgroundColor: '#424242',
   },
   bmCross: {
-    background: '#bdc3c7',
+    background: '#fafafa',
   },
   bmMenuWrap: {
     position: 'fixed',
