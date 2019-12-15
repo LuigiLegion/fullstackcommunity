@@ -155,3 +155,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .events-time-and-rsvp-containee {
   flex: 1;
 }
+
+.remove-outline {
+  outline: none;
+}
