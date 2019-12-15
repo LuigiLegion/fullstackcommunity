@@ -32,10 +32,10 @@ class SignedOutLinksBurger extends Component {
           isOpen={this.state.menuOpen}
           onStateChange={state => this.handleStateChange(state)}
           right
-          width={'50%'}
+          width="50%"
           styles={burgerStyles}
         >
-          <div styles={divStyles}>
+          <div className="remove-outline">
             <div>
               <NavLink
                 onClick={() => {
@@ -110,11 +110,4 @@ const burgerStyles = {
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.3)',
   },
-};
-
-const divStyles = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
 };
