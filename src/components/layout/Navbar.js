@@ -38,17 +38,15 @@ class Navbar extends Component {
       } else {
         curLinks = <SignedInLinksBurger profile={profile} />;
       }
+    } else if (largeViewCheck) {
+      curLinks = <SignedOutLinks />;
     } else {
-      if (largeViewCheck) {
-        curLinks = <SignedOutLinks />;
-      } else {
-        curLinks = <SignedOutLinksBurger />;
-      }
+      curLinks = <SignedOutLinksBurger />;
     }
 
     return (
       <div className="navbar-fixed">
-        <nav className="nav-wrapper grey darken-3">
+        <nav className="nav-wrapper grey darken-4">
           <div>
             <NavLink to="/" className="left brand-logo name-text-positioning">
               {largeViewCheck ? 'Fullstack Community' : 'FSCommunity'}
