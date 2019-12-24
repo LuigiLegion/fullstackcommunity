@@ -24,8 +24,7 @@ export const burgerStyles = {
     height: '100%',
   },
   bmMenu: {
-    background: '#373a47',
-    // padding: '2.5em 1.5em 0',
+    background: '#ef5350',
     fontSize: '1.15em',
   },
   bmMorphShape: {
