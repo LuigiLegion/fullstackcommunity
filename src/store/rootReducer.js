@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
-import { firestoreReducer } from 'redux-firestore';
 import { firebaseReducer } from 'react-redux-firebase';
+import { firestoreReducer } from 'redux-firestore';
 
-import authReducer from './authReducer';
-import projectReducer from './projectReducer';
-import eventsReducer from './eventsReducer';
-import commitsReducer from './commitsReducer';
+import authReducer from './reducers/authReducer';
+import projectReducer from './reducers/projectReducer';
+import eventsReducer from './reducers/eventsReducer';
+import commitsReducer from './reducers/commitsReducer';
 
 const rootReducer = combineReducers({
-  firestore: firestoreReducer,
   firebase: firebaseReducer,
+  firestore: firestoreReducer,
   auth: authReducer,
   project: projectReducer,
   events: eventsReducer,

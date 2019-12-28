@@ -1,30 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import { reduxFirestore, getFirestore } from 'redux-firestore';
-import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 
-import rootReducer from './store/reducers/rootReducer';
-import fbConfig from './config/fbConfig';
+import store from './store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
-
-const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    reduxFirestore(fbConfig),
-    reactReduxFirebase(fbConfig, {
-      useFirestoreForProfile: true,
-      userProfile: 'users',
-      attachAuthIsReady: true,
-    })
-  )
-);
 
 store.firebaseAuthIsReady.then(() => {
   ReactDOM.render(
