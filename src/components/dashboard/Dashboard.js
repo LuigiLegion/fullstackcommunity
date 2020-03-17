@@ -7,15 +7,9 @@ import { firestoreConnect } from 'react-redux-firebase';
 import ProjectList from '../projects/ProjectList';
 import Notifications from './Notifications';
 import Spaces from './Spaces';
-import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
-
 // import Events from './Events';
 
 class Dashboard extends Component {
-  componentDidMount() {
-    this.props.getEventsThunk();
-  }
-
   render() {
     const { auth, projects, notifications } = this.props;
     if (!auth.uid) {
@@ -45,17 +39,8 @@ const mapStateToProps = state => ({
   projects: state.firestore.ordered.projects,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getEventsThunk() {
-    dispatch(getEventsThunkCreator());
-  },
-});
-
 export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps),
   firestoreConnect([
     {
       collection: 'projects',
