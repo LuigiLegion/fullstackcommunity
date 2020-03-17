@@ -8,9 +8,13 @@ const SignedInLinks = props => {
   return (
     <ul className="right">
       <li>
-        <NavLink to="/leaderboard">
+        <a
+          href="https://gitness-tracker.web.app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <strong>Gitness Tracker</strong>
-        </NavLink>
+        </a>
       </li>
       <li>
         <NavLink to="/meetups">

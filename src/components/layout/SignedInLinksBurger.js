@@ -50,9 +50,14 @@ class SignedInLinksBurger extends Component {
               </NavLink>
             </div>
             <div>
-              <NavLink onClick={() => this.closeMenu()} to="/leaderboard">
+              <a
+                onClick={() => this.closeMenu()}
+                href="https://gitness-tracker.web.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <strong>Gitness Tracker</strong>
-              </NavLink>
+              </a>
             </div>
             <div>
               <NavLink onClick={() => this.closeMenu()} to="/meetups">
