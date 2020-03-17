@@ -108,11 +108,11 @@ export const getEventsThunkCreator = () => {
           events: [...vueNycMeetups.data.results],
         },
         {
-          name: 'graphQL NYC',
+          name: 'GraphQL NYC',
           events: [...graphqlNycMeetups.data.results],
         },
         // {
-        //   name: 'mongoDB NYC',
+        //   name: 'MongoDB NYC',
         //   events: [...mongodbNycMeetups.data.results],
         // },
       ];
