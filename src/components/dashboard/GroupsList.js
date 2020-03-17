@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+
 import Group from './Group';
+import { getEventsThunkCreator } from '../../store/reducers/eventsReducer';
 
 class GroupsList extends Component {
+  componentDidMount() {
+    this.props.getEventsThunk();
+  }
+
   render() {
     const { auth, events } = this.props;
 
@@ -83,4 +89,13 @@ const mapStateToProps = state => ({
   events: state.events,
 });
 
-export default connect(mapStateToProps)(GroupsList);
+const mapDispatchToProps = dispatch => ({
+  getEventsThunk() {
+    dispatch(getEventsThunkCreator());
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GroupsList);
