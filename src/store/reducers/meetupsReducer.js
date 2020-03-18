@@ -2,21 +2,21 @@ import axios from 'axios';
 
 // Initial State
 const initialState = {
-  allEvents: [],
-  fetchedEvents: false,
+  allMeetups: [],
+  fetchedMeetups: false,
 };
 
-// Actions
-const GOT_EVENTS = 'GOT_EVENTS';
+// Actions Types
+const GOT_MEETUPS = 'GOT_MEETUPS';
 
 // Action Creators
-export const gotEventsActionCreator = events => ({
-  type: GOT_EVENTS,
-  events,
+export const gotMeetupsActionCreator = meetups => ({
+  type: GOT_MEETUPS,
+  meetups,
 });
 
 // Thunk Creators
-export const getEventsThunkCreator = () => {
+export const getMeetupsThunkCreator = () => {
   return async dispatch => {
     try {
       // // Meetup group with no upcoming meetups for testing purposes:
@@ -31,7 +31,7 @@ export const getEventsThunkCreator = () => {
       // );
       // const allMeetupsData = [...starWarsNycMeetups.data.results];
       // console.log('allMeetupsData: ', allMeetupsData);
-      // dispatch(gotEventsActionCreator(allMeetupsData));
+      // dispatch(gotMeetupsActionCreator(allMeetupsData));
 
       // Meetup groups with future meetups:
       const nycCodersMeetups = await axios.get(
@@ -89,35 +89,40 @@ export const getEventsThunkCreator = () => {
       const allMeetupsReducerData = [
         {
           name: 'NYC Coders',
-          events: [...nycCodersMeetups.data.results],
+          meetups: [...nycCodersMeetups.data.results],
         },
         {
           name: 'Bootcampers Anonymous',
-          events: [...bootcampersAnonymousMeetups.data.results],
+          meetups: [...bootcampersAnonymousMeetups.data.results],
         },
         {
           name: 'React NYC',
-          events: [...reactNycMeetups.data.results],
+          meetups: [...reactNycMeetups.data.results],
         },
         {
           name: 'useReactNYC',
-          events: [...useReactNycMeetups.data.results],
+          meetups: [...useReactNycMeetups.data.results],
         },
         {
           name: 'Vue NYC',
-          events: [...vueNycMeetups.data.results],
+          meetups: [...vueNycMeetups.data.results],
         },
         {
           name: 'GraphQL NYC',
-          events: [...graphqlNycMeetups.data.results],
+          meetups: [...graphqlNycMeetups.data.results],
         },
         // {
         //   name: 'MongoDB NYC',
-        //   events: [...mongodbNycMeetups.data.results],
+        //   meetups: [...mongodbNycMeetups.data.results],
         // },
       ];
 
-      dispatch(gotEventsActionCreator(allMeetupsReducerData));
+      dispatch(gotMeetupsActionCreator(allMeetupsReducerData));
+
+      localStorage.setItem(
+        'groupMeetups',
+        JSON.stringify(allMeetupsReducerData)
+      );
 
       const allMeetupsMapData = [
         ...nycCodersMeetups.data.results,
@@ -128,11 +133,11 @@ export const getEventsThunkCreator = () => {
         // ...mongodbNycMeetups.data.results,
       ];
 
-      // console.log('eventsReducer localStorage pre-set: ', localStorage);
+      // console.log('meetupsReducer localStorage pre-set: ', localStorage);
 
-      localStorage.setItem('meetups', JSON.stringify(allMeetupsMapData));
+      localStorage.setItem('allMeetups', JSON.stringify(allMeetupsMapData));
 
-      // console.log('eventsReducer localStorage post-set: ', localStorage);
+      // console.log('meetupsReducer localStorage post-set: ', localStorage);
     } catch (error) {
       console.error(error);
     }
@@ -140,14 +145,14 @@ export const getEventsThunkCreator = () => {
 };
 
 // Reducer
-const eventsReducer = (state = initialState, action) => {
+const meetupsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GOT_EVENTS:
+    case GOT_MEETUPS:
       // console.log('Fetched meetups successfully in the reducer');
-      return { ...state, allEvents: action.events, fetchedEvents: true };
+      return { ...state, allMeetups: action.meetups, fetchedMeetups: true };
     default:
       return state;
   }
 };
 
-export default eventsReducer;
+export default meetupsReducer;

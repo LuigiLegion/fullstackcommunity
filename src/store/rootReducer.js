@@ -4,14 +4,14 @@ import { firestoreReducer } from 'redux-firestore';
 
 import authReducer from './reducers/authReducer';
 import projectReducer from './reducers/projectReducer';
-import eventsReducer from './reducers/eventsReducer';
+import meetupsReducer from './reducers/meetupsReducer';
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
   firestore: firestoreReducer,
   auth: authReducer,
   project: projectReducer,
-  events: eventsReducer,
+  meetups: meetupsReducer,
 });
 
 export default rootReducer;
