@@ -3,10 +3,6 @@ html {
 }
 
 body {
-  /* display: flex;
-  min-height: 100vh;
-  flex-direction: column; */
-
   min-height: 100%;
   margin: 0;
   padding: 0;
@@ -16,23 +12,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
-  /* background: url(/img/background.jpeg); */
   background-size: 100%;
   background-position: bottom;
   background-color: #101010;
 }
-
-/* main {
-  flex: 1 0 auto;
-}
-
-.App {
-  flex: 1 0 auto;
-} */
-
-/* #root {
-  flex: 1 0 auto;
-} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
