@@ -1,3 +1,4 @@
+// Imports
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
@@ -8,6 +9,7 @@ import { createLogger } from 'redux-logger';
 import firebase from '../config/fbConfig';
 import rootReducer from './rootReducer';
 
+// Initializations
 const middleware = composeWithDevTools(
   applyMiddleware(
     thunkMiddleware.withExtraArgument({ getFirebase, getFirestore }),
