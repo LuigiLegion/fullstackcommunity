@@ -1,3 +1,4 @@
+// Imports
 import axios from 'axios';
 
 // Initial State
@@ -5,7 +6,7 @@ const initialState = {
   authError: null,
 };
 
-// Actions
+// Actions Types
 const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
 const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
@@ -42,17 +43,19 @@ const signUpErrorActionCreator = error => ({
   error,
 });
 
-// Thunks
+// Thunk Creators
 export const signInThunkCreator = userCredentials => {
   return async (dispatch, getState, { getFirebase }) => {
     try {
       const firebase = getFirebase();
+
       await firebase
         .auth()
         .signInWithEmailAndPassword(
           userCredentials.email,
           userCredentials.password
         );
+
       dispatch(signInSuccessActionCreator(userCredentials));
     } catch (error) {
       console.error(error);
@@ -65,14 +68,10 @@ export const signOutThunkCreator = () => {
   return async (dispatch, getState, { getFirebase }) => {
     try {
       const firebase = getFirebase();
+
       await firebase.auth().signOut();
+
       dispatch(signOutSuccessActionCreator());
-
-      // console.log('authReducer localStorage pre-clear: ', localStorage);
-
-      localStorage.clear();
-
-      // console.log('authReducer localStorage post-clear: ', localStorage);
     } catch (error) {
       console.error(error);
       dispatch(signOutErrorActionCreator());
@@ -83,23 +82,22 @@ export const signOutThunkCreator = () => {
 export const signUpThunkCreator = newUser => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     try {
-      // console.log('newUser: ', newUser);
-
       const firebase = getFirebase();
       const firestore = getFirestore();
+
       const newUserData = await firebase
         .auth()
         .createUserWithEmailAndPassword(newUser.email, newUser.password);
+
       const { data } = await axios.get(
         `https://mtaapi.herokuapp.com/stop?id=${newUser.location.id}`
       );
-
-      // console.log('data: ', data);
 
       const locationGeocode = {
         lat: Number(data.result.lat),
         lon: Number(data.result.lon),
       };
+
       await firestore
         .collection('users')
         .doc(newUserData.user.uid)
@@ -118,6 +116,7 @@ export const signUpThunkCreator = newUser => {
           locationId: newUser.location.id,
           locationGeocode,
         });
+
       dispatch(signUpSuccessActionCreator(newUser));
     } catch (error) {
       console.error(error);
@@ -132,21 +131,27 @@ const authReducer = (state = initialState, action) => {
     case SIGN_IN_ERROR:
       console.log('Sign in error! ', action.error);
       return { ...state, authError: 'Sign in failed' };
+
     case SIGN_IN_SUCCESS:
       console.log('Signed in successfully');
       return { ...state, authError: null };
+
     case SIGN_OUT_ERROR:
       console.log('Sign out error!');
       return state;
+
     case SIGN_OUT_SUCCESS:
       console.log('Signed out successfully');
       return state;
+
     case SIGN_UP_ERROR:
       console.log('Sign up error!');
       return { ...state, authError: action.error.message };
+
     case SIGN_UP_SUCCESS:
       console.log('Signed up successfully');
       return { ...state, authError: null };
+
     default:
       return state;
   }
