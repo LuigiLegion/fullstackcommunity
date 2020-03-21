@@ -154,3 +154,20 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .remove-outline {
   outline: none;
 }
+
+.preloader {
+  margin: 0px;
+}
+
+.preloader-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress.preloader.preloader-inner-color {
+  background-color: #ef5350;
+}
+
+.progress .indeterminate.preloader-outer-color {
+  background-color: #eaeaea;
+}
