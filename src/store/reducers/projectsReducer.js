@@ -1,3 +1,6 @@
+// Imports
+import { toggledPreloaderActionCreator } from './layoutReducer';
+
 // Initial State
 const initialState = {
   creationError: null,
@@ -22,6 +25,8 @@ const createProjectErrorActionCreator = error => ({
 export const createProjectThunkCreator = newProject => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     try {
+      dispatch(toggledPreloaderActionCreator(true));
+
       const firestore = getFirestore();
 
       const curAuthorProfile = getState().firebase.profile;
@@ -37,9 +42,11 @@ export const createProjectThunkCreator = newProject => {
       });
 
       dispatch(createProjectSuccessActionCreator(newProject));
+      dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
       dispatch(createProjectErrorActionCreator(error));
+      dispatch(toggledPreloaderActionCreator(false));
     }
   };
 };
@@ -49,11 +56,17 @@ const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_PROJECT_ERROR:
       console.log('Create new project error: ', action.error);
-      return { ...state, creationError: action.error };
+      return {
+        ...state,
+        creationError: action.error,
+      };
 
     case CREATE_PROJECT_SUCCESS:
       console.log('Created new project successfully: ', action.newProject);
-      return { ...state, creationError: null };
+      return {
+        ...state,
+        creationError: null,
+      };
 
     default:
       return state;

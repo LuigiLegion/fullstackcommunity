@@ -1,6 +1,8 @@
 // Imports
 import axios from 'axios';
 
+import { toggledPreloaderActionCreator } from './layoutReducer';
+
 // Initial State
 const initialState = {
   authError: null,
@@ -47,6 +49,8 @@ const signUpErrorActionCreator = error => ({
 export const signInThunkCreator = userCredentials => {
   return async (dispatch, getState, { getFirebase }) => {
     try {
+      dispatch(toggledPreloaderActionCreator(true));
+
       const firebase = getFirebase();
 
       await firebase
@@ -57,9 +61,11 @@ export const signInThunkCreator = userCredentials => {
         );
 
       dispatch(signInSuccessActionCreator(userCredentials));
+      dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
       dispatch(signInErrorActionCreator(error));
+      dispatch(toggledPreloaderActionCreator(false));
     }
   };
 };
@@ -67,14 +73,18 @@ export const signInThunkCreator = userCredentials => {
 export const signOutThunkCreator = () => {
   return async (dispatch, getState, { getFirebase }) => {
     try {
+      dispatch(toggledPreloaderActionCreator(true));
+
       const firebase = getFirebase();
 
       await firebase.auth().signOut();
 
       dispatch(signOutSuccessActionCreator());
+      dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
       dispatch(signOutErrorActionCreator());
+      dispatch(toggledPreloaderActionCreator(false));
     }
   };
 };
@@ -82,6 +92,8 @@ export const signOutThunkCreator = () => {
 export const signUpThunkCreator = newUser => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     try {
+      dispatch(toggledPreloaderActionCreator(true));
+
       const firebase = getFirebase();
       const firestore = getFirestore();
 
@@ -118,9 +130,11 @@ export const signUpThunkCreator = newUser => {
         });
 
       dispatch(signUpSuccessActionCreator(newUser));
+      dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
       dispatch(signUpErrorActionCreator(error));
+      dispatch(toggledPreloaderActionCreator(false));
     }
   };
 };
@@ -130,11 +144,17 @@ const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGN_IN_ERROR:
       console.log('Sign in error! ', action.error);
-      return { ...state, authError: 'Sign in failed' };
+      return {
+        ...state,
+        authError: 'Sign in failed',
+      };
 
     case SIGN_IN_SUCCESS:
       console.log('Signed in successfully');
-      return { ...state, authError: null };
+      return {
+        ...state,
+        authError: null,
+      };
 
     case SIGN_OUT_ERROR:
       console.log('Sign out error!');
@@ -146,11 +166,17 @@ const authReducer = (state = initialState, action) => {
 
     case SIGN_UP_ERROR:
       console.log('Sign up error!');
-      return { ...state, authError: action.error.message };
+      return {
+        ...state,
+        authError: action.error.message,
+      };
 
     case SIGN_UP_SUCCESS:
       console.log('Signed up successfully');
-      return { ...state, authError: null };
+      return {
+        ...state,
+        authError: null,
+      };
 
     default:
       return state;

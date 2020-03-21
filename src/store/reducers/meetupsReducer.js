@@ -1,6 +1,8 @@
 // Imports
 import axios from 'axios';
 
+import { toggledPreloaderActionCreator } from './layoutReducer';
+
 // Initial State
 const initialState = {
   groupMeetups: [],
@@ -22,6 +24,8 @@ const gotMeetupsActionCreator = (groupMeetups, allMeetups) => ({
 export const getMeetupsThunkCreator = () => {
   return async dispatch => {
     try {
+      dispatch(toggledPreloaderActionCreator(true));
+
       // // Meetup group with no upcoming meetups for testing purposes:
       // const starWarsNycMeetups = await axios.get(
       //   'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=148015&page=20'
@@ -95,8 +99,10 @@ export const getMeetupsThunkCreator = () => {
       ];
 
       dispatch(gotMeetupsActionCreator(groupMeetups, allMeetups));
+      dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
+      dispatch(toggledPreloaderActionCreator(false));
     }
   };
 };
@@ -105,6 +111,7 @@ export const getMeetupsThunkCreator = () => {
 const meetupsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_MEETUPS:
+      console.log('Fetched meetups successfully');
       return {
         ...state,
         groupMeetups: action.groupMeetups,
