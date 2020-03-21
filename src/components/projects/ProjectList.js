@@ -1,8 +1,11 @@
+// Imports
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import ProjectSummary from './ProjectSummary';
 
+// Component
 const ProjectList = ({ projects }) => {
   return (
     <div className="project-list section">
@@ -17,3 +20,8 @@ const ProjectList = ({ projects }) => {
 };
 
 export default ProjectList;
+
+// Prop Types
+ProjectList.propTypes = {
+  projects: PropTypes.array,
+};

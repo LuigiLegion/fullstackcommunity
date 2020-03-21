@@ -1,13 +1,14 @@
+// Imports
 import React from 'react';
 import { Redirect, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
-const ProjectDetails = props => {
-  const { project, auth } = props;
-
+// Component
+const ProjectDetails = ({ auth, project }) => {
   if (!auth.uid) {
     return <Redirect to="/signin" />;
   }
@@ -15,11 +16,11 @@ const ProjectDetails = props => {
   if (project) {
     return (
       <div className="container section project-details">
-        <div className="card z-depth-0">
+        <div className="card">
           <div className="card-content grey lighten-4 black-text">
             <span className="card-title">{project.title}</span>
 
-            <p>{project.content}</p>
+            <div>{project.content}</div>
           </div>
 
           <div className="card-action grey lighten-4 grey-text">
@@ -31,9 +32,9 @@ const ProjectDetails = props => {
 
             <br />
 
-            <div
-              style={{ color: 'black' }}
-            >{`Interested in working with ${project.authorFirstName} on this project?`}</div>
+            <div style={{ color: 'black' }}>
+              {`Interested in working with ${project.authorFirstName} on this project?`}
+            </div>
 
             <div>
               <span style={{ color: 'black' }}>
@@ -63,19 +64,21 @@ const ProjectDetails = props => {
   } else {
     return (
       <div className="container center">
-        <p>Loading Project...</p>
+        <div>Loading Project...</div>
       </div>
     );
   }
 };
 
+// Container
 const mapStateToProps = (state, ownProps) => {
   const curProjectId = ownProps.match.params.id;
   const projects = state.firestore.data.projects;
   const project = projects ? projects[curProjectId] : null;
+
   return {
-    project,
     auth: state.firebase.auth,
+    project,
   };
 };
 
@@ -87,3 +90,9 @@ export default compose(
     },
   ])
 )(ProjectDetails);
+
+// Prop Types
+ProjectDetails.propTypes = {
+  auth: PropTypes.object,
+  project: PropTypes.object,
+};
