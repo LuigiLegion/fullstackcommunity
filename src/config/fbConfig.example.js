@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+
 const config = {
   apiKey: 'YOUR_API_KEY',
   authDomain: 'YOUR_DOMAIN_HERE',

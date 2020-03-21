@@ -1,72 +1,67 @@
-import React, { Component } from 'react';
+/* eslint-disable react/button-has-type */
+
+// Imports
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import { signUpThunkCreator } from '../../store/reducers/authReducer';
 import fullstackCommunityAccessToken from '../../config/fscConfig';
 import { stations } from '../../data/nyc-subway-stations.json';
-import { signUpThunkCreator } from '../../store/reducers/authReducer';
 
+// Initializations
 const defaultLocation = stations[0];
 
-export class SignUp extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: '',
-      password: '',
-      githubUsername: '',
-      firstName: '',
-      lastName: '',
-      gender: 'Male',
-      status: 'Junior',
-      company: '',
-      cohort: '1911',
-      program: 'FSA-NY',
-      location: defaultLocation,
-      accessToken: '',
-      accessTokenError: false,
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+// Component
+class SignUp extends PureComponent {
+  state = {
+    email: '',
+    password: '',
+    githubUsername: '',
+    firstName: '',
+    lastName: '',
+    gender: 'Male',
+    status: 'Junior',
+    company: '',
+    cohort: '1911',
+    program: 'FSA-NY',
+    location: defaultLocation,
+    accessToken: '',
+    accessTokenError: false,
+  };
 
-  handleChange(event) {
-    // console.log('event.target.id: ', event.target.id);
-    // console.log('event.target.value: ', event.target.value);
-
+  handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value,
     });
-  }
+  };
 
-  handleSelect(event) {
-    // console.log('event.target.id: ', event.target.id);
-    // console.log('event.target.value: ', event.target.value);
-
+  handleSelect = event => {
     const location = stations.filter(
       curSubwayStation => curSubwayStation.name === event.target.value
     )[0];
+
     this.setState({
       location,
     });
-  }
+  };
 
-  handleSubmit(event) {
-    // console.log('event.target.id: ', event.target.id);
-    // console.log('event.target.value: ', event.target.value);
-
+  handleSubmit = event => {
     event.preventDefault();
+
     if (this.state.accessToken === fullstackCommunityAccessToken) {
       this.setState({
         accessTokenError: false,
       });
+
       this.props.signUpThunk(this.state);
     } else {
       this.setState({
         accessTokenError: true,
       });
     }
-  }
+  };
 
   render() {
     const { auth, authError } = this.props;
@@ -78,11 +73,13 @@ export class SignUp extends Component {
         <div className="container">
           <form onSubmit={this.handleSubmit} className="card white">
             <h5 className="grey-text text-darken-3">Sign Up</h5>
+
             <div className="input-field">
               <label htmlFor="email">
                 Email<span className="red-text-color">*</span> (Example:
                 cody@email.com)
               </label>
+
               <input
                 type="email"
                 id="email"
@@ -92,12 +89,14 @@ export class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
+
             <div className="input-field">
               <label htmlFor="password">
                 Password<span className="red-text-color">*</span> (May only
                 contain one uppercase letter, one lowercase letter, one digit,
                 and at least 8 characters in total)
               </label>
+
               <input
                 type="password"
                 id="password"
@@ -114,6 +113,7 @@ export class SignUp extends Component {
                 only contain alphanumeric characters or hyphens, and a maximum
                 of 39 characters in total)
               </label>
+
               <input
                 type="text"
                 id="githubUsername"
@@ -131,6 +131,7 @@ export class SignUp extends Component {
                 contain uppercase and lowercase letters only, and at least 2
                 characters in total)
               </label>
+
               <input
                 type="text"
                 id="firstName"
@@ -147,6 +148,7 @@ export class SignUp extends Component {
                 contain uppercase and lowercase letters only, and at least 2
                 characters in total)
               </label>
+
               <input
                 type="text"
                 id="lastName"
@@ -161,8 +163,10 @@ export class SignUp extends Component {
               <label htmlFor="gender">
                 Gender<span className="red-text-color">*</span>
               </label>
+
               <br />
               <br />
+
               <select
                 id="gender"
                 className="browser-default"
@@ -183,8 +187,10 @@ export class SignUp extends Component {
               <label htmlFor="status">
                 Status<span className="red-text-color">*</span>
               </label>
+
               <br />
               <br />
+
               <select
                 id="status"
                 className="browser-default"
@@ -208,6 +214,7 @@ export class SignUp extends Component {
                   only contain uppercase and lowercase letters only, and at
                   least 2 characters in total)
                 </label>
+
                 <input
                   type="text"
                   id="company"
@@ -223,8 +230,10 @@ export class SignUp extends Component {
               <label htmlFor="cohort">
                 Cohort<span className="red-text-color">*</span>
               </label>
+
               <br />
               <br />
+
               <select
                 id="cohort"
                 className="browser-default"
@@ -234,6 +243,7 @@ export class SignUp extends Component {
                 <option value="" disabled>
                   --Please choose an option--
                 </option>
+                <option value="2001">2001</option>
                 <option value="1911">1911</option>
                 <option value="1909">1909</option>
                 <option value="1907">1907</option>
@@ -284,8 +294,10 @@ export class SignUp extends Component {
               <label htmlFor="program">
                 Program<span className="red-text-color">*</span>
               </label>
+
               <br />
               <br />
+
               <select
                 id="program"
                 className="browser-default"
@@ -296,12 +308,10 @@ export class SignUp extends Component {
                   --Please choose an option--
                 </option>
                 <option value="FSA-NY">FSA-NY</option>
-                <option value="GH-NY">GH-NY</option>
-                <option value="GH-NY">WDF-NY</option>
+                <option value="GHP-NY">GHP-NY</option>
+                <option value="WDF-NY">WDF-NY</option>
                 <option value="FLEX-NY">FSA-FLEX</option>
                 <option value="REMOTE">FSA-REMOTE</option>
-                {/* <option value="FSA-CH">FSA-CH</option> */}
-                {/* <option value="GH-NY">GH-CH</option> */}
               </select>
             </div>
 
@@ -310,8 +320,10 @@ export class SignUp extends Component {
                 Location<span className="red-text-color">*</span> (Please pick
                 the subway station closest to where you live)
               </label>
+
               <br />
               <br />
+
               <select
                 id="location"
                 className="browser-default"
@@ -321,6 +333,7 @@ export class SignUp extends Component {
                 <option value="" disabled>
                   --Please choose an option--
                 </option>
+
                 {stations.map(curSubwayStation => {
                   return (
                     <option key={curSubwayStation.id}>
@@ -336,6 +349,7 @@ export class SignUp extends Component {
                 Access Token<span className="red-text-color">*</span> (Must
                 match the access token you received via email invitation)
               </label>
+
               <input
                 type="text"
                 id="accessToken"
@@ -344,10 +358,13 @@ export class SignUp extends Component {
               />
             </div>
 
-            <button className="btn red lighten-1 z-depth-0">Sign Up</button>
+            <button className="btn waves-effect waves-light red lighten-1">
+              Sign Up
+            </button>
+
             <div className="red-text center">
               {authError ? (
-                <p>{authError}</p>
+                <div>{authError}</div>
               ) : this.state.accessTokenError ? (
                 'Invalid Access Token! Please try again.'
               ) : null}
@@ -359,6 +376,7 @@ export class SignUp extends Component {
   }
 }
 
+// Container
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
   authError: state.auth.authError,
@@ -374,3 +392,10 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SignUp);
+
+// Prop Types
+SignUp.propTypes = {
+  auth: PropTypes.object,
+  authError: PropTypes.object,
+  signUpThunk: PropTypes.func,
+};

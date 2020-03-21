@@ -1,45 +1,42 @@
-import moment from 'moment';
+// Imports
 import React from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
 
-const Group = ({ name, events, fetchedEvents }) => {
-  // console.log({ name });
-  // console.log({ events });
-  // console.log({ fetchedEvents });
-
+// Component
+const SingleMeetup = ({ name, meetups }) => {
   return (
     <div className="section">
-      <div className="card z-depth-0">
+      <div className="card">
         <div className="card-content grey-text text-darken-3">
           <span className="card-title">
             <strong>{name}</strong>
           </span>
-          {!fetchedEvents ? (
-            <div className="logos-parent-container">
-              <div className="logo-container">Loading Meetups...</div>
-              <br />
-              <br />
-            </div>
-          ) : !events.length ? (
+
+          {!meetups.length ? (
             <div className="logos-parent-container">
               <div className="logo-container">
                 No upcoming Meetups were found.
               </div>
+
               <br />
               <br />
             </div>
           ) : (
             <ul className="notifications">
-              {events.map(curEvent => {
+              {meetups.map(curEvent => {
                 return (
                   <li key={curEvent.id}>
                     <span className="red-text-color">
                       <strong>{curEvent.name} </strong>
                     </span>
+
                     <div>
                       {curEvent.venue
                         ? `${curEvent.venue.address_1}, ${curEvent.venue.city}`
                         : 'TBD'}
                     </div>
+
                     <div className="events-time-and-rsvp-container">
                       <div
                         className="grey-text note-date events-time-and-rsvp-containee"
@@ -47,6 +44,7 @@ const Group = ({ name, events, fetchedEvents }) => {
                       >
                         {moment(curEvent.time).fromNow()}
                       </div>
+
                       <a
                         className="events-time-and-rsvp-containee"
                         href={curEvent.event_url}
@@ -65,6 +63,7 @@ const Group = ({ name, events, fetchedEvents }) => {
                         </span>
                       </a>
                     </div>
+
                     <br />
                   </li>
                 );
@@ -77,4 +76,10 @@ const Group = ({ name, events, fetchedEvents }) => {
   );
 };
 
-export default Group;
+export default SingleMeetup;
+
+// Prop Types
+SingleMeetup.propTypes = {
+  name: PropTypes.string,
+  meetups: PropTypes.array,
+};

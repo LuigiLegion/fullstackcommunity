@@ -7,7 +7,7 @@ const createNotification = notification => {
     .firestore()
     .collection('notifications')
     .add(notification)
-    .then(doc => console.log('Notification Added: ', doc));
+    .then(doc => console.log('Notification added: ', doc));
 };
 
 exports.projectCreated = functions.firestore
@@ -15,12 +15,11 @@ exports.projectCreated = functions.firestore
   .onCreate(doc => {
     const newlyCreatedProject = doc.data();
     const notification = {
-      content: 'added a new project',
-      user: `${newlyCreatedProject.authorFirstName} ${
-        newlyCreatedProject.authorLastName
-      }`,
+      content: ' added a new project',
+      user: `${newlyCreatedProject.authorFirstName} ${newlyCreatedProject.authorLastName}`,
       time: admin.firestore.FieldValue.serverTimestamp(),
     };
+
     return createNotification(notification);
   });
 
@@ -32,11 +31,13 @@ exports.userJoined = functions.auth.user().onCreate(user => {
     .get()
     .then(doc => {
       const newlyCreatedUser = doc.data();
+
       const notification = {
-        content: 'joined the Fullstack community',
+        content: ' joined Fullstack Community',
         user: `${newlyCreatedUser.firstName} ${newlyCreatedUser.lastName}`,
         time: admin.firestore.FieldValue.serverTimestamp(),
       };
+
       return createNotification(notification);
     });
 });

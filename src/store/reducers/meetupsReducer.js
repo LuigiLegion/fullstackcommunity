@@ -1,125 +1,91 @@
+// Imports
 import axios from 'axios';
 
 // Initial State
 const initialState = {
-  allEvents: [],
-  fetchedEvents: false,
+  groupMeetups: [],
+  allMeetups: [],
+  fetchedMeetups: false,
 };
 
-// Actions
-const GOT_EVENTS = 'GOT_EVENTS';
+// Actions Types
+const GOT_MEETUPS = 'GOT_MEETUPS';
 
 // Action Creators
-export const gotEventsActionCreator = events => ({
-  type: GOT_EVENTS,
-  events,
+const gotMeetupsActionCreator = (groupMeetups, allMeetups) => ({
+  type: GOT_MEETUPS,
+  groupMeetups,
+  allMeetups,
 });
 
 // Thunk Creators
-export const getEventsThunkCreator = () => {
+export const getMeetupsThunkCreator = () => {
   return async dispatch => {
     try {
       // // Meetup group with no upcoming meetups for testing purposes:
       // const starWarsNycMeetups = await axios.get(
       //   'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=148015&page=20'
       // );
-      // console.log(
-      //   'starWarsNycMeetups: ',
-      //   starWarsNycMeetups.data.results,
-      //   'is an Array: ',
-      //   Array.isArray(starWarsNycMeetups.data.results)
-      // );
+
       // const allMeetupsData = [...starWarsNycMeetups.data.results];
-      // console.log('allMeetupsData: ', allMeetupsData);
-      // dispatch(gotEventsActionCreator(allMeetupsData));
+
+      // dispatch(gotMeetupsActionCreator(allMeetupsData));
 
       // Meetup groups with future meetups:
       const nycCodersMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
       );
-      // console.log(
-      //   'nycCodersMeetups: ',
-      //   nycCodersMeetupsData.data.results
-      // );
-
       const bootcampersAnonymousMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=19344391&page=20'
       );
-      // console.log(
-      //   'bootcampersAnonymousMeetups: ',
-      //   bootcampersAnonymousMeetups.data.results
-      // );
-
       const reactNycMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=22884788&page=20'
       );
-      // console.log(
-      //   'reactNycMeetups: ',
-      //   reactNycMeetups.data.results
-      // );
-
       const useReactNycMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31543338&page=20'
       );
-      // console.log(
-      //   'useReactNycMeetups: ',
-      //   useReactNycMeetups.data.results
-      // );
-
       const vueNycMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=23275212&page=20'
       );
-      // console.log(
-      //   'vueNycMeetups: ',
-      //   vueNycMeetups.data.results
-      // );
-
       const graphqlNycMeetups = await axios.get(
         'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=24714233&page=20'
       );
-
       // const mongodbNycMeetups = await axios.get(
       //   'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=1629296&page=20'
       // );
-      // console.log(
-      //   'mongodbNycMeetups: ',
-      //   mongodbNycMeetups.data.results
-      // );
 
-      const allMeetupsReducerData = [
+      const groupMeetups = [
         {
           name: 'NYC Coders',
-          events: [...nycCodersMeetups.data.results],
+          meetups: [...nycCodersMeetups.data.results],
         },
         {
           name: 'Bootcampers Anonymous',
-          events: [...bootcampersAnonymousMeetups.data.results],
+          meetups: [...bootcampersAnonymousMeetups.data.results],
         },
         {
           name: 'React NYC',
-          events: [...reactNycMeetups.data.results],
+          meetups: [...reactNycMeetups.data.results],
         },
         {
           name: 'useReactNYC',
-          events: [...useReactNycMeetups.data.results],
+          meetups: [...useReactNycMeetups.data.results],
         },
         {
           name: 'Vue NYC',
-          events: [...vueNycMeetups.data.results],
+          meetups: [...vueNycMeetups.data.results],
         },
         {
-          name: 'graphQL NYC',
-          events: [...graphqlNycMeetups.data.results],
+          name: 'GraphQL NYC',
+          meetups: [...graphqlNycMeetups.data.results],
         },
         // {
-        //   name: 'mongoDB NYC',
-        //   events: [...mongodbNycMeetups.data.results],
+        //   name: 'MongoDB NYC',
+        //   meetups: [...mongodbNycMeetups.data.results],
         // },
       ];
 
-      dispatch(gotEventsActionCreator(allMeetupsReducerData));
-
-      const allMeetupsMapData = [
+      const allMeetups = [
         ...nycCodersMeetups.data.results,
         ...bootcampersAnonymousMeetups.data.results,
         ...reactNycMeetups.data.results,
@@ -128,11 +94,7 @@ export const getEventsThunkCreator = () => {
         // ...mongodbNycMeetups.data.results,
       ];
 
-      // console.log('eventsReducer localStorage pre-set: ', localStorage);
-
-      localStorage.setItem('meetups', JSON.stringify(allMeetupsMapData));
-
-      // console.log('eventsReducer localStorage post-set: ', localStorage);
+      dispatch(gotMeetupsActionCreator(groupMeetups, allMeetups));
     } catch (error) {
       console.error(error);
     }
@@ -140,14 +102,19 @@ export const getEventsThunkCreator = () => {
 };
 
 // Reducer
-const eventsReducer = (state = initialState, action) => {
+const meetupsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GOT_EVENTS:
-      // console.log('Fetched meetups successfully in the reducer');
-      return { ...state, allEvents: action.events, fetchedEvents: true };
+    case GOT_MEETUPS:
+      return {
+        ...state,
+        groupMeetups: action.groupMeetups,
+        allMeetups: action.allMeetups,
+        fetchedMeetups: true,
+      };
+
     default:
       return state;
   }
 };
 
-export default eventsReducer;
+export default meetupsReducer;

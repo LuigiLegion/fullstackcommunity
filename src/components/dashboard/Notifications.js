@@ -1,24 +1,29 @@
+// Imports
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
-const Notifications = props => {
-  const { notifications } = props;
+// Component
+const Notifications = ({ notifications }) => {
   return (
     <div className="section">
-      <div className="card z-depth-0">
+      <div className="card">
         <div className="card-content grey-text text-darken-3">
           <span className="card-title">
             <strong>Notifications</strong>
           </span>
+
           <ul className="notifications">
             {notifications &&
               notifications.map(curNotification => {
                 return (
                   <li key={curNotification.id}>
                     <span className="red-text-color">
-                      <strong>{curNotification.user} </strong>
+                      <strong>{curNotification.user}</strong>
                     </span>
+
                     <span>{curNotification.content}</span>
+
                     <div className="grey-text note-date">
                       {moment(curNotification.time.toDate()).fromNow()}
                     </div>
@@ -33,3 +38,8 @@ const Notifications = props => {
 };
 
 export default Notifications;
+
+// Prop Types
+Notifications.propTypes = {
+  notifications: PropTypes.array,
+};

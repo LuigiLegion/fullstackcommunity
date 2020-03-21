@@ -1,33 +1,30 @@
-import React, { Component } from 'react';
+// Imports
+import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { slide as Menu } from 'react-burger-menu';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { signOutThunkCreator } from '../../store/reducers/authReducer';
 import { burgerStyles } from '../../styles';
 
-class SignedInLinksBurger extends Component {
-  constructor() {
-    super();
-    this.state = {
+// Component
+class SignedInLinksBurger extends PureComponent {
+  state = {
+    menuOpen: false,
+  };
+
+  handleStateChange = state => {
+    this.setState({
+      menuOpen: state.isOpen,
+    });
+  };
+
+  closeMenu = () => {
+    this.setState({
       menuOpen: false,
-    };
-    this.handleStateChange = this.handleStateChange.bind(this);
-    this.closeMenu = this.closeMenu.bind(this);
-    // this.toggleMenu = this.toggleMenu.bind(this);
-  }
-
-  handleStateChange(state) {
-    this.setState({ menuOpen: state.isOpen });
-  }
-
-  closeMenu() {
-    this.setState({ menuOpen: false });
-  }
-
-  // toggleMenu() {
-  //   this.setState(state => ({ menuOpen: !state.menuOpen }));
-  // }
+    });
+  };
 
   render() {
     return (
@@ -49,26 +46,36 @@ class SignedInLinksBurger extends Component {
                 <strong>{this.props.profile.initials}</strong>
               </NavLink>
             </div>
-            <div>
-              <NavLink onClick={() => this.closeMenu()} to="/leaderboard">
-                <strong>Gitness Tracker</strong>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink onClick={() => this.closeMenu()} to="/meetups">
-                <strong>Meetup Manager</strong>
-              </NavLink>
-            </div>
+
             <div>
               <NavLink onClick={() => this.closeMenu()} to="/map">
                 <strong>Map</strong>
               </NavLink>
             </div>
+
+            <div>
+              <NavLink onClick={() => this.closeMenu()} to="/meetups">
+                <strong>Meetup Manager</strong>
+              </NavLink>
+            </div>
+
             <div>
               <NavLink onClick={() => this.closeMenu()} to="/create">
                 <strong>New Project</strong>
               </NavLink>
             </div>
+
+            <div>
+              <a
+                onClick={() => this.closeMenu()}
+                href="https://gitness-tracker.web.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>Gitness Tracker</strong>
+              </a>
+            </div>
+
             <div>
               <NavLink
                 onClick={() => {
@@ -87,6 +94,7 @@ class SignedInLinksBurger extends Component {
   }
 }
 
+// Container
 const mapDispatchToProps = dispatch => ({
   signOutThunk() {
     dispatch(signOutThunkCreator());
@@ -97,3 +105,9 @@ export default connect(
   null,
   mapDispatchToProps
 )(SignedInLinksBurger);
+
+// Prop Types
+SignedInLinksBurger.propTypes = {
+  profile: PropTypes.object,
+  signOutThunk: PropTypes.func,
+};

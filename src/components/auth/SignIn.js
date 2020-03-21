@@ -1,33 +1,35 @@
-import React, { Component } from 'react';
+/* eslint-disable react/button-has-type */
+
+// Imports
+import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { signInThunkCreator } from '../../store/reducers/authReducer';
 
-export class SignIn extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: '',
-      password: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+// Component
+class SignIn extends PureComponent {
+  state = {
+    email: '',
+    password: '',
+  };
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value,
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
+
     this.props.signInThunk(this.state);
-  }
+  };
 
   render() {
     const { auth, authError } = this.props;
+
     if (auth.uid) {
       return <Redirect to="/" />;
     } else {
@@ -35,27 +37,35 @@ export class SignIn extends Component {
         <div className="container">
           <form onSubmit={this.handleSubmit} className="card white">
             <h5 className="grey-text text-darken-3">Sign In</h5>
+
             <div className="input-field">
               <label htmlFor="email">
                 Email<span className="red-text-color">*</span>
               </label>
+
               <input type="email" id="email" onChange={this.handleChange} />
             </div>
+
             <div className="input-field">
               <label htmlFor="password">
                 Password<span className="red-text-color">*</span>
               </label>
+
               <input
                 type="password"
                 id="password"
                 onChange={this.handleChange}
               />
             </div>
+
             <div className="input-field">
-              <button className="btn red lighten-1 z-depth-0">Sign In</button>
+              <button className="btn waves-effect waves-light red lighten-1">
+                Sign In
+              </button>
             </div>
+
             <div className="red-text center">
-              {authError ? <p>{authError}</p> : null}
+              {authError ? <div>{authError}</div> : null}
             </div>
           </form>
         </div>
@@ -64,9 +74,10 @@ export class SignIn extends Component {
   }
 }
 
+// Container
 const mapStateToProps = state => ({
-  authError: state.auth.authError,
   auth: state.firebase.auth,
+  authError: state.auth.authError,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -79,3 +90,10 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SignIn);
+
+// Prop Types
+SignIn.propTypes = {
+  auth: PropTypes.object,
+  authError: PropTypes.object,
+  signInThunk: PropTypes.func,
+};

@@ -1,31 +1,27 @@
-import React, { Component } from 'react';
+// Imports
+import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 
 import { burgerStyles } from '../../styles';
 
-class SignedOutLinksBurger extends Component {
-  constructor() {
-    super();
-    this.state = {
+// Component
+class SignedOutLinksBurger extends PureComponent {
+  state = {
+    menuOpen: false,
+  };
+
+  handleStateChange = state => {
+    this.setState({
+      menuOpen: state.isOpen,
+    });
+  };
+
+  closeMenu = () => {
+    this.setState({
       menuOpen: false,
-    };
-    this.handleStateChange = this.handleStateChange.bind(this);
-    this.closeMenu = this.closeMenu.bind(this);
-    // this.toggleMenu = this.toggleMenu.bind(this);
-  }
-
-  handleStateChange(state) {
-    this.setState({ menuOpen: state.isOpen });
-  }
-
-  closeMenu() {
-    this.setState({ menuOpen: false });
-  }
-
-  // toggleMenu() {
-  //   this.setState(state => ({ menuOpen: !state.menuOpen }));
-  // }
+    });
+  };
 
   render() {
     return (
@@ -48,6 +44,7 @@ class SignedOutLinksBurger extends Component {
                 <strong>Sign In</strong>
               </NavLink>
             </div>
+
             <div>
               <NavLink
                 onClick={() => {
