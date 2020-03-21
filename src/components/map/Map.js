@@ -1,28 +1,34 @@
 /* eslint-disable complexity */
-// import React, { useState, useEffect } from 'react';
-import moment from 'moment';
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+
+// Imports
+import React, { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+
+import { getMeetupsThunkCreator } from '../../store/reducers/meetupsReducer';
 import mapboxAccessToken from '../../config/mbglConfig';
 import { branches as libraries } from '../../data/public-library-locations.json';
 import { branches as starbucks } from '../../data/starbucks-locations.json';
 import { branches as wholefoodsMarkets } from '../../data/whole-foods-market-locations.json';
 
+// Initializations
+const useForceUpdate = () => {
+  const [state, setState] = useState(true);
+
+  return () => setState(!state);
+};
 const replaceWhitespaceWithPlusSignRegex = /\s+/g;
+
 let firstRenderWithUsers = true;
 let curUserLocationName = '';
 
-function useForceUpdate() {
-  const [value, set] = useState(true);
-  return () => set(!value);
-}
-
-const Map = ({ auth, users }) => {
+// Component
+const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
   const [viewport, setViewport] = useState({
     latitude: 40.7531823,
     longitude: -73.9844421,
@@ -30,48 +36,42 @@ const Map = ({ auth, users }) => {
     height: '91vh',
     zoom: 14,
   });
-
   const [selectedAlum, setSelectedAlum] = useState(null);
-
-  const [selectedCampus, setSelectedCampus] = useState(false);
-
-  const [selectedAwsLoft, setSelectedAwsLoft] = useState(false);
-
-  const [selectedFreelancersHub, setSelectedFreelancersHub] = useState(false);
-
+  const [selectedCampus, setSelectedCampus] = useState(null);
+  const [selectedAwsLoft, setSelectedAwsLoft] = useState(null);
+  const [selectedFreelancersHub, setSelectedFreelancersHub] = useState(null);
   const [selectedMeetup, setSelectedMeetup] = useState(null);
-
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
-
   const [selectedWholeFoods, setSelectedWholeFoods] = useState(null);
-
   const [selectedPublicLibrary, setSelectedPublicLibrary] = useState(null);
 
-  const forceUpdate = useForceUpdate();
-
-  const allMeetups = localStorage.meetups
-    ? JSON.parse(localStorage.meetups)
-    : null;
+  useEffect(() => {
+    if (!fetchedMeetups) {
+      getMeetupsThunk();
+    }
+  }, [fetchedMeetups, getMeetupsThunk]);
 
   // useEffect(() => {
-  //   console.log('IN THE USEFFECT');
-  //   const listener = event => {
-  //     console.log('IN THE USEFFECT IF');
+  //   const keyHandler = event => {
   //     if (event.key === 'Escape') {
-  //       console.log('KEY IS ESCAPE');
+  //       setSelectedAlum(null);
+  //       setSelectedCampus(null);
+  //       setSelectedAwsLoft(null);
+  //       setSelectedFreelancersHub(null);
+  //       setSelectedMeetup(null);
   //       setSelectedStarbucks(null);
+  //       setSelectedWholeFoods(null);
+  //       setSelectedPublicLibrary(null);
   //     }
   //   };
-  //   console.log('window before add: ', window);
-  //   window.addEventListener('keydown', listener);
-  //   console.log('window after add: ', window);
+  //   window.addEventListener('keydown', keyHandler);
+
   //   return () => {
-  //     window.removeEventListener('keydown', listener);
-  //     console.log('window after remove: ', window);
+  //     window.removeEventListener('keydown', keyHandler);
   //   };
   // }, []);
 
-  // console.log('auth: ', auth, 'users: ', users);
+  const forceUpdate = useForceUpdate();
 
   if (!auth.uid) {
     return <Redirect to="/signin" />;
@@ -95,13 +95,13 @@ const Map = ({ auth, users }) => {
                 <button
                   onClick={event => {
                     event.preventDefault();
+
                     setSelectedPublicLibrary(curPublicLibrary);
                   }}
                   type="button"
                   className="marker-btn"
                 >
                   <img
-                    // src="https://img.icons8.com/dusk/64/000000/book.png"
                     src="https://img.icons8.com/dusk/64/000000/book-shelf.png"
                     alt="Public Library Icon"
                   />
@@ -120,13 +120,13 @@ const Map = ({ auth, users }) => {
                 <button
                   onClick={event => {
                     event.preventDefault();
+
                     setSelectedStarbucks(curStarbucks);
                   }}
                   type="button"
                   className="marker-btn"
                 >
                   <img
-                    // src="https://img.icons8.com/nolan/64/000000/starbucks.png"
                     src="https://img.icons8.com/color/48/000000/starbucks.png"
                     alt="Starbucks Icon"
                   />
@@ -145,13 +145,13 @@ const Map = ({ auth, users }) => {
                 <button
                   onClick={event => {
                     event.preventDefault();
+
                     setSelectedWholeFoods(curWholeFoods);
                   }}
                   type="button"
                   className="marker-btn"
                 >
                   <img
-                    // src="https://img.icons8.com/dusk/64/000000/amazon.png"
                     src="https://img.icons8.com/color/48/000000/amazon.png"
                     alt="Whole Foods Market Icon"
                   />
@@ -171,13 +171,13 @@ const Map = ({ auth, users }) => {
                     <button
                       onClick={event => {
                         event.preventDefault();
+
                         setSelectedMeetup(curMeetup);
                       }}
                       type="button"
                       className="marker-btn"
                     >
                       <img
-                        // src="https://img.icons8.com/ios/50/000000/meetup.png"
                         src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
                         alt="Meetup Icon"
                       />
@@ -189,14 +189,13 @@ const Map = ({ auth, users }) => {
 
           {users
             ? users.map(curUser => {
-                // console.log(curUser);
-
                 if (curUser.id === auth.uid) {
                   if (firstRenderWithUsers) {
                     viewport.latitude = curUser.locationGeocode.lat;
                     viewport.longitude = curUser.locationGeocode.lon;
                     firstRenderWithUsers = !firstRenderWithUsers;
                     curUserLocationName = curUser.locationName;
+
                     forceUpdate();
                   }
                   return (
@@ -207,7 +206,6 @@ const Map = ({ auth, users }) => {
                     >
                       <img
                         className="marker-me"
-                        // src="https://img.icons8.com/ultraviolet/40/000000/marker.png"
                         src="https://img.icons8.com/dusk/64/000000/student-center.png"
                         alt="My Location Icon"
                       />
@@ -223,6 +221,7 @@ const Map = ({ auth, users }) => {
                       <button
                         onClick={event => {
                           event.preventDefault();
+
                           setSelectedAlum(curUser);
                         }}
                         type="button"
@@ -230,7 +229,6 @@ const Map = ({ auth, users }) => {
                       >
                         <img
                           className="marker-others"
-                          // src="https://img.icons8.com/office/40/000000/marker.png"
                           src="https://img.icons8.com/dusk/64/000000/find-matching-job.png"
                           alt="Seeking Opportunities Others Location Icon"
                         />
@@ -247,6 +245,7 @@ const Map = ({ auth, users }) => {
                       <button
                         onClick={event => {
                           event.preventDefault();
+
                           setSelectedAlum(curUser);
                         }}
                         type="button"
@@ -254,7 +253,6 @@ const Map = ({ auth, users }) => {
                       >
                         <img
                           className="marker-others"
-                          // src="https://img.icons8.com/color/48/000000/briefcase.png"
                           src="https://img.icons8.com/dusk/64/000000/new-job.png"
                           alt="Employed Others Location Icon"
                         />
@@ -271,6 +269,7 @@ const Map = ({ auth, users }) => {
                       <button
                         onClick={event => {
                           event.preventDefault();
+
                           setSelectedAlum(curUser);
                         }}
                         type="button"
@@ -278,7 +277,6 @@ const Map = ({ auth, users }) => {
                       >
                         <img
                           className="marker-others"
-                          // src="https://img.icons8.com/ios/50/000000/student-registration-filled.png"
                           src="https://img.icons8.com/dusk/64/000000/student-male.png"
                           alt="Others Location Icon"
                         />
@@ -293,13 +291,13 @@ const Map = ({ auth, users }) => {
             <button
               onClick={event => {
                 event.preventDefault();
+
                 setSelectedFreelancersHub(true);
               }}
               type="button"
               className="marker-btn"
             >
               <img
-                // src="https://img.icons8.com/wired/64/000000/under-computer.png"
                 src="https://img.icons8.com/dusk/64/000000/under-computer.png"
                 alt="Freelancers Hub Location Icon"
               />
@@ -310,13 +308,13 @@ const Map = ({ auth, users }) => {
             <button
               onClick={event => {
                 event.preventDefault();
+
                 setSelectedAwsLoft(true);
               }}
               type="button"
               className="marker-btn"
             >
               <img
-                // src="https://img.icons8.com/wired/64/000000/under-computer.png"
                 src="https://img.icons8.com/dusk/64/000000/under-computer.png"
                 alt="AWS Loft Location Icon"
               />
@@ -327,6 +325,7 @@ const Map = ({ auth, users }) => {
             <button
               onClick={event => {
                 event.preventDefault();
+
                 setSelectedCampus(true);
               }}
               type="button"
@@ -354,10 +353,13 @@ const Map = ({ auth, users }) => {
                   {selectedPublicLibrary.address}
                 </strong>
               </div>
+
               <hr />
+
               <div className="navigation-container">
                 <div className="navigation-containee">
                   <strong>Opening Hours</strong>
+
                   <div>
                     <strong>Monday: </strong>
                     {selectedPublicLibrary.monOpen} -{' '}
@@ -366,6 +368,7 @@ const Map = ({ auth, users }) => {
                       ? `, ${selectedPublicLibrary.monReopen}-${selectedPublicLibrary.monReclose}`
                       : null}
                   </div>
+
                   <div>
                     <strong>Tuesday: </strong>
                     {selectedPublicLibrary.tueOpen} -{' '}
@@ -374,6 +377,7 @@ const Map = ({ auth, users }) => {
                       ? `, ${selectedPublicLibrary.tueReopen}-${selectedPublicLibrary.tueReclose}`
                       : null}
                   </div>
+
                   <div>
                     <strong>Wednesday: </strong>
                     {selectedPublicLibrary.wedOpen} -{' '}
@@ -382,6 +386,7 @@ const Map = ({ auth, users }) => {
                       ? `, ${selectedPublicLibrary.wedReopen}-${selectedPublicLibrary.wedReclose}`
                       : null}
                   </div>
+
                   <div>
                     <strong>Thursday: </strong>
                     {selectedPublicLibrary.thuOpen} -{' '}
@@ -390,6 +395,7 @@ const Map = ({ auth, users }) => {
                       ? `, ${selectedPublicLibrary.thuReopen}-${selectedPublicLibrary.thuReclose}`
                       : null}
                   </div>
+
                   <div>
                     <strong>Friday: </strong>
                     {selectedPublicLibrary.friOpen} -{' '}
@@ -398,6 +404,7 @@ const Map = ({ auth, users }) => {
                       ? `, ${selectedPublicLibrary.friReopen}-${selectedPublicLibrary.friReclose}`
                       : null}
                   </div>
+
                   <div>
                     <strong>Saturday: </strong>
                     {selectedPublicLibrary.satOpen} -{' '}
@@ -406,6 +413,7 @@ const Map = ({ auth, users }) => {
                       ? `, ${selectedPublicLibrary.satReopen}-${selectedPublicLibrary.satReclose}`
                       : null}
                   </div>
+
                   <div>
                     <strong>Sunday: </strong>
                     {selectedPublicLibrary.sunOpen === 'Closed' ? (
@@ -421,7 +429,9 @@ const Map = ({ auth, users }) => {
                     )}
                   </div>
                 </div>
+
                 <br />
+
                 <a
                   href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                     replaceWhitespaceWithPlusSignRegex,
@@ -453,12 +463,16 @@ const Map = ({ auth, users }) => {
               <div className="location-description">
                 <strong>Starbucks - {selectedStarbucks.name}</strong>
               </div>
+
               <hr />
+
               <div className="navigation-container">
                 {/* <div>
                     <strong>Closes at: 10 PM</strong>
                   </div> */}
+
                 <br />
+
                 <a
                   href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                     replaceWhitespaceWithPlusSignRegex,
@@ -489,15 +503,20 @@ const Map = ({ auth, users }) => {
                   Whole Foods Market - {selectedWholeFoods.location.address}
                 </strong>
               </div>
+
               <hr />
+
               <div className="navigation-container">
                 <div className="navigation-containee">
                   <strong>Opening Hours</strong>
                 </div>
+
                 <div className="navigation-containee">
                   Monday through Sunday, 8:00 AM - 10:00 PM
                 </div>
+
                 <br />
+
                 <a
                   href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                     replaceWhitespaceWithPlusSignRegex,
@@ -526,16 +545,20 @@ const Map = ({ auth, users }) => {
               <div className="location-description">
                 <strong>{selectedMeetup.venue.address_1}</strong>
               </div>
+
               <hr />
+
               <div className="navigation-container">
                 <div>
                   <strong>Meetup Title: </strong>
                   {selectedMeetup.name}
                 </div>
+
                 <div>
                   <strong>Date: </strong>
                   {moment(selectedMeetup.time).format('LLLL')}
                 </div>
+
                 <a
                   href={selectedMeetup.event_url}
                   target="_blank"
@@ -556,7 +579,9 @@ const Map = ({ auth, users }) => {
                     </span>
                   )}
                 </a>
+
                 <br />
+
                 <a
                   href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                     replaceWhitespaceWithPlusSignRegex,
@@ -585,15 +610,19 @@ const Map = ({ auth, users }) => {
               <div className="location-description">
                 <strong>{`${selectedAlum.firstName} ${selectedAlum.lastName}`}</strong>
               </div>
+
               <hr />
+
               <div className="location-description">
                 <strong>Gender: </strong>
                 {selectedAlum.gender}
               </div>
+
               <div className="location-description">
                 <strong>Cohort: </strong>
                 {`${selectedAlum.cohort}-${selectedAlum.program}`}
               </div>
+
               <div className="location-description">
                 {selectedAlum.status === 'Employed' ? (
                   <span>
@@ -609,8 +638,10 @@ const Map = ({ auth, users }) => {
                   </span>
                 )}
               </div>
+
               <div className="location-description">
                 <strong>Contact Information: </strong>
+
                 <a
                   href={`mailto:${selectedAlum.email}`}
                   target="_blank"
@@ -619,6 +650,7 @@ const Map = ({ auth, users }) => {
                   <strong>{selectedAlum.email}</strong>
                 </a>
               </div>
+
               <div className="location-description">
                 <strong>Subway Station: </strong>
                 {selectedAlum.locationName}
@@ -637,14 +669,18 @@ const Map = ({ auth, users }) => {
               <div className="location-description">
                 <strong>Freelancers Hub - 30 John Street, Brooklyn</strong>
               </div>
+
               <hr />
+
               <div className="navigation-container">
                 <div className="navigation-containee">
                   <strong>Opening Hours</strong>
                 </div>
+
                 <div className="navigation-containee">
                   Monday through Friday, 9:00 AM - 5:00 PM
                 </div>
+
                 <a
                   href="https://freelancershub.nymediacenter.com/member/daypass"
                   target="_blank"
@@ -652,7 +688,9 @@ const Map = ({ auth, users }) => {
                 >
                   <strong>RSVP</strong>
                 </a>
+
                 <br />
+
                 <a
                   href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                     replaceWhitespaceWithPlusSignRegex,
@@ -678,14 +716,18 @@ const Map = ({ auth, users }) => {
               <div className="location-description">
                 <strong>AWS Loft - 350 West Broadway, New York</strong>
               </div>
+
               <hr />
+
               <div className="navigation-container">
                 <div className="navigation-containee">
                   <strong>Opening Hours</strong>
                 </div>
+
                 <div className="navigation-containee">
                   Monday through Friday, 9:30 AM - 5:30 PM
                 </div>
+
                 <a
                   href="https://aws.amazon.com/start-ups/loft/ny-loft"
                   target="_blank"
@@ -693,7 +735,9 @@ const Map = ({ auth, users }) => {
                 >
                   <strong>RSVP</strong>
                 </a>
+
                 <br />
+
                 <a
                   href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                     replaceWhitespaceWithPlusSignRegex,
@@ -721,12 +765,16 @@ const Map = ({ auth, users }) => {
                   Fullstack Academy of Code - 5 Hanover Square, New York
                 </strong>
               </div>
+
               <hr />
+
               <div className="navigation-container">
                 <div>
                   <strong>Next Hacker Hours Meetup: </strong>
                 </div>
+
                 <div>Monday, August 12th, 6:30 PM - 9:30 PM</div>
+
                 <a
                   href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2"
                   target="_blank"
@@ -734,7 +782,9 @@ const Map = ({ auth, users }) => {
                 >
                   <strong>RSVP</strong>
                 </a>
+
                 <br />
+
                 <a
                   href={`https://www.google.com/maps/dir/?api=1&origin=${curUserLocationName.replace(
                     replaceWhitespaceWithPlusSignRegex,
@@ -754,13 +804,25 @@ const Map = ({ auth, users }) => {
   }
 };
 
+// Container
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
   users: state.firestore.ordered.users,
+  allMeetups: state.meetups.allMeetups,
+  fetchedMeetups: state.meetups.fetchedMeetups,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getMeetupsThunk() {
+    dispatch(getMeetupsThunkCreator());
+  },
 });
 
 export default compose(
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   firestoreConnect([
     {
       collection: 'users',
@@ -768,7 +830,11 @@ export default compose(
   ])
 )(Map);
 
+// Prop Types
 Map.propTypes = {
   auth: PropTypes.object,
   users: PropTypes.array,
+  allMeetups: PropTypes.array,
+  fetchedMeetups: PropTypes.bool,
+  getMeetupsThunk: PropTypes.func,
 };
