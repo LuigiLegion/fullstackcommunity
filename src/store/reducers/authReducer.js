@@ -5,90 +5,48 @@ import { toggledPreloaderActionCreator } from './layoutReducer';
 
 // Initial State
 const initialState = {
-  authError: null,
+  signUpError: null,
+  signInError: null,
+  signOutError: null,
 };
 
 // Actions Types
-const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
-const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
-const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
-const SIGN_OUT_ERROR = 'SIGN_OUT_ERROR';
-const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
-const SIGN_UP_ERROR = 'SIGN_UP_ERROR';
+const SIGNED_UP_SUCCESS = 'SIGNED_UP_SUCCESS';
+const SIGNED_UP_ERROR = 'SIGNED_UP_ERROR';
+const SIGNED_IN_SUCCESS = 'SIGNED_IN_SUCCESS';
+const SIGNED_IN_ERROR = 'SIGNED_IN_ERROR';
+const SIGNED_OUT_SUCCESS = 'SIGNED_OUT_SUCCESS';
+const SIGNED_OUT_ERROR = 'SIGNED_OUT_ERROR';
 
 // Action Creators
-const signInSuccessActionCreator = userCredentials => ({
-  type: SIGN_IN_SUCCESS,
-  userCredentials,
+const signedUpSuccessActionCreator = () => ({
+  type: SIGNED_UP_SUCCESS,
 });
 
-const signInErrorActionCreator = error => ({
-  type: SIGN_IN_ERROR,
+const signedUpErrorActionCreator = error => ({
+  type: SIGNED_UP_ERROR,
   error,
 });
 
-const signOutSuccessActionCreator = () => ({
-  type: SIGN_OUT_SUCCESS,
+const signedInSuccessActionCreator = () => ({
+  type: SIGNED_IN_SUCCESS,
 });
 
-const signOutErrorActionCreator = () => ({
-  type: SIGN_OUT_ERROR,
+const signedInErrorActionCreator = error => ({
+  type: SIGNED_IN_ERROR,
+  error,
 });
 
-const signUpSuccessActionCreator = newUser => ({
-  type: SIGN_UP_SUCCESS,
-  newUser,
+const signedOutSuccessActionCreator = () => ({
+  type: SIGNED_OUT_SUCCESS,
 });
 
-const signUpErrorActionCreator = error => ({
-  type: SIGN_UP_ERROR,
+const signedOutErrorActionCreator = error => ({
+  type: SIGNED_OUT_ERROR,
   error,
 });
 
 // Thunk Creators
-export const signInThunkCreator = userCredentials => {
-  return async (dispatch, getState, { getFirebase }) => {
-    try {
-      dispatch(toggledPreloaderActionCreator(true));
-
-      const firebase = getFirebase();
-
-      await firebase
-        .auth()
-        .signInWithEmailAndPassword(
-          userCredentials.email,
-          userCredentials.password
-        );
-
-      dispatch(signInSuccessActionCreator(userCredentials));
-      dispatch(toggledPreloaderActionCreator(false));
-    } catch (error) {
-      console.error(error);
-      dispatch(signInErrorActionCreator(error));
-      dispatch(toggledPreloaderActionCreator(false));
-    }
-  };
-};
-
-export const signOutThunkCreator = () => {
-  return async (dispatch, getState, { getFirebase }) => {
-    try {
-      dispatch(toggledPreloaderActionCreator(true));
-
-      const firebase = getFirebase();
-
-      await firebase.auth().signOut();
-
-      dispatch(signOutSuccessActionCreator());
-      dispatch(toggledPreloaderActionCreator(false));
-    } catch (error) {
-      console.error(error);
-      dispatch(signOutErrorActionCreator());
-      dispatch(toggledPreloaderActionCreator(false));
-    }
-  };
-};
-
 export const signUpThunkCreator = newUser => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     try {
@@ -129,11 +87,54 @@ export const signUpThunkCreator = newUser => {
           locationGeocode,
         });
 
-      dispatch(signUpSuccessActionCreator(newUser));
+      dispatch(signedUpSuccessActionCreator());
       dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
-      dispatch(signUpErrorActionCreator(error));
+      dispatch(signedUpErrorActionCreator(error));
+      dispatch(toggledPreloaderActionCreator(false));
+    }
+  };
+};
+
+export const signInThunkCreator = userCredentials => {
+  return async (dispatch, getState, { getFirebase }) => {
+    try {
+      dispatch(toggledPreloaderActionCreator(true));
+
+      const firebase = getFirebase();
+
+      await firebase
+        .auth()
+        .signInWithEmailAndPassword(
+          userCredentials.email,
+          userCredentials.password
+        );
+
+      dispatch(signedInSuccessActionCreator());
+      dispatch(toggledPreloaderActionCreator(false));
+    } catch (error) {
+      console.error(error);
+      dispatch(signedInErrorActionCreator(error));
+      dispatch(toggledPreloaderActionCreator(false));
+    }
+  };
+};
+
+export const signOutThunkCreator = () => {
+  return async (dispatch, getState, { getFirebase }) => {
+    try {
+      dispatch(toggledPreloaderActionCreator(true));
+
+      const firebase = getFirebase();
+
+      await firebase.auth().signOut();
+
+      dispatch(signedOutSuccessActionCreator());
+      dispatch(toggledPreloaderActionCreator(false));
+    } catch (error) {
+      console.error(error);
+      dispatch(signedOutErrorActionCreator(error));
       dispatch(toggledPreloaderActionCreator(false));
     }
   };
@@ -142,40 +143,43 @@ export const signUpThunkCreator = newUser => {
 // Reducer
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SIGN_IN_ERROR:
-      console.log('Sign in error! ', action.error);
+    case SIGNED_UP_SUCCESS:
       return {
         ...state,
-        authError: 'Sign in failed',
+        signUpError: null,
       };
 
-    case SIGN_IN_SUCCESS:
-      console.log('Signed in successfully');
+    case SIGNED_UP_ERROR:
+      console.error('Sign up error!', action.error.message);
       return {
         ...state,
-        authError: null,
+        signUpError: action.error.message,
       };
 
-    case SIGN_OUT_ERROR:
-      console.log('Sign out error!');
-      return state;
-
-    case SIGN_OUT_SUCCESS:
-      console.log('Signed out successfully');
-      return state;
-
-    case SIGN_UP_ERROR:
-      console.log('Sign up error!');
+    case SIGNED_IN_SUCCESS:
       return {
         ...state,
-        authError: action.error.message,
+        signInError: null,
       };
 
-    case SIGN_UP_SUCCESS:
-      console.log('Signed up successfully');
+    case SIGNED_IN_ERROR:
+      console.error('Sign in error!', action.error.message);
       return {
         ...state,
-        authError: null,
+        signInError: action.error.message,
+      };
+
+    case SIGNED_OUT_SUCCESS:
+      return {
+        ...state,
+        signOutError: null,
+      };
+
+    case SIGNED_OUT_ERROR:
+      console.error('Sign out error!', action.error.message);
+      return {
+        ...state,
+        signOutError: action.error.message,
       };
 
     default:
