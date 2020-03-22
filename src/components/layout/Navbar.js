@@ -45,7 +45,7 @@ const Navbar = ({ auth, profile, isLoading }) => {
 
   return (
     <div className="navbar-fixed">
-      <nav className="nav-wrapper grey darken-4">
+      <nav className="nav-wrapper navbar">
         <div>
           <NavLink to="/" className="left brand-logo name-text-positioning">
             {largeViewCheck ? 'Fullstack Community' : 'FSCommunity'}
