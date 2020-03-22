@@ -12,7 +12,7 @@ const ProjectSummary = ({ project }) => {
 
         <div>
           Posted by{' '}
-          <span className="red-text-color">
+          <span className="text-color-red">
             <strong>{`${project.authorFirstName} ${project.authorLastName}`}</strong>
           </span>
         </div>

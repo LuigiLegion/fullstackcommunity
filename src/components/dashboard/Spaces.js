@@ -13,7 +13,7 @@ const Spaces = () => {
 
           <ul className="notifications">
             <li>
-              <span className="red-text-color">
+              <span className="text-color-red">
                 <strong>Free working spaces at AWS Loft</strong>
               </span>
 
@@ -38,7 +38,7 @@ const Spaces = () => {
             </li>
 
             <li>
-              <span className="red-text-color">
+              <span className="text-color-red">
                 <strong>Free working spaces at Freelancers Hub</strong>
               </span>
 
@@ -63,7 +63,7 @@ const Spaces = () => {
             </li>
 
             <li>
-              <span className="red-text-color">
+              <span className="text-color-red">
                 <strong>Hacker Hours at Fullstack Academy of Code</strong>
               </span>
 

@@ -18,7 +18,7 @@ const Notifications = ({ notifications }) => {
               notifications.map(curNotification => {
                 return (
                   <li key={curNotification.id}>
-                    <span className="red-text-color">
+                    <span className="text-color-red">
                       <strong>{curNotification.user}</strong>
                     </span>
 

@@ -14,8 +14,8 @@ const SingleMeetup = ({ name, meetups }) => {
           </span>
 
           {!meetups.length ? (
-            <div className="logos-parent-container">
-              <div className="logo-container">
+            <div className="message-container">
+              <div className="message-containee">
                 No upcoming Meetups were found.
               </div>
 
@@ -27,7 +27,7 @@ const SingleMeetup = ({ name, meetups }) => {
               {meetups.map(curEvent => {
                 return (
                   <li key={curEvent.id}>
-                    <span className="red-text-color">
+                    <span className="text-color-red">
                       <strong>{curEvent.name} </strong>
                     </span>
 
