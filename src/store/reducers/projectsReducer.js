@@ -1,29 +1,30 @@
 // Imports
 import { toggledPreloaderActionCreator } from './layoutReducer';
+import { toastNotificationGenerator } from '../../helpers';
 
 // Initial State
 const initialState = {
-  creationError: null,
+  projectCreationError: null,
 };
 
 // Action Types
-const CREATE_PROJECT_SUCCESS = 'CREATE_PROJECT_SUCCESS';
-const CREATE_PROJECT_ERROR = 'CREATE_PROJECT_ERROR';
+const CREATED_PROJECT_SUCCESS = 'CREATED_PROJECT_SUCCESS';
+const CREATED_PROJECT_ERROR = 'CREATED_PROJECT_ERROR';
 
 // Action Creators
-const createProjectSuccessActionCreator = newProject => ({
-  type: CREATE_PROJECT_SUCCESS,
-  newProject,
+const createdProjectSuccessActionCreator = project => ({
+  type: CREATED_PROJECT_SUCCESS,
+  project,
 });
 
-const createProjectErrorActionCreator = error => ({
-  type: CREATE_PROJECT_ERROR,
+const createdProjectErrorActionCreator = error => ({
+  type: CREATED_PROJECT_ERROR,
   error,
 });
 
 // Thunk Creators
-export const createProjectThunkCreator = newProject => {
-  return async (dispatch, getState, { getFirebase, getFirestore }) => {
+export const createProjectThunkCreator = project => {
+  return async (dispatch, getState, { getFirestore }) => {
     try {
       dispatch(toggledPreloaderActionCreator(true));
 
@@ -33,19 +34,21 @@ export const createProjectThunkCreator = newProject => {
       const curAuthorId = getState().firebase.auth.uid;
 
       await firestore.collection('projects').add({
-        ...newProject,
+        ...project,
         authorFirstName: curAuthorProfile.firstName,
         authorLastName: curAuthorProfile.lastName,
         authorEmail: curAuthorProfile.email,
         authorId: curAuthorId,
-        createdAt: new Date(),
+        createdAt: firestore.FieldValue.serverTimestamp(),
       });
 
-      dispatch(createProjectSuccessActionCreator(newProject));
+      dispatch(createdProjectSuccessActionCreator(project));
       dispatch(toggledPreloaderActionCreator(false));
+
+      toastNotificationGenerator('New Project Created Successfully', 'green');
     } catch (error) {
       console.error(error);
-      dispatch(createProjectErrorActionCreator(error));
+      dispatch(createdProjectErrorActionCreator(error));
       dispatch(toggledPreloaderActionCreator(false));
     }
   };
@@ -54,18 +57,17 @@ export const createProjectThunkCreator = newProject => {
 // Reducer
 const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_PROJECT_ERROR:
-      console.log('Create new project error: ', action.error);
+    case CREATED_PROJECT_ERROR:
+      console.error('Project creation error!', action.error);
       return {
         ...state,
-        creationError: action.error,
+        projectCreationError: action.error,
       };
 
-    case CREATE_PROJECT_SUCCESS:
-      console.log('Created new project successfully: ', action.newProject);
+    case CREATED_PROJECT_SUCCESS:
       return {
         ...state,
-        creationError: null,
+        projectCreationError: null,
       };
 
     default:
