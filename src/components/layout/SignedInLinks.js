@@ -11,6 +11,12 @@ const SignedInLinks = ({ profile, signOutThunk }) => {
   return (
     <ul className="right">
       <li>
+        <NavLink to="/create">
+          <strong>New Project</strong>
+        </NavLink>
+      </li>
+
+      <li>
         <NavLink to="/map">
           <strong>Map</strong>
         </NavLink>
@@ -18,13 +24,7 @@ const SignedInLinks = ({ profile, signOutThunk }) => {
 
       <li>
         <NavLink to="/meetups">
-          <strong>Meetup Manager</strong>
-        </NavLink>
-      </li>
-
-      <li>
-        <NavLink to="/create">
-          <strong>New Project</strong>
+          <strong>Meetup Tracker</strong>
         </NavLink>
       </li>
 
