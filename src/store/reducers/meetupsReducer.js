@@ -2,22 +2,30 @@
 import axios from 'axios';
 
 import { toggledPreloaderActionCreator } from './layoutReducer';
+import { toastNotificationGenerator } from '../../helpers';
 
 // Initial State
 const initialState = {
   groupMeetups: [],
   allMeetups: [],
   fetchedMeetups: false,
+  meetupsFetchingError: null,
 };
 
 // Actions Types
-const GOT_MEETUPS = 'GOT_MEETUPS';
+const GOT_MEETUPS_SUCCESS = 'GOT_MEETUPS_SUCCESS';
+const GOT_MEETUPS_ERROR = 'GOT_MEETUPS_ERROR';
 
 // Action Creators
-const gotMeetupsActionCreator = (groupMeetups, allMeetups) => ({
-  type: GOT_MEETUPS,
+const gotMeetupsSuccessActionCreator = (groupMeetups, allMeetups) => ({
+  type: GOT_MEETUPS_SUCCESS,
   groupMeetups,
   allMeetups,
+});
+
+const gotMeetupsErrorActionCreator = error => ({
+  type: GOT_MEETUPS_ERROR,
+  error,
 });
 
 // Thunk Creators
@@ -30,9 +38,7 @@ export const getMeetupsThunkCreator = () => {
       // const starWarsNycMeetups = await axios.get(
       //   'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=148015&page=20'
       // );
-
       // const allMeetupsData = [...starWarsNycMeetups.data.results];
-
       // dispatch(gotMeetupsActionCreator(allMeetupsData));
 
       // Meetup groups with future meetups:
@@ -98,11 +104,13 @@ export const getMeetupsThunkCreator = () => {
         // ...mongodbNycMeetups.data.results,
       ];
 
-      dispatch(gotMeetupsActionCreator(groupMeetups, allMeetups));
+      dispatch(gotMeetupsSuccessActionCreator(groupMeetups, allMeetups));
       dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
+      dispatch(gotMeetupsErrorActionCreator(error));
       dispatch(toggledPreloaderActionCreator(false));
+      toastNotificationGenerator('Error! Unable To Fetch Meetups', 'red');
     }
   };
 };
@@ -110,13 +118,20 @@ export const getMeetupsThunkCreator = () => {
 // Reducer
 const meetupsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GOT_MEETUPS:
-      console.log('Fetched meetups successfully');
+    case GOT_MEETUPS_SUCCESS:
       return {
         ...state,
         groupMeetups: action.groupMeetups,
         allMeetups: action.allMeetups,
         fetchedMeetups: true,
+      };
+
+    case GOT_MEETUPS_ERROR:
+      console.log('Meetups fetching error!', action.error.message);
+      return {
+        ...state,
+        fetchedMeetups: false,
+        meetupsFetchingError: action.error.message,
       };
 
     default:
