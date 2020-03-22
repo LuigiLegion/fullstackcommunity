@@ -11,7 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: white;
+  color: #eaeaea;
   background-size: 100%;
   background-position: bottom;
   background-color: #101010;
@@ -40,33 +40,22 @@ textarea.materialize-textarea:focus:not([readonly]) {
   box-shadow: none;
 }
 
-.logos-parent-container {
+.navbar {
+  background-color: #101010;
+  box-shadow: none;
+}
+
+.message-container {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.logo-container {
+.message-containee {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.fullstack-logo {
-  flex: 1;
-  height: 150px;
-  width: 200px;
-  background-color: white;
-  border-radius: 10%;
-}
-
-.partner-logo {
-  flex: 1;
-  height: 150px;
-  width: 150px;
-  background-color: white;
-  border-radius: 10%;
 }
 
 .marker-me {
@@ -97,7 +86,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .location-description {
-  color: black;
+  color: #101010;
   text-align: center;
 }
 
@@ -106,7 +95,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: #101010;
 }
 
 .navigation-containee {
@@ -116,11 +105,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
   align-items: center;
 }
 
-.red-text-color {
+.text-color-red {
   color: #ef5350;
 }
 
-.blue-text-color {
+.text-color-blue {
   color: #039be5;
 }
 
