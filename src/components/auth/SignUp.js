@@ -335,13 +335,11 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
                 --Please choose an option--
               </option>
 
-              {stations.map(curSubwayStation => {
-                return (
-                  <option key={curSubwayStation.id}>
-                    {curSubwayStation.name}
-                  </option>
-                );
-              })}
+              {stations.map(curSubwayStation => (
+                <option key={curSubwayStation.id}>
+                  {curSubwayStation.name}
+                </option>
+              ))}
             </select>
           </div>
 
