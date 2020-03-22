@@ -15,21 +15,19 @@ const Notifications = ({ notifications }) => {
 
           <ul className="notifications">
             {notifications &&
-              notifications.map(curNotification => {
-                return (
-                  <li key={curNotification.id}>
-                    <span className="text-color-red">
-                      <strong>{curNotification.user}</strong>
-                    </span>
+              notifications.map(curNotification => (
+                <li key={curNotification.id}>
+                  <span className="text-color-red">
+                    <strong>{curNotification.user}</strong>
+                  </span>
 
-                    <span>{curNotification.content}</span>
+                  <span>{curNotification.content}</span>
 
-                    <div className="grey-text note-date">
-                      {moment(curNotification.time.toDate()).fromNow()}
-                    </div>
-                  </li>
-                );
-              })}
+                  <div className="grey-text note-date">
+                    {moment(curNotification.time.toDate()).fromNow()}
+                  </div>
+                </li>
+              ))}
           </ul>
         </div>
       </div>

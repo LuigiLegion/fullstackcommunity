@@ -41,6 +41,12 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
           </div>
 
           <div>
+            <NavLink onClick={() => closeMenu()} to="/create">
+              <strong>New Project</strong>
+            </NavLink>
+          </div>
+
+          <div>
             <NavLink onClick={() => closeMenu()} to="/map">
               <strong>Map</strong>
             </NavLink>
@@ -48,13 +54,7 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
 
           <div>
             <NavLink onClick={() => closeMenu()} to="/meetups">
-              <strong>Meetup Manager</strong>
-            </NavLink>
-          </div>
-
-          <div>
-            <NavLink onClick={() => closeMenu()} to="/create">
-              <strong>New Project</strong>
+              <strong>Meetup Tracker</strong>
             </NavLink>
           </div>
 

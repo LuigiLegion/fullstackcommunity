@@ -65,16 +65,14 @@ const Meetups = ({ auth, groupMeetups, fetchedMeetups, getMeetupsThunk }) => {
                     return 0;
                   }
                 })
-                .map(curGroup => {
-                  return (
-                    <div key={curGroup.name} className="col s12 m6 l4">
-                      <SingleMeetup
-                        name={curGroup.name}
-                        meetups={curGroup.meetups}
-                      />
-                    </div>
-                  );
-                })
+                .map(curGroup => (
+                  <div key={curGroup.name} className="col s12 m6 l4">
+                    <SingleMeetup
+                      name={curGroup.name}
+                      meetups={curGroup.meetups}
+                    />
+                  </div>
+                ))
             )}
           </div>
         )}

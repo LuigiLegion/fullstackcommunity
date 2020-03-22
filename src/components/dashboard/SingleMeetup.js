@@ -24,50 +24,48 @@ const SingleMeetup = ({ name, meetups }) => {
             </div>
           ) : (
             <ul className="notifications">
-              {meetups.map(curEvent => {
-                return (
-                  <li key={curEvent.id}>
-                    <span className="text-color-red">
-                      <strong>{curEvent.name} </strong>
-                    </span>
+              {meetups.map(curEvent => (
+                <li key={curEvent.id}>
+                  <span className="text-color-red">
+                    <strong>{curEvent.name} </strong>
+                  </span>
 
-                    <div>
-                      {curEvent.venue
-                        ? `${curEvent.venue.address_1}, ${curEvent.venue.city}`
-                        : 'TBD'}
+                  <div>
+                    {curEvent.venue
+                      ? `${curEvent.venue.address_1}, ${curEvent.venue.city}`
+                      : 'TBD'}
+                  </div>
+
+                  <div className="events-time-and-rsvp-container">
+                    <div
+                      className="grey-text note-date events-time-and-rsvp-containee"
+                      title={moment(curEvent.time).format('LLLL')}
+                    >
+                      {moment(curEvent.time).fromNow()}
                     </div>
 
-                    <div className="events-time-and-rsvp-container">
-                      <div
-                        className="grey-text note-date events-time-and-rsvp-containee"
-                        title={moment(curEvent.time).format('LLLL')}
-                      >
-                        {moment(curEvent.time).fromNow()}
-                      </div>
+                    <a
+                      className="events-time-and-rsvp-containee"
+                      href={curEvent.event_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="right">
+                        {curEvent.rsvp_limit ? (
+                          <strong>
+                            RSVP ({curEvent.yes_rsvp_count}/
+                            {curEvent.rsvp_limit})
+                          </strong>
+                        ) : (
+                          <strong>RSVP ({curEvent.yes_rsvp_count})</strong>
+                        )}
+                      </span>
+                    </a>
+                  </div>
 
-                      <a
-                        className="events-time-and-rsvp-containee"
-                        href={curEvent.event_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span className="right">
-                          {curEvent.rsvp_limit ? (
-                            <strong>
-                              RSVP ({curEvent.yes_rsvp_count}/
-                              {curEvent.rsvp_limit})
-                            </strong>
-                          ) : (
-                            <strong>RSVP ({curEvent.yes_rsvp_count})</strong>
-                          )}
-                        </span>
-                      </a>
-                    </div>
-
-                    <br />
-                  </li>
-                );
-              })}
+                  <br />
+                </li>
+              ))}
             </ul>
           )}
         </div>
