@@ -14,7 +14,7 @@ import { stations } from '../../data/nyc-subway-stations.json';
 const defaultLocation = stations[0];
 
 // Component
-const SignUp = ({ auth, authError, signUpThunk }) => {
+const SignUp = ({ auth, signUpError, signUpThunk }) => {
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -77,7 +77,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field">
             <label htmlFor="email">
-              Email<span className="red-text-color">*</span> (Example:
+              Email<span className="text-color-red">*</span> (Example:
               cody@email.com)
             </label>
 
@@ -93,7 +93,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field">
             <label htmlFor="password">
-              Password<span className="red-text-color">*</span> (May only
+              Password<span className="text-color-red">*</span> (May only
               contain one uppercase letter, one lowercase letter, one digit, and
               at least 8 characters in total)
             </label>
@@ -110,7 +110,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field">
             <label htmlFor="githubUsername">
-              GitHub Username<span className="red-text-color">*</span> (May only
+              GitHub Username<span className="text-color-red">*</span> (May only
               contain alphanumeric characters or hyphens, and a maximum of 39
               characters in total)
             </label>
@@ -128,7 +128,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field">
             <label htmlFor="firstName">
-              First Name<span className="red-text-color">*</span> (May only
+              First Name<span className="text-color-red">*</span> (May only
               contain uppercase and lowercase letters only, and at least 2
               characters in total)
             </label>
@@ -145,7 +145,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field">
             <label htmlFor="lastName">
-              Last Name<span className="red-text-color">*</span> (May only
+              Last Name<span className="text-color-red">*</span> (May only
               contain uppercase and lowercase letters only, and at least 2
               characters in total)
             </label>
@@ -162,7 +162,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field col s12">
             <label htmlFor="gender">
-              Gender<span className="red-text-color">*</span>
+              Gender<span className="text-color-red">*</span>
             </label>
 
             <br />
@@ -186,7 +186,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field col s12">
             <label htmlFor="status">
-              Status<span className="red-text-color">*</span>
+              Status<span className="text-color-red">*</span>
             </label>
 
             <br />
@@ -211,7 +211,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
           {state.status === 'Employed' ? (
             <div className="input-field">
               <label htmlFor="company">
-                Company Name<span className="red-text-color">*</span> (May only
+                Company Name<span className="text-color-red">*</span> (May only
                 contain uppercase and lowercase letters only, and at least 2
                 characters in total)
               </label>
@@ -229,7 +229,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field col s12">
             <label htmlFor="cohort">
-              Cohort<span className="red-text-color">*</span>
+              Cohort<span className="text-color-red">*</span>
             </label>
 
             <br />
@@ -293,7 +293,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field col s12">
             <label htmlFor="program">
-              Program<span className="red-text-color">*</span>
+              Program<span className="text-color-red">*</span>
             </label>
 
             <br />
@@ -318,7 +318,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field col s12">
             <label htmlFor="location">
-              Location<span className="red-text-color">*</span> (Please pick the
+              Location<span className="text-color-red">*</span> (Please pick the
               subway station closest to where you live)
             </label>
 
@@ -347,7 +347,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 
           <div className="input-field">
             <label htmlFor="accessToken">
-              Access Token<span className="red-text-color">*</span> (Must match
+              Access Token<span className="text-color-red">*</span> (Must match
               the access token you received via email invitation)
             </label>
 
@@ -364,8 +364,8 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
           </button>
 
           <div className="red-text center">
-            {authError ? (
-              <div>{authError}</div>
+            {signUpError ? (
+              <div>{signUpError}</div>
             ) : state.accessTokenError ? (
               'Invalid Access Token! Please try again.'
             ) : null}
@@ -379,7 +379,7 @@ const SignUp = ({ auth, authError, signUpThunk }) => {
 // Container
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
-  authError: state.auth.authError,
+  signUpError: state.auth.signUpError,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -396,6 +396,6 @@ export default connect(
 // Prop Types
 SignUp.propTypes = {
   auth: PropTypes.object,
-  authError: PropTypes.object,
+  signUpError: PropTypes.object,
   signUpThunk: PropTypes.func,
 };

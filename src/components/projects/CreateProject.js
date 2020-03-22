@@ -76,8 +76,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createProjectThunk(newProject) {
-    dispatch(createProjectThunkCreator(newProject));
+  createProjectThunk(project) {
+    dispatch(createProjectThunkCreator(project));
   },
 });
 

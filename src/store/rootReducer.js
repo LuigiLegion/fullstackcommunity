@@ -6,6 +6,7 @@ import { firestoreReducer } from 'redux-firestore';
 import authReducer from './reducers/authReducer';
 import projectsReducer from './reducers/projectsReducer';
 import meetupsReducer from './reducers/meetupsReducer';
+import layoutReducer from './reducers/layoutReducer';
 
 // Initializations
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   projects: projectsReducer,
   meetups: meetupsReducer,
+  layout: layoutReducer,
 });
 
 export default rootReducer;

@@ -14,6 +14,7 @@ exports.projectCreated = functions.firestore
   .document('projects/{projectId}')
   .onCreate(doc => {
     const newlyCreatedProject = doc.data();
+
     const notification = {
       content: ' added a new project',
       user: `${newlyCreatedProject.authorFirstName} ${newlyCreatedProject.authorLastName}`,
