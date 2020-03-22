@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { signInThunkCreator } from '../../store/reducers/authReducer';
 
 // Component
-const SignIn = ({ auth, authError, signInThunk }) => {
+const SignIn = ({ auth, signInError, signInThunk }) => {
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -38,7 +38,7 @@ const SignIn = ({ auth, authError, signInThunk }) => {
 
           <div className="input-field">
             <label htmlFor="email">
-              Email<span className="red-text-color">*</span>
+              Email<span className="text-color-red">*</span>
             </label>
 
             <input type="email" id="email" onChange={handleChange} />
@@ -46,7 +46,7 @@ const SignIn = ({ auth, authError, signInThunk }) => {
 
           <div className="input-field">
             <label htmlFor="password">
-              Password<span className="red-text-color">*</span>
+              Password<span className="text-color-red">*</span>
             </label>
 
             <input type="password" id="password" onChange={handleChange} />
@@ -59,7 +59,7 @@ const SignIn = ({ auth, authError, signInThunk }) => {
           </div>
 
           <div className="red-text center">
-            {authError ? <div>{authError}</div> : null}
+            {signInError ? <div>{signInError}</div> : null}
           </div>
         </form>
       </div>
@@ -70,7 +70,7 @@ const SignIn = ({ auth, authError, signInThunk }) => {
 // Container
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
-  authError: state.auth.authError,
+  signInError: state.auth.signInError,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -87,6 +87,6 @@ export default connect(
 // Prop Types
 SignIn.propTypes = {
   auth: PropTypes.object,
-  authError: PropTypes.object,
+  signInError: PropTypes.object,
   signInThunk: PropTypes.func,
 };
