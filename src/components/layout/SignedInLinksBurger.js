@@ -31,12 +31,10 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
       >
         <div className="remove-outline">
           <div>
-            <NavLink
-              onClick={() => closeMenu()}
-              to="/"
-              className="btn btn-floating grey darken-3"
-            >
-              <strong>{profile.initials}</strong>
+            <NavLink to="/" onClick={() => closeMenu()}>
+              <span>
+                {`Hello${profile.firstName ? ', ' + profile.firstName : ''}.`}
+              </span>
             </NavLink>
           </div>
 
