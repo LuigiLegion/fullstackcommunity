@@ -76,7 +76,6 @@ export const signUpThunkCreator = newUser => {
           githubUsername: newUser.githubUsername,
           firstName: newUser.firstName,
           lastName: newUser.lastName,
-          initials: newUser.firstName[0] + newUser.lastName[0],
           gender: newUser.gender,
           status: newUser.status,
           company: newUser.company ? newUser.company : null,
