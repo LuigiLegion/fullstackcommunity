@@ -41,7 +41,13 @@ const SignIn = ({ auth, signInError, signInThunk }) => {
               Email<span className="text-color-red">*</span>
             </label>
 
-            <input type="email" id="email" onChange={handleChange} />
+            <input
+              type="email"
+              id="email"
+              autoComplete="current-email"
+              required
+              onChange={handleChange}
+            />
           </div>
 
           <div className="input-field">
@@ -49,7 +55,13 @@ const SignIn = ({ auth, signInError, signInThunk }) => {
               Password<span className="text-color-red">*</span>
             </label>
 
-            <input type="password" id="password" onChange={handleChange} />
+            <input
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              required
+              onChange={handleChange}
+            />
           </div>
 
           <div className="input-field">

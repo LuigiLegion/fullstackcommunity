@@ -84,9 +84,10 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
             <input
               type="email"
               id="email"
-              required
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               title="Example: cody@email.com"
+              autoComplete="email"
+              required
               onChange={handleChange}
             />
           </div>
@@ -101,9 +102,10 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
             <input
               type="password"
               id="password"
-              required
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}"
               title="May only contain one uppercase letter, one lowercase letter, one digit, and at least 8 characters in total"
+              autoComplete="password"
+              required
               onChange={handleChange}
             />
           </div>
@@ -118,10 +120,11 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
             <input
               type="text"
               id="githubUsername"
-              required
               pattern="[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$"
               title="May only contain alphanumeric characters or
-                hyphens, and a maximum of 39 characters in total"
+              hyphens, and a maximum of 39 characters in total"
+              autoComplete="github-username"
+              required
               onChange={handleChange}
             />
           </div>
@@ -136,9 +139,10 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
             <input
               type="text"
               id="firstName"
-              required
               pattern="[A-Za-z]{2,32}"
               title="May only contain uppercase and lowercase letters only, and at least 2 characters in total"
+              autoComplete="first-name"
+              required
               onChange={handleChange}
             />
           </div>
@@ -153,9 +157,10 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
             <input
               type="text"
               id="lastName"
-              required
               pattern="[A-Za-z]{2,32}"
               title="May only contain uppercase and lowercase letters only, and at least 2 characters in total"
+              autoComplete="last-name"
+              required
               onChange={handleChange}
             />
           </div>
@@ -219,9 +224,10 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
               <input
                 type="text"
                 id="company"
-                required
                 pattern="[A-Za-z]+{2,32}"
                 title="May only contain uppercase and lowercase letters only, and at least 2 characters in total"
+                autoComplete="company"
+                required
                 onChange={handleChange}
               />
             </div>
@@ -352,6 +358,7 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
             <input
               type="text"
               id="accessToken"
+              autoComplete="access-token"
               required
               onChange={handleChange}
             />

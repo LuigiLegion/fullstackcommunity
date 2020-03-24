@@ -42,7 +42,13 @@ const CreateProject = ({ auth, createProjectThunk, history }) => {
               Project Title: (Describe your idea in one short sentence)
             </label>
 
-            <input type="text" id="title" onChange={handleChange} required />
+            <input
+              type="text"
+              id="title"
+              autoComplete="title"
+              required
+              onChange={handleChange}
+            />
           </div>
 
           <div className="input-field">
@@ -54,8 +60,8 @@ const CreateProject = ({ auth, createProjectThunk, history }) => {
             <textarea
               className="materialize-textarea"
               id="content"
-              onChange={handleChange}
               required
+              onChange={handleChange}
             />
           </div>
 
