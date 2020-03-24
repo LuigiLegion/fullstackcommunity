@@ -28,6 +28,12 @@ const SignedOutLinksBurger = () => {
       >
         <div className="remove-outline">
           <div>
+            <NavLink to="/" onClick={() => closeMenu()}>
+              <span>Hello, guest.</span>
+            </NavLink>
+          </div>
+
+          <div>
             <NavLink onClick={() => closeMenu()} to="/signin">
               <strong>Sign In</strong>
             </NavLink>
