@@ -20,10 +20,10 @@ const Dashboard = ({
   getMeetupsThunk,
 }) => {
   useEffect(() => {
-    if (!fetchedMeetups) {
+    if (auth.uid && !fetchedMeetups) {
       getMeetupsThunk();
     }
-  }, [fetchedMeetups, getMeetupsThunk]);
+  }, [auth.uid, fetchedMeetups, getMeetupsThunk]);
 
   if (!auth.uid) {
     return <Redirect to="/signin" />;
