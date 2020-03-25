@@ -10,10 +10,10 @@ import { getMeetupsThunkCreator } from '../../store/reducers/meetupsReducer';
 // Component
 const Meetups = ({ auth, groupMeetups, fetchedMeetups, getMeetupsThunk }) => {
   useEffect(() => {
-    if (!fetchedMeetups) {
+    if (auth.uid && !fetchedMeetups) {
       getMeetupsThunk();
     }
-  }, [fetchedMeetups, getMeetupsThunk]);
+  }, [auth.uid, fetchedMeetups, getMeetupsThunk]);
 
   if (!auth.uid) {
     return <Redirect to="/signin" />;
