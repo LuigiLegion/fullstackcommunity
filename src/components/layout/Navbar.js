@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import SignedInLinks from './SignedInLinks';
-import SignedInLinksBurger from './SignedInLinksBurger';
-import SignedOutLinks from './SignedOutLinks';
-import SignedOutLinksBurger from './SignedOutLinksBurger';
+import SignedInLinks from '../links/SignedInLinks';
+import SignedInLinksBurger from '../links/SignedInLinksBurger';
+import SignedOutLinks from '../links/SignedOutLinks';
+import SignedOutLinksBurger from '../links/SignedOutLinksBurger';
 import Preloader from './Preloader';
 
 // Component

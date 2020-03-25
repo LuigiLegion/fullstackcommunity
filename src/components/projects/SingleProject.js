@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 // Component
-const ProjectDetails = ({ auth, project }) => {
+const SingleProject = ({ auth, project }) => {
   if (!auth.uid) {
     return <Redirect to="/signin" />;
   }
@@ -60,7 +60,7 @@ const ProjectDetails = ({ auth, project }) => {
           <div className="card grey lighten-5 center">
             <div className="card-content grey-text text-darken-3 center">
               <div className="message-container">
-                <div className="message-containee">Loading Project...</div>
+                <div className="message-containee">Loading project...</div>
 
                 <br />
                 <br />
@@ -92,10 +92,10 @@ export default compose(
       collection: 'projects',
     },
   ])
-)(ProjectDetails);
+)(SingleProject);
 
 // Prop Types
-ProjectDetails.propTypes = {
+SingleProject.propTypes = {
   auth: PropTypes.object,
   project: PropTypes.object,
 };

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 // Component
-const ProjectSummary = ({ project }) => {
+const ProjectPreview = ({ project }) => {
   return (
     <div className="card grey lighten-5">
       <div className="card-content grey-text text-darken-3">
@@ -25,9 +25,9 @@ const ProjectSummary = ({ project }) => {
   );
 };
 
-export default ProjectSummary;
+export default ProjectPreview;
 
 // Prop Types
-ProjectSummary.propTypes = {
+ProjectPreview.propTypes = {
   project: PropTypes.object,
 };
