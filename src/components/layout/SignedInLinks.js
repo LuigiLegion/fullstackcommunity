@@ -11,6 +11,14 @@ const SignedInLinks = ({ profile, signOutThunk }) => {
   return (
     <ul className="right">
       <li>
+        <NavLink to="/">
+          <span>
+            {`Hello${profile.firstName ? ', ' + profile.firstName : ''}.`}
+          </span>
+        </NavLink>
+      </li>
+
+      <li>
         <NavLink to="/create">
           <strong>New Project</strong>
         </NavLink>
@@ -41,12 +49,6 @@ const SignedInLinks = ({ profile, signOutThunk }) => {
       <li>
         <NavLink to="/" onClick={signOutThunk}>
           <strong>Sign Out</strong>
-        </NavLink>
-      </li>
-
-      <li>
-        <NavLink to="/" className="btn btn-floating red lighten-1">
-          <strong>{profile.initials}</strong>
         </NavLink>
       </li>
     </ul>
