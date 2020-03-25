@@ -25,9 +25,7 @@ const Meetups = ({ auth, groupMeetups, fetchedMeetups, getMeetupsThunk }) => {
             <div className="card grey lighten-5 center">
               <div className="card-content grey-text text-darken-3 center">
                 <div className="message-container">
-                  <div className="message-containee">
-                    Loading Meetup Groups...
-                  </div>
+                  <div className="message-containee">Loading meetup...</div>
 
                   <br />
                   <br />
@@ -43,7 +41,7 @@ const Meetups = ({ auth, groupMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   <div className="card-content grey-text text-darken-3 center">
                     <div className="message-container">
                       <div className="message-containee">
-                        No Meetup groups were found.
+                        No upcoming meetups were found.
                       </div>
 
                       <br />

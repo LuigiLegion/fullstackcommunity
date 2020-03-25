@@ -19,7 +19,7 @@ const SignedInLinks = ({ profile, signOutThunk }) => {
       </li>
 
       <li className="navbar-link">
-        <NavLink to="/create">
+        <NavLink to="/newproject">
           <span className="text-style-bold navbar-text-color">New Project</span>
         </NavLink>
       </li>

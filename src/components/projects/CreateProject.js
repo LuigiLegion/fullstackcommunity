@@ -67,7 +67,7 @@ const CreateProject = ({ auth, createProjectThunk, history }) => {
 
           <div className="input-field">
             <button className="btn waves-effect waves-light red lighten-1">
-              Submit
+              Create
             </button>
           </div>
         </form>

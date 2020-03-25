@@ -7,9 +7,9 @@ import Dashboard from './components/dashboard/Dashboard';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import Map from './components/map/Map';
-import Meetups from './components/dashboard/Meetups';
+import Meetups from './components/meetups/Meetups';
 import CreateProject from './components/projects/CreateProject';
-import ProjectDetails from './components/projects/ProjectDetails';
+import SingleProject from './components/projects/SingleProject';
 import PageNotFound from './components/404/PageNotFound';
 
 // Component
@@ -25,8 +25,8 @@ const App = () => {
           <Route path="/signup" component={SignUp} />
           <Route path="/map" component={Map} />
           <Route path="/meetups" component={Meetups} />
-          <Route path="/create" component={CreateProject} />
-          <Route path="/project/:id" component={ProjectDetails} />
+          <Route path="/newproject" component={CreateProject} />
+          <Route path="/project/:id" component={SingleProject} />
           <Route path="/:wildcard" component={PageNotFound} />
         </Switch>
       </div>

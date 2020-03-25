@@ -3,25 +3,25 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import ProjectSummary from './ProjectSummary';
+import ProjectPreview from './ProjectPreview';
 
 // Component
-const ProjectList = ({ projects }) => {
+const Projects = ({ projects }) => {
   return (
     <div className="project-list section">
       {projects &&
         projects.map(curProject => (
           <NavLink key={curProject.id} to={`/project/${curProject.id}`}>
-            <ProjectSummary project={curProject} />
+            <ProjectPreview project={curProject} />
           </NavLink>
         ))}
     </div>
   );
 };
 
-export default ProjectList;
+export default Projects;
 
 // Prop Types
-ProjectList.propTypes = {
+Projects.propTypes = {
   projects: PropTypes.array,
 };
