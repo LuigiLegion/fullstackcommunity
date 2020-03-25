@@ -33,7 +33,7 @@ const SignIn = ({ auth, signInError, signInThunk }) => {
   } else {
     return (
       <div className="container">
-        <form onSubmit={handleSubmit} className="card white">
+        <form onSubmit={handleSubmit} className="card grey lighten-5">
           <h5 className="grey-text text-darken-3">Sign In</h5>
 
           <div className="input-field">

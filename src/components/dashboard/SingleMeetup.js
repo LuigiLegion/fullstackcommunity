@@ -7,11 +7,9 @@ import moment from 'moment';
 const SingleMeetup = ({ name, meetups }) => {
   return (
     <div className="section">
-      <div className="card">
+      <div className="card grey lighten-5">
         <div className="card-content grey-text text-darken-3">
-          <span className="card-title">
-            <strong>{name}</strong>
-          </span>
+          <span className="card-title text-style-bold">{name}</span>
 
           {!meetups.length ? (
             <div className="message-container">
@@ -26,8 +24,8 @@ const SingleMeetup = ({ name, meetups }) => {
             <ul className="notifications">
               {meetups.map(curEvent => (
                 <li key={curEvent.id}>
-                  <span className="text-color-red">
-                    <strong>{curEvent.name} </strong>
+                  <span className="text-style-bold text-color-red">
+                    {`${curEvent.name} `}
                   </span>
 
                   <div>
@@ -50,15 +48,10 @@ const SingleMeetup = ({ name, meetups }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <span className="right">
-                        {curEvent.rsvp_limit ? (
-                          <strong>
-                            RSVP ({curEvent.yes_rsvp_count}/
-                            {curEvent.rsvp_limit})
-                          </strong>
-                        ) : (
-                          <strong>RSVP ({curEvent.yes_rsvp_count})</strong>
-                        )}
+                      <span className="right text-style-bold">
+                        {`RSVP (${curEvent.yes_rsvp_count}${
+                          curEvent.rsvp_limit ? '/' + curEvent.rsvp_limit : ''
+                        })`}
                       </span>
                     </a>
                   </div>

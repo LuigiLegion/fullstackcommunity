@@ -34,8 +34,8 @@ const CreateProject = ({ auth, createProjectThunk, history }) => {
   } else {
     return (
       <div className="container">
-        <form onSubmit={handleSubmit} className="card white">
-          <h5 className="grey-text text-darken-3">Create a new project:</h5>
+        <form onSubmit={handleSubmit} className="card grey lighten-5">
+          <h5 className="grey-text text-darken-3">New Project</h5>
 
           <div className="input-field">
             <label htmlFor="title">

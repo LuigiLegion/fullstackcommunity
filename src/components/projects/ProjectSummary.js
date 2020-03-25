@@ -6,14 +6,14 @@ import moment from 'moment';
 // Component
 const ProjectSummary = ({ project }) => {
   return (
-    <div className="card project-summary">
+    <div className="card grey lighten-5">
       <div className="card-content grey-text text-darken-3">
         <span className="card-title">{project.title}</span>
 
         <div>
-          Posted by{' '}
-          <span className="text-color-red">
-            <strong>{`${project.authorFirstName} ${project.authorLastName}`}</strong>
+          {'Posted by '}
+          <span className="text-style-bold text-color-red">
+            {`${project.authorFirstName} ${project.authorLastName}`}
           </span>
         </div>
 

@@ -10,45 +10,49 @@ import { signOutThunkCreator } from '../../store/reducers/authReducer';
 const SignedInLinks = ({ profile, signOutThunk }) => {
   return (
     <ul className="right">
-      <li>
+      <li className="navbar-link">
         <NavLink to="/">
-          <span>
+          <span className="navbar-text-color">
             {`Hello${profile.firstName ? ', ' + profile.firstName : ''}.`}
           </span>
         </NavLink>
       </li>
 
-      <li>
+      <li className="navbar-link">
         <NavLink to="/create">
-          <strong>New Project</strong>
+          <span className="text-style-bold navbar-text-color">New Project</span>
         </NavLink>
       </li>
 
-      <li>
+      <li className="navbar-link">
         <NavLink to="/map">
-          <strong>Map</strong>
+          <span className="text-style-bold navbar-text-color">Map</span>
         </NavLink>
       </li>
 
-      <li>
+      <li className="navbar-link">
         <NavLink to="/meetups">
-          <strong>Meetup Tracker</strong>
+          <span className="text-style-bold navbar-text-color">
+            Meetup Tracker
+          </span>
         </NavLink>
       </li>
 
-      <li>
+      <li className="navbar-link">
         <a
           href="https://gitness-tracker.web.app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <strong>Gitness Tracker</strong>
+          <span className="text-style-bold navbar-text-color">
+            Gitness Tracker
+          </span>
         </a>
       </li>
 
-      <li>
+      <li className="navbar-link">
         <NavLink to="/" onClick={signOutThunk}>
-          <strong>Sign Out</strong>
+          <span className="text-style-bold navbar-text-color">Sign Out</span>
         </NavLink>
       </li>
     </ul>

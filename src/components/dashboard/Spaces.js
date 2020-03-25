@@ -5,16 +5,14 @@ import React from 'react';
 const Spaces = () => {
   return (
     <div className="section">
-      <div className="card">
+      <div className="card grey lighten-5">
         <div className="card-content grey-text text-darken-3">
-          <span className="card-title">
-            <strong>Work Spaces</strong>
-          </span>
+          <span className="card-title text-style-bold">Work Spaces</span>
 
           <ul className="notifications">
             <li>
-              <span className="text-color-red">
-                <strong>Free working spaces at AWS Loft</strong>
+              <span className="text-style-bold text-color-red">
+                Free working spaces at AWS Loft
               </span>
 
               <div>350 West Broadway, New York</div>
@@ -30,16 +28,14 @@ const Spaces = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="right">
-                    <strong>RSVP</strong>
-                  </span>
+                  <span className="right text-style-bold">RSVP</span>
                 </a>
               </div>
             </li>
 
             <li>
-              <span className="text-color-red">
-                <strong>Free working spaces at Freelancers Hub</strong>
+              <span className="text-style-bold text-color-red">
+                Free working spaces at Freelancers Hub
               </span>
 
               <div>30 John Street, Brooklyn</div>
@@ -55,34 +51,30 @@ const Spaces = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="right">
-                    <strong>RSVP</strong>
-                  </span>
+                  <span className="right text-style-bold">RSVP</span>
                 </a>
               </div>
             </li>
 
             <li>
-              <span className="text-color-red">
-                <strong>Hacker Hours at Fullstack Academy of Code</strong>
+              <span className="text-style-bold text-color-red">
+                Hacker Hours at Fullstack Academy of Code
               </span>
 
               <div>5 Hanover Square, New York</div>
 
               <div className="events-time-and-rsvp-container">
                 <div className="grey-text note-date events-time-and-rsvp-containee">
-                  Every second Monday of the month
+                  Every second Monday of the month, 6:30 PM - 9:30 PM
                 </div>
 
                 <a
                   className="events-time-and-rsvp-containee"
-                  href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-69206545641?aff=erelexpmlt"
+                  href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-98250793769?aff=erelexpmlt"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="right">
-                    <strong>RSVP</strong>
-                  </span>
+                  <span className="right text-style-bold">RSVP</span>
                 </a>
               </div>
             </li>

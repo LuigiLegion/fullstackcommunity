@@ -40,9 +40,41 @@ textarea.materialize-textarea:focus:not([readonly]) {
   box-shadow: none;
 }
 
+.text-style-bold {
+  font-weight: bold;
+}
+
+.text-color-red {
+  color: #ef5350;
+}
+
+.text-color-blue {
+  color: #039be5;
+}
+
+.text-color-gray {
+  color: #101010;
+}
+
 .navbar {
   background-color: #101010;
   box-shadow: none;
+}
+
+.navbar-text-color {
+  color: #fafafa;
+}
+
+.navbar-logo {
+  left: 30px;
+}
+
+.navbar-logo:hover {
+  text-decoration: none;
+}
+
+.navbar-link:hover {
+  background-color: #202020;
 }
 
 .message-container {
@@ -103,18 +135,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.text-color-red {
-  color: #ef5350;
-}
-
-.text-color-blue {
-  color: #039be5;
-}
-
-.name-text-positioning {
-  left: 30px;
 }
 
 .events-time-and-rsvp-container {

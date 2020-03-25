@@ -32,7 +32,7 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
         <div className="remove-outline">
           <div>
             <NavLink to="/" onClick={() => closeMenu()}>
-              <span>
+              <span className="navbar-text-color">
                 {`Hello${profile.firstName ? ', ' + profile.firstName : ''}.`}
               </span>
             </NavLink>
@@ -40,19 +40,23 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
 
           <div>
             <NavLink onClick={() => closeMenu()} to="/create">
-              <strong>New Project</strong>
+              <span className="text-style-bold navbar-text-color">
+                New Project
+              </span>
             </NavLink>
           </div>
 
           <div>
             <NavLink onClick={() => closeMenu()} to="/map">
-              <strong>Map</strong>
+              <span className="text-style-bold navbar-text-color">Map</span>
             </NavLink>
           </div>
 
           <div>
             <NavLink onClick={() => closeMenu()} to="/meetups">
-              <strong>Meetup Tracker</strong>
+              <span className="text-style-bold navbar-text-color">
+                Meetup Tracker
+              </span>
             </NavLink>
           </div>
 
@@ -63,7 +67,9 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <strong>Gitness Tracker</strong>
+              <span className="text-style-bold navbar-text-color">
+                Gitness Tracker
+              </span>
             </a>
           </div>
 
@@ -75,7 +81,9 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
               }}
               to="/"
             >
-              <strong>Sign Out</strong>
+              <span className="text-style-bold navbar-text-color">
+                Sign Out
+              </span>
             </NavLink>
           </div>
         </div>
