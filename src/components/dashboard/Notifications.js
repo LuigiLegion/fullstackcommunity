@@ -7,18 +7,16 @@ import moment from 'moment';
 const Notifications = ({ notifications }) => {
   return (
     <div className="section">
-      <div className="card">
+      <div className="card grey lighten-5">
         <div className="card-content grey-text text-darken-3">
-          <span className="card-title">
-            <strong>Notifications</strong>
-          </span>
+          <span className="card-title text-style-bold">Notifications</span>
 
           <ul className="notifications">
             {notifications &&
               notifications.map(curNotification => (
                 <li key={curNotification.id}>
-                  <span className="text-color-red">
-                    <strong>{curNotification.user}</strong>
+                  <span className="text-style-bold text-color-red">
+                    {curNotification.user}
                   </span>
 
                   <span>{curNotification.content}</span>

@@ -1,6 +1,6 @@
 // Imports
 import React from 'react';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
@@ -16,8 +16,8 @@ const ProjectDetails = ({ auth, project }) => {
   if (project) {
     return (
       <div className="container section project-details">
-        <div className="card">
-          <div className="card-content grey lighten-4 black-text">
+        <div className="card grey lighten-5">
+          <div className="card-content grey lighten-4 text-color-gray">
             <span className="card-title">{project.title}</span>
 
             <div>{project.content}</div>
@@ -25,37 +25,29 @@ const ProjectDetails = ({ auth, project }) => {
 
           <div className="card-action grey lighten-4 grey-text">
             <div>
-              Posted by {`${project.authorFirstName} ${project.authorLastName}`}
+              {`Posted by ${project.authorFirstName} ${project.authorLastName}`}
             </div>
 
             <div>{moment(project.createdAt.toDate()).calendar()}</div>
 
             <br />
 
-            <div style={{ color: 'black' }}>
+            <div className="text-color-gray">
               {`Interested in working with ${project.authorFirstName} on this project?`}
             </div>
 
-            <div>
-              <span style={{ color: 'black' }}>
-                Contact them at{' '}
-                <a
-                  href={`mailto:${project.authorEmail}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: '#039be5' }}
-                >
-                  <strong>{project.authorEmail}</strong>
-                </a>
-              </span>
+            <div className="text-color-gray">
+              {`Contact them at `}
 
-              <NavLink
-                style={{ color: '#ef5350' }}
-                activeClassName="right"
-                to="/"
+              <a
+                href={`mailto:${project.authorEmail}`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <strong>Back</strong>
-              </NavLink>
+                <span className="text-style-bold text-color-blue">
+                  {project.authorEmail}
+                </span>
+              </a>
             </div>
           </div>
         </div>
@@ -63,8 +55,19 @@ const ProjectDetails = ({ auth, project }) => {
     );
   } else {
     return (
-      <div className="container center">
-        <div>Loading Project...</div>
+      <div className="dashboard container">
+        <div className="section center">
+          <div className="card grey lighten-5 center">
+            <div className="card-content grey-text text-darken-3 center">
+              <div className="message-container">
+                <div className="message-containee">Loading Project...</div>
+
+                <br />
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -20,13 +20,13 @@ const Meetups = ({ auth, groupMeetups, fetchedMeetups, getMeetupsThunk }) => {
   } else {
     return (
       <div className="dashboard container">
-        {!groupMeetups ? (
+        {!groupMeetups.length && !fetchedMeetups ? (
           <div className="section center">
-            <div className="card center">
+            <div className="card grey lighten-5 center">
               <div className="card-content grey-text text-darken-3 center">
                 <div className="message-container">
                   <div className="message-containee">
-                    Loading Meetup groups...
+                    Loading Meetup Groups...
                   </div>
 
                   <br />
@@ -39,7 +39,7 @@ const Meetups = ({ auth, groupMeetups, fetchedMeetups, getMeetupsThunk }) => {
           <div className="row">
             {!groupMeetups.length ? (
               <div className="section center">
-                <div className="card center">
+                <div className="card grey lighten-5 center">
                   <div className="card-content grey-text text-darken-3 center">
                     <div className="message-container">
                       <div className="message-containee">

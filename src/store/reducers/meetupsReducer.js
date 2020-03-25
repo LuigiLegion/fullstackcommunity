@@ -130,7 +130,7 @@ const meetupsReducer = (state = initialState, action) => {
       console.log('Meetups fetching error!', action.error.message);
       return {
         ...state,
-        fetchedMeetups: false,
+        fetchedMeetups: true,
         meetupsFetchingError: action.error.message,
       };
 

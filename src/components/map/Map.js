@@ -334,21 +334,19 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
               longitude={selectedPublicLibrary.lon}
               closeOnClick={false}
             >
-              <div className="location-description">
-                <strong>
-                  {selectedPublicLibrary.oversightAgency} -{' '}
-                  {selectedPublicLibrary.address}
-                </strong>
+              <div className="text-style-bold location-description">
+                {selectedPublicLibrary.oversightAgency} -{' '}
+                {selectedPublicLibrary.address}
               </div>
 
               <hr />
 
               <div className="navigation-container">
                 <div className="navigation-containee">
-                  <strong>Opening Hours</strong>
+                  <span className="text-style-bold">Opening Hours</span>
 
                   <div>
-                    <strong>Monday: </strong>
+                    <span className="text-style-bold">Monday: </span>
                     {selectedPublicLibrary.monOpen} -{' '}
                     {selectedPublicLibrary.monClose}
                     {selectedPublicLibrary.monReopen
@@ -357,7 +355,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   </div>
 
                   <div>
-                    <strong>Tuesday: </strong>
+                    <span className="text-style-bold">Tuesday: </span>
                     {selectedPublicLibrary.tueOpen} -{' '}
                     {selectedPublicLibrary.tueClose}
                     {selectedPublicLibrary.tueReopen
@@ -366,7 +364,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   </div>
 
                   <div>
-                    <strong>Wednesday: </strong>
+                    <span className="text-style-bold">Wednesday: </span>
                     {selectedPublicLibrary.wedOpen} -{' '}
                     {selectedPublicLibrary.wedClose}
                     {selectedPublicLibrary.wedReopen
@@ -375,7 +373,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   </div>
 
                   <div>
-                    <strong>Thursday: </strong>
+                    <span className="text-style-bold">Thursday: </span>
                     {selectedPublicLibrary.thuOpen} -{' '}
                     {selectedPublicLibrary.thuClose}
                     {selectedPublicLibrary.thuReopen
@@ -384,7 +382,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   </div>
 
                   <div>
-                    <strong>Friday: </strong>
+                    <span className="text-style-bold">Friday: </span>
                     {selectedPublicLibrary.friOpen} -{' '}
                     {selectedPublicLibrary.friClose}
                     {selectedPublicLibrary.friReopen
@@ -393,7 +391,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   </div>
 
                   <div>
-                    <strong>Saturday: </strong>
+                    <span className="text-style-bold">Saturday: </span>
                     {selectedPublicLibrary.satOpen} -{' '}
                     {selectedPublicLibrary.satClose}
                     {selectedPublicLibrary.satReopen
@@ -402,7 +400,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   </div>
 
                   <div>
-                    <strong>Sunday: </strong>
+                    <span className="text-style-bold">Sunday: </span>
                     {selectedPublicLibrary.sunOpen === 'Closed' ? (
                       selectedPublicLibrary.sunOpen
                     ) : (
@@ -433,7 +431,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>Navigate</strong>
+                  <span className="text-style-bold">Navigate</span>
                 </a>
               </div>
             </Popup>
@@ -446,16 +444,14 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
               longitude={selectedStarbucks.longitude}
               closeOnClick={false}
             >
-              <div className="location-description">
-                <strong>Starbucks - {selectedStarbucks.name}</strong>
+              <div className="text-style-bold location-description">
+                Starbucks - {selectedStarbucks.name}
               </div>
 
               <hr />
 
               <div className="navigation-container">
-                {/* <div>
-                    <strong>Closes at: 10 PM</strong>
-                  </div> */}
+                {/* <div className="text-style-bold">Closes at: 10 PM</div> */}
 
                 <br />
 
@@ -470,7 +466,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>Navigate</strong>
+                  <span className="text-style-bold">Navigate</span>
                 </a>
               </div>
             </Popup>
@@ -483,17 +479,15 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
               longitude={selectedWholeFoods.location.lng}
               closeOnClick={false}
             >
-              <div className="location-description">
-                <strong>
-                  Whole Foods Market - {selectedWholeFoods.location.address}
-                </strong>
+              <div className="text-style-bold location-description">
+                Whole Foods Market - {selectedWholeFoods.location.address}
               </div>
 
               <hr />
 
               <div className="navigation-container">
-                <div className="navigation-containee">
-                  <strong>Opening Hours</strong>
+                <div className="text-style-bold navigation-containee">
+                  Opening Hours
                 </div>
 
                 <div className="navigation-containee">
@@ -513,7 +507,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>Navigate</strong>
+                  <span className="text-style-bold">Navigate</span>
                 </a>
               </div>
             </Popup>
@@ -526,20 +520,20 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
               longitude={selectedMeetup.venue.lon}
               closeOnClick={false}
             >
-              <div className="location-description">
-                <strong>{selectedMeetup.venue.address_1}</strong>
+              <div className="text-style-bold location-description">
+                {selectedMeetup.venue.address_1}
               </div>
 
               <hr />
 
               <div className="navigation-container">
                 <div>
-                  <strong>Meetup Title: </strong>
+                  <span className="text-style-bold">Meetup Title: </span>
                   {selectedMeetup.name}
                 </div>
 
                 <div>
-                  <strong>Date: </strong>
+                  <span className="text-style-bold">Date: </span>
                   {moment(selectedMeetup.time).format('LLLL')}
                 </div>
 
@@ -548,20 +542,13 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {selectedMeetup.rsvp_limit ? (
-                    <span>
-                      <strong>
-                        RSVP ({selectedMeetup.yes_rsvp_count}/
-                        {selectedMeetup.rsvp_limit} Attending)
-                      </strong>
-                    </span>
-                  ) : (
-                    <span>
-                      <strong>
-                        RSVP ({selectedMeetup.yes_rsvp_count} Attending)
-                      </strong>
-                    </span>
-                  )}
+                  <span className="text-style-bold">
+                    {`RSVP (${selectedMeetup.yes_rsvp_count}${
+                      selectedMeetup.rsvp_limit
+                        ? '/' + selectedMeetup.rsvp_limit
+                        : ''
+                    })`}
+                  </span>
                 </a>
 
                 <br />
@@ -577,7 +564,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>Navigate</strong>
+                  <span className="text-style-bold">Navigate</span>
                 </a>
               </div>
             </Popup>
@@ -590,31 +577,31 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
               longitude={selectedAlum.locationGeocode.lon}
               closeOnClick={false}
             >
-              <div className="location-description">
-                <strong>{`${selectedAlum.firstName} ${selectedAlum.lastName}`}</strong>
+              <div className="text-style-bold location-description">
+                {`${selectedAlum.firstName} ${selectedAlum.lastName}`}
               </div>
 
               <hr />
 
               <div className="location-description">
-                <strong>Gender: </strong>
+                <span className="text-style-bold">Gender: </span>
                 {selectedAlum.gender}
               </div>
 
               <div className="location-description">
-                <strong>Cohort: </strong>
+                <span className="text-style-bold">Cohort: </span>
                 {`${selectedAlum.cohort}-${selectedAlum.program}`}
               </div>
 
               <div className="location-description">
                 {selectedAlum.status === 'Employed' ? (
                   <span>
-                    <strong>Works at: </strong>
+                    <span className="text-style-bold">Company: </span>
                     {selectedAlum.company}
                   </span>
                 ) : (
                   <span>
-                    <strong>Status: </strong>
+                    <span className="text-style-bold">Status: </span>
                     {selectedAlum.status === 'Unemployed'
                       ? 'Seeking Opportunities'
                       : selectedAlum.status}
@@ -623,19 +610,19 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
               </div>
 
               <div className="location-description">
-                <strong>Contact Information: </strong>
+                <span className="text-style-bold">Email: </span>
 
                 <a
                   href={`mailto:${selectedAlum.email}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>{selectedAlum.email}</strong>
+                  <span className="text-style-bold">{selectedAlum.email}</span>
                 </a>
               </div>
 
               <div className="location-description">
-                <strong>Subway Station: </strong>
+                <span className="text-style-bold">Subway Station: </span>
                 {selectedAlum.locationName}
               </div>
             </Popup>
@@ -648,15 +635,15 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
               longitude={-73.9892133}
               closeOnClick={false}
             >
-              <div className="location-description">
-                <strong>Freelancers Hub - 30 John Street, Brooklyn</strong>
+              <div className="text-style-bold location-description">
+                Freelancers Hub - 30 John Street, Brooklyn
               </div>
 
               <hr />
 
               <div className="navigation-container">
-                <div className="navigation-containee">
-                  <strong>Opening Hours</strong>
+                <div className="text-style-bold navigation-containee">
+                  Opening Hours
                 </div>
 
                 <div className="navigation-containee">
@@ -668,7 +655,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>RSVP</strong>
+                  <span className="text-style-bold">RSVP</span>
                 </a>
 
                 <br />
@@ -681,7 +668,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>Navigate</strong>
+                  <span className="text-style-bold">Navigate</span>
                 </a>
               </div>
             </Popup>
@@ -694,15 +681,15 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
               longitude={-73.9976034}
               closeOnClick={false}
             >
-              <div className="location-description">
-                <strong>AWS Loft - 350 West Broadway, New York</strong>
+              <div className="text-style-bold location-description">
+                AWS Loft - 350 West Broadway, New York
               </div>
 
               <hr />
 
               <div className="navigation-container">
-                <div className="navigation-containee">
-                  <strong>Opening Hours</strong>
+                <div className="text-style-bold navigation-containee">
+                  Opening Hours
                 </div>
 
                 <div className="navigation-containee">
@@ -714,7 +701,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>RSVP</strong>
+                  <span className="text-style-bold">RSVP</span>
                 </a>
 
                 <br />
@@ -727,7 +714,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>Navigate</strong>
+                  <span className="text-style-bold">Navigate</span>
                 </a>
               </div>
             </Popup>
@@ -740,27 +727,25 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
               longitude={-74.0113491}
               closeOnClick={false}
             >
-              <div className="location-description">
-                <strong>
-                  Fullstack Academy of Code - 5 Hanover Square, New York
-                </strong>
+              <div className="text-style-bold location-description">
+                Fullstack Academy of Code - 5 Hanover Square, New York
               </div>
 
               <hr />
 
               <div className="navigation-container">
-                <div>
-                  <strong>Next Hacker Hours Meetup: </strong>
+                <div className="text-style-bold">
+                  {'Next Hacker Hours Meetup: '}
                 </div>
 
-                <div>Monday, August 12th, 6:30 PM - 9:30 PM</div>
+                <div>Every second Monday of the month, 6:30 PM - 9:30 PM</div>
 
                 <a
-                  href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-63423857465?aff=eac2"
+                  href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-98250793769?aff=erelexpmlt"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>RSVP</strong>
+                  <span className="text-style-bold">RSVP</span>
                 </a>
 
                 <br />
@@ -773,7 +758,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <strong>Navigate</strong>
+                  <span className="text-style-bold">Navigate</span>
                 </a>
               </div>
             </Popup>
