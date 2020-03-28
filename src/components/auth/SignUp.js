@@ -72,7 +72,7 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
   } else {
     return (
       <div className="container">
-        <form onSubmit={handleSubmit} className="card grey lighten-5">
+        <form className="card grey lighten-5" onSubmit={handleSubmit}>
           <h5 className="grey-text text-darken-3">Sign Up</h5>
 
           <div className="input-field">
