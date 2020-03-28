@@ -62,709 +62,697 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
     return <Redirect to="/signin" />;
   } else {
     return (
-      <div>
-        <ReactMapGL
-          onClick={() => clearSelected()}
-          {...viewport}
-          mapboxApiAccessToken={mapboxAccessToken}
-          onViewportChange={newViewport => {
-            setViewport({
-              ...viewport,
-              latitude: newViewport.latitude,
-              longitude: newViewport.longitude,
-              zoom: newViewport.zoom,
-            });
-          }}
-        >
-          {libraries.map(curPublicLibrary => (
-            <Marker
-              key={curPublicLibrary.id}
-              latitude={curPublicLibrary.lat}
-              longitude={curPublicLibrary.lon}
+      <ReactMapGL
+        {...viewport}
+        onViewportChange={newViewport => {
+          setViewport({
+            ...viewport,
+            latitude: newViewport.latitude,
+            longitude: newViewport.longitude,
+            zoom: newViewport.zoom,
+          });
+        }}
+        mapboxApiAccessToken={mapboxAccessToken}
+        onClick={clearSelected}
+      >
+        {libraries.map(curPublicLibrary => (
+          <Marker
+            key={curPublicLibrary.id}
+            latitude={curPublicLibrary.lat}
+            longitude={curPublicLibrary.lon}
+          >
+            <button
+              className="marker-btn"
+              type="button"
+              onClick={() => {
+                clearSelected();
+                setSelectedPublicLibrary(curPublicLibrary);
+              }}
             >
-              <button
-                onClick={event => {
-                  event.preventDefault();
-                  clearSelected();
-                  setSelectedPublicLibrary(curPublicLibrary);
-                }}
-                type="button"
-                className="marker-btn"
-              >
-                <img
-                  src="https://img.icons8.com/dusk/64/000000/book-shelf.png"
-                  alt="Public Library Icon"
-                />
-              </button>
-            </Marker>
-          ))}
+              <img
+                src="https://img.icons8.com/dusk/64/000000/book-shelf.png"
+                alt="Public Library Icon"
+              />
+            </button>
+          </Marker>
+        ))}
 
-          {starbucks.map(curStarbucks => (
-            <Marker
-              key={curStarbucks.storeId}
-              latitude={curStarbucks.latitude}
-              longitude={curStarbucks.longitude}
+        {starbucks.map(curStarbucks => (
+          <Marker
+            key={curStarbucks.storeId}
+            latitude={curStarbucks.latitude}
+            longitude={curStarbucks.longitude}
+          >
+            <button
+              className="marker-btn"
+              type="button"
+              onClick={() => {
+                clearSelected();
+                setSelectedStarbucks(curStarbucks);
+              }}
             >
-              <button
-                onClick={event => {
-                  event.preventDefault();
-                  clearSelected();
-                  setSelectedStarbucks(curStarbucks);
-                }}
-                type="button"
-                className="marker-btn"
-              >
-                <img
-                  src="https://img.icons8.com/color/48/000000/starbucks.png"
-                  alt="Starbucks Icon"
-                />
-              </button>
-            </Marker>
-          ))}
+              <img
+                src="https://img.icons8.com/color/48/000000/starbucks.png"
+                alt="Starbucks Icon"
+              />
+            </button>
+          </Marker>
+        ))}
 
-          {wholefoodsMarkets.map(curWholeFoods => (
-            <Marker
-              key={curWholeFoods.location.address}
-              latitude={curWholeFoods.location.lat}
-              longitude={curWholeFoods.location.lng}
+        {wholefoodsMarkets.map(curWholeFoods => (
+          <Marker
+            key={curWholeFoods.location.address}
+            latitude={curWholeFoods.location.lat}
+            longitude={curWholeFoods.location.lng}
+          >
+            <button
+              className="marker-btn"
+              type="button"
+              onClick={() => {
+                clearSelected();
+                setSelectedWholeFoods(curWholeFoods);
+              }}
             >
-              <button
-                onClick={event => {
-                  event.preventDefault();
-                  clearSelected();
-                  setSelectedWholeFoods(curWholeFoods);
-                }}
-                type="button"
-                className="marker-btn"
-              >
-                <img
-                  src="https://img.icons8.com/color/48/000000/amazon.png"
-                  alt="Whole Foods Market Icon"
-                />
-              </button>
-            </Marker>
-          ))}
+              <img
+                src="https://img.icons8.com/color/48/000000/amazon.png"
+                alt="Whole Foods Market Icon"
+              />
+            </button>
+          </Marker>
+        ))}
 
-          {allMeetups
-            ? allMeetups.map(curMeetup => {
-                return curMeetup.venue ? (
+        {allMeetups
+          ? allMeetups.map(curMeetup => {
+              return curMeetup.venue ? (
+                <Marker
+                  key={curMeetup.id}
+                  latitude={curMeetup.venue.lat}
+                  longitude={curMeetup.venue.lon}
+                >
+                  <button
+                    className="marker-btn"
+                    type="button"
+                    onClick={() => {
+                      clearSelected();
+                      setSelectedMeetup(curMeetup);
+                    }}
+                  >
+                    <img
+                      src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
+                      alt="Meetup Icon"
+                    />
+                  </button>
+                </Marker>
+              ) : null;
+            })
+          : null}
+
+        {users
+          ? users.map(curUser => {
+              if (curUser.id === auth.uid) {
+                if (userMarker.firstRenderWithUsers) {
+                  setViewport({
+                    ...viewport,
+                    latitude: curUser.locationGeocode.lat,
+                    longitude: curUser.locationGeocode.lon,
+                  });
+                  setUserMarker({
+                    curUserLocationName: curUser.locationName,
+                    firstRenderWithUsers: false,
+                  });
+                }
+                return (
                   <Marker
-                    key={curMeetup.id}
-                    latitude={curMeetup.venue.lat}
-                    longitude={curMeetup.venue.lon}
+                    key={curUser.id}
+                    latitude={curUser.locationGeocode.lat}
+                    longitude={curUser.locationGeocode.lon}
+                  >
+                    <img
+                      className="marker-me"
+                      src="https://img.icons8.com/dusk/64/000000/student-center.png"
+                      alt="My Location Icon"
+                    />
+                  </Marker>
+                );
+              } else if (curUser.status === 'Unemployed') {
+                return (
+                  <Marker
+                    key={curUser.id}
+                    latitude={curUser.locationGeocode.lat}
+                    longitude={curUser.locationGeocode.lon}
                   >
                     <button
-                      onClick={event => {
-                        event.preventDefault();
-                        clearSelected();
-                        setSelectedMeetup(curMeetup);
-                      }}
-                      type="button"
                       className="marker-btn"
+                      type="button"
+                      onClick={() => {
+                        clearSelected();
+                        setSelectedAlum(curUser);
+                      }}
                     >
                       <img
-                        src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
-                        alt="Meetup Icon"
+                        className="marker-others"
+                        src="https://img.icons8.com/dusk/64/000000/find-matching-job.png"
+                        alt="Seeking Opportunities Others Location Icon"
                       />
                     </button>
                   </Marker>
-                ) : null;
-              })
-            : null}
-
-          {users
-            ? users.map(curUser => {
-                if (curUser.id === auth.uid) {
-                  if (userMarker.firstRenderWithUsers) {
-                    setViewport({
-                      ...viewport,
-                      latitude: curUser.locationGeocode.lat,
-                      longitude: curUser.locationGeocode.lon,
-                    });
-                    setUserMarker({
-                      curUserLocationName: curUser.locationName,
-                      firstRenderWithUsers: false,
-                    });
-                  }
-                  return (
-                    <Marker
-                      key={curUser.id}
-                      latitude={curUser.locationGeocode.lat}
-                      longitude={curUser.locationGeocode.lon}
+                );
+              } else if (curUser.status === 'Employed') {
+                return (
+                  <Marker
+                    key={curUser.id}
+                    latitude={curUser.locationGeocode.lat}
+                    longitude={curUser.locationGeocode.lon}
+                  >
+                    <button
+                      className="marker-btn"
+                      type="button"
+                      onClick={() => {
+                        clearSelected();
+                        setSelectedAlum(curUser);
+                      }}
                     >
                       <img
-                        className="marker-me"
-                        src="https://img.icons8.com/dusk/64/000000/student-center.png"
-                        alt="My Location Icon"
+                        className="marker-others"
+                        src="https://img.icons8.com/dusk/64/000000/new-job.png"
+                        alt="Employed Others Location Icon"
                       />
-                    </Marker>
-                  );
-                } else if (curUser.status === 'Unemployed') {
-                  return (
-                    <Marker
-                      key={curUser.id}
-                      latitude={curUser.locationGeocode.lat}
-                      longitude={curUser.locationGeocode.lon}
+                    </button>
+                  </Marker>
+                );
+              } else {
+                return (
+                  <Marker
+                    key={curUser.id}
+                    latitude={curUser.locationGeocode.lat}
+                    longitude={curUser.locationGeocode.lon}
+                  >
+                    <button
+                      className="marker-btn"
+                      type="button"
+                      onClick={() => {
+                        clearSelected();
+                        setSelectedAlum(curUser);
+                      }}
                     >
-                      <button
-                        onClick={event => {
-                          event.preventDefault();
-                          clearSelected();
-                          setSelectedAlum(curUser);
-                        }}
-                        type="button"
-                        className="marker-btn"
-                      >
-                        <img
-                          className="marker-others"
-                          src="https://img.icons8.com/dusk/64/000000/find-matching-job.png"
-                          alt="Seeking Opportunities Others Location Icon"
-                        />
-                      </button>
-                    </Marker>
-                  );
-                } else if (curUser.status === 'Employed') {
-                  return (
-                    <Marker
-                      key={curUser.id}
-                      latitude={curUser.locationGeocode.lat}
-                      longitude={curUser.locationGeocode.lon}
-                    >
-                      <button
-                        onClick={event => {
-                          event.preventDefault();
-                          clearSelected();
-                          setSelectedAlum(curUser);
-                        }}
-                        type="button"
-                        className="marker-btn"
-                      >
-                        <img
-                          className="marker-others"
-                          src="https://img.icons8.com/dusk/64/000000/new-job.png"
-                          alt="Employed Others Location Icon"
-                        />
-                      </button>
-                    </Marker>
-                  );
-                } else {
-                  return (
-                    <Marker
-                      key={curUser.id}
-                      latitude={curUser.locationGeocode.lat}
-                      longitude={curUser.locationGeocode.lon}
-                    >
-                      <button
-                        onClick={event => {
-                          event.preventDefault();
-                          clearSelected();
-                          setSelectedAlum(curUser);
-                        }}
-                        type="button"
-                        className="marker-btn"
-                      >
-                        <img
-                          className="marker-others"
-                          src="https://img.icons8.com/dusk/64/000000/student-male.png"
-                          alt="Others Location Icon"
-                        />
-                      </button>
-                    </Marker>
-                  );
-                }
-              })
-            : null}
+                      <img
+                        className="marker-others"
+                        src="https://img.icons8.com/dusk/64/000000/student-male.png"
+                        alt="Others Location Icon"
+                      />
+                    </button>
+                  </Marker>
+                );
+              }
+            })
+          : null}
 
-          <Marker latitude={40.7042358} longitude={-73.9892133}>
-            <button
-              onClick={event => {
-                event.preventDefault();
-                clearSelected();
-                setSelectedFreelancersHub(true);
-              }}
-              type="button"
-              className="marker-btn"
-            >
-              <img
-                src="https://img.icons8.com/dusk/64/000000/under-computer.png"
-                alt="Freelancers Hub Location Icon"
-              />
-            </button>
-          </Marker>
+        <Marker latitude={40.7042358} longitude={-73.9892133}>
+          <button
+            className="marker-btn"
+            type="button"
+            onClick={() => {
+              clearSelected();
+              setSelectedFreelancersHub(true);
+            }}
+          >
+            <img
+              src="https://img.icons8.com/dusk/64/000000/under-computer.png"
+              alt="Freelancers Hub Location Icon"
+            />
+          </button>
+        </Marker>
 
-          <Marker latitude={40.7245956} longitude={-73.9976034}>
-            <button
-              onClick={event => {
-                event.preventDefault();
-                clearSelected();
-                setSelectedAwsLoft(true);
-              }}
-              type="button"
-              className="marker-btn"
-            >
-              <img
-                src="https://img.icons8.com/dusk/64/000000/under-computer.png"
-                alt="AWS Loft Location Icon"
-              />
-            </button>
-          </Marker>
+        <Marker latitude={40.7245956} longitude={-73.9976034}>
+          <button
+            className="marker-btn"
+            type="button"
+            onClick={() => {
+              clearSelected();
+              setSelectedAwsLoft(true);
+            }}
+          >
+            <img
+              src="https://img.icons8.com/dusk/64/000000/under-computer.png"
+              alt="AWS Loft Location Icon"
+            />
+          </button>
+        </Marker>
 
-          <Marker latitude={40.7050758} longitude={-74.0113491}>
-            <button
-              onClick={event => {
-                event.preventDefault();
-                clearSelected();
-                setSelectedCampus(true);
-              }}
-              type="button"
-              className="marker-btn"
-            >
-              <img
-                className="marker-fullstack"
-                src="https://yt3.ggpht.com/a/AGF-l78JV4ZDPmU85HhYboU07siMZjFL_dHgm6o6Zg=s288-mo-c-c0xffffffff-rj-k-no"
-                alt="Fullstack Academy Location Icon"
-              />
-            </button>
-          </Marker>
+        <Marker latitude={40.7050758} longitude={-74.0113491}>
+          <button
+            className="marker-btn"
+            type="button"
+            onClick={() => {
+              clearSelected();
+              setSelectedCampus(true);
+            }}
+          >
+            <img
+              className="marker-fullstack"
+              src="https://yt3.ggpht.com/a/AGF-l78JV4ZDPmU85HhYboU07siMZjFL_dHgm6o6Zg=s288-mo-c-c0xffffffff-rj-k-no"
+              alt="Fullstack Academy Location Icon"
+            />
+          </button>
+        </Marker>
 
-          {selectedPublicLibrary ? (
-            <Popup
-              onClose={() => setSelectedPublicLibrary(null)}
-              latitude={selectedPublicLibrary.lat}
-              longitude={selectedPublicLibrary.lon}
-              closeOnClick={false}
-            >
-              <div className="text-style-bold location-description">
-                {selectedPublicLibrary.oversightAgency} -{' '}
-                {selectedPublicLibrary.address}
-              </div>
+        {selectedPublicLibrary ? (
+          <Popup
+            latitude={selectedPublicLibrary.lat}
+            longitude={selectedPublicLibrary.lon}
+            closeOnClick={false}
+            onClose={() => setSelectedPublicLibrary(null)}
+          >
+            <div className="text-style-bold location-description">
+              {selectedPublicLibrary.oversightAgency} -{' '}
+              {selectedPublicLibrary.address}
+            </div>
 
-              <hr />
+            <hr />
 
-              <div className="navigation-container">
-                <div className="navigation-containee">
-                  <span className="text-style-bold">Opening Hours</span>
+            <div className="navigation-container">
+              <div className="navigation-containee">
+                <span className="text-style-bold">Opening Hours</span>
 
-                  <div>
-                    <span className="text-style-bold">Monday: </span>
-                    {selectedPublicLibrary.monOpen} -{' '}
-                    {selectedPublicLibrary.monClose}
-                    {selectedPublicLibrary.monReopen
-                      ? `, ${selectedPublicLibrary.monReopen}-${selectedPublicLibrary.monReclose}`
-                      : null}
-                  </div>
-
-                  <div>
-                    <span className="text-style-bold">Tuesday: </span>
-                    {selectedPublicLibrary.tueOpen} -{' '}
-                    {selectedPublicLibrary.tueClose}
-                    {selectedPublicLibrary.tueReopen
-                      ? `, ${selectedPublicLibrary.tueReopen}-${selectedPublicLibrary.tueReclose}`
-                      : null}
-                  </div>
-
-                  <div>
-                    <span className="text-style-bold">Wednesday: </span>
-                    {selectedPublicLibrary.wedOpen} -{' '}
-                    {selectedPublicLibrary.wedClose}
-                    {selectedPublicLibrary.wedReopen
-                      ? `, ${selectedPublicLibrary.wedReopen}-${selectedPublicLibrary.wedReclose}`
-                      : null}
-                  </div>
-
-                  <div>
-                    <span className="text-style-bold">Thursday: </span>
-                    {selectedPublicLibrary.thuOpen} -{' '}
-                    {selectedPublicLibrary.thuClose}
-                    {selectedPublicLibrary.thuReopen
-                      ? `, ${selectedPublicLibrary.thuReopen}-${selectedPublicLibrary.thuReclose}`
-                      : null}
-                  </div>
-
-                  <div>
-                    <span className="text-style-bold">Friday: </span>
-                    {selectedPublicLibrary.friOpen} -{' '}
-                    {selectedPublicLibrary.friClose}
-                    {selectedPublicLibrary.friReopen
-                      ? `, ${selectedPublicLibrary.friReopen}-${selectedPublicLibrary.friReclose}`
-                      : null}
-                  </div>
-
-                  <div>
-                    <span className="text-style-bold">Saturday: </span>
-                    {selectedPublicLibrary.satOpen} -{' '}
-                    {selectedPublicLibrary.satClose}
-                    {selectedPublicLibrary.satReopen
-                      ? `, ${selectedPublicLibrary.satReopen}-${selectedPublicLibrary.satReclose}`
-                      : null}
-                  </div>
-
-                  <div>
-                    <span className="text-style-bold">Sunday: </span>
-                    {selectedPublicLibrary.sunOpen === 'Closed' ? (
-                      selectedPublicLibrary.sunOpen
-                    ) : (
-                      <div>
-                        {selectedPublicLibrary.sunOpen} -{' '}
-                        {selectedPublicLibrary.sunClose}
-                        {selectedPublicLibrary.sunReopen
-                          ? `, ${selectedPublicLibrary.sunReopen}-${selectedPublicLibrary.sunReclose}`
-                          : null}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <br />
-
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                    regex,
-                    '+'
-                  )}+Subway+Station&destination=${selectedPublicLibrary.oversightAgency.replace(
-                    regex,
-                    '+'
-                  )}+${selectedPublicLibrary.address.replace(
-                    regex,
-                    '+'
-                  )}&travelmode=transit`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">Navigate</span>
-                </a>
-              </div>
-            </Popup>
-          ) : null}
-
-          {selectedStarbucks ? (
-            <Popup
-              onClose={() => setSelectedStarbucks(null)}
-              latitude={selectedStarbucks.latitude}
-              longitude={selectedStarbucks.longitude}
-              closeOnClick={false}
-            >
-              <div className="text-style-bold location-description">
-                Starbucks - {selectedStarbucks.name}
-              </div>
-
-              <hr />
-
-              <div className="navigation-container">
-                {/* <div className="text-style-bold">Closes at: 10 PM</div> */}
-
-                <br />
-
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                    regex,
-                    '+'
-                  )}+Subway+Station&destination=Starbucks+${selectedStarbucks.name.replace(
-                    regex,
-                    '+'
-                  )}&travelmode=transit`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">Navigate</span>
-                </a>
-              </div>
-            </Popup>
-          ) : null}
-
-          {selectedWholeFoods ? (
-            <Popup
-              onClose={() => setSelectedWholeFoods(null)}
-              latitude={selectedWholeFoods.location.lat}
-              longitude={selectedWholeFoods.location.lng}
-              closeOnClick={false}
-            >
-              <div className="text-style-bold location-description">
-                Whole Foods Market - {selectedWholeFoods.location.address}
-              </div>
-
-              <hr />
-
-              <div className="navigation-container">
-                <div className="text-style-bold navigation-containee">
-                  Opening Hours
-                </div>
-
-                <div className="navigation-containee">
-                  Monday through Sunday, 8:00 AM - 10:00 PM
-                </div>
-
-                <br />
-
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                    regex,
-                    '+'
-                  )}+Subway+Station&destination=Whole+Foods+Market+${selectedWholeFoods.location.address.replace(
-                    regex,
-                    '+'
-                  )}&travelmode=transit`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">Navigate</span>
-                </a>
-              </div>
-            </Popup>
-          ) : null}
-
-          {selectedMeetup ? (
-            <Popup
-              onClose={() => setSelectedMeetup(null)}
-              latitude={selectedMeetup.venue.lat}
-              longitude={selectedMeetup.venue.lon}
-              closeOnClick={false}
-            >
-              <div className="text-style-bold location-description">
-                {selectedMeetup.venue.address_1}
-              </div>
-
-              <hr />
-
-              <div className="navigation-container">
                 <div>
-                  <span className="text-style-bold">Meetup Title: </span>
-                  {selectedMeetup.name}
+                  <span className="text-style-bold">Monday: </span>
+                  {selectedPublicLibrary.monOpen} -{' '}
+                  {selectedPublicLibrary.monClose}
+                  {selectedPublicLibrary.monReopen
+                    ? `, ${selectedPublicLibrary.monReopen}-${selectedPublicLibrary.monReclose}`
+                    : null}
                 </div>
 
                 <div>
-                  <span className="text-style-bold">Date: </span>
-                  {moment(selectedMeetup.time).format('LLLL')}
+                  <span className="text-style-bold">Tuesday: </span>
+                  {selectedPublicLibrary.tueOpen} -{' '}
+                  {selectedPublicLibrary.tueClose}
+                  {selectedPublicLibrary.tueReopen
+                    ? `, ${selectedPublicLibrary.tueReopen}-${selectedPublicLibrary.tueReclose}`
+                    : null}
                 </div>
 
-                <a
-                  href={selectedMeetup.event_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">
-                    {`RSVP (${selectedMeetup.yes_rsvp_count}${
-                      selectedMeetup.rsvp_limit
-                        ? '/' + selectedMeetup.rsvp_limit
-                        : ''
-                    })`}
-                  </span>
-                </a>
-
-                <br />
-
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                    regex,
-                    '+'
-                  )}+Subway+Station&destination=WeWork+${selectedMeetup.venue.address_1.replace(
-                    regex,
-                    '+'
-                  )}&travelmode=transit`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">Navigate</span>
-                </a>
-              </div>
-            </Popup>
-          ) : null}
-
-          {selectedAlum ? (
-            <Popup
-              onClose={() => setSelectedAlum(null)}
-              latitude={selectedAlum.locationGeocode.lat}
-              longitude={selectedAlum.locationGeocode.lon}
-              closeOnClick={false}
-            >
-              <div className="text-style-bold location-description">
-                {`${selectedAlum.firstName} ${selectedAlum.lastName}`}
-              </div>
-
-              <hr />
-
-              <div className="location-description">
-                <span className="text-style-bold">Gender: </span>
-                {selectedAlum.gender}
-              </div>
-
-              <div className="location-description">
-                <span className="text-style-bold">Cohort: </span>
-                {`${selectedAlum.cohort}-${selectedAlum.program}`}
-              </div>
-
-              <div className="location-description">
-                {selectedAlum.status === 'Employed' ? (
-                  <span>
-                    <span className="text-style-bold">Company: </span>
-                    {selectedAlum.company}
-                  </span>
-                ) : (
-                  <span>
-                    <span className="text-style-bold">Status: </span>
-                    {selectedAlum.status === 'Unemployed'
-                      ? 'Seeking Opportunities'
-                      : selectedAlum.status}
-                  </span>
-                )}
-              </div>
-
-              <div className="location-description">
-                <span className="text-style-bold">Email: </span>
-
-                <a
-                  href={`mailto:${selectedAlum.email}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">{selectedAlum.email}</span>
-                </a>
-              </div>
-
-              <div className="location-description">
-                <span className="text-style-bold">Subway Station: </span>
-                {selectedAlum.locationName}
-              </div>
-            </Popup>
-          ) : null}
-
-          {selectedFreelancersHub ? (
-            <Popup
-              onClose={() => setSelectedFreelancersHub(false)}
-              latitude={40.7042358}
-              longitude={-73.9892133}
-              closeOnClick={false}
-            >
-              <div className="text-style-bold location-description">
-                Freelancers Hub - 30 John Street, Brooklyn
-              </div>
-
-              <hr />
-
-              <div className="navigation-container">
-                <div className="text-style-bold navigation-containee">
-                  Opening Hours
+                <div>
+                  <span className="text-style-bold">Wednesday: </span>
+                  {selectedPublicLibrary.wedOpen} -{' '}
+                  {selectedPublicLibrary.wedClose}
+                  {selectedPublicLibrary.wedReopen
+                    ? `, ${selectedPublicLibrary.wedReopen}-${selectedPublicLibrary.wedReclose}`
+                    : null}
                 </div>
 
-                <div className="navigation-containee">
-                  Monday through Friday, 9:00 AM - 5:00 PM
+                <div>
+                  <span className="text-style-bold">Thursday: </span>
+                  {selectedPublicLibrary.thuOpen} -{' '}
+                  {selectedPublicLibrary.thuClose}
+                  {selectedPublicLibrary.thuReopen
+                    ? `, ${selectedPublicLibrary.thuReopen}-${selectedPublicLibrary.thuReclose}`
+                    : null}
                 </div>
 
-                <a
-                  href="https://freelancershub.nymediacenter.com/member/daypass"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">RSVP</span>
-                </a>
-
-                <br />
-
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                    regex,
-                    '+'
-                  )}+Subway+Station&destination=Freelancers+Hub&travelmode=transit`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">Navigate</span>
-                </a>
-              </div>
-            </Popup>
-          ) : null}
-
-          {selectedAwsLoft ? (
-            <Popup
-              onClose={() => setSelectedAwsLoft(false)}
-              latitude={40.7245956}
-              longitude={-73.9976034}
-              closeOnClick={false}
-            >
-              <div className="text-style-bold location-description">
-                AWS Loft - 350 West Broadway, New York
-              </div>
-
-              <hr />
-
-              <div className="navigation-container">
-                <div className="text-style-bold navigation-containee">
-                  Opening Hours
+                <div>
+                  <span className="text-style-bold">Friday: </span>
+                  {selectedPublicLibrary.friOpen} -{' '}
+                  {selectedPublicLibrary.friClose}
+                  {selectedPublicLibrary.friReopen
+                    ? `, ${selectedPublicLibrary.friReopen}-${selectedPublicLibrary.friReclose}`
+                    : null}
                 </div>
 
-                <div className="navigation-containee">
-                  Monday through Friday, 9:30 AM - 5:30 PM
+                <div>
+                  <span className="text-style-bold">Saturday: </span>
+                  {selectedPublicLibrary.satOpen} -{' '}
+                  {selectedPublicLibrary.satClose}
+                  {selectedPublicLibrary.satReopen
+                    ? `, ${selectedPublicLibrary.satReopen}-${selectedPublicLibrary.satReclose}`
+                    : null}
                 </div>
 
-                <a
-                  href="https://aws.amazon.com/start-ups/loft/ny-loft"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">RSVP</span>
-                </a>
-
-                <br />
-
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                    regex,
-                    '+'
-                  )}+Subway+Station&destination=AWS+Loft&travelmode=transit`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">Navigate</span>
-                </a>
-              </div>
-            </Popup>
-          ) : null}
-
-          {selectedCampus ? (
-            <Popup
-              onClose={() => setSelectedCampus(false)}
-              latitude={40.7050758}
-              longitude={-74.0113491}
-              closeOnClick={false}
-            >
-              <div className="text-style-bold location-description">
-                Fullstack Academy of Code - 5 Hanover Square, New York
-              </div>
-
-              <hr />
-
-              <div className="navigation-container">
-                <div className="text-style-bold">
-                  {'Next Hacker Hours Meetup: '}
+                <div>
+                  <span className="text-style-bold">Sunday: </span>
+                  {selectedPublicLibrary.sunOpen === 'Closed' ? (
+                    selectedPublicLibrary.sunOpen
+                  ) : (
+                    <div>
+                      {selectedPublicLibrary.sunOpen} -{' '}
+                      {selectedPublicLibrary.sunClose}
+                      {selectedPublicLibrary.sunReopen
+                        ? `, ${selectedPublicLibrary.sunReopen}-${selectedPublicLibrary.sunReclose}`
+                        : null}
+                    </div>
+                  )}
                 </div>
-
-                <div>Every second Monday of the month, 6:30 PM - 9:30 PM</div>
-
-                <a
-                  href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-98250793769?aff=erelexpmlt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">RSVP</span>
-                </a>
-
-                <br />
-
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                    regex,
-                    '+'
-                  )}+Subway+Station&destination=Fullstack+Academy&travelmode=transit`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">Navigate</span>
-                </a>
               </div>
-            </Popup>
-          ) : null}
-        </ReactMapGL>
-      </div>
+
+              <br />
+
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
+                  regex,
+                  '+'
+                )}+Subway+Station&destination=${selectedPublicLibrary.oversightAgency.replace(
+                  regex,
+                  '+'
+                )}+${selectedPublicLibrary.address.replace(
+                  regex,
+                  '+'
+                )}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">Navigate</span>
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedStarbucks ? (
+          <Popup
+            latitude={selectedStarbucks.latitude}
+            longitude={selectedStarbucks.longitude}
+            closeOnClick={false}
+            onClose={() => setSelectedStarbucks(null)}
+          >
+            <div className="text-style-bold location-description">
+              Starbucks - {selectedStarbucks.name}
+            </div>
+
+            <hr />
+
+            <div className="navigation-container">
+              {/* <div className="text-style-bold">Closes at: 10 PM</div> */}
+
+              <br />
+
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
+                  regex,
+                  '+'
+                )}+Subway+Station&destination=Starbucks+${selectedStarbucks.name.replace(
+                  regex,
+                  '+'
+                )}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">Navigate</span>
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedWholeFoods ? (
+          <Popup
+            latitude={selectedWholeFoods.location.lat}
+            longitude={selectedWholeFoods.location.lng}
+            closeOnClick={false}
+            onClose={() => setSelectedWholeFoods(null)}
+          >
+            <div className="text-style-bold location-description">
+              Whole Foods Market - {selectedWholeFoods.location.address}
+            </div>
+
+            <hr />
+
+            <div className="navigation-container">
+              <div className="text-style-bold navigation-containee">
+                Opening Hours
+              </div>
+
+              <div className="navigation-containee">
+                Monday through Sunday, 8:00 AM - 10:00 PM
+              </div>
+
+              <br />
+
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
+                  regex,
+                  '+'
+                )}+Subway+Station&destination=Whole+Foods+Market+${selectedWholeFoods.location.address.replace(
+                  regex,
+                  '+'
+                )}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">Navigate</span>
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedMeetup ? (
+          <Popup
+            latitude={selectedMeetup.venue.lat}
+            longitude={selectedMeetup.venue.lon}
+            closeOnClick={false}
+            onClose={() => setSelectedMeetup(null)}
+          >
+            <div className="text-style-bold location-description">
+              {selectedMeetup.venue.address_1}
+            </div>
+
+            <hr />
+
+            <div className="navigation-container">
+              <div>
+                <span className="text-style-bold">Meetup Title: </span>
+                {selectedMeetup.name}
+              </div>
+
+              <div>
+                <span className="text-style-bold">Date: </span>
+                {moment(selectedMeetup.time).format('LLLL')}
+              </div>
+
+              <a
+                href={selectedMeetup.event_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">
+                  {`RSVP (${selectedMeetup.yes_rsvp_count}${
+                    selectedMeetup.rsvp_limit
+                      ? '/' + selectedMeetup.rsvp_limit
+                      : ''
+                  })`}
+                </span>
+              </a>
+
+              <br />
+
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
+                  regex,
+                  '+'
+                )}+Subway+Station&destination=WeWork+${selectedMeetup.venue.address_1.replace(
+                  regex,
+                  '+'
+                )}&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">Navigate</span>
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedAlum ? (
+          <Popup
+            latitude={selectedAlum.locationGeocode.lat}
+            longitude={selectedAlum.locationGeocode.lon}
+            closeOnClick={false}
+            onClose={() => setSelectedAlum(null)}
+          >
+            <div className="text-style-bold location-description">
+              {`${selectedAlum.firstName} ${selectedAlum.lastName}`}
+            </div>
+
+            <hr />
+
+            <div className="location-description">
+              <span className="text-style-bold">Gender: </span>
+              {selectedAlum.gender}
+            </div>
+
+            <div className="location-description">
+              <span className="text-style-bold">Cohort: </span>
+              {`${selectedAlum.cohort}-${selectedAlum.program}`}
+            </div>
+
+            <div className="location-description">
+              {selectedAlum.status === 'Employed' ? (
+                <span>
+                  <span className="text-style-bold">Company: </span>
+                  {selectedAlum.company}
+                </span>
+              ) : (
+                <span>
+                  <span className="text-style-bold">Status: </span>
+                  {selectedAlum.status === 'Unemployed'
+                    ? 'Seeking Opportunities'
+                    : selectedAlum.status}
+                </span>
+              )}
+            </div>
+
+            <div className="location-description">
+              <span className="text-style-bold">Email: </span>
+
+              <a
+                href={`mailto:${selectedAlum.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">{selectedAlum.email}</span>
+              </a>
+            </div>
+
+            <div className="location-description">
+              <span className="text-style-bold">Subway Station: </span>
+              {selectedAlum.locationName}
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedFreelancersHub ? (
+          <Popup
+            latitude={40.7042358}
+            longitude={-73.9892133}
+            closeOnClick={false}
+            onClose={() => setSelectedFreelancersHub(null)}
+          >
+            <div className="text-style-bold location-description">
+              Freelancers Hub - 30 John Street, Brooklyn
+            </div>
+
+            <hr />
+
+            <div className="navigation-container">
+              <div className="text-style-bold navigation-containee">
+                Opening Hours
+              </div>
+
+              <div className="navigation-containee">
+                Monday through Friday, 9:00 AM - 5:00 PM
+              </div>
+
+              <a
+                href="https://freelancershub.nymediacenter.com/member/daypass"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">RSVP</span>
+              </a>
+
+              <br />
+
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
+                  regex,
+                  '+'
+                )}+Subway+Station&destination=Freelancers+Hub&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">Navigate</span>
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedAwsLoft ? (
+          <Popup
+            latitude={40.7245956}
+            longitude={-73.9976034}
+            closeOnClick={false}
+            onClose={() => setSelectedAwsLoft(null)}
+          >
+            <div className="text-style-bold location-description">
+              AWS Loft - 350 West Broadway, New York
+            </div>
+
+            <hr />
+
+            <div className="navigation-container">
+              <div className="text-style-bold navigation-containee">
+                Opening Hours
+              </div>
+
+              <div className="navigation-containee">
+                Monday through Friday, 9:30 AM - 5:30 PM
+              </div>
+
+              <a
+                href="https://aws.amazon.com/start-ups/loft/ny-loft"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">RSVP</span>
+              </a>
+
+              <br />
+
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
+                  regex,
+                  '+'
+                )}+Subway+Station&destination=AWS+Loft&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">Navigate</span>
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+
+        {selectedCampus ? (
+          <Popup
+            latitude={40.7050758}
+            longitude={-74.0113491}
+            closeOnClick={false}
+            onClose={() => setSelectedCampus(null)}
+          >
+            <div className="text-style-bold location-description">
+              Fullstack Academy of Code - 5 Hanover Square, New York
+            </div>
+
+            <hr />
+
+            <div className="navigation-container">
+              <div className="text-style-bold">
+                {'Next Hacker Hours Meetup: '}
+              </div>
+
+              <div>Every second Monday of the month, 6:30 PM - 9:30 PM</div>
+
+              <a
+                href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-98250793769?aff=erelexpmlt"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">RSVP</span>
+              </a>
+
+              <br />
+
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
+                  regex,
+                  '+'
+                )}+Subway+Station&destination=Fullstack+Academy&travelmode=transit`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-style-bold">Navigate</span>
+              </a>
+            </div>
+          </Popup>
+        ) : null}
+      </ReactMapGL>
     );
   }
 };
