@@ -31,7 +31,7 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
       >
         <div className="remove-outline">
           <div>
-            <NavLink to="/" onClick={() => closeMenu()}>
+            <NavLink to="/" onClick={closeMenu}>
               <span className="navbar-text-color">
                 {`Hello${profile.firstName ? ', ' + profile.firstName : ''}.`}
               </span>
@@ -39,7 +39,7 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
           </div>
 
           <div>
-            <NavLink onClick={() => closeMenu()} to="/create">
+            <NavLink to="/newproject" onClick={closeMenu}>
               <span className="text-style-bold navbar-text-color">
                 New Project
               </span>
@@ -47,13 +47,13 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
           </div>
 
           <div>
-            <NavLink onClick={() => closeMenu()} to="/map">
+            <NavLink to="/map" onClick={closeMenu}>
               <span className="text-style-bold navbar-text-color">Map</span>
             </NavLink>
           </div>
 
           <div>
-            <NavLink onClick={() => closeMenu()} to="/meetups">
+            <NavLink to="/meetups" onClick={closeMenu}>
               <span className="text-style-bold navbar-text-color">
                 Meetup Tracker
               </span>
@@ -62,10 +62,10 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
 
           <div>
             <a
-              onClick={() => closeMenu()}
               href="https://gitness-tracker.web.app"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={closeMenu}
             >
               <span className="text-style-bold navbar-text-color">
                 Gitness Tracker
@@ -75,11 +75,11 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
 
           <div>
             <NavLink
+              to="/"
               onClick={() => {
                 closeMenu();
                 signOutThunk();
               }}
-              to="/"
             >
               <span className="text-style-bold navbar-text-color">
                 Sign Out
