@@ -22,11 +22,11 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
 
   return (
     <Menu
+      styles={burgerStyles}
       isOpen={menuOpen}
-      onStateChange={state => handleStateChange(state)}
       right
       width="50%"
-      styles={burgerStyles}
+      onStateChange={state => handleStateChange(state)}
     >
       <div className="remove-outline">
         <div>
