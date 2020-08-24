@@ -1,4 +1,2 @@
 // Exports
-export {
-  default as toastNotificationGenerator,
-} from './generators/toastNotificationGenerator';
+export { default as toastNotification } from './generators/toastNotification';
