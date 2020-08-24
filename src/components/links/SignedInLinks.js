@@ -31,11 +31,15 @@ const SignedInLinks = ({ profile, signOutThunk }) => {
       </li>
 
       <li className="navbar-link">
-        <NavLink to="/meetups">
+        <a
+          href="https://meetup-tracker.herokuapp.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <span className="text-style-bold navbar-text-color">
             Meetup Tracker
           </span>
-        </NavLink>
+        </a>
       </li>
 
       <li className="navbar-link">

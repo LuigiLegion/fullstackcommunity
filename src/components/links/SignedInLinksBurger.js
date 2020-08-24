@@ -52,11 +52,16 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
         </div>
 
         <div>
-          <NavLink to="/meetups" onClick={closeMenu}>
+          <a
+            href="https://meetup-tracker.herokuapp.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={closeMenu}
+          >
             <span className="text-style-bold navbar-text-color">
               Meetup Tracker
             </span>
-          </NavLink>
+          </a>
         </div>
 
         <div>
