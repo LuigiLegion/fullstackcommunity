@@ -1,5 +1,8 @@
+// Imports
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+
+// Initializations
 admin.initializeApp(functions.config().firebase);
 
 const createNotification = notification => {
@@ -10,6 +13,7 @@ const createNotification = notification => {
     .then(doc => console.log('Notification added: ', doc));
 };
 
+// Exports
 exports.projectCreated = functions.firestore
   .document('projects/{projectId}')
   .onCreate(doc => {

@@ -18,4 +18,5 @@ const rootReducer = combineReducers({
   layout: layoutReducer,
 });
 
+// Exports
 export default rootReducer;

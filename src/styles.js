@@ -1,4 +1,5 @@
-export const burgerStyles = {
+// Initializations
+const burgerStyles = {
   bmBurgerButton: {
     position: 'fixed',
     width: '36px',
@@ -42,3 +43,6 @@ export const burgerStyles = {
     background: 'rgba(0, 0, 0, 0.3)',
   },
 };
+
+// Exports
+export { burgerStyles };

@@ -25,4 +25,5 @@ const middleware = composeWithDevTools(
 
 const store = createStore(rootReducer, middleware);
 
+// Exports
 export default store;

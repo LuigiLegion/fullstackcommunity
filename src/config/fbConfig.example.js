@@ -1,7 +1,9 @@
+// Imports
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
+// Initializations
 const config = {
   apiKey: 'YOUR_API_KEY',
   authDomain: 'YOUR_DOMAIN_HERE',
@@ -14,4 +16,5 @@ const config = {
 
 firebase.initializeApp(config);
 
+// Exports
 export default firebase;
