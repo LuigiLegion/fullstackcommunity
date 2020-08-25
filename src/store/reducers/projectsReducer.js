@@ -1,6 +1,6 @@
 // Imports
 import { toggledPreloaderActionCreator } from './layoutReducer';
-import { toastNotificationGenerator } from '../../helpers';
+import { toastNotification } from '../../utils';
 
 // Initial State
 const initialState = {
@@ -45,7 +45,7 @@ export const createProjectThunkCreator = project => {
       dispatch(createdProjectSuccessActionCreator(project));
       dispatch(toggledPreloaderActionCreator(false));
 
-      toastNotificationGenerator('New Project Created Successfully', 'green');
+      toastNotification('New Project Created Successfully', 'green');
     } catch (error) {
       console.error(error);
       dispatch(createdProjectErrorActionCreator(error));
