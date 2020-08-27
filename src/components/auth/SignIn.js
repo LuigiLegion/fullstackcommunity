@@ -99,6 +99,6 @@ export default connect(
 // Prop Types
 SignIn.propTypes = {
   auth: PropTypes.object,
-  signInError: PropTypes.object,
+  signInError: PropTypes.string,
   signInThunk: PropTypes.func,
 };
