@@ -401,6 +401,6 @@ export default connect(
 // Prop Types
 SignUp.propTypes = {
   auth: PropTypes.object,
-  signUpError: PropTypes.object,
+  signUpError: PropTypes.string,
   signUpThunk: PropTypes.func,
 };
