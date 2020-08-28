@@ -184,7 +184,7 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
               </option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
-              <option value="Non-binary">Non-binary</option>
+              <option value="Nonbinary">Nonbinary</option>
               <option value="Other">Other</option>
             </select>
           </div>
@@ -216,16 +216,12 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
           {state.status === 'Employed' ? (
             <div className="input-field">
               <label htmlFor="company">
-                Company Name<span className="text-color-red">*</span> (May only
-                contain uppercase and lowercase letters only, and at least 2
-                characters in total)
+                Company Name<span className="text-color-red">*</span>
               </label>
 
               <input
                 type="text"
                 id="company"
-                pattern="[A-Za-z]+{2,32}"
-                title="May only contain uppercase and lowercase letters only, and at least 2 characters in total"
                 autoComplete="company"
                 required
                 onChange={handleChange}
@@ -250,6 +246,7 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
               <option value="" disabled>
                 --Please choose an option--
               </option>
+              <option value="2001">2004</option>
               <option value="2001">2001</option>
               <option value="1911">1911</option>
               <option value="1909">1909</option>
