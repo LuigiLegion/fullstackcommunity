@@ -18,7 +18,7 @@ const Spaces = () => {
               <div>350 West Broadway, New York</div>
 
               <div className="events-time-and-rsvp-container">
-                <div className="grey-text note-date events-time-and-rsvp-containee">
+                <div className="grey-text events-time-and-rsvp-containee">
                   Open Monday through Friday, 9:30 AM - 5:30PM
                 </div>
 
@@ -41,7 +41,7 @@ const Spaces = () => {
               <div>30 John Street, Brooklyn</div>
 
               <div className="events-time-and-rsvp-container">
-                <div className="grey-text note-date events-time-and-rsvp-containee">
+                <div className="grey-text events-time-and-rsvp-containee">
                   Get up to 8 free work spaces a month
                 </div>
 
@@ -64,7 +64,7 @@ const Spaces = () => {
               <div>5 Hanover Square, New York</div>
 
               <div className="events-time-and-rsvp-container">
-                <div className="grey-text note-date events-time-and-rsvp-containee">
+                <div className="grey-text events-time-and-rsvp-containee">
                   Every second Monday of the month, 6:30 PM - 9:30 PM
                 </div>
 
