@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 import { toggledPreloaderActionCreator } from './layoutReducer';
-import { toastNotificationGenerator } from '../../helpers';
+import { toastNotification } from '../../utils';
 
 // Initial State
 const initialState = {
@@ -110,7 +110,7 @@ export const getMeetupsThunkCreator = () => {
       console.error(error);
       dispatch(gotMeetupsErrorActionCreator(error));
       dispatch(toggledPreloaderActionCreator(false));
-      toastNotificationGenerator('Error! Unable To Fetch Meetups', 'red');
+      toastNotification('Error! Unable To Fetch Meetups', 'red');
     }
   };
 };
