@@ -6,8 +6,7 @@ import { toastNotification } from '../../utils';
 
 // Initial State
 const initialState = {
-  groupMeetups: [],
-  allMeetups: [],
+  meetups: [],
   fetchedMeetups: false,
   meetupsFetchingError: null,
 };
@@ -17,10 +16,9 @@ const GOT_MEETUPS_SUCCESS = 'GOT_MEETUPS_SUCCESS';
 const GOT_MEETUPS_ERROR = 'GOT_MEETUPS_ERROR';
 
 // Action Creators
-const gotMeetupsSuccessActionCreator = (groupMeetups, allMeetups) => ({
+const gotMeetupsSuccessActionCreator = meetups => ({
   type: GOT_MEETUPS_SUCCESS,
-  groupMeetups,
-  allMeetups,
+  meetups,
 });
 
 const gotMeetupsErrorActionCreator = error => ({
@@ -34,77 +32,16 @@ export const getMeetupsThunkCreator = () => {
     try {
       dispatch(toggledPreloaderActionCreator(true));
 
-      // // Meetup group with no upcoming meetups for testing purposes:
-      // const starWarsNycMeetups = await axios.get(
-      //   'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=148015&page=20'
-      // );
-      // const allMeetupsData = [...starWarsNycMeetups.data.results];
-      // dispatch(gotMeetupsActionCreator(allMeetupsData));
+      const { data } = await axios.get(
+        'https://cors-anywhere.herokuapp.com/https://meetup-tracker.herokuapp.com/api/meetups/curated'
+      );
 
-      // Meetup groups with future meetups:
-      const nycCodersMeetups = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31377401&page=20'
+      const meetups = data.reduce(
+        (acc, group) => [...acc, ...group.meetups],
+        []
       );
-      const bootcampersAnonymousMeetups = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=19344391&page=20'
-      );
-      const reactNycMeetups = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=22884788&page=20'
-      );
-      const useReactNycMeetups = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=31543338&page=20'
-      );
-      const vueNycMeetups = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=23275212&page=20'
-      );
-      const graphqlNycMeetups = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=24714233&page=20'
-      );
-      // const mongodbNycMeetups = await axios.get(
-      //   'https://cors-anywhere.herokuapp.com/https://api.meetup.com/2/events?&sign=true&photo-host=public&group_id=1629296&page=20'
-      // );
 
-      const groupMeetups = [
-        {
-          name: 'NYC Coders',
-          meetups: [...nycCodersMeetups.data.results],
-        },
-        {
-          name: 'Bootcampers Anonymous',
-          meetups: [...bootcampersAnonymousMeetups.data.results],
-        },
-        {
-          name: 'React NYC',
-          meetups: [...reactNycMeetups.data.results],
-        },
-        {
-          name: 'useReactNYC',
-          meetups: [...useReactNycMeetups.data.results],
-        },
-        {
-          name: 'Vue NYC',
-          meetups: [...vueNycMeetups.data.results],
-        },
-        {
-          name: 'GraphQL NYC',
-          meetups: [...graphqlNycMeetups.data.results],
-        },
-        // {
-        //   name: 'MongoDB NYC',
-        //   meetups: [...mongodbNycMeetups.data.results],
-        // },
-      ];
-
-      const allMeetups = [
-        ...nycCodersMeetups.data.results,
-        ...bootcampersAnonymousMeetups.data.results,
-        ...reactNycMeetups.data.results,
-        ...useReactNycMeetups.data.results,
-        ...vueNycMeetups.data.results,
-        // ...mongodbNycMeetups.data.results,
-      ];
-
-      dispatch(gotMeetupsSuccessActionCreator(groupMeetups, allMeetups));
+      dispatch(gotMeetupsSuccessActionCreator(meetups));
       dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
@@ -121,13 +58,13 @@ const meetupsReducer = (state = initialState, action) => {
     case GOT_MEETUPS_SUCCESS:
       return {
         ...state,
-        groupMeetups: action.groupMeetups,
-        allMeetups: action.allMeetups,
+        meetups: action.meetups,
         fetchedMeetups: true,
       };
 
     case GOT_MEETUPS_ERROR:
-      console.log('Meetups fetching error!', action.error.message);
+      console.error('Meetups Fetching Error!', action.error.message);
+
       return {
         ...state,
         fetchedMeetups: true,
