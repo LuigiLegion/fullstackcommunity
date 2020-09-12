@@ -87,14 +87,15 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateProject);
-
 // Prop Types
 CreateProject.propTypes = {
   auth: PropTypes.object,
   createProjectThunk: PropTypes.func,
   history: PropTypes.object,
 };
+
+// Exports
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateProject);

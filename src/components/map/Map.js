@@ -771,6 +771,16 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
+// Prop Types
+Map.propTypes = {
+  auth: PropTypes.object,
+  users: PropTypes.array,
+  allMeetups: PropTypes.array,
+  fetchedMeetups: PropTypes.bool,
+  getMeetupsThunk: PropTypes.func,
+};
+
+// Exports
 export default compose(
   connect(
     mapStateToProps,
@@ -782,12 +792,3 @@ export default compose(
     },
   ])
 )(Map);
-
-// Prop Types
-Map.propTypes = {
-  auth: PropTypes.object,
-  users: PropTypes.array,
-  allMeetups: PropTypes.array,
-  fetchedMeetups: PropTypes.bool,
-  getMeetupsThunk: PropTypes.func,
-};

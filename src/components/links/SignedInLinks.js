@@ -70,13 +70,14 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignedInLinks);
-
 // Prop Types
 SignedInLinks.propTypes = {
   profile: PropTypes.object,
   signOutThunk: PropTypes.func,
 };
+
+// Exports
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignedInLinks);

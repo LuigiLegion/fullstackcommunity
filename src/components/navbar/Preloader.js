@@ -10,4 +10,5 @@ const Preloader = () => {
   );
 };
 
+// Exports
 export default Preloader;

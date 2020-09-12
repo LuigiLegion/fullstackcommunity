@@ -91,14 +91,15 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignIn);
-
 // Prop Types
 SignIn.propTypes = {
   auth: PropTypes.object,
   signInError: PropTypes.string,
   signInThunk: PropTypes.func,
 };
+
+// Exports
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn);

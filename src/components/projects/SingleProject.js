@@ -85,6 +85,13 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+// Prop Types
+SingleProject.propTypes = {
+  auth: PropTypes.object,
+  project: PropTypes.object,
+};
+
+// Exports
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
@@ -93,9 +100,3 @@ export default compose(
     },
   ])
 )(SingleProject);
-
-// Prop Types
-SingleProject.propTypes = {
-  auth: PropTypes.object,
-  project: PropTypes.object,
-};

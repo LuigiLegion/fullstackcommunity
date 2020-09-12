@@ -19,9 +19,10 @@ const Projects = ({ projects }) => {
   );
 };
 
-export default Projects;
-
 // Prop Types
 Projects.propTypes = {
   projects: PropTypes.array,
 };
+
+// Exports
+export default Projects;

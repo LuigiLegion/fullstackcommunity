@@ -60,6 +60,16 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
+// Prop Types
+Dashboard.propTypes = {
+  auth: PropTypes.object,
+  notifications: PropTypes.array,
+  projects: PropTypes.array,
+  fetchedMeetups: PropTypes.bool,
+  getMeetupsThunk: PropTypes.func,
+};
+
+// Exports
 export default compose(
   connect(
     mapStateToProps,
@@ -77,12 +87,3 @@ export default compose(
     },
   ])
 )(Dashboard);
-
-// Prop Types
-Dashboard.propTypes = {
-  auth: PropTypes.object,
-  notifications: PropTypes.array,
-  projects: PropTypes.array,
-  fetchedMeetups: PropTypes.bool,
-  getMeetupsThunk: PropTypes.func,
-};

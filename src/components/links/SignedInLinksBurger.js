@@ -100,13 +100,14 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignedInLinksBurger);
-
 // Prop Types
 SignedInLinksBurger.propTypes = {
   profile: PropTypes.object,
   signOutThunk: PropTypes.func,
 };
+
+// Exports
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignedInLinksBurger);

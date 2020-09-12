@@ -25,9 +25,10 @@ const ProjectPreview = ({ project }) => {
   );
 };
 
-export default ProjectPreview;
-
 // Prop Types
 ProjectPreview.propTypes = {
   project: PropTypes.object,
 };
+
+// Exports
+export default ProjectPreview;
