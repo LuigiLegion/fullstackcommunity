@@ -75,4 +75,5 @@ const projectsReducer = (state = initialState, action) => {
   }
 };
 
+// Exports
 export default projectsReducer;

@@ -1,16 +1,16 @@
 // Initial State
 const initialState = {
-  isLoading: false
-}
+  isLoading: false,
+};
 
 // Action Types
-const TOGGLED_PRELOADER = 'TOGGLED_PRELOADER'
+const TOGGLED_PRELOADER = 'TOGGLED_PRELOADER';
 
 // Action Creators
 export const toggledPreloaderActionCreator = status => ({
   type: TOGGLED_PRELOADER,
-  status
-})
+  status,
+});
 
 // Reducer
 const layoutReducer = (state = initialState, action) => {
@@ -18,12 +18,13 @@ const layoutReducer = (state = initialState, action) => {
     case TOGGLED_PRELOADER:
       return {
         ...state,
-        isLoading: action.status
-      }
+        isLoading: action.status,
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default layoutReducer
+// Exports
+export default layoutReducer;
