@@ -82,9 +82,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createProjectThunk(project) {
-    dispatch(createProjectThunkCreator(project));
-  },
+  createProjectThunk: project => dispatch(createProjectThunkCreator(project)),
 });
 
 // Prop Types

@@ -86,9 +86,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signInThunk(userCredentials) {
-    dispatch(signInThunkCreator(userCredentials));
-  },
+  signInThunk: userCredentials => dispatch(signInThunkCreator(userCredentials)),
 });
 
 // Prop Types

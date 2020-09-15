@@ -55,9 +55,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMeetupsThunk() {
-    dispatch(getMeetupsThunkCreator());
-  },
+  getMeetupsThunk: () => dispatch(getMeetupsThunkCreator()),
 });
 
 // Prop Types
