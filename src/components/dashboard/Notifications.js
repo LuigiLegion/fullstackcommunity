@@ -1,7 +1,8 @@
 // Imports
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+
+import Notification from './Notification';
 
 // Component
 const Notifications = ({ notifications }) => {
@@ -13,18 +14,13 @@ const Notifications = ({ notifications }) => {
 
           <ul className="notifications">
             {notifications &&
-              notifications.map(curNotification => (
-                <li key={curNotification.id}>
-                  <span className="text-style-bold text-color-red">
-                    {curNotification.user}
-                  </span>
-
-                  <span>{curNotification.content}</span>
-
-                  <div className="grey-text">
-                    {moment(curNotification.time.toDate()).fromNow()}
-                  </div>
-                </li>
+              notifications.map(notification => (
+                <Notification
+                  key={notification.id}
+                  user={notification.user}
+                  content={notification.content}
+                  time={notification.time}
+                />
               ))}
           </ul>
         </div>
