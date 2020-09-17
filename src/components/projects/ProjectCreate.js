@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { createProjectThunkCreator } from '../../store/reducers/projectsReducer';
 
 // Component
-const CreateProject = ({ auth, createProjectThunk, history }) => {
+const ProjectCreate = ({ auth, createProjectThunk, history }) => {
   const [state, setState] = useState({
     title: '',
     content: '',
@@ -86,7 +86,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 // Prop Types
-CreateProject.propTypes = {
+ProjectCreate.propTypes = {
   auth: PropTypes.object,
   createProjectThunk: PropTypes.func,
   history: PropTypes.object,
@@ -96,4 +96,4 @@ CreateProject.propTypes = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CreateProject);
+)(ProjectCreate);
