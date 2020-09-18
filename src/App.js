@@ -8,7 +8,7 @@ import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import Map from './components/map/Map';
 import ProjectCreate from './components/projects/ProjectCreate';
-import SingleProject from './components/projects/SingleProject';
+import Project from './components/projects/Project';
 import PageNotFound from './components/404/PageNotFound';
 
 // Component
@@ -24,7 +24,7 @@ const App = () => {
           <Route path="/signup" component={SignUp} />
           <Route path="/map" component={Map} />
           <Route path="/newproject" component={ProjectCreate} />
-          <Route path="/project/:id" component={SingleProject} />
+          <Route path="/project/:id" component={Project} />
           <Route path="/:wildcard" component={PageNotFound} />
         </Switch>
       </div>

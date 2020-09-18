@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 // Component
-const SingleProject = ({ auth, project }) => {
+const Project = ({ auth, project }) => {
   if (!auth.uid) {
     return <Redirect to="/signin" />;
   }
@@ -86,7 +86,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 // Prop Types
-SingleProject.propTypes = {
+Project.propTypes = {
   auth: PropTypes.object,
   project: PropTypes.object,
 };
@@ -99,4 +99,4 @@ export default compose(
       collection: 'projects',
     },
   ])
-)(SingleProject);
+)(Project);
