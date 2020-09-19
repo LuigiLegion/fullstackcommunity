@@ -12,9 +12,9 @@ import moment from 'moment';
 
 import { getMeetupsThunkCreator } from '../../store/reducers/meetupsReducer';
 import mapboxAccessToken from '../../config/mbglConfig';
-import { branches as libraries } from '../../data/public-library-locations.json';
-import { branches as starbucks } from '../../data/starbucks-locations.json';
-import { branches as wholefoodsMarkets } from '../../data/whole-foods-market-locations.json';
+import { locations as libraries } from '../../data/public-library-locations.json';
+import { locations as starbucks } from '../../data/starbucks-locations.json';
+import { locations as wholeFoods } from '../../data/whole-foods-market-locations.json';
 
 // Initializations
 const regex = /\s+/g;
@@ -119,7 +119,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
           </Marker>
         ))}
 
-        {wholefoodsMarkets.map(curWholeFoods => (
+        {wholeFoods.map(curWholeFoods => (
           <Marker
             key={curWholeFoods.location.address}
             latitude={curWholeFoods.location.lat}

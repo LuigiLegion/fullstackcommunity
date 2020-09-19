@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import { signUpThunkCreator } from '../../store/reducers/authReducer';
 import fullstackCommunityAccessToken from '../../config/fscConfig';
-import { stations } from '../../data/nyc-subway-stations.json';
+import { locations as stations } from '../../data/subway-station-locations.json';
 
 // Initializations
 const defaultLocation = stations[0];
