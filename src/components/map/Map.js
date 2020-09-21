@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import { getMeetupsThunkCreator } from '../../store/reducers/meetupsReducer';
-import mapboxAccessToken from '../../config/mbglConfig';
 import { locations as libraries } from '../../data/public-library-locations.json';
 import { locations as starbucks } from '../../data/starbucks-locations.json';
 import { locations as wholeFoods } from '../../data/whole-foods-market-locations.json';
@@ -72,7 +71,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             zoom: newViewport.zoom,
           });
         }}
-        mapboxApiAccessToken={mapboxAccessToken}
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         onClick={clearSelected}
       >
         {libraries.map(curPublicLibrary => (
