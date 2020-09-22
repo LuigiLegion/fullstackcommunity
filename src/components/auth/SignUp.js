@@ -7,7 +7,6 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { signUpThunkCreator } from '../../store/reducers/authReducer';
-import fullstackCommunityAccessToken from '../../config/fscConfig';
 import { locations as stations } from '../../data/subway-station-locations.json';
 
 // Initializations
@@ -52,7 +51,7 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    if (state.accessToken === fullstackCommunityAccessToken) {
+    if (state.accessToken === process.env.REACT_APP_SIGNUP_ACCESS_TOKEN) {
       setState({
         ...state,
         accessTokenError: false,
