@@ -26,7 +26,6 @@ yarn-debug.log*
 yarn-error.log*
 
 src/config/fbConfig.js
-src/config/fscConfig.js
 src/data
 !src/data/public-library-locations.example.json
 !src/data/starbucks-locations.example.json
