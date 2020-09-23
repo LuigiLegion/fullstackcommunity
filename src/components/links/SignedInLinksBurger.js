@@ -28,7 +28,7 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
       width="50%"
       onStateChange={state => handleStateChange(state)}
     >
-      <div className="remove-outline">
+      <div className="outline-none">
         <div>
           <NavLink to="/" onClick={closeMenu}>
             <span className="navbar-text-color">
