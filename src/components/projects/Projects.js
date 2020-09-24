@@ -8,10 +8,14 @@ import ProjectPreview from './ProjectPreview';
 // Component
 const Projects = ({ projects }) => {
   return (
-    <div className="project-list section">
+    <div className="section">
       {projects &&
         projects.map(curProject => (
-          <NavLink key={curProject.id} to={`/project/${curProject.id}`}>
+          <NavLink
+            key={curProject.id}
+            to={`/project/${curProject.id}`}
+            className="project-preview-link"
+          >
             <ProjectPreview project={curProject} />
           </NavLink>
         ))}
