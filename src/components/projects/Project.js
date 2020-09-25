@@ -36,19 +36,15 @@ const Project = ({ auth, project }) => {
               {`Interested in working with ${project.authorFirstName} on this project?`}
             </div>
 
-            <div className="text-color-gray">
-              {`Contact them at `}
-
-              <a
-                href={`mailto:${project.authorEmail}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold text-color-blue">
-                  {project.authorEmail}
-                </span>
-              </a>
-            </div>
+            <a
+              href={`mailto:${project.authorEmail}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="text-style-bold text-color-blue">
+                Contact them!
+              </span>
+            </a>
           </div>
         </div>
       </div>
