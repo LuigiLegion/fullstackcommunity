@@ -81,7 +81,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             longitude={curPublicLibrary.lon}
           >
             <button
-              className="marker-btn"
+              className="marker-button"
               type="button"
               onClick={() => {
                 clearSelected();
@@ -103,7 +103,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             longitude={curStarbucks.longitude}
           >
             <button
-              className="marker-btn"
+              className="marker-button"
               type="button"
               onClick={() => {
                 clearSelected();
@@ -125,7 +125,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             longitude={curWholeFoods.location.lng}
           >
             <button
-              className="marker-btn"
+              className="marker-button"
               type="button"
               onClick={() => {
                 clearSelected();
@@ -149,7 +149,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   longitude={curMeetup.venue.lon}
                 >
                   <button
-                    className="marker-btn"
+                    className="marker-button"
                     type="button"
                     onClick={() => {
                       clearSelected();
@@ -201,7 +201,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                     longitude={curUser.locationGeocode.lon}
                   >
                     <button
-                      className="marker-btn"
+                      className="marker-button"
                       type="button"
                       onClick={() => {
                         clearSelected();
@@ -224,7 +224,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                     longitude={curUser.locationGeocode.lon}
                   >
                     <button
-                      className="marker-btn"
+                      className="marker-button"
                       type="button"
                       onClick={() => {
                         clearSelected();
@@ -247,7 +247,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                     longitude={curUser.locationGeocode.lon}
                   >
                     <button
-                      className="marker-btn"
+                      className="marker-button"
                       type="button"
                       onClick={() => {
                         clearSelected();
@@ -268,7 +268,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
 
         <Marker latitude={40.7042358} longitude={-73.9892133}>
           <button
-            className="marker-btn"
+            className="marker-button"
             type="button"
             onClick={() => {
               clearSelected();
@@ -284,7 +284,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
 
         <Marker latitude={40.7245956} longitude={-73.9976034}>
           <button
-            className="marker-btn"
+            className="marker-button"
             type="button"
             onClick={() => {
               clearSelected();
@@ -300,7 +300,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
 
         <Marker latitude={40.7050758} longitude={-74.0113491}>
           <button
-            className="marker-btn"
+            className="marker-button"
             type="button"
             onClick={() => {
               clearSelected();
