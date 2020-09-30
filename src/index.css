@@ -17,6 +17,18 @@ body {
   background-color: #101010;
 }
 
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #101010;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #eaeaea;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -29,7 +41,15 @@ form {
 
 form button,
 form h5 {
-  margin: 20px 0;
+  margin: 20px 0px;
+}
+
+a {
+  color: #42a5f5;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 input[type='text']:not(.browser-default):focus:not([readonly]),
@@ -40,8 +60,16 @@ textarea.materialize-textarea:focus:not([readonly]) {
   box-shadow: none;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
 .text-style-bold {
   font-weight: bold;
+}
+
+.text-style-italic {
+  font-style: italic;
 }
 
 .text-color-red {
@@ -56,6 +84,31 @@ textarea.materialize-textarea:focus:not([readonly]) {
   color: #101010;
 }
 
+.outline-none {
+  outline: none;
+}
+
+.preloader {
+  margin: 0px;
+}
+
+.progress.preloader.preloader-inner-color {
+  background-color: #ef5350;
+}
+
+.progress .indeterminate.preloader-outer-color {
+  background-color: #eaeaea;
+}
+
+.navbar-logo {
+  font-size: xx-large;
+  padding-left: 0.5em;
+}
+
+.navbar-logo:hover {
+  text-decoration: none;
+}
+
 .navbar {
   background-color: #101010;
   box-shadow: none;
@@ -63,14 +116,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .navbar-text-color {
   color: #fafafa;
-}
-
-.navbar-logo {
-  left: 30px;
-}
-
-.navbar-logo:hover {
-  text-decoration: none;
 }
 
 .navbar-link:hover {
@@ -106,13 +151,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
   border-radius: 50px;
 }
 
-.marker-btn {
+.marker-button {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.marker-btn img {
+.marker-button img {
   width: 30px;
   height: 30px;
 }
@@ -148,23 +193,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
   flex: 1;
 }
 
-.remove-outline {
-  outline: none;
-}
-
-.preloader {
-  margin: 0px;
-}
-
-.preloader-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.progress.preloader.preloader-inner-color {
-  background-color: #ef5350;
-}
-
-.progress .indeterminate.preloader-outer-color {
-  background-color: #eaeaea;
+.project-preview-link:hover {
+  text-decoration: none;
 }
