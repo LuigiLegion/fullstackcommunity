@@ -11,9 +11,9 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import { getMeetupsThunkCreator } from '../../store/reducers/meetupsReducer';
-import { locations as libraries } from '../../data/public-library-locations.json';
-import { locations as starbucks } from '../../data/starbucks-locations.json';
-import { locations as wholeFoods } from '../../data/whole-foods-market-locations.json';
+import { locations as libraries } from '../../data/public-library-locations';
+import { locations as starbucks } from '../../data/starbucks-locations';
+import { locations as wholeFoods } from '../../data/whole-foods-market-locations';
 
 // Initializations
 const regex = /\s+/g;

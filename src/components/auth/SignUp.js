@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { signUpThunkCreator } from '../../store/reducers/authReducer';
-import { locations as stations } from '../../data/subway-station-locations.json';
+import { locations as stations } from '../../data/subway-station-locations';
 
 // Initializations
 const defaultLocation = stations[0];
