@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Hello from './Hello';
 import { signOutThunkCreator } from '../../store/reducers/authReducer';
 
 // Component
@@ -12,9 +13,7 @@ const SignedInLinks = ({ profile, signOutThunk }) => {
     <ul className="right">
       <li className="navbar-link">
         <NavLink to="/">
-          <span className="navbar-text-color">
-            {`Hello${profile.firstName ? ', ' + profile.firstName : ''}.`}
-          </span>
+          <Hello firstName={profile.firstName} />
         </NavLink>
       </li>
 

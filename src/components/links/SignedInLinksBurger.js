@@ -5,6 +5,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Hello from './Hello';
 import { signOutThunkCreator } from '../../store/reducers/authReducer';
 import { burgerStyles } from '../../styles';
 
@@ -31,9 +32,7 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
       <div className="outline-none">
         <div>
           <NavLink to="/" onClick={closeMenu}>
-            <span className="navbar-text-color">
-              {`Hello${profile.firstName ? ', ' + profile.firstName : ''}.`}
-            </span>
+            <Hello firstName={profile.firstName} />
           </NavLink>
         </div>
 
