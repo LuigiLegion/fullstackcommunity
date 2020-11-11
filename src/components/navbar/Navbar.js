@@ -43,7 +43,7 @@ const Navbar = ({ auth, profile, isLoading }) => {
 
   return (
     <div className="navbar-fixed">
-      <nav className="nav-wrapper navbar">
+      <nav className="nav-wrapper navbar-background-color">
         <div>
           <NavLink to="/" className="left navbar-logo">
             <span className="text-style-bold navbar-text-color">
