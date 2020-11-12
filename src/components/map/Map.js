@@ -10,6 +10,7 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
+import MarkerLibrary from './MarkerLibrary';
 import { getMeetupsThunkCreator } from '../../store/reducers/meetupsReducer';
 import { locations as libraries } from '../../data/public-library-locations';
 import { locations as starbucks } from '../../data/starbucks-locations';
@@ -38,7 +39,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
   const [selectedMeetup, setSelectedMeetup] = useState(null);
   const [selectedStarbucks, setSelectedStarbucks] = useState(null);
   const [selectedWholeFoods, setSelectedWholeFoods] = useState(null);
-  const [selectedPublicLibrary, setSelectedPublicLibrary] = useState(null);
+  const [selectedLibrary, setSelectedLibrary] = useState(null);
 
   const clearSelected = () => {
     setSelectedAlum(null);
@@ -48,7 +49,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
     setSelectedMeetup(null);
     setSelectedStarbucks(null);
     setSelectedWholeFoods(null);
-    setSelectedPublicLibrary(null);
+    setSelectedLibrary(null);
   };
 
   useEffect(() => {
@@ -74,26 +75,13 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         onClick={clearSelected}
       >
-        {libraries.map(curPublicLibrary => (
-          <Marker
-            key={curPublicLibrary.id}
-            latitude={curPublicLibrary.lat}
-            longitude={curPublicLibrary.lon}
-          >
-            <button
-              className="marker-button"
-              type="button"
-              onClick={() => {
-                clearSelected();
-                setSelectedPublicLibrary(curPublicLibrary);
-              }}
-            >
-              <img
-                src="https://img.icons8.com/dusk/64/000000/book-shelf.png"
-                alt="Public Library Icon"
-              />
-            </button>
-          </Marker>
+        {libraries.map(curLibrary => (
+          <MarkerLibrary
+            key={curLibrary.id}
+            library={curLibrary}
+            clearSelected={clearSelected}
+            setSelectedLibrary={setSelectedLibrary}
+          />
         ))}
 
         {starbucks.map(curStarbucks => (
@@ -315,16 +303,15 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
           </button>
         </Marker>
 
-        {selectedPublicLibrary ? (
+        {selectedLibrary ? (
           <Popup
-            latitude={selectedPublicLibrary.lat}
-            longitude={selectedPublicLibrary.lon}
+            latitude={selectedLibrary.lat}
+            longitude={selectedLibrary.lon}
             closeOnClick={false}
-            onClose={() => setSelectedPublicLibrary(null)}
+            onClose={() => setSelectedLibrary(null)}
           >
             <div className="text-style-bold location-description">
-              {selectedPublicLibrary.oversightAgency} -{' '}
-              {selectedPublicLibrary.address}
+              {selectedLibrary.oversightAgency} - {selectedLibrary.address}
             </div>
 
             <hr />
@@ -335,68 +322,61 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
 
                 <div>
                   <span className="text-style-bold">Monday: </span>
-                  {selectedPublicLibrary.monOpen} -{' '}
-                  {selectedPublicLibrary.monClose}
-                  {selectedPublicLibrary.monReopen
-                    ? `, ${selectedPublicLibrary.monReopen}-${selectedPublicLibrary.monReclose}`
+                  {selectedLibrary.monOpen} - {selectedLibrary.monClose}
+                  {selectedLibrary.monReopen
+                    ? `, ${selectedLibrary.monReopen}-${selectedLibrary.monReclose}`
                     : null}
                 </div>
 
                 <div>
                   <span className="text-style-bold">Tuesday: </span>
-                  {selectedPublicLibrary.tueOpen} -{' '}
-                  {selectedPublicLibrary.tueClose}
-                  {selectedPublicLibrary.tueReopen
-                    ? `, ${selectedPublicLibrary.tueReopen}-${selectedPublicLibrary.tueReclose}`
+                  {selectedLibrary.tueOpen} - {selectedLibrary.tueClose}
+                  {selectedLibrary.tueReopen
+                    ? `, ${selectedLibrary.tueReopen}-${selectedLibrary.tueReclose}`
                     : null}
                 </div>
 
                 <div>
                   <span className="text-style-bold">Wednesday: </span>
-                  {selectedPublicLibrary.wedOpen} -{' '}
-                  {selectedPublicLibrary.wedClose}
-                  {selectedPublicLibrary.wedReopen
-                    ? `, ${selectedPublicLibrary.wedReopen}-${selectedPublicLibrary.wedReclose}`
+                  {selectedLibrary.wedOpen} - {selectedLibrary.wedClose}
+                  {selectedLibrary.wedReopen
+                    ? `, ${selectedLibrary.wedReopen}-${selectedLibrary.wedReclose}`
                     : null}
                 </div>
 
                 <div>
                   <span className="text-style-bold">Thursday: </span>
-                  {selectedPublicLibrary.thuOpen} -{' '}
-                  {selectedPublicLibrary.thuClose}
-                  {selectedPublicLibrary.thuReopen
-                    ? `, ${selectedPublicLibrary.thuReopen}-${selectedPublicLibrary.thuReclose}`
+                  {selectedLibrary.thuOpen} - {selectedLibrary.thuClose}
+                  {selectedLibrary.thuReopen
+                    ? `, ${selectedLibrary.thuReopen}-${selectedLibrary.thuReclose}`
                     : null}
                 </div>
 
                 <div>
                   <span className="text-style-bold">Friday: </span>
-                  {selectedPublicLibrary.friOpen} -{' '}
-                  {selectedPublicLibrary.friClose}
-                  {selectedPublicLibrary.friReopen
-                    ? `, ${selectedPublicLibrary.friReopen}-${selectedPublicLibrary.friReclose}`
+                  {selectedLibrary.friOpen} - {selectedLibrary.friClose}
+                  {selectedLibrary.friReopen
+                    ? `, ${selectedLibrary.friReopen}-${selectedLibrary.friReclose}`
                     : null}
                 </div>
 
                 <div>
                   <span className="text-style-bold">Saturday: </span>
-                  {selectedPublicLibrary.satOpen} -{' '}
-                  {selectedPublicLibrary.satClose}
-                  {selectedPublicLibrary.satReopen
-                    ? `, ${selectedPublicLibrary.satReopen}-${selectedPublicLibrary.satReclose}`
+                  {selectedLibrary.satOpen} - {selectedLibrary.satClose}
+                  {selectedLibrary.satReopen
+                    ? `, ${selectedLibrary.satReopen}-${selectedLibrary.satReclose}`
                     : null}
                 </div>
 
                 <div>
                   <span className="text-style-bold">Sunday: </span>
-                  {selectedPublicLibrary.sunOpen === 'Closed' ? (
-                    selectedPublicLibrary.sunOpen
+                  {selectedLibrary.sunOpen === 'Closed' ? (
+                    selectedLibrary.sunOpen
                   ) : (
                     <div>
-                      {selectedPublicLibrary.sunOpen} -{' '}
-                      {selectedPublicLibrary.sunClose}
-                      {selectedPublicLibrary.sunReopen
-                        ? `, ${selectedPublicLibrary.sunReopen}-${selectedPublicLibrary.sunReclose}`
+                      {selectedLibrary.sunOpen} - {selectedLibrary.sunClose}
+                      {selectedLibrary.sunReopen
+                        ? `, ${selectedLibrary.sunReopen}-${selectedLibrary.sunReclose}`
                         : null}
                     </div>
                   )}
@@ -409,10 +389,10 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                 href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
                   regex,
                   '+'
-                )}+Subway+Station&destination=${selectedPublicLibrary.oversightAgency.replace(
+                )}+Subway+Station&destination=${selectedLibrary.oversightAgency.replace(
                   regex,
                   '+'
-                )}+${selectedPublicLibrary.address.replace(
+                )}+${selectedLibrary.address.replace(
                   regex,
                   '+'
                 )}&travelmode=transit`}
