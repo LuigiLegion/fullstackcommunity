@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import MarkerLibrary from './MarkerLibrary';
+import MapMarker from './MapMarker';
 import { getMeetupsThunkCreator } from '../../store/reducers/meetupsReducer';
 import { locations as libraries } from '../../data/public-library-locations';
 import { locations as starbucks } from '../../data/starbucks-locations';
@@ -76,80 +76,57 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
         onClick={clearSelected}
       >
         {libraries.map(curLibrary => (
-          <MarkerLibrary
+          <MapMarker
             key={curLibrary.id}
-            library={curLibrary}
+            location={curLibrary}
+            latitude={curLibrary.lat}
+            longitude={curLibrary.lon}
+            setSelected={setSelectedLibrary}
             clearSelected={clearSelected}
-            setSelectedLibrary={setSelectedLibrary}
+            src="https://img.icons8.com/dusk/64/000000/book-shelf.png"
+            alt="Public Library Icon"
           />
         ))}
 
         {starbucks.map(curStarbucks => (
-          <Marker
+          <MapMarker
             key={curStarbucks.storeId}
+            location={curStarbucks}
             latitude={curStarbucks.latitude}
             longitude={curStarbucks.longitude}
-          >
-            <button
-              className="marker-button"
-              type="button"
-              onClick={() => {
-                clearSelected();
-                setSelectedStarbucks(curStarbucks);
-              }}
-            >
-              <img
-                src="https://img.icons8.com/color/48/000000/starbucks.png"
-                alt="Starbucks Icon"
-              />
-            </button>
-          </Marker>
+            setSelected={setSelectedStarbucks}
+            clearSelected={clearSelected}
+            src="https://img.icons8.com/color/48/000000/starbucks.png"
+            alt="Starbucks Icon"
+          />
         ))}
 
         {wholeFoods.map(curWholeFoods => (
-          <Marker
+          <MapMarker
             key={curWholeFoods.location.address}
+            location={curWholeFoods}
             latitude={curWholeFoods.location.lat}
             longitude={curWholeFoods.location.lng}
-          >
-            <button
-              className="marker-button"
-              type="button"
-              onClick={() => {
-                clearSelected();
-                setSelectedWholeFoods(curWholeFoods);
-              }}
-            >
-              <img
-                src="https://img.icons8.com/color/48/000000/amazon.png"
-                alt="Whole Foods Market Icon"
-              />
-            </button>
-          </Marker>
+            setSelected={setSelectedWholeFoods}
+            clearSelected={clearSelected}
+            src="https://img.icons8.com/color/48/000000/amazon.png"
+            alt="Whole Foods Market Icon"
+          />
         ))}
 
         {allMeetups
           ? allMeetups.map(curMeetup => {
               return curMeetup.venue ? (
-                <Marker
+                <MapMarker
                   key={curMeetup.id}
+                  location={curMeetup}
                   latitude={curMeetup.venue.lat}
                   longitude={curMeetup.venue.lon}
-                >
-                  <button
-                    className="marker-button"
-                    type="button"
-                    onClick={() => {
-                      clearSelected();
-                      setSelectedMeetup(curMeetup);
-                    }}
-                  >
-                    <img
-                      src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
-                      alt="Meetup Icon"
-                    />
-                  </button>
-                </Marker>
+                  setSelected={setSelectedMeetup}
+                  clearSelected={clearSelected}
+                  src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
+                  alt="Meetup Icon"
+                />
               ) : null;
             })
           : null}
@@ -168,6 +145,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                     firstRenderWithUsers: false,
                   });
                 }
+
                 return (
                   <Marker
                     key={curUser.id}
@@ -254,54 +232,33 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             })
           : null}
 
-        <Marker latitude={40.7042358} longitude={-73.9892133}>
-          <button
-            className="marker-button"
-            type="button"
-            onClick={() => {
-              clearSelected();
-              setSelectedFreelancersHub(true);
-            }}
-          >
-            <img
-              src="https://img.icons8.com/dusk/64/000000/under-computer.png"
-              alt="Freelancers Hub Location Icon"
-            />
-          </button>
-        </Marker>
+        <MapMarker
+          latitude={40.7042358}
+          longitude={-73.9892133}
+          setSelected={setSelectedFreelancersHub}
+          clearSelected={clearSelected}
+          src="https://img.icons8.com/dusk/64/000000/under-computer.png"
+          alt="Freelancers Hub Location Icon"
+        />
 
-        <Marker latitude={40.7245956} longitude={-73.9976034}>
-          <button
-            className="marker-button"
-            type="button"
-            onClick={() => {
-              clearSelected();
-              setSelectedAwsLoft(true);
-            }}
-          >
-            <img
-              src="https://img.icons8.com/dusk/64/000000/under-computer.png"
-              alt="AWS Loft Location Icon"
-            />
-          </button>
-        </Marker>
+        <MapMarker
+          latitude={40.7245956}
+          longitude={-73.9976034}
+          setSelected={setSelectedAwsLoft}
+          clearSelected={clearSelected}
+          src="https://img.icons8.com/dusk/64/000000/under-computer.png"
+          alt="AWS Loft Location Icon"
+        />
 
-        <Marker latitude={40.7050758} longitude={-74.0113491}>
-          <button
-            className="marker-button"
-            type="button"
-            onClick={() => {
-              clearSelected();
-              setSelectedCampus(true);
-            }}
-          >
-            <img
-              className="marker-fullstack"
-              src="https://yt3.ggpht.com/a/AGF-l78JV4ZDPmU85HhYboU07siMZjFL_dHgm6o6Zg=s288-mo-c-c0xffffffff-rj-k-no"
-              alt="Fullstack Academy Location Icon"
-            />
-          </button>
-        </Marker>
+        <MapMarker
+          latitude={40.7050758}
+          longitude={-74.0113491}
+          setSelected={setSelectedCampus}
+          clearSelected={clearSelected}
+          markerClass="marker-fullstack"
+          src="https://yt3.ggpht.com/a/AGF-l78JV4ZDPmU85HhYboU07siMZjFL_dHgm6o6Zg=s288-mo-c-c0xffffffff-rj-k-no"
+          alt="Fullstack Academy Location Icon"
+        />
 
         {selectedLibrary ? (
           <Popup
