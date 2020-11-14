@@ -5,18 +5,19 @@ import PropTypes from 'prop-types';
 
 // Component
 const MapMarker = ({
-  location,
+  location = true,
   latitude,
   longitude,
   setSelected,
   clearSelected,
+  markerClass = 'marker-button',
   src,
   alt,
 }) => {
   return (
     <Marker latitude={latitude} longitude={longitude}>
       <button
-        className="marker-button"
+        className={markerClass}
         type="button"
         onClick={() => {
           clearSelected();
@@ -31,11 +32,12 @@ const MapMarker = ({
 
 // Prop Types
 MapMarker.propTypes = {
-  location: PropTypes.object,
+  location: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   latitude: PropTypes.number,
   longitude: PropTypes.number,
   setSelected: PropTypes.func,
   clearSelected: PropTypes.func,
+  markerClass: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
 };
