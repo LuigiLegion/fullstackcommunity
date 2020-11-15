@@ -10,14 +10,13 @@ const MapMarker = ({
   longitude,
   setSelected,
   clearSelected,
-  markerClass = 'marker-button',
   src,
   alt,
 }) => {
   return (
     <Marker latitude={latitude} longitude={longitude}>
       <button
-        className={markerClass}
+        className="marker-button"
         type="button"
         onClick={() => {
           clearSelected();
@@ -37,7 +36,6 @@ MapMarker.propTypes = {
   longitude: PropTypes.number,
   setSelected: PropTypes.func,
   clearSelected: PropTypes.func,
-  markerClass: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
 };
