@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Component
-const Spaces = () => {
+const WorkSpaces = () => {
   return (
     <div className="section">
       <div className="card grey lighten-5">
@@ -86,4 +86,4 @@ const Spaces = () => {
 };
 
 // Exports
-export default Spaces;
+export default WorkSpaces;
