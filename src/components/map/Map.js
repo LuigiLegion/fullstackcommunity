@@ -83,7 +83,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             longitude={curLibrary.lon}
             setSelected={setSelectedLibrary}
             clearSelected={clearSelected}
-            src="https://img.icons8.com/dusk/64/000000/book-shelf.png"
+            src="/icons/library.png"
             alt="Public Library Icon"
           />
         ))}
@@ -96,7 +96,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             longitude={curStarbucks.longitude}
             setSelected={setSelectedStarbucks}
             clearSelected={clearSelected}
-            src="https://img.icons8.com/color/48/000000/starbucks.png"
+            src="/icons/starbucks.png"
             alt="Starbucks Icon"
           />
         ))}
@@ -109,7 +109,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             longitude={curWholeFoods.location.lng}
             setSelected={setSelectedWholeFoods}
             clearSelected={clearSelected}
-            src="https://img.icons8.com/color/48/000000/amazon.png"
+            src="/icons/whole-foods.png"
             alt="Whole Foods Market Icon"
           />
         ))}
@@ -124,7 +124,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   longitude={curMeetup.venue.lon}
                   setSelected={setSelectedMeetup}
                   clearSelected={clearSelected}
-                  src="https://img.icons8.com/ios-filled/50/000000/meetup.png"
+                  src="/icons/meetup.png"
                   alt="Meetup Icon"
                 />
               ) : null;
@@ -152,11 +152,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                     latitude={curUser.locationGeocode.lat}
                     longitude={curUser.locationGeocode.lon}
                   >
-                    <img
-                      className="marker-me"
-                      src="https://img.icons8.com/dusk/64/000000/student-center.png"
-                      alt="My Location Icon"
-                    />
+                    <img src="/icons/home.png" alt="My Location Icon" />
                   </Marker>
                 );
               } else if (curUser.status === 'Unemployed') {
@@ -175,8 +171,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                       }}
                     >
                       <img
-                        className="marker-others"
-                        src="https://img.icons8.com/dusk/64/000000/find-matching-job.png"
+                        src="/icons/unemployed.png"
                         alt="Seeking Opportunities Others Location Icon"
                       />
                     </button>
@@ -198,8 +193,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                       }}
                     >
                       <img
-                        className="marker-others"
-                        src="https://img.icons8.com/dusk/64/000000/new-job.png"
+                        src="/icons/employed.png"
                         alt="Employed Others Location Icon"
                       />
                     </button>
@@ -221,8 +215,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                       }}
                     >
                       <img
-                        className="marker-others"
-                        src="https://img.icons8.com/dusk/64/000000/student-male.png"
+                        src="/icons/student.png"
                         alt="Others Location Icon"
                       />
                     </button>
@@ -237,7 +230,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
           longitude={-73.9892133}
           setSelected={setSelectedFreelancersHub}
           clearSelected={clearSelected}
-          src="https://img.icons8.com/dusk/64/000000/under-computer.png"
+          src="/icons/work-space.png"
           alt="Freelancers Hub Location Icon"
         />
 
@@ -246,7 +239,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
           longitude={-73.9976034}
           setSelected={setSelectedAwsLoft}
           clearSelected={clearSelected}
-          src="https://img.icons8.com/dusk/64/000000/under-computer.png"
+          src="/icons/work-space.png"
           alt="AWS Loft Location Icon"
         />
 
@@ -255,8 +248,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
           longitude={-74.0113491}
           setSelected={setSelectedCampus}
           clearSelected={clearSelected}
-          markerClass="marker-fullstack"
-          src="https://yt3.ggpht.com/a/AGF-l78JV4ZDPmU85HhYboU07siMZjFL_dHgm6o6Zg=s288-mo-c-c0xffffffff-rj-k-no"
+          src="/icons/fullstack-academy.png"
           alt="Fullstack Academy Location Icon"
         />
 
