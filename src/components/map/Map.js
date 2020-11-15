@@ -155,43 +155,17 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                     <img src="/icons/home.png" alt="My Location Icon" />
                   </Marker>
                 );
-              } else if (curUser.status === 'Unemployed') {
-                return (
-                  <MapMarker
-                    key={curUser.id}
-                    location={curUser}
-                    latitude={curUser.locationGeocode.lat}
-                    longitude={curUser.locationGeocode.lon}
-                    setSelected={setSelectedAlum}
-                    clearSelected={clearSelected}
-                    src="/icons/unemployed.png"
-                    alt="Alum Location Icon"
-                  />
-                );
-              } else if (curUser.status === 'Employed') {
-                return (
-                  <MapMarker
-                    key={curUser.id}
-                    location={curUser}
-                    latitude={curUser.locationGeocode.lat}
-                    longitude={curUser.locationGeocode.lon}
-                    setSelected={setSelectedAlum}
-                    clearSelected={clearSelected}
-                    src="/icons/employed.png"
-                    alt="Alum Location Icon"
-                  />
-                );
               } else {
                 return (
-                  <Marker
+                  <MapMarker
                     key={curUser.id}
                     location={curUser}
                     latitude={curUser.locationGeocode.lat}
                     longitude={curUser.locationGeocode.lon}
                     setSelected={setSelectedAlum}
                     clearSelected={clearSelected}
-                    src="/icons/student.png"
-                    alt="Alum Location Icon"
+                    src={`/icons/${curUser.status.toLowerCase()}.png`}
+                    alt={`${curUser.status} Alum Location Icon`}
                   />
                 );
               }
