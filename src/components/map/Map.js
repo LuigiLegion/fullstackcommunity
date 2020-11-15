@@ -2,7 +2,7 @@
 
 // Imports
 import React, { useState, useEffect } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import ReactMapGL, { Popup } from 'react-map-gl';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
@@ -147,13 +147,16 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                 }
 
                 return (
-                  <Marker
+                  <MapMarker
                     key={curUser.id}
+                    location={curUser}
                     latitude={curUser.locationGeocode.lat}
                     longitude={curUser.locationGeocode.lon}
-                  >
-                    <img src="/icons/home.png" alt="My Location Icon" />
-                  </Marker>
+                    setSelected={setSelectedAlum}
+                    clearSelected={clearSelected}
+                    src="/icons/home.png"
+                    alt="My Location Icon"
+                  />
                 );
               } else {
                 return (
