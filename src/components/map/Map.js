@@ -157,69 +157,42 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                 );
               } else if (curUser.status === 'Unemployed') {
                 return (
-                  <Marker
+                  <MapMarker
                     key={curUser.id}
+                    location={curUser}
                     latitude={curUser.locationGeocode.lat}
                     longitude={curUser.locationGeocode.lon}
-                  >
-                    <button
-                      className="marker-button"
-                      type="button"
-                      onClick={() => {
-                        clearSelected();
-                        setSelectedAlum(curUser);
-                      }}
-                    >
-                      <img
-                        src="/icons/unemployed.png"
-                        alt="Seeking Opportunities Others Location Icon"
-                      />
-                    </button>
-                  </Marker>
+                    setSelected={setSelectedAlum}
+                    clearSelected={clearSelected}
+                    src="/icons/unemployed.png"
+                    alt="Alum Location Icon"
+                  />
                 );
               } else if (curUser.status === 'Employed') {
                 return (
-                  <Marker
+                  <MapMarker
                     key={curUser.id}
+                    location={curUser}
                     latitude={curUser.locationGeocode.lat}
                     longitude={curUser.locationGeocode.lon}
-                  >
-                    <button
-                      className="marker-button"
-                      type="button"
-                      onClick={() => {
-                        clearSelected();
-                        setSelectedAlum(curUser);
-                      }}
-                    >
-                      <img
-                        src="/icons/employed.png"
-                        alt="Employed Others Location Icon"
-                      />
-                    </button>
-                  </Marker>
+                    setSelected={setSelectedAlum}
+                    clearSelected={clearSelected}
+                    src="/icons/employed.png"
+                    alt="Alum Location Icon"
+                  />
                 );
               } else {
                 return (
                   <Marker
                     key={curUser.id}
+                    location={curUser}
                     latitude={curUser.locationGeocode.lat}
                     longitude={curUser.locationGeocode.lon}
-                  >
-                    <button
-                      className="marker-button"
-                      type="button"
-                      onClick={() => {
-                        clearSelected();
-                        setSelectedAlum(curUser);
-                      }}
-                    >
-                      <img
-                        src="/icons/student.png"
-                        alt="Others Location Icon"
-                      />
-                    </button>
-                  </Marker>
+                    setSelected={setSelectedAlum}
+                    clearSelected={clearSelected}
+                    src="/icons/student.png"
+                    alt="Alum Location Icon"
+                  />
                 );
               }
             })
