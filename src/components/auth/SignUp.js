@@ -21,9 +21,9 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
     firstName: '',
     lastName: '',
     gender: 'Male',
-    status: 'Junior',
+    status: 'Student',
     company: '',
-    cohort: '1911',
+    cohort: '2004',
     program: 'FSA-NY',
     location: defaultLocation,
     accessToken: '',
@@ -205,8 +205,7 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
               <option value="" disabled>
                 --Please choose an option--
               </option>
-              <option value="Junior">Student - Junior Phase</option>
-              <option value="Senior">Student - Senior Phase</option>
+              <option value="Student">Student</option>
               <option value="Unemployed">Alum - Seeking Opportunities</option>
               <option value="Employed">Alum - Employed</option>
             </select>
@@ -245,7 +244,7 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
               <option value="" disabled>
                 --Please choose an option--
               </option>
-              <option value="2001">2004</option>
+              <option value="2004">2004</option>
               <option value="2001">2001</option>
               <option value="1911">1911</option>
               <option value="1909">1909</option>
