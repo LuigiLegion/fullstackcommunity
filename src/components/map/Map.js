@@ -84,7 +84,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             setSelected={setSelectedLibrary}
             clearSelected={clearSelected}
             src="/icons/library.png"
-            alt="Public Library Icon"
+            alt="Public Library Location Icon"
           />
         ))}
 
@@ -97,7 +97,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             setSelected={setSelectedStarbucks}
             clearSelected={clearSelected}
             src="/icons/starbucks.png"
-            alt="Starbucks Icon"
+            alt="Starbucks Location Icon"
           />
         ))}
 
@@ -110,7 +110,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
             setSelected={setSelectedWholeFoods}
             clearSelected={clearSelected}
             src="/icons/whole-foods.png"
-            alt="Whole Foods Market Icon"
+            alt="Whole Foods Market Location Icon"
           />
         ))}
 
@@ -125,7 +125,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
                   setSelected={setSelectedMeetup}
                   clearSelected={clearSelected}
                   src="/icons/meetup.png"
-                  alt="Meetup Icon"
+                  alt="Meetup Location Icon"
                 />
               ) : null;
             })
@@ -231,7 +231,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
           setSelected={setSelectedFreelancersHub}
           clearSelected={clearSelected}
           src="/icons/work-space.png"
-          alt="Freelancers Hub Location Icon"
+          alt="Freelancers Hub Work Space Location Icon"
         />
 
         <MapMarker
@@ -240,7 +240,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
           setSelected={setSelectedAwsLoft}
           clearSelected={clearSelected}
           src="/icons/work-space.png"
-          alt="AWS Loft Location Icon"
+          alt="AWS Loft Work Space Location Icon"
         />
 
         <MapMarker
@@ -249,7 +249,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
           setSelected={setSelectedCampus}
           clearSelected={clearSelected}
           src="/icons/fullstack-academy.png"
-          alt="Fullstack Academy Location Icon"
+          alt="Fullstack Academy Campus Location Icon"
         />
 
         {selectedLibrary ? (
