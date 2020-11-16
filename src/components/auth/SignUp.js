@@ -23,7 +23,7 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
     gender: 'Male',
     status: 'Student',
     company: '',
-    cohort: '2004',
+    cohort: '2011',
     program: 'FSA-NY',
     location: defaultLocation,
     accessToken: '',
@@ -244,6 +244,9 @@ const SignUp = ({ auth, signUpError, signUpThunk }) => {
               <option value="" disabled>
                 --Please choose an option--
               </option>
+              <option value="2011">2011</option>
+              <option value="2009">2009</option>
+              <option value="2006">2006</option>
               <option value="2004">2004</option>
               <option value="2001">2001</option>
               <option value="1911">1911</option>
