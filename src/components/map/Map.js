@@ -20,7 +20,7 @@ import { locations as wholeFoods } from '../../data/whole-foods-market-locations
 const regex = /\s+/g;
 
 // Component
-const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
+const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
   const [viewport, setViewport] = useState({
     width: '100vw',
     height: '91vh',
@@ -114,8 +114,8 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
           />
         ))}
 
-        {allMeetups
-          ? allMeetups.map(curMeetup => {
+        {meetups
+          ? meetups.map(curMeetup => {
               return curMeetup.venue ? (
                 <MapMarker
                   key={curMeetup.id}
@@ -639,7 +639,7 @@ const Map = ({ auth, users, allMeetups, fetchedMeetups, getMeetupsThunk }) => {
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
   users: state.firestore.ordered.users,
-  allMeetups: state.meetups.allMeetups,
+  meetups: state.meetups.meetups,
   fetchedMeetups: state.meetups.fetchedMeetups,
 });
 
@@ -651,7 +651,7 @@ const mapDispatchToProps = dispatch => ({
 Map.propTypes = {
   auth: PropTypes.object,
   users: PropTypes.array,
-  allMeetups: PropTypes.array,
+  meetups: PropTypes.array,
   fetchedMeetups: PropTypes.bool,
   getMeetupsThunk: PropTypes.func,
 };
