@@ -1,6 +1,6 @@
 # Fullstack Community - Always Be Coding. Together.
 
-![Fullstack Community Screenshot](./public/img/screenshot.png)
+![Fullstack Community Screenshot](./public/screenshot.png)
 
 ### Video Presentation:
 
