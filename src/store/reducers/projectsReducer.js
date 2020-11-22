@@ -43,12 +43,12 @@ export const createProjectThunkCreator = project => {
       });
 
       dispatch(createdProjectSuccessActionCreator(project));
-      dispatch(toggledPreloaderActionCreator(false));
 
       toastNotification('New Project Created Successfully', 'green');
     } catch (error) {
       console.error(error);
       dispatch(createdProjectErrorActionCreator(error));
+    } finally {
       dispatch(toggledPreloaderActionCreator(false));
     }
   };

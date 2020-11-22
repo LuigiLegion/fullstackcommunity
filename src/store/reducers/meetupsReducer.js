@@ -42,12 +42,12 @@ export const getMeetupsThunkCreator = () => {
       );
 
       dispatch(gotMeetupsSuccessActionCreator(meetups));
-      dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
       dispatch(gotMeetupsErrorActionCreator(error));
-      dispatch(toggledPreloaderActionCreator(false));
       toastNotification('Error! Unable To Fetch Meetups', 'red');
+    } finally {
+      dispatch(toggledPreloaderActionCreator(false));
     }
   };
 };

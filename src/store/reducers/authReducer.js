@@ -87,10 +87,10 @@ export const signUpThunkCreator = newUser => {
         });
 
       dispatch(signedUpSuccessActionCreator());
-      dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
       dispatch(signedUpErrorActionCreator(error));
+    } finally {
       dispatch(toggledPreloaderActionCreator(false));
     }
   };
@@ -111,10 +111,10 @@ export const signInThunkCreator = userCredentials => {
         );
 
       dispatch(signedInSuccessActionCreator());
-      dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
       dispatch(signedInErrorActionCreator(error));
+    } finally {
       dispatch(toggledPreloaderActionCreator(false));
     }
   };
@@ -130,10 +130,10 @@ export const signOutThunkCreator = () => {
       await firebase.auth().signOut();
 
       dispatch(signedOutSuccessActionCreator());
-      dispatch(toggledPreloaderActionCreator(false));
     } catch (error) {
       console.error(error);
       dispatch(signedOutErrorActionCreator(error));
+    } finally {
       dispatch(toggledPreloaderActionCreator(false));
     }
   };
