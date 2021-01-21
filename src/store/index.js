@@ -27,3 +27,7 @@ const store = createStore(rootReducer, middleware);
 
 // Exports
 export default store;
+export * from './reducers/authReducer';
+export * from './reducers/projectsReducer';
+export * from './reducers/meetupsReducer';
+export * from './reducers/layoutReducer';
