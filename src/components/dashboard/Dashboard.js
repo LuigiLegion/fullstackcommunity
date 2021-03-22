@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import Projects from '../projects/Projects';
 import Notifications from './Notifications';
 import Spaces from './WorkSpaces';
-import { getMeetupsThunkCreator } from '../../store/reducers/meetupsReducer';
+import { getMeetupsThunkCreator } from '../../store';
 
 // Component
 const Dashboard = ({

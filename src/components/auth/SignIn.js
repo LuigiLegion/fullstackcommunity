@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { signInThunkCreator } from '../../store/reducers/authReducer';
+import { signInThunkCreator } from '../../store';
 
 // Component
 const SignIn = ({ auth, signInError, signInThunk }) => {

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import MapMarker from './MapMarker';
-import { getMeetupsThunkCreator } from '../../store/reducers/meetupsReducer';
+import { getMeetupsThunkCreator } from '../../store';
 import { locations as libraries } from '../../data/public-library-locations';
 import { locations as starbucks } from '../../data/starbucks-locations';
 import { locations as wholeFoods } from '../../data/whole-foods-market-locations';

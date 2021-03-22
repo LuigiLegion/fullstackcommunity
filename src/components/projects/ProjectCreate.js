@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { createProjectThunkCreator } from '../../store/reducers/projectsReducer';
+import { createProjectThunkCreator } from '../../store';
 
 // Component
 const ProjectCreate = ({ auth, createProjectThunk, history }) => {

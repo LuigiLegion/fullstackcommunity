@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { signUpThunkCreator } from '../../store/reducers/authReducer';
+import { signUpThunkCreator } from '../../store';
 import { locations as stations } from '../../data/subway-station-locations';
 
 // Initializations

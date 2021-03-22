@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Hello from './Hello';
-import { signOutThunkCreator } from '../../store/reducers/authReducer';
+import { signOutThunkCreator } from '../../store';
 
 // Component
 const SignedInLinks = ({ profile, signOutThunk }) => {
