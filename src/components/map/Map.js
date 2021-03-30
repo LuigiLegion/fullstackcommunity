@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import MapMarker from './MapMarker';
+import { MapMarker } from '..';
 import { getMeetupsThunkCreator } from '../../store';
 import { locations as libraries } from '../../data/public-library-locations';
 import { locations as starbucks } from '../../data/starbucks-locations';

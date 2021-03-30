@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Hello from './Hello';
+import { Hello } from '..';
 import { signOutThunkCreator } from '../../store';
 
 // Component

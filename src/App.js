@@ -2,14 +2,16 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Navbar from './components/navbar/Navbar';
-import Dashboard from './components/dashboard/Dashboard';
-import SignIn from './components/auth/SignIn';
-import SignUp from './components/auth/SignUp';
-import Map from './components/map/Map';
-import ProjectCreate from './components/projects/ProjectCreate';
-import Project from './components/projects/Project';
-import PageNotFound from './components/404/PageNotFound';
+import {
+  Navbar,
+  Dashboard,
+  SignIn,
+  SignUp,
+  Map,
+  ProjectCreate,
+  Project,
+  PageNotFound,
+} from './components';
 
 // Component
 const App = () => {

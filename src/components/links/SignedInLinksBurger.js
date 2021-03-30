@@ -5,7 +5,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Hello from './Hello';
+import { Hello } from '..';
 import { signOutThunkCreator } from '../../store';
 import { burgerStyles } from '../../styles';
 

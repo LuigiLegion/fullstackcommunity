@@ -6,9 +6,7 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 
-import Projects from '../projects/Projects';
-import Notifications from './Notifications';
-import Spaces from './WorkSpaces';
+import { Projects, Notifications, Spaces } from '..';
 import { getMeetupsThunkCreator } from '../../store';
 
 // Component

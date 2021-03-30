@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import ProjectPreview from './ProjectPreview';
+import { ProjectPreview } from '..';
 
 // Component
 const Projects = ({ projects }) => {

@@ -4,11 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import SignedInLinks from '../links/SignedInLinks';
-import SignedInLinksBurger from '../links/SignedInLinksBurger';
-import SignedOutLinks from '../links/SignedOutLinks';
-import SignedOutLinksBurger from '../links/SignedOutLinksBurger';
-import Preloader from './Preloader';
+import {
+  SignedInLinks,
+  SignedInLinksBurger,
+  SignedOutLinks,
+  SignedOutLinksBurger,
+  Preloader,
+} from '..';
 
 // Component
 const Navbar = ({ auth, profile, isLoading }) => {
