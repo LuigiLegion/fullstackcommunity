@@ -13,6 +13,16 @@ const SignedOutLinks = () => {
       </li>
 
       <li className="navbar-link">
+        <a
+          href="https://taluigi.netlify.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="text-style-bold navbar-text-color">Contact</span>
+        </a>
+      </li>
+
+      <li className="navbar-link">
         <NavLink to="/signin">
           <span className="text-style-bold navbar-text-color">Sign In</span>
         </NavLink>

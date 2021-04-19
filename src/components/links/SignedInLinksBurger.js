@@ -77,6 +77,17 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
         </div>
 
         <div>
+          <a
+            href="https://taluigi.netlify.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={closeMenu}
+          >
+            <span className="text-style-bold navbar-text-color">Contact</span>
+          </a>
+        </div>
+
+        <div>
           <NavLink
             to="/"
             onClick={() => {
