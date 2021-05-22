@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 
-import { Projects, Notifications, Spaces } from '..';
+import { Projects, Notifications, WorkSpaces } from '..';
 import { getMeetupsThunkCreator } from '../../store';
 
 // Component
@@ -36,7 +36,7 @@ const Dashboard = ({
           <div className="col s12 m5 offset-m1">
             <Notifications notifications={notifications} />
 
-            <Spaces />
+            <WorkSpaces />
           </div>
         </div>
       </div>
