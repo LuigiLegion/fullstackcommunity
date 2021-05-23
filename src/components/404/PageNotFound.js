@@ -15,21 +15,13 @@ const PageNotFound = () => {
                   <span className="text-style-bold">404 - Page Not Found</span>
                 </span>
 
-                <h5 className="grey-text text-darken-3">
+                <div className="grey-text text-darken-3 page-not-found-message">
                   This route does not exist.
-                </h5>
+                </div>
 
-                <br />
-
-                <ul>
-                  <li>
-                    <NavLink to="/">
-                      <span className="text-style-bold">
-                        ← Back To Main Page
-                      </span>
-                    </NavLink>
-                  </li>
-                </ul>
+                <NavLink to="/">
+                  <span className="text-style-bold">← Back To Main Page</span>
+                </NavLink>
               </div>
             </div>
           </div>
