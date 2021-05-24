@@ -18,7 +18,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar>Fullstack Community</Navbar>
+        <Navbar />
 
         <Switch>
           <Route exact path="/" component={Dashboard} />
