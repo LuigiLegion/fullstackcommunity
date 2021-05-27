@@ -37,7 +37,7 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
         </div>
 
         <div>
-          <NavLink to="/newproject" onClick={closeMenu}>
+          <NavLink to="/projects" onClick={closeMenu}>
             <span className="text-style-bold navbar-text-color">
               New Project
             </span>
