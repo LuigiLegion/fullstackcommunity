@@ -25,8 +25,8 @@ const App = () => {
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/map" component={Map} />
-          <Route path="/newproject" component={ProjectCreate} />
-          <Route path="/project/:id" component={Project} />
+          <Route path="/projects/:id" component={Project} />
+          <Route path="/projects" component={ProjectCreate} />
           <Route path="/:wildcard" component={PageNotFound} />
         </Switch>
       </div>
