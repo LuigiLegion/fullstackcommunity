@@ -13,7 +13,7 @@ const Projects = ({ projects }) => {
         projects.map(curProject => (
           <NavLink
             key={curProject.id}
-            to={`/project/${curProject.id}`}
+            to={`/projects/${curProject.id}`}
             className="project-preview-link"
           >
             <ProjectPreview project={curProject} />
