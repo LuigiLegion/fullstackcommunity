@@ -33,7 +33,7 @@ export const getMeetupsThunkCreator = () => {
       dispatch(toggledPreloaderActionCreator(true));
 
       const { data } = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://meetup-tracker.herokuapp.com/api/meetups/curated'
+        'https://meetup-tracker.herokuapp.com/api/meetups/curated'
       );
 
       const meetups = data.reduce(
