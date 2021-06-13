@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import { MapMarker } from '..';
+import { MapMarker, MapPopup } from '..';
 import { getMeetupsThunkCreator } from '../../store';
 import { locations as libraries } from '../../data/public-library-locations';
 import { locations as starbucks } from '../../data/starbucks-locations';
@@ -305,79 +305,29 @@ const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
         ) : null}
 
         {selectedStarbucks ? (
-          <Popup
+          <MapPopup
             latitude={selectedStarbucks.latitude}
             longitude={selectedStarbucks.longitude}
-            closeOnClick={false}
-            onClose={() => setSelectedStarbucks(null)}
-          >
-            <div className="text-style-bold location-description">
-              Starbucks - {selectedStarbucks.name}
-            </div>
-
-            <hr />
-
-            <div className="navigation-container">
-              {/* <div className="text-style-bold">Closes at: 10 PM</div> */}
-
-              <br />
-
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                  regex,
-                  '+'
-                )}+Subway+Station&destination=Starbucks+${selectedStarbucks.name.replace(
-                  regex,
-                  '+'
-                )}&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">Navigate</span>
-              </a>
-            </div>
-          </Popup>
+            setSelected={setSelectedStarbucks}
+            type="Starbucks"
+            address={selectedStarbucks.name}
+            openingHours="Closes at: 10 PM"
+            rsvpUrl={null}
+            userLocation={userMarker.curUserLocationName}
+          />
         ) : null}
 
         {selectedWholeFoods ? (
-          <Popup
+          <MapPopup
             latitude={selectedWholeFoods.location.lat}
             longitude={selectedWholeFoods.location.lng}
-            closeOnClick={false}
-            onClose={() => setSelectedWholeFoods(null)}
-          >
-            <div className="text-style-bold location-description">
-              Whole Foods Market - {selectedWholeFoods.location.address}
-            </div>
-
-            <hr />
-
-            <div className="navigation-container">
-              <div className="text-style-bold navigation-containee">
-                Opening Hours
-              </div>
-
-              <div className="navigation-containee">
-                Monday through Sunday, 8:00 AM - 10:00 PM
-              </div>
-
-              <br />
-
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                  regex,
-                  '+'
-                )}+Subway+Station&destination=Whole+Foods+Market+${selectedWholeFoods.location.address.replace(
-                  regex,
-                  '+'
-                )}&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">Navigate</span>
-              </a>
-            </div>
-          </Popup>
+            setSelected={setSelectedWholeFoods}
+            type="Whole Foods Market"
+            address={selectedWholeFoods.location.address}
+            openingHours="Monday through Sunday, 8:00 AM - 10:00 PM"
+            rsvpurl={null}
+            userLocation={userMarker.curUserLocationName}
+          />
         ) : null}
 
         {selectedMeetup ? (
@@ -496,139 +446,42 @@ const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
         ) : null}
 
         {selectedFreelancersHub ? (
-          <Popup
+          <MapPopup
             latitude={40.7042358}
             longitude={-73.9892133}
-            closeOnClick={false}
-            onClose={() => setSelectedFreelancersHub(null)}
-          >
-            <div className="text-style-bold location-description">
-              Freelancers Hub - 30 John Street, Brooklyn
-            </div>
-
-            <hr />
-
-            <div className="navigation-container">
-              <div className="text-style-bold navigation-containee">
-                Opening Hours
-              </div>
-
-              <div className="navigation-containee">
-                Monday through Friday, 9:00 AM - 5:00 PM
-              </div>
-
-              <a
-                href="https://freelancershub.nymediacenter.com/member/daypass"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">RSVP</span>
-              </a>
-
-              <br />
-
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                  regex,
-                  '+'
-                )}+Subway+Station&destination=Freelancers+Hub&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">Navigate</span>
-              </a>
-            </div>
-          </Popup>
+            setSelected={setSelectedFreelancersHub}
+            type="Freelancers Hub"
+            address="30 John Street, Brooklyn"
+            openingHours="Monday through Friday, 9:00 AM - 5:00 PM"
+            rsvpUrl="https://freelancershub.nymediacenter.com/member/daypass"
+            userLocation={userMarker.curUserLocationName}
+          />
         ) : null}
 
         {selectedAwsLoft ? (
-          <Popup
+          <MapPopup
             latitude={40.7245956}
             longitude={-73.9976034}
-            closeOnClick={false}
-            onClose={() => setSelectedAwsLoft(null)}
-          >
-            <div className="text-style-bold location-description">
-              AWS Loft - 350 West Broadway, New York
-            </div>
-
-            <hr />
-
-            <div className="navigation-container">
-              <div className="text-style-bold navigation-containee">
-                Opening Hours
-              </div>
-
-              <div className="navigation-containee">
-                Monday through Friday, 9:30 AM - 5:30 PM
-              </div>
-
-              <a
-                href="https://aws.amazon.com/start-ups/loft/ny-loft"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">RSVP</span>
-              </a>
-
-              <br />
-
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                  regex,
-                  '+'
-                )}+Subway+Station&destination=AWS+Loft&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">Navigate</span>
-              </a>
-            </div>
-          </Popup>
+            setSelected={setSelectedAwsLoft}
+            type="AWS Loft"
+            address="350 West Broadway, New York"
+            openingHours="Monday through Friday, 9:30 AM - 5:30 PM"
+            rsvpUrl="https://aws.amazon.com/start-ups/loft/ny-loft"
+            userLocation={userMarker.curUserLocationName}
+          />
         ) : null}
 
         {selectedCampus ? (
-          <Popup
+          <MapPopup
             latitude={40.7050758}
             longitude={-74.0113491}
-            closeOnClick={false}
-            onClose={() => setSelectedCampus(null)}
-          >
-            <div className="text-style-bold location-description">
-              Fullstack Academy of Code - 5 Hanover Square, New York
-            </div>
-
-            <hr />
-
-            <div className="navigation-container">
-              <div className="text-style-bold">
-                {'Next Hacker Hours Meetup: '}
-              </div>
-
-              <div>Every second Monday of the month, 6:30 PM - 9:30 PM</div>
-
-              <a
-                href="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-98250793769?aff=erelexpmlt"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">RSVP</span>
-              </a>
-
-              <br />
-
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                  regex,
-                  '+'
-                )}+Subway+Station&destination=Fullstack+Academy&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">Navigate</span>
-              </a>
-            </div>
-          </Popup>
+            setSelected={setSelectedCampus}
+            type="Fullstack Academy"
+            address="5 Hanover Square, New York"
+            openingHours="Every second Monday of the month, 6:30 PM - 9:30 PM"
+            rsvpUrl="https://www.eventbrite.com/e/hacker-hours-at-fullstack-academy-tickets-98250793769?aff=erelexpmlt"
+            userLocation={userMarker.curUserLocationName}
+          />
         ) : null}
       </ReactMapGL>
     );
