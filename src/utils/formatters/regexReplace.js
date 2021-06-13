@@ -1,6 +1,4 @@
 // Initializations
-const regex = /\s+/g;
-
-const regexReplace = str => str.replace(regex, '+');
+const regexReplace = str => str.replace(/\s+/g, '+');
 
 export default regexReplace;
