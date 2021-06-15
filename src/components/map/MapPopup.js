@@ -3,7 +3,7 @@ import React from 'react';
 import { Popup } from 'react-map-gl';
 import PropTypes from 'prop-types';
 
-import regexReplace from '../../utils';
+import { regexReplace } from '../../utils';
 
 // Component
 const MapPopup = ({
