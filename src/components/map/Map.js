@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import { MapMarker, MapPopup } from '..';
+import { MapMarker, MapPopup, MapPopupAlum } from '..';
 import { getMeetupsThunkCreator } from '../../store';
 import { locations as libraries } from '../../data/public-library-locations';
 import { locations as starbucks } from '../../data/starbucks-locations';
@@ -388,61 +388,10 @@ const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
         ) : null}
 
         {selectedAlum ? (
-          <Popup
-            latitude={selectedAlum.locationGeocode.lat}
-            longitude={selectedAlum.locationGeocode.lon}
-            closeOnClick={false}
-            onClose={() => setSelectedAlum(null)}
-          >
-            <div className="text-style-bold location-description">
-              {`${selectedAlum.firstName} ${selectedAlum.lastName}`}
-            </div>
-
-            <hr />
-
-            <div className="location-description">
-              <span className="text-style-bold">Gender: </span>
-              {selectedAlum.gender}
-            </div>
-
-            <div className="location-description">
-              <span className="text-style-bold">Cohort: </span>
-              {`${selectedAlum.cohort}-${selectedAlum.program}`}
-            </div>
-
-            <div className="location-description">
-              {selectedAlum.status === 'Employed' ? (
-                <span>
-                  <span className="text-style-bold">Company: </span>
-                  {selectedAlum.company}
-                </span>
-              ) : (
-                <span>
-                  <span className="text-style-bold">Status: </span>
-                  {selectedAlum.status === 'Unemployed'
-                    ? 'Seeking Opportunities'
-                    : selectedAlum.status}
-                </span>
-              )}
-            </div>
-
-            <div className="location-description">
-              <span className="text-style-bold">Email: </span>
-
-              <a
-                href={`mailto:${selectedAlum.email}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">{selectedAlum.email}</span>
-              </a>
-            </div>
-
-            <div className="location-description">
-              <span className="text-style-bold">Subway Station: </span>
-              {selectedAlum.locationName}
-            </div>
-          </Popup>
+          <MapPopupAlum
+            selectedAlum={selectedAlum}
+            setSelectedAlum={setSelectedAlum}
+          />
         ) : null}
 
         {selectedFreelancersHub ? (
