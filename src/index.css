@@ -109,9 +109,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   text-decoration: none;
 }
 
-.navbar {
+.navbar-background-color {
   background-color: #101010;
-  box-shadow: none;
 }
 
 .navbar-text-color {
@@ -135,31 +134,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
   align-items: center;
 }
 
-.marker-me {
-  width: 50px;
-  height: 50px;
-}
-
-.marker-others {
-  width: 50px;
-  height: 50px;
-}
-
-.marker-fullstack {
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-}
-
 .marker-button {
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.marker-button img {
-  width: 30px;
-  height: 30px;
 }
 
 .location-description {
@@ -195,4 +173,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .project-preview-link:hover {
   text-decoration: none;
+}
+
+.page-not-found-message {
+  margin: 30px 0px;
 }
