@@ -1,7 +1,7 @@
 // Imports
 import axios from 'axios';
 
-import { toggledPreloaderActionCreator } from './layoutReducer';
+import { toggledPreloaderActionCreator } from '..';
 
 // Initial State
 const initialState = {

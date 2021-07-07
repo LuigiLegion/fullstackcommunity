@@ -1,5 +1,5 @@
 // Imports
-import { toggledPreloaderActionCreator } from './layoutReducer';
+import { toggledPreloaderActionCreator } from '..';
 import { toastNotification } from '../../utils';
 
 // Initial State
