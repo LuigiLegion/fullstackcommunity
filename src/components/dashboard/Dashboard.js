@@ -59,8 +59,8 @@ const mapDispatchToProps = dispatch => ({
 // Prop Types
 Dashboard.propTypes = {
   auth: PropTypes.object,
-  notifications: PropTypes.array,
-  projects: PropTypes.array,
+  notifications: PropTypes.arrayOf(PropTypes.object),
+  projects: PropTypes.arrayOf(PropTypes.object),
   fetchedMeetups: PropTypes.bool,
   getMeetupsThunk: PropTypes.func,
 };

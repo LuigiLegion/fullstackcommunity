@@ -25,7 +25,7 @@ const Projects = ({ projects }) => {
 
 // Prop Types
 Projects.propTypes = {
-  projects: PropTypes.array,
+  projects: PropTypes.arrayOf(PropTypes.object),
 };
 
 // Exports
