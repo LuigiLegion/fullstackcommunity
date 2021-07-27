@@ -276,19 +276,21 @@ const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
 
               <br />
 
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                  regex,
-                  '+'
-                )}+Subway+Station&destination=WeWork+${selectedMeetup.venue.address_1.replace(
-                  regex,
-                  '+'
-                )}&travelmode=transit`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">Navigate</span>
-              </a>
+              {selectedMeetup.venue.address_1 ? (
+                <a
+                  href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
+                    regex,
+                    '+'
+                  )}+Subway+Station&destination=WeWork+${selectedMeetup.venue.address_1.replace(
+                    regex,
+                    '+'
+                  )}&travelmode=transit`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="text-style-bold">Navigate</span>
+                </a>
+              ) : null}
             </div>
           </Popup>
         ) : null}
