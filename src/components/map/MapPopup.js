@@ -36,9 +36,11 @@ const MapPopup = ({
 
         <div className="navigation-containee">{openingHours}</div>
 
-        <a href={rsvpUrl} target="_blank" rel="noopener noreferrer">
-          <span className="text-style-bold">RSVP</span>
-        </a>
+        {rsvpUrl ? (
+          <a href={rsvpUrl} target="_blank" rel="noopener noreferrer">
+            <span className="text-style-bold">RSVP</span>
+          </a>
+        ) : null}
 
         <br />
 
