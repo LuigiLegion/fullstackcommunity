@@ -244,14 +244,16 @@ const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
             onClose={() => setSelectedMeetup(null)}
           >
             <div className="text-style-bold location-description">
-              {selectedMeetup.venue.address_1}
+              {selectedMeetup.venue.address_1
+                ? selectedMeetup.venue.address_1
+                : 'Online'}
             </div>
 
             <hr />
 
             <div className="navigation-container">
               <div>
-                <span className="text-style-bold">Meetup Title: </span>
+                <span className="text-style-bold">Title: </span>
                 {selectedMeetup.name}
               </div>
 
@@ -259,6 +261,8 @@ const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
                 <span className="text-style-bold">Date: </span>
                 {moment(selectedMeetup.time).format('LLLL')}
               </div>
+
+              <br />
 
               <a
                 href={selectedMeetup.event_url}
@@ -274,22 +278,24 @@ const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
                 </span>
               </a>
 
-              <br />
-
               {selectedMeetup.venue.address_1 ? (
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                    regex,
-                    '+'
-                  )}+Subway+Station&destination=WeWork+${selectedMeetup.venue.address_1.replace(
-                    regex,
-                    '+'
-                  )}&travelmode=transit`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="text-style-bold">Navigate</span>
-                </a>
+                <>
+                  <br />
+
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
+                      regex,
+                      '+'
+                    )}+Subway+Station&destination=WeWork+${selectedMeetup.venue.address_1.replace(
+                      regex,
+                      '+'
+                    )}&travelmode=transit`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="text-style-bold">Navigate</span>
+                  </a>
+                </>
               ) : null}
             </div>
           </Popup>
