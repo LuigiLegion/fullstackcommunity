@@ -2,22 +2,24 @@
 
 // Imports
 import React, { useState, useEffect } from 'react';
-import ReactMapGL, { Popup } from 'react-map-gl';
+import { Redirect } from 'react-router-dom';
+import ReactMapGL from 'react-map-gl';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
-import { MapMarker, MapPopup, MapPopupAlum, MapPopupLibrary } from '..';
+import {
+  MapMarker,
+  MapPopup,
+  MapPopupAlum,
+  MapPopupLibrary,
+  MapPopupMeetup,
+} from '..';
 import { getMeetupsThunkCreator } from '../../store';
 import { locations as libraries } from '../../data/public-library-locations';
 import { locations as starbucks } from '../../data/starbucks-locations';
 import { locations as wholeFoods } from '../../data/whole-foods-market-locations';
-
-// Initializations
-const regex = /\s+/g;
 
 // Component
 const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
@@ -237,68 +239,12 @@ const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
         ) : null}
 
         {selectedMeetup ? (
-          <Popup
-            latitude={selectedMeetup.venue.lat}
-            longitude={selectedMeetup.venue.lon}
-            closeOnClick={false}
-            onClose={() => setSelectedMeetup(null)}
-          >
-            <div className="text-style-bold location-description">
-              {selectedMeetup.venue.address_1
-                ? selectedMeetup.venue.address_1
-                : 'Online'}
-            </div>
-
-            <hr />
-
-            <div className="navigation-container">
-              <div>
-                <span className="text-style-bold">Title: </span>
-                {selectedMeetup.name}
-              </div>
-
-              <div>
-                <span className="text-style-bold">Date: </span>
-                {moment(selectedMeetup.time).format('LLLL')}
-              </div>
-
-              <br />
-
-              <a
-                href={selectedMeetup.event_url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-style-bold">
-                  {`RSVP (${selectedMeetup.yes_rsvp_count}${
-                    selectedMeetup.rsvp_limit
-                      ? '/' + selectedMeetup.rsvp_limit
-                      : ''
-                  })`}
-                </span>
-              </a>
-
-              {selectedMeetup.venue.address_1 ? (
-                <>
-                  <br />
-
-                  <a
-                    href={`https://www.google.com/maps/dir/?api=1&origin=${userMarker.curUserLocationName.replace(
-                      regex,
-                      '+'
-                    )}+Subway+Station&destination=WeWork+${selectedMeetup.venue.address_1.replace(
-                      regex,
-                      '+'
-                    )}&travelmode=transit`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="text-style-bold">Navigate</span>
-                  </a>
-                </>
-              ) : null}
-            </div>
-          </Popup>
+          <MapPopupMeetup
+            selectedMeetup={selectedMeetup}
+            setSelectedMeetup={setSelectedMeetup}
+            meetupLocation={selectedMeetup.venue.address_1}
+            userLocation={userMarker.curUserLocationName}
+          />
         ) : null}
 
         {selectedAlum ? (
