@@ -17,6 +17,7 @@ export { default as MapPopup } from './map/MapPopup';
 export { default as MapPopupAlum } from './map/MapPopupAlum';
 export { default as MapPopupLibrary } from './map/MapPopupLibrary';
 export { default as MapPopupMeetup } from './map/MapPopupMeetup';
+export { default as NavigationLink } from './map/NavigationLink';
 export { default as Navbar } from './navbar/Navbar';
 export { default as Preloader } from './navbar/Preloader';
 export { default as Project } from './projects/Project';
