@@ -8,6 +8,7 @@ import { regexReplace } from '../../utils';
 const NavigationLink = ({ type, address, userLocation }) => {
   return (
     <a
+      className="text-style-bold"
       href={`https://www.google.com/maps/dir/?api=1&origin=${regexReplace(
         userLocation
       )}+Subway+Station&destination=${regexReplace(type)}+${regexReplace(
@@ -16,7 +17,7 @@ const NavigationLink = ({ type, address, userLocation }) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <span className="text-style-bold">Navigate</span>
+      Navigate
     </a>
   );
 };
