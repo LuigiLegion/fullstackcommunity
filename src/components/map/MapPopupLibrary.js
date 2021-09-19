@@ -5,7 +5,7 @@ import React from 'react';
 import { Popup } from 'react-map-gl';
 import PropTypes from 'prop-types';
 
-import { regexReplace } from '../../utils';
+import { NavigationLink } from '..';
 
 // Component
 const MapPopupLibrary = ({
@@ -95,17 +95,11 @@ const MapPopupLibrary = ({
 
         <br />
 
-        <a
-          href={`https://www.google.com/maps/dir/?api=1&origin=${regexReplace(
-            userLocation
-          )}+Subway+Station&destination=${regexReplace(
-            selectedLibrary.oversightAgency
-          )}+${regexReplace(selectedLibrary.address)}&travelmode=transit`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="text-style-bold">Navigate</span>
-        </a>
+        <NavigationLink
+          type={selectedLibrary.oversightAgency}
+          address={selectedLibrary.address}
+          userLocation={userLocation}
+        />
       </div>
     </Popup>
   );
