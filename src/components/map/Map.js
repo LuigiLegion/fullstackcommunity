@@ -220,7 +220,6 @@ const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
             type="Starbucks"
             address={selectedStarbucks.name}
             openingHours="Closes at: 10 PM"
-            rsvpUrl={null}
             userLocation={userMarker.curUserLocationName}
           />
         ) : null}
@@ -233,7 +232,6 @@ const Map = ({ auth, users, meetups, fetchedMeetups, getMeetupsThunk }) => {
             type="Whole Foods Market"
             address={selectedWholeFoods.location.address}
             openingHours="Monday through Sunday, 8:00 AM - 10:00 PM"
-            rsvpurl={null}
             userLocation={userMarker.curUserLocationName}
           />
         ) : null}
