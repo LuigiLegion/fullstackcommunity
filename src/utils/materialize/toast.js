@@ -1,10 +1,9 @@
 // Initializations
-const toastNotification = (message, color) => {
+const toast = (message, color) =>
   window.M.toast({
     html: `<span>${message}</span>`,
     classes: color,
   });
-};
 
 // Exports
-export default toastNotification;
+export default toast;
