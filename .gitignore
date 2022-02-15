@@ -25,7 +25,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-src/config/fbConfig.js
+src/config/firebaseConfig.js
+
 src/data
 !src/data/public-library-locations.example.json
 !src/data/starbucks-locations.example.json
