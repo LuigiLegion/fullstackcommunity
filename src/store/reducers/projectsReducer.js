@@ -1,6 +1,6 @@
 // Imports
 import { toggledPreloaderActionCreator } from '..';
-import { toastNotification } from '../../utils';
+import { toast } from '../../utils';
 
 // Initial State
 const initialState = {
@@ -44,7 +44,7 @@ export const createProjectThunkCreator = project => {
 
       dispatch(createdProjectSuccessActionCreator(project));
 
-      toastNotification('New Project Created Successfully', 'green');
+      toast('New Project Created Successfully', 'green');
     } catch (error) {
       console.error(error);
       dispatch(createdProjectErrorActionCreator(error));
