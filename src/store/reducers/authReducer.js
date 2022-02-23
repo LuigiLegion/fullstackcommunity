@@ -10,7 +10,7 @@ const initialState = {
   signOutError: null,
 };
 
-// Actions Types
+// Action Types
 const SIGNED_UP_SUCCESS = 'SIGNED_UP_SUCCESS';
 const SIGNED_UP_ERROR = 'SIGNED_UP_ERROR';
 const SIGNED_IN_SUCCESS = 'SIGNED_IN_SUCCESS';
