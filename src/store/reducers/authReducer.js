@@ -149,7 +149,6 @@ const authReducer = (state = initialState, action) => {
       };
 
     case SIGNED_UP_ERROR:
-      console.error('Sign up error!', action.error.message);
       return {
         ...state,
         signUpError: action.error.message,
@@ -162,7 +161,6 @@ const authReducer = (state = initialState, action) => {
       };
 
     case SIGNED_IN_ERROR:
-      console.error('Sign in error!', action.error.message);
       return {
         ...state,
         signInError: action.error.message,
@@ -175,7 +173,6 @@ const authReducer = (state = initialState, action) => {
       };
 
     case SIGNED_OUT_ERROR:
-      console.error('Sign out error!', action.error.message);
       return {
         ...state,
         signOutError: action.error.message,
