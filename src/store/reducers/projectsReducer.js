@@ -58,7 +58,6 @@ export const createProjectThunkCreator = project => {
 const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATED_PROJECT_ERROR:
-      console.error('Project creation error!', action.error);
       return {
         ...state,
         projectCreationError: action.error,
