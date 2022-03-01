@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Hello } from '..';
 import { signOutThunkCreator } from '../../store';
 
 // Component
@@ -12,60 +11,72 @@ const SignedInLinks = ({ profile, signOutThunk }) => {
   return (
     <ul className="right">
       <li className="navbar-link">
-        <NavLink to="/">
-          <Hello firstName={profile.firstName} />
+        <NavLink
+          className="navbar-text-color"
+          to="/"
+        >
+          {profile.firstName ? `Welcome back, ${profile.firstName}.` : 'Hello, guest.'}
         </NavLink>
       </li>
 
       <li className="navbar-link">
-        <NavLink to="/projects">
-          <span className="text-style-bold navbar-text-color">New Project</span>
+        <NavLink
+          className="text-style-bold navbar-text-color"
+          to="/projects"
+        >
+          New Project
         </NavLink>
       </li>
 
       <li className="navbar-link">
-        <NavLink to="/map">
-          <span className="text-style-bold navbar-text-color">Map</span>
+        <NavLink
+          className="text-style-bold navbar-text-color"
+          to="/map"
+        >
+          Map
         </NavLink>
       </li>
 
       <li className="navbar-link">
         <a
+          className="text-style-bold navbar-text-color"
           href="https://meetup-tracker.herokuapp.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span className="text-style-bold navbar-text-color">
-            Meetup Tracker
-          </span>
+          Meetup Tracker
         </a>
       </li>
 
       <li className="navbar-link">
         <a
+          className="text-style-bold navbar-text-color"
           href="https://gitness-tracker.web.app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span className="text-style-bold navbar-text-color">
-            Gitness Tracker
-          </span>
+          Gitness Tracker
         </a>
       </li>
 
       <li className="navbar-link">
         <a
+          className="text-style-bold navbar-text-color"
           href="https://taluigi.netlify.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span className="text-style-bold navbar-text-color">Contact</span>
+          Contact
         </a>
       </li>
 
       <li className="navbar-link">
-        <NavLink to="/" onClick={signOutThunk}>
-          <span className="text-style-bold navbar-text-color">Sign Out</span>
+        <NavLink
+          className="text-style-bold navbar-text-color padding-right"
+          to="/"
+          onClick={signOutThunk}
+        >
+          Sign Out
         </NavLink>
       </li>
     </ul>
