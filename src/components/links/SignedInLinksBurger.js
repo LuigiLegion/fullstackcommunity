@@ -5,7 +5,6 @@ import { slide as Menu } from 'react-burger-menu';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Hello } from '..';
 import { signOutThunkCreator } from '../../store';
 import { burgerStyles } from '../../styles';
 
@@ -30,72 +29,84 @@ const SignedInLinksBurger = ({ profile, signOutThunk }) => {
       onStateChange={state => handleStateChange(state)}
     >
       <div className="outline-none">
-        <div>
-          <NavLink to="/" onClick={closeMenu}>
-            <Hello firstName={profile.firstName} />
+        <div className="welcome-back-container">
+          <NavLink
+            className="navbar-text-color"
+            to="/"
+            onClick={closeMenu}
+          >
+            <div className="white-space-pre line-height-reset">
+              {profile.firstName ? `Welcome back,\n${profile.firstName}.` : 'Hello, guest.'}
+            </div>
           </NavLink>
         </div>
 
         <div>
-          <NavLink to="/projects" onClick={closeMenu}>
-            <span className="text-style-bold navbar-text-color">
-              New Project
-            </span>
+          <NavLink
+            className="text-style-bold navbar-text-color"
+            to="/projects"
+            onClick={closeMenu}
+          >
+            New Project
           </NavLink>
         </div>
 
         <div>
-          <NavLink to="/map" onClick={closeMenu}>
-            <span className="text-style-bold navbar-text-color">Map</span>
+          <NavLink
+            className="text-style-bold navbar-text-color"
+            to="/map"
+            onClick={closeMenu}
+          >
+            Map
           </NavLink>
         </div>
 
         <div>
           <a
+            className="text-style-bold navbar-text-color"
             href="https://meetup-tracker.herokuapp.com"
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}
           >
-            <span className="text-style-bold navbar-text-color">
-              Meetup Tracker
-            </span>
+            Meetup Tracker
           </a>
         </div>
 
         <div>
           <a
+            className="text-style-bold navbar-text-color"
             href="https://gitness-tracker.web.app"
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}
           >
-            <span className="text-style-bold navbar-text-color">
-              Gitness Tracker
-            </span>
+            Gitness Tracker
           </a>
         </div>
 
         <div>
           <a
+            className="text-style-bold navbar-text-color"
             href="https://taluigi.netlify.com"
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}
           >
-            <span className="text-style-bold navbar-text-color">Contact</span>
+            Contact
           </a>
         </div>
 
         <div>
           <NavLink
+            className="text-style-bold navbar-text-color"
             to="/"
             onClick={() => {
               closeMenu();
               signOutThunk();
             }}
           >
-            <span className="text-style-bold navbar-text-color">Sign Out</span>
+            Sign Out
           </NavLink>
         </div>
       </div>
