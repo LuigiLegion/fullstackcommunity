@@ -1,6 +1,5 @@
 // Imports
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -9,6 +8,7 @@ import {
   SignedInLinksBurger,
   SignedOutLinks,
   SignedOutLinksBurger,
+  Logo,
   Preloader,
 } from '..';
 
@@ -16,7 +16,7 @@ import {
 const Navbar = ({ auth, profile, isLoading }) => {
   const [width, setWidth] = useState(window.innerWidth);
 
-  const largeViewCheck = width > 1007;
+  const isLargeView = width > 1024;
 
   const updateNavbarDimensions = () => {
     setWidth(window.innerWidth);
@@ -32,31 +32,28 @@ const Navbar = ({ auth, profile, isLoading }) => {
     };
   }, [width]);
 
-  let curLinks;
-  if (auth.uid && largeViewCheck) {
-    curLinks = <SignedInLinks profile={profile} />;
+  let links;
+
+  if (auth.uid && isLargeView) {
+    links = <SignedInLinks profile={profile} />;
   } else if (auth.uid) {
-    curLinks = <SignedInLinksBurger profile={profile} />;
-  } else if (largeViewCheck) {
-    curLinks = <SignedOutLinks />;
+    links = <SignedInLinksBurger profile={profile} />;
+  } else if (isLargeView) {
+    links = <SignedOutLinks />;
   } else {
-    curLinks = <SignedOutLinksBurger />;
+    links = <SignedOutLinksBurger />;
   }
 
   return (
     <div className="navbar-fixed">
       <nav className="nav-wrapper navbar-background-color">
         <div>
-          <NavLink to="/" className="left navbar-logo">
-            <span className="text-style-bold navbar-text-color">
-              {largeViewCheck ? 'Fullstack Community' : 'FSCommunity'}
-            </span>
-          </NavLink>
+          <Logo isLargeView={isLargeView} />
 
-          {curLinks}
-
-          <div>{isLoading ? <Preloader /> : null}</div>
+          {links}
         </div>
+
+        <div>{isLoading && <Preloader />}</div>
       </nav>
     </div>
   );
