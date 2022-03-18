@@ -25,7 +25,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-src/config/firebaseConfig.js
+src/config/*
+!src/config/firebaseConfig.example.json
 
 src/data
 !src/data/public-library-locations.example.json
