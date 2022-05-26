@@ -45,4 +45,4 @@ const burgerStyles = {
 };
 
 // Exports
-export { burgerStyles };
+export default burgerStyles;
