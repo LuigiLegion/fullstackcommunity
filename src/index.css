@@ -129,10 +129,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
   color: #fafafa;
 }
 
-.navbar-link:hover {
-  background-color: #202020;
-}
-
 .message-container {
   display: flex;
   flex-direction: row;
