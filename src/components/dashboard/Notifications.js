@@ -10,7 +10,11 @@ const Notifications = ({ notifications }) => {
     <div className="section">
       <div className="card grey lighten-5">
         <div className="card-content grey-text text-darken-3">
-          <span className="card-title text-style-bold">Notifications</span>
+          <span className="card-title">
+            <span className="text-style-bold">
+              Notifications
+            </span>
+          </span>
 
           <ul className="notifications">
             {notifications &&

@@ -12,7 +12,9 @@ const PageNotFound = () => {
             <div className="card grey lighten-5">
               <div className="card-content grey-text text-darken-3">
                 <span className="card-title">
-                  <span className="text-style-bold">404 - Page Not Found</span>
+                  <span className="text-style-bold">
+                    404 - Page Not Found
+                  </span>
                 </span>
 
                 <div className="grey-text text-darken-3 page-not-found-message">
