@@ -1,7 +1,9 @@
+// Imports
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+// Component
 const Logo = ({ isLargeView }) => {
   return (
     <NavLink
@@ -13,8 +15,10 @@ const Logo = ({ isLargeView }) => {
   )
 };
 
+// Prop Types
 Logo.propTypes = {
   isLargeView: PropTypes.bool,
 };
 
+// Exports
 export default Logo;
