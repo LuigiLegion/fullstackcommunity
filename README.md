@@ -24,10 +24,11 @@ Built using Node.js and Firebase on the backend, React, Redux, and Materialize.c
 
 - Tal Luigi ([LinkedIn](https://www.linkedin.com/in/talluigi) | [GitHub](https://github.com/luigilegion))
 
-## Setting Up Dev Environment
+## Dev Env Setup
 
-- Clone the repo and `npm install` the dependencies.
-- In the `src/config/` directory rename all the `.example.js` to remove the `.example`.
-- In the `src/data/` directory rename all the `.example.js` to remove the `.example`.
-- Fill in your actual keys and dummy data.
-- `npm run start` will run in a dev environment.
+- Clone the repo and `cd` into it
+- `npm install` to install the dependencies
+- Rename all `.example.js` files to remove `.example` in the `src/config/` directory
+- Rename all `.example.js` files to remove `.example` in the `src/data/` directory
+- Fill in your keys and dummy data
+- `npm run start` to spin up the dev env
