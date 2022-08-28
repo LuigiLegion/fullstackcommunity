@@ -192,10 +192,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
   padding-bottom: 1.25em;
 }
 
-.page-not-found-message {
-  margin: 30px 0px;
-}
-
 .padding-right {
   padding-right: 2em;
 }
