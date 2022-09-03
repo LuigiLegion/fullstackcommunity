@@ -3,6 +3,7 @@ import React from 'react';
 import { withRouter, Switch, Route } from 'react-router-dom';
 
 import {
+  About,
   SignIn,
   SignUp,
   Map,
@@ -16,6 +17,7 @@ import {
 const Routes = () => {
   return (
     <Switch>
+      <Route exact path="/about" component={About} />
       <Route path="/signin" component={SignIn} />
       <Route path="/signup" component={SignUp} />
       <Route path="/map" component={Map} />
